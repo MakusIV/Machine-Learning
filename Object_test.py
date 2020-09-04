@@ -46,15 +46,22 @@ if obj.id != 999:
 
 obj.setDimension([1,1,1])
 
-if obj.setDimension != [1,1,1]:
+if obj.getDimension() != [1,1,1]:
     print('Object.setDimension() Failed!! ', obj.dimension)
     result = False 
 
 obj.setCoord = Coordinate(2,2,2)
 
-if obj.getPosition != [2, 2, 2]:
+if obj.getPosition() != [2, 2, 2]:
     print('Object.setCoord() Failed!! ', obj.getPosition())
     result = False 
+
+if obj.getDistance( Coordinate(3,3,3) ) != 3**0.5:
+    print('Object.getDistance() Failed!! ', obj.getDistance( Coordinate(5,5,5) ) )
+    result = False 
+
+
+
 
 
 print("Object_test: ", result)

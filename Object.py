@@ -58,11 +58,33 @@ class Object:
 
     def isCollision(volume):
         """Return True if object is within volume"""
-        pass
+        # xd = dimension[0], yd = dimension[1], zd =dimension[2]
+        # xvol_low = volume[0][0], yvol_low = volume[0][1], zvol_low = volume[0][2]
+        # xvol_high = volume[1][0], yvol_high = volume[1][1], zvol_high = volume[1][2]
+        # not intersection in x axes: x > xvol_high and x + xd < xvol_low
+        # not intersection in y axes: y > yvol_high and y + yd < yvol_low
+        # not intersection in z axes: z > zvol_high and z + zd < zvol_low
 
-    def getDistance(pos):
-        """Return distance (d, xd, yd, zd) from object to pos:(x, y, z)"""
-        pass
+        if not volume or not isinstance(self, volume, list):
+            raise Exception('Invalid parameters')
+
+        x_intersection = not ( self.x > volume[1][0] and self.x + dimension[0] < volume[0][0] )
+        y_intersection = not ( self.y > volume[1][1] and self.x + dimension[1] < volume[0][1] )
+        z_intersection = not ( self.z > volume[1][2] and self.x + dimension[2] < volume[0][2] )
+
+        if x_intersection or y_intersection or z_intersection:
+            return True
+
+        return False
+
+    def getDistance(self, coord):
+        """Return distance (d, xd, yd, zd) from object.coordinate to pos:[x, y, z]""" 
+
+        if not coord or not isinstance(coord, Coordinate):
+            return False       
+
+        return self.coord.distance(coord)
+        
 
     def getId(self):
         return self.id
@@ -76,6 +98,8 @@ class Object:
         return self.coord.getPosition()
 
 
+    def getDimension(self):
+        return self.dimension
 
     def to_string(self):
         return 'Name: {0}  -  Id: {1}'.format(self.getName(), str(self.id))
