@@ -144,24 +144,44 @@ class Coordinate:
         return Coordinate(self.x, self.y, self.z)
     
     def distance(self, coord):
+
+        if not coord or not isinstance(coord, Coordinate):
+            return False
+
         """return absolute distance from coords =sqrt( (x - x)^2 + (t - y)^2 + (z-z)^2))"""        
         return ( (self.x - coord.x) ** 2 + (self.y - coord.y) ** 2 + (self.z - coord.z) ** 2 ) ** 0.5
 
     
     def distance_x(self, coord):
         """ return relative distance from x"""        
+
+        if not coord or not isinstance(coord, Coordinate):
+            return False
+
         return self.x - coord.x
     
     def distance_y(self, coord):
         """ return relative distance from y"""
+
+        if not coord or not isinstance(coord, Coordinate):
+            return False
+
         return self.y - coord.y
     
     def distance_z(self, coord):
         """ return relative distance from z"""
+
+        if not coord or not isinstance(coord, Coordinate):
+            return False
+
         return self.z - coord.z
     
     def is_same(self, coord):
         """return true if coord is self"""
+
+        if not coord or not isinstance(coord, Coordinate):
+            return False
+
         if coord == self:
             return True
         else:
@@ -169,6 +189,10 @@ class Coordinate:
     
     def is_egual(self, coord):
         """return true if coord have same x,y,z of self"""
+        
+        if not coord or not isinstance(coord, Coordinate):
+            return False
+
         if coord.x == self.x and coord.z == self.z and coord.z == self.z:
             return True
         else:
@@ -179,6 +203,9 @@ class Coordinate:
     def is_in_range(self, coord, dist):
         """return true if coord distance from self is eugual or less of dist"""
         
+        if not coord or not isinstance(coord, Coordinate) or not dist or not ( isinstance(dist, int) or isinstance(dist, float) ):
+            return False 
+
         if coord.distance(self) <= abs(dist):
             return True
         else:
@@ -191,7 +218,9 @@ class Coordinate:
         limits = [ [x-min, y_min, z_min], [x-max, y_max, z_max] ]
 
         """
-        
+        if not limits or not isinstance(limits, list) or not isinstance( limits[0][0], int) or not isinstance( limits[0][1], int) or not isinstance( limits[0][2], int) or not isinstance( limits[1][0], int) or not isinstance( limits[1][1], int) or not isinstance( limits[1][2], int):
+            return False
+
         out_limit = [ [False, False, False], [False, False, False] ]
         result = True
 
@@ -229,15 +258,21 @@ class Coordinate:
 
     def getId(self):
         """Return (x, y, z) tuple"""
-        return ( self.x, self.y, self.z )
+        return tuple(self.getPosition())
     
-    
-    def update(self, tupla):
-        """update x,y,z with tupla values"""
+    def getPosition(self):
+        """Return (x, y, z) list"""
+        return [self.x, self.y, self.z]
 
-        if not tupla:
+    def setPosition(self, pos):
+        """Set x,y,z"""
+
+        if not pos or not isinstance(pos, list) or len(pos) != 3 or not isinstance(pos[0], int) or not isinstance(pos[1], int) or not isinstance(pos[2], int):
             return False
+        
+        self.x = pos[0]
+        self.y = pos[1]
+        self.z = pos[2]
 
-        self.x = tupla[0]
-        self.y = tupla[1]
-        self.z = tupla[2]
+        return False
+

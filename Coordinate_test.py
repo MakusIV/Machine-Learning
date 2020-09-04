@@ -262,12 +262,15 @@ def testClassCoordinate():
         print("testClassCoordinate().getId() Failed!", coord1.to_string()) 
 
     
-    coord1.update((1,1,1))
-    
-    if (1,1,1) != coord1.getId():
-        result = False
-        print("testClassCoordinate().update() Failed!", coord1.getId()) 
 
+    coord1.setPosition( [1,1,1] )
+    
+    if [1,1,1] != coord1.getPosition():
+        result = False
+        print("testClassCoordinate().setPosition() Failed!", coord1.getPosition()) 
+
+
+    
 
     return result
 

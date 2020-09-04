@@ -5,22 +5,13 @@ class Object:
 
     def __init__(self, name = None, id = None, dimension = None, coord = None  ):
 
-            self.name = name
-            self.id = id
-            self.dimension = dimension
-            self.coord = coord
-            
-            if not name:
-                self.setName(None)
+            self.name = None
+            self.id = None
+            self.dimension = None
+            self.coord = None
                         
-            if not id:
-                self.setId(None)
-            
-            if not dimension:
-                self.setDimension(None)
-            
-            if not coord:
-                self.setCoord(None)
+            if not(self.setName(name) and self.setId(id) and self.setDimension(dimension) and self.setCoord(coord)):
+                raise Exception("Invalid parameters! Object not istantiate.")
             
 
 
@@ -57,7 +48,7 @@ class Object:
 
     def setCoord(self, coord):
             
-        if not coord or not isinstance(id, Coordinate):
+        if not coord or not isinstance(coord, Coordinate):
             self.coord = Coordinate( random.randint(1, 99), random.randint(1, 99), random.randint(1, 99) ) # senza limiti
         else:
             self.coord = coord
@@ -79,6 +70,10 @@ class Object:
 
     def getName(self):
         return self.name
+
+    
+    def getPosition(self):
+        return self.coord.getPosition()
 
 
 
