@@ -1,5 +1,6 @@
 import random
 from Coordinate import Coordinate
+import General
 
 class Object:
 
@@ -38,7 +39,7 @@ class Object:
     
     def setDimension(self, dimension):
             
-        if not dimension or not isinstance(dimension, list) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int) :
+        if not General.checkDimension(dimension): # not dimension or not isinstance(dimension, list) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int) :
             self.dimension = [random.randint(1, 3), random.randint(1, 3), random.randint(1, 3) ] # xdim, ydim, zdim
         else:
             self.dimension = dimension
@@ -66,9 +67,9 @@ class Object:
         # not intersection in z axes: z > zvol_high and z + zd < zvol_low
         # not interection -> one or more axis not intersection
 
-        # NOTA: volume xl, yl, zl <= xh, yh, zh
+        ## NOTA: volume = [ [xl, yl, zl],  [xh, yh, zh] ] dove xl, yl, zl <= xh, yh, zh
 
-        if not volume or not isinstance( volume, list ):
+        if not General.checkVolume(volume): #not volume or not isinstance( volume, list ):
             raise Exception('Invalid parameters')
 
         pos = self.coord.getPosition()
