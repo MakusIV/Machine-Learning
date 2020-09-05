@@ -56,7 +56,7 @@ class Object:
         return True
 
 
-    def isCollision(volume):
+    def isCollision(self, volume):
         """Return True if object is within volume"""
         # xd = dimension[0], yd = dimension[1], zd =dimension[2]
         # xvol_low = volume[0][0], yvol_low = volume[0][1], zvol_low = volume[0][2]
@@ -64,18 +64,26 @@ class Object:
         # not intersection in x axes: x > xvol_high and x + xd < xvol_low
         # not intersection in y axes: y > yvol_high and y + yd < yvol_low
         # not intersection in z axes: z > zvol_high and z + zd < zvol_low
+        # not interection -> one or more axis not intersection
 
-        if not volume or not isinstance(self, volume, list):
+        # NOTA: volume xl, yl, zl <= xh, yh, zh
+
+        if not volume or not isinstance( volume, list ):
             raise Exception('Invalid parameters')
 
-        x_intersection = not ( self.x > volume[1][0] and self.x + dimension[0] < volume[0][0] )
-        y_intersection = not ( self.y > volume[1][1] and self.x + dimension[1] < volume[0][1] )
-        z_intersection = not ( self.z > volume[1][2] and self.x + dimension[2] < volume[0][2] )
+        pos = self.coord.getPosition()
 
-        if x_intersection or y_intersection or z_intersection:
-            return True
+        x_not_intersection =  pos[0] > volume[1][0] or pos[0] + self.dimension[0] < volume[0][0] 
+        y_not_intersection =  pos[1] > volume[1][1] or pos[1] + self.dimension[1] < volume[0][1] 
+        z_not_intersection =  pos[2] > volume[1][2] or pos[2] + self.dimension[2] < volume[0][2] 
 
-        return False
+        # not interection -> one or more axis not intersection
+        if x_not_intersection or y_not_intersection or z_not_intersection:
+            return False
+
+        return True
+
+
 
     def getDistance(self, coord):
         """Return distance (d, xd, yd, zd) from object.coordinate to pos:[x, y, z]""" 

@@ -50,7 +50,7 @@ if obj.getDimension() != [1,1,1]:
     print('Object.setDimension() Failed!! ', obj.dimension)
     result = False 
 
-obj.setCoord = Coordinate(2,2,2)
+obj.setCoord( Coordinate(2,2,2) )
 
 if obj.getPosition() != [2, 2, 2]:
     print('Object.setCoord() Failed!! ', obj.getPosition())
@@ -60,8 +60,105 @@ if obj.getDistance( Coordinate(3,3,3) ) != 3**0.5:
     print('Object.getDistance() Failed!! ', obj.getDistance( Coordinate(5,5,5) ) )
     result = False 
 
+# isCollision(volume) test
+# NOTA: volume = [ [xl, yl, zl],  [xh, yh, zh] ] dove xl, yl, zl <= xh, yh, zh
+
+coord = Coordinate(0,0,0)
+dimension = [3,3,3]
+volume = [ [0, 0, 0 ], [5, 5, 5] ]
+
+obj.setCoord( coord )
+obj.setDimension( dimension )
+
+if not obj.isCollision( volume ):
+    print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
+    result = False 
 
 
+coord = Coordinate(0,0,0)
+dimension = [3,3,3]
+volume = [ [4,4,4], [15, 15, 15] ]
+
+obj.setCoord( coord )
+obj.setDimension( dimension )
+
+if obj.isCollision( volume ):
+    print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
+    result = False 
+
+
+coord = Coordinate(0,0,0)
+dimension = [3,3,3]
+volume = [ [3,3,3], [15, 15, 15] ]
+
+obj.setCoord( coord )
+obj.setDimension( dimension )
+
+if not obj.isCollision( volume ):
+    print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
+    result = False 
+
+
+coord = Coordinate(0,0,0)
+dimension = [3,3,3]
+volume = [ [-3,-3,-3], [0, 0, 0] ]
+
+obj.setCoord( coord )
+obj.setDimension( dimension )
+
+if not obj.isCollision( volume ):
+    print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
+    result = False 
+
+
+coord = Coordinate(0,0,0)
+dimension = [3,3,3]
+volume = [ [-3,-3,-3], [-1, -1, -1] ]
+
+obj.setCoord( coord )
+obj.setDimension( dimension )
+
+if obj.isCollision( volume ):
+    print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
+    result = False 
+
+
+coord = Coordinate(0,0,0)
+dimension = [3,3,3]
+volume = [ [-3, 0, 1], [-1, 2, 5] ]
+
+obj.setCoord( coord )
+obj.setDimension( dimension )
+
+if obj.isCollision( volume ):
+    print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
+    result = False 
+
+
+
+coord = Coordinate(0,0,0)
+dimension = [3,3,3]
+volume = [ [3, -1, 0], [3, -2, 5] ]
+
+obj.setCoord( coord )
+obj.setDimension( dimension )
+
+if obj.isCollision( volume ):
+    print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
+    result = False 
+
+
+coord = Coordinate(0,0,0)
+dimension = [3,3,3]
+# NOTA: volume = [ [xl, yl, zl],  [xh, yh, zh] ] dove xl, yl, zl <= xh, yh, zh
+volume = [ [3, -2, 0], [3, 0, 5] ]
+
+obj.setCoord( coord )
+obj.setDimension( dimension )
+
+if not obj.isCollision( volume ):
+    print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
+    result = False 
 
 
 print("Object_test: ", result)
