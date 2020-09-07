@@ -1,20 +1,56 @@
 import random
 from Coordinate import Coordinate
 import General
+import State
 
 class Object:
-
-    def __init__(self, name = None, id = None, dimension = None, coord = None  ):
+    
+    def __init__(self, coord = None, name = None, id = None, dimension = None,  state = None  ):
 
             self.name = None
             self.id = None
             self.dimension = None
             self.coord = None
+            self.state = None
                         
             if not(self.setName(name) and self.setId(id) and self.setDimension(dimension) and self.setCoord(coord)):
                 raise Exception("Invalid parameters! Object not istantiate.")
             
 
+    def getVertex(self):
+
+        llr = self.coord.getPosition()
+        
+        if len(self.dimension) == 3:
+            dim_x = self.dimensione[0]
+            dim_x = self.dimensione[1]
+            dim_x = self.dimensione[2]
+        
+        elif expression:
+            dim_x, dim_y, dim_z = dimension[0], dimension[0], dimension[0]
+
+        vertex = {  'llr': llr, 
+                    'lhr': [llr[0], llr[1], llr[2] + dim_z], 
+                    'rhr': [llr[0] + dim_x, llr[1], llr[2] + dim_z],
+                    'rlr': [llr[0] + dim_x, llr[1], llr[2] ],
+                    'llf': [llr[0], llr[1] + dim_y, llr[2]],
+                    'lhf': [llr[0], llr[1] + dim_y, llr[2] + dim_z],
+                    'rhf': [llr[0] + dim_x, llr[1] + dim_y, llr[2] + dim_z],
+                    'rlf': [llr[0] + dim_x, llr[1] + dim_y, llr[2]]  }
+        return vertex
+
+
+    def setState(self, state):
+
+        if not state or not isinstance(state, State):
+            return False
+        else:
+            self.state = state
+
+        return True
+
+    def getState(self):
+        return state
 
     def setName(self, name):
             

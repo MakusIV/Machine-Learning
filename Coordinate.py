@@ -267,7 +267,7 @@ class Coordinate:
     def setPosition(self, pos):
         """Set x,y,z"""
 
-        if not pos or not isinstance(pos, list) or len(pos) != 3 or not isinstance(pos[0], int) or not isinstance(pos[1], int) or not isinstance(pos[2], int):
+        if not pos or not ( isinstance(pos, list) or isinstance(pos, tuple ))or len(pos) != 3 or not isinstance(pos[0], int) or not isinstance(pos[1], int) or not isinstance(pos[2], int):
             return False
         
         self.x = pos[0]

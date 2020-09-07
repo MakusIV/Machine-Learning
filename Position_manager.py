@@ -1,5 +1,7 @@
 ### The Manager of object position in the World
 import numpy as np
+import General
+from Coordinate import Coordinate
 
 class Position_manager:
 
@@ -45,6 +47,8 @@ class Position_manager:
 
         if self.pos.get(index):
             return False
+
+        obj.coord.setPosition(index)
         
         self.pos[index] = obj
         return True
@@ -137,6 +141,93 @@ class Position_manager:
         return index
 
 
+    def listObject( self ):
+        """ Return a list of obj existents in position manager. If obj not exists return False"""
+
+        try:
+            index = list( self.pos.values() )
+
+        except ValueError:
+            return False
+
+        if not index:
+            return False
+
+        return index
+
+
+    def getObjectInVolume(self, volume, dimension = None):
+        """ Return {  (x,y,z), obj } portion within volume. Return false if objects not presents within volume"""
+        
+        if not volume:
+            return False
+
+        if not dimension:
+            dimension = [3, 3, 3]
+
+        if len(self.pos) >= ( volume[1][0] - volume[0][0] + 1 ) * ( volume[1][1] - volume[0][1] + 1 ) * ( volume[1][2] - volume[0][2] + 1 ):
+            return self._getObjectInVolumeFromObjectList(volume)
+        else:
+            return self._getObjectInVolumeFromVolumeIteration(volume, dimension)
+
+        return False
+
+    def _getObjectInVolumeFromObjectList(self, volume):
+        """ Return {  (x,y,z), obj } portion within volume. Return false if objects not presents within volume"""
+        # volume = ( (xl, yl, zl), (xh, yh, zh) )
+        # si basa sulla lista degli oobject istanziati, quindi più efficente della getObectVolum() se il di ricerca  in termini di posizioni
+        # è inferiore al numero di oggetti istanziati: lista di 1000 oggetti equivale ad un volume di ricerca di 10x10x10 posizioni
+        # considera comunque che una ricerca planare x,y su livello 0 (z =0): volume = [ [0, 0, 0], [10, 5, 0] ] richiederebbe solo 50 iterazioni
+        # mentre questa funzione itera sempre tutta la lista di oggetti.
+
+
+        if not volume:
+            return False
+
+        objects = self.listObject()
+
+        if not objects:
+            return False
+
+        detected = [ obj for obj in objects if obj.isCollision(volume)]
+
+        if not detected or len(detected) == 0:
+            return False
+
+        return detected
+
+
+
+
+    def _getObjectInVolumeFromVolumeIteration(self, volume, dimension):
+        """ Return {  (x,y,z), obj } portion within volume. Return false if objects not presents within volume"""
+        # volume = ( (xl, yl, zl), (xh, yh, zh) ), dimension = [ xd, yd, zd]
+        # nota: valuta la presenza di un object solo con la coordinata di riferimento senza considerare le sue dimensioni
+        # nota: devi modificare considerando il volume occupaodall'oggetto. Oneroso computazionalmente
+
+        detected = {}
+
+        self.normalizeVolume( volume )
+
+        for z in range(volume[0][2], volume[1][2] + 1 + dimension[2]):
+           
+           for y in range(volume[0][1], volume[1][1] + 1 + dimension[1]):
+              
+              for x in range(volume[0][0], volume[1][0] + 1 + dimension[0]):
+                    
+                    obj = self.getObjectAtCoord( ( x, y, z) )
+                    
+                    if obj:
+                        detected[ (x, y, z) ] = obj
+
+        if len( detected ) == 0:
+            return False
+
+        return detected
+
+
+
+
     def normalizeVolume(self, limits):  
 
         result = False      
@@ -168,30 +259,41 @@ class Position_manager:
         return result
 
 
+
     
-    def getObjectInVolume(self, limits):
-        """ Return {  (x,y,z), obj } portion within limits. Return false if objects not presents within volume"""
-        # volume = ( (xl, yl, zl), (xh, yh, zh) )
+    def getObjectInRange(self, coord, range, dimension):
 
-        detected = {}
+        """ Return {  (x,y,z), obj } portion within volume positionated in coord and range dimension. Return false if objects not presents within volume"""
+        # range = [int] or [int, int, int]
+        # volume = ( (coord.x, coord.y, coord.z), (coord.x + range, coord.y + range, coord.z + range) )
 
-        self.normalizeVolume(limits)
-
-        for z in range(limits[0][2], limits[1][2] + 1):
-           
-           for y in range(limits[0][1], limits[1][1] + 1):
-              
-              for x in range(limits[0][0], limits[1][0] + 1):
-                    
-                    obj = self.getObjectAtCoord( ( x, y, z) )
-                    
-                    if obj:
-                        detected[(x, y, z)] = obj
-
-        if len( detected ) == 0:
+        if not range or not coord or not isinstance(range, list) or not isinstance(coord, Coordinate):
             return False
 
-        return detected
+        lenRange = len(range)
+
+        if not ( lenRange == 1 or lenRange == 3 ):
+            return False
+        
+        
+        if lenRange == 1 and isinstance(range[0], int):
+            
+            volume = [ [ coord.x, coord.y, coord.z ], [ coord.x + range[0], coord.y + range[0], coord.z + range[0] ] ]
+            
+        elif isinstance(range[0], int) and isinstance(range[1], int) and isinstance(range[2], int):
+
+            volume = [ [ coord.x, coord.y, coord.z ], [ coord.x + range[0], coord.y + range[2], coord.z + range[2] ] ]
+        
+        else:
+            return False
+        
+        return self.getObjectInVolume(volume, dimension)
+        
+        
+
+
+
+
 
 
     def inLimits(self, index, limits):
@@ -231,8 +333,15 @@ class Position_manager:
         return result, out_limit
 
 
+    def clean(self):
+        """Remove all object istantiate in enviroments"""
+        self.pos.clear()
+        return True
+
+
+
     def show(self):
-        
+        """print list of object instantiate in Enviroments"""        
         for k, v in self.pos.items():
             print('key: ( {0} )  -  value: ( {1} )'.format(k, v.to_string()))
         

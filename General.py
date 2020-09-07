@@ -19,4 +19,8 @@ def checkVolume(volume):
     elif not isinstance( volume[0][0], int ) or not isinstance( volume[0][1], int ) or not isinstance( volume[0][2], int ) or not isinstance( volume[1][0], int ) or not isinstance( volume[1][1], int ) or not isinstance( volume[1][2], int ):
              return False
 
+    
+    if volume[0][0] > volume[1][0] and volume[0][1] > volume[1][1] and volume[0][2] > volume[1][2]:
+        return False
+    
     return True
