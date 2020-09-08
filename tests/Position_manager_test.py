@@ -252,8 +252,8 @@ def TestClassPosition_manager():
 
     
     
-    pm.show()
+    #pm.show()
 
     return result
 
-print("test result:", TestClassPosition_manager())
+print("Position_manager class test result:", TestClassPosition_manager())

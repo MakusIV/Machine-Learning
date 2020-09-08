@@ -279,4 +279,4 @@ def testClassCoordinate():
 
     return result
 
-print("test result:", testClassCoordinate())
+print("Coordinate class test result:", testClassCoordinate())

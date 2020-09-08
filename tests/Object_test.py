@@ -170,5 +170,5 @@ def testClassObject():
 
     return result
 
-print("test result:", testClassObject())
+print("Object class test result:", testClassObject())
 
