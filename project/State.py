@@ -3,33 +3,40 @@ class State:
 
     def __init__(self, start = True, run = None  ): 
 
-            self.__start = start
-            self.__run = False                        
-            self.__stop = True
-            self.__destroy = False
-            self.__remove = False
+            self._start = start
+            self._run = run                       
+            self._stop = True
+            self._destroy = False
+            self._remove = False
+
+            if not run:
+                self. _run = False
             
-                
+            elif not start and run:
+                self._run = False
+
+    def toString(self):
+        return "start: " + str(self._start) + ", run: " + str(self._run) + ", stop: " + str(self._stop) + ", remove: " + str(self._remove) + ", destroy: " + str(self._destroy)
             
     def isStarted(self):
-        return self.start            
+        return self._start            
 
     def isRunning(self):
-        return self.run            
+        return self._run            
 
     def isDestroyed(self):
-        return self.destroy
+        return self._destroy
 
     def isStopped(self):
-        return self.stop
+        return self._stop
 
     def isRemoved(self):
-        return self.remove
+        return self._remove
 
     def checkState(self):
         """Check state and return true if correct state is verificated or raise Exception for state anomaly"""
 
-        wrongState = ( self.__start and self.__remove ) or ( self.__run and ( self.__stop or self.__destroy ) ) or ( self.__remove and ( self.__run or self.__stop ) )
+        wrongState = ( self._start and self._remove ) or ( self._run and ( not self._start or self._stop or self._destroy ) ) or ( self._remove and ( self._run or not self._stop ) )
 
         if wrongState:
             raise Exception("Anomaly state!")
@@ -42,10 +49,10 @@ class State:
 
         self.checkState()
 
-        if self.__remove or self.__destroy:
+        if self._remove or self._destroy:
             return False
             
-        self.__start = True
+        self._start = True
         
         return True
         
@@ -56,11 +63,11 @@ class State:
 
         self.checkState()
 
-        if not self.__run:
+        if not self._run:
             return False 
 
-        self.__run = False
-        self.__stop = True
+        self._run = False
+        self._stop = True
         
         return True
 
@@ -70,26 +77,26 @@ class State:
 
         self.checkState()
 
-        if not self.__stop:
+        if not self._stop:
             return False 
 
-        self.__run = True
-        self.__stop = False
+        self._run = True
+        self._stop = False
         
         return True
 
 
 
     def remove(self):
-        """Check state, set stop state and return true. Raise Exception for state anomaly or return false for not correct conditions"""
+        """Check state, set remove state and return true. Raise Exception for state anomaly or return false for not correct conditions"""
 
         self.checkState()
 
-        if not self.__stop:
+        if not self._stop:
             return False 
 
-        self.__remove = True
-        self.__active = False
+        self._remove = True
+        self._active = False
         
         return True
 
@@ -100,11 +107,11 @@ class State:
 
         self.checkState()
 
-        if self.__remove:
+        if self._remove:
             return False 
 
-        self.__destroy = True
-        self.__stop = True
+        self._destroy = True
+        self._stop = True
         
         return True
 
