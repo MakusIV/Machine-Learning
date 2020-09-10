@@ -14,7 +14,7 @@ def testClassState():
 
     state = State()
 
-    if state._active != True or state._run != False or state._stop != True or state._destroy != False or state._remove != False:
+    if state._active != True or state._run != False or state._destroy != False or state._remove != False:
         print('State.__Init__ Failed!! ', state._active, state._run, state._stop, state._destroy, state._remove)
         result = False 
 
@@ -26,8 +26,8 @@ def testClassState():
 
     state = State()
 
-    if not state.isActive() or state.isRunning() or not state.isStopped() or state.isRemoved() or state.isDestroyed():
-        print('State.is<xxx> Failed!! ', state.isActive(), state.isRunning(), state.isStopped(), state.isRemoved(), state.isDestroyed() )
+    if not state.isActive() or state.isRunning() or state.isRemoved() or state.isDestroyed() or state.isCritical() or state.isAnomaly():
+        print('State.is<xxx> Failed!! ', state.isActive(), state.isRunning(), state.isRemoved(), state.isDestroyed(), state.isCritical(), state.isAnomaly() )
         result = False
 
     
@@ -48,27 +48,25 @@ def testClassState():
         result = True
 
     else:
-        print( 'State.checkState(): active:False and run: True Failed!! ', state.toString() )
+        print( 'State.checkState(): Failed!!  Not launch Exception', state.toString() )
         result = False
 
 
     state._active = True
     state._run = True
-    state._stop = True
 
     try:
         state.checkState()
         
     except Exception:
-        result = True
-
-    else:
-        print( 'State.checkState() active:True, run:True, stop:True Failed!! ', state.toString() )
+        print( 'State.checkState() Failed!!  Launch Exception', state.toString() )
         result = False
+
+    else:        
+        result = True
 
     state._active = True
     state._run = True
-    state._stop = False
     state._remove = True
 
     try:
@@ -78,13 +76,12 @@ def testClassState():
         result = True
 
     else:
-        print( 'State.checkState() active:True, run:True, stop:False, remove:True Failed!! ', state.toString() )
+        print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
         result = False
 
 
     state._active = True
     state._run = True
-    state._stop = False
     state._destroy = True
 
     try:
@@ -94,7 +91,7 @@ def testClassState():
         result = True
 
     else:
-        print( 'State.checkState() active:true, run:true, stop:false destroy:True  Failed!! ', state.toString() )
+        print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
         result = False
 
 
@@ -103,14 +100,14 @@ def testClassState():
 
     state._active = False
     state._run = False
-    state._stop = True
     state._remove = True
+    state._destroy = False
 
     try:
         state.checkState()
         
     except Exception:
-        print( 'State.checkState() active:False, run:False, stop:True remove:True Failed!! ', state.toString() )
+        print( 'State.checkState() Failed!!  Launch Exception', state.toString() )
         result = False        
 
     else:
@@ -118,58 +115,6 @@ def testClassState():
 
     state._active = True
     state._run = False
-    state._stop = True
-
-    try:
-        state.checkState()
-        
-    except Exception:
-        result = True
-
-    else:
-        print( 'State.checkState() active:True, run:False, stop:True Failed!! ', state.toString() )
-        result = False
-
-    
-    
-
-
-    state._active = False
-    state._run = False
-    state._stop = True
-    state._destroy = True
-
-    try:
-        state.checkState()
-        
-    except Exception:
-        print( 'State.checkState() active:False, run:True, stop:True Failed!! ', state.toString() )
-        result = False        
-
-    else:
-        result = True
-
-
-
-    state._active = True
-    state._run = False
-    state._stop = True
-
-    try:
-        state.checkState()
-        
-    except Exception:
-        result = True
-
-    else:
-        print( 'State.checkState() active:true, run:False, stop:True Failed!! ', state.toString() )
-        result = False
-
-
-
-    state._active = True
-    state._run = False
-    state._stop = True
     state._remove = True
     state._destroy = False
 
@@ -180,13 +125,46 @@ def testClassState():
         result = True
 
     else:
-        print( 'State.checkState() active:False, run:False, stop:True, remove:True, destroy: True Failed!! ', state.toString() )
+        print( 'State.checkState() Failed!! Not launch Exception', state.toString() )
         result = False
 
     
+    
+
     state._active = False
     state._run = False
-    state._stop = False
+    state._remove = True
+    state._destroy = True
+
+    try:
+        state.checkState()
+        
+    except Exception:
+        print( 'State.checkState() Failed!!  Launch Exception', state.toString() )
+        result = False        
+
+    else:
+        result = True
+
+
+
+    state._active = True
+    state._run = False
+
+    try:
+        state.checkState()
+        
+    except Exception:
+        result = True
+
+    else:
+        print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
+        result = False
+
+
+
+    state._active = True
+    state._run = False
     state._remove = True
     state._destroy = False
 
@@ -194,12 +172,79 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        print( 'State.checkState() active:False, run:False, stop:False, remove:True, destroy: False Failed!! ', state.toString() )        
+        result = True
+
+    else:
+        print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
+        result = False
+
+    
+    state._active = False
+    state._run = False
+    state._remove = True
+    state._destroy = False
+
+    try:
+        state.checkState()
+        
+    except Exception:
+        print( 'State.checkState() Failed!!  Launch Exception', state.toString() )        
         result = False
 
     else:
         result = True
 
+    state._active = False
+    state._run = False
+    state._remove = False
+    state._destroy = False
+    state._anomaly = True
+    state._critical = False
+
+    try:
+        state.checkState()
+        
+    except Exception:
+        result = True
+
+    else:
+        print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
+        result = False
+
+    state._active = False
+    state._run = False
+    state._remove = False    
+    state._destroy = False
+    state._anomaly = False
+    state._critical = True
+
+    try:
+        state.checkState()
+        
+    except Exception:
+        result = True
+
+    else:
+        print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
+        result = False
+
+
+    state._active = True
+    state._run = False
+    state._remove = False    
+    state._destroy = False    
+    state._anomaly = True
+    state._critical = True
+
+    try:
+        state.checkState()
+        
+    except Exception:
+        print( 'State.checkState() Failed!!  Launch Exception', state.toString() )
+        result = False
+
+    else:
+        result = True
 
 
 
