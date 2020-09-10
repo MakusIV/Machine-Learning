@@ -1,9 +1,9 @@
 
 class State:
 
-    def __init__(self, start = True, run = None  ): 
+    def __init__(self, active = True, run = None  ): 
 
-            self._start = start
+            self._active = active
             self._run = run                       
             self._stop = True
             self._destroy = False
@@ -12,14 +12,14 @@ class State:
             if not run:
                 self. _run = False
             
-            elif not start and run:
+            elif not active and run:
                 self._run = False
 
     def toString(self):
-        return "start: " + str(self._start) + ", run: " + str(self._run) + ", stop: " + str(self._stop) + ", remove: " + str(self._remove) + ", destroy: " + str(self._destroy)
+        return "active: " + str(self._active) + ", run: " + str(self._run) + ", stop: " + str(self._stop) + ", remove: " + str(self._remove) + ", destroy: " + str(self._destroy)
             
-    def isStarted(self):
-        return self._start            
+    def isActive(self):
+        return self._active            
 
     def isRunning(self):
         return self._run            
@@ -36,7 +36,7 @@ class State:
     def checkState(self):
         """Check state and return true if correct state is verificated or raise Exception for state anomaly"""
 
-        wrongState = ( self._start and self._remove ) or ( self._run and ( not self._start or self._stop or self._destroy ) ) or ( self._remove and ( self._run or not self._stop ) )
+        wrongState = ( self._active and self._remove ) or ( self._run and ( not self._active or self._stop or self._destroy or self._remove) )
 
         if wrongState:
             raise Exception("Anomaly state!")
@@ -44,15 +44,15 @@ class State:
         return True
        
  
-    def start(self):
-        """Check state, set start state and return true. Raise Exception for state anomaly or return false for not correct conditions"""
+    def active(self):
+        """Check state, set active state and return true. Raise Exception for state anomaly or return false for not correct conditions"""
 
         self.checkState()
 
         if self._remove or self._destroy:
             return False
             
-        self._start = True
+        self._active = True
         
         return True
         
