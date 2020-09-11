@@ -4,9 +4,9 @@ import Object
 
 class Automa(Object):
 
-    def __init__(self, name = None, id = None, dimension = None, coord = None, state = None  ):
+    def __init__(self, name = None, dimension = None, coord = None, state = None  ):
 
-        Object.__init__(self, name = name, id = id, dimension = dimension, coord = coord, state = state)
+        Object.__init__(self, name = name, dimension = dimension, coord = coord, state = state)
 
         self.ai = None #AI Engine
         self env_state = None #Enviroment state

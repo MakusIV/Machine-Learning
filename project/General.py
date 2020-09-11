@@ -1,5 +1,7 @@
 ### General Methods
 
+import random
+
 
 def checkDimension(dimension):
     """ Return True if dimension is an list normalized as dimension:  dimension: [int dim_x, int dim_y, int dim_z]"""
@@ -24,3 +26,21 @@ def checkVolume(volume):
         return False
     
     return True
+
+
+def setId(name, id):
+            
+    if not id or not isinstance(id, int):
+        id = str(name) + '_#' + str( random.randint(1, 999999) )  # hashing or radInt
+    else:
+        id = str(name) + '_#' + str(id)
+    
+    return id
+
+
+def setName(name):
+            
+        if not name or not isinstance(name, str):
+            name = 'unamed_'+str(random.randint(1, 9999)) # hashing or radInt
+        
+        return name

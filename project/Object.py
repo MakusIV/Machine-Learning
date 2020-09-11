@@ -1,20 +1,23 @@
 import random
 from Coordinate import Coordinate
 import General
-import State
+from State import State
 
 class Object:
     
-    def __init__(self, coord = None, name = None, id = None, dimension = None,  state = None  ):
+    def __init__(self, coord = None, name = None, dimension = None,  state = None  ):
+
 
             self.name = None
-            self.id = None
+            self.id = self.setId(None)
             self.dimension = None
             self.coord = None
             self.state = None
                         
-            if not(self.setName(name) and self.setId(id) and self.setDimension(dimension) and self.setCoord(coord)):
+            if not(self.setName(name) and self.setDimension(dimension) and self.setCoord(coord)) or not self.setState(state):
                 raise Exception("Invalid parameters! Object not istantiate.")
+
+
             
 
     def getVertex(self):
@@ -43,7 +46,7 @@ class Object:
     def setState(self, state):
 
         if not state or not isinstance(state, State):
-            return False
+            self._state = State()
         else:
             self.state = state
 
@@ -52,23 +55,18 @@ class Object:
     def getState(self):
         return state
 
+
     def setName(self, name):
-            
-        if not name or not isinstance(name, str):
-            self.name = 'object_'+str(random.randint(1, 9999)) # hashing or radInt
-        else:
-            self.name = name
+
+        self.name = General.setName(name)
 
         return True
 
     
-    def setId(self, id):
-            
-        if not id or not isinstance(id, int):
-            self.id = random.randint(1, 999999) # hashing or radInt
-        else:
-            self.id = id
+    def setId(self, id = None):
 
+        self.id = General.setId('Object', id)
+            
         return True
             
 

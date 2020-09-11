@@ -36,6 +36,112 @@ def testClassState():
         result = False
 
 
+    if state.updateEnergy(0.3, 10) != 7 or state.getEnergy() != 7 or state.getEfficiency() != 0.7:
+        print('State.state.updateEnergy Failed!! ', state.getEnergy(), state._energy, state._efficiency )
+        result = False
+
+    
+
+    state._efficiency = 2    
+    state._active = True
+    state._anomaly = False
+    state._critical = False
+    state._run = False
+    state._remove = False
+    state._destroy = False
+    
+    if not state.evalutateAnomaly():
+        print('State.state.evalutateAnomaly() Failed!! ', state._anomaly, state._efficiency )
+        result = False
+
+    state._efficiency = 2    
+    state._active = True
+    state._anomaly = False
+    state._critical = False
+    state._run = False
+    state._remove = True
+    state._destroy = False
+    
+    if state.evalutateAnomaly():
+        print('State.state.evalutateAnomaly() Failed!! ', state._anomaly, state._efficiency )
+        result = False
+
+    state._efficiency = 2    
+    state._active = True
+    state._anomaly = False
+    state._critical = False
+    state._run = False
+    state._remove = False
+    state._destroy = True
+    
+    if state.evalutateAnomaly():
+        print('State.state.evalutateAnomaly() Failed!! ', state._anomaly, state._efficiency )
+        result = False
+
+    state._efficiency = 2    
+    state._active = False
+    state._anomaly = False
+    state._critical = False
+    state._run = False
+    state._remove = False
+    state._destroy = False
+    
+    if state.evalutateAnomaly():
+        print('State.state.evalutateAnomaly() Failed!! ', state._anomaly, state._efficiency )
+        result = False
+
+    state._efficiency = 2    
+    state._active = True
+    state._anomaly = False
+    state._critical = False
+    state._run = False
+    state._remove = True
+    state._destroy = False
+    
+    if state.evalutateAnomaly():
+        print('State.state.evalutateAnomaly() Failed!! ', state._anomaly, state._efficiency )
+        result = False
+
+
+    state._efficiency = 2    
+    state._active = True
+    state._anomaly = False
+    state._critical = False
+    state._run = False
+    state._remove = False
+    state._destroy = True
+    
+    if state.evalutateAnomaly():
+        print('State.state.evalutateAnomaly() Failed!! ', state._anomaly, state._efficiency )
+        result = False
+    
+    state._health = 2    
+    state._active = True
+    state._anomaly = False
+    state._critical = False
+    state._run = False
+    state._remove = False
+    state._destroy = False
+    
+    if not state.evalutateCritical():
+        print('State.state.evalutateCritical() Failed!! ', state._critical, state._health )
+        result = False
+
+
+    state._health = 2    
+    state._active = False
+    state._anomaly = False
+    state._critical = False
+    state._run = False
+    state._remove = False
+    state._destroy = False
+    
+    if state.evalutateCritical():
+        print('State.state.evalutateCritical() Failed!! ', state._critical, state._health )
+        result = False
+
+    state._critical = False
+
 
     state._active = False
     state._run = True
@@ -45,7 +151,7 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        result = True
+        pass
 
     else:
         print( 'State.checkState(): Failed!!  Not launch Exception', state.toString() )
@@ -62,9 +168,7 @@ def testClassState():
         print( 'State.checkState() Failed!!  Launch Exception', state.toString() )
         result = False
 
-    else:        
-        result = True
-
+    
     state._active = True
     state._run = True
     state._remove = True
@@ -73,7 +177,7 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        result = True
+        pass
 
     else:
         print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
@@ -88,7 +192,7 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        result = True
+        pass
 
     else:
         print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
@@ -102,6 +206,8 @@ def testClassState():
     state._run = False
     state._remove = True
     state._destroy = False
+    state._critical = False
+    state._anomaly = False
 
     try:
         state.checkState()
@@ -110,9 +216,7 @@ def testClassState():
         print( 'State.checkState() Failed!!  Launch Exception', state.toString() )
         result = False        
 
-    else:
-        result = True
-
+    
     state._active = True
     state._run = False
     state._remove = True
@@ -122,7 +226,7 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        result = True
+        pass
 
     else:
         print( 'State.checkState() Failed!! Not launch Exception', state.toString() )
@@ -143,9 +247,7 @@ def testClassState():
         print( 'State.checkState() Failed!!  Launch Exception', state.toString() )
         result = False        
 
-    else:
-        result = True
-
+    
 
 
     state._active = True
@@ -155,7 +257,7 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        result = True
+        pass
 
     else:
         print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
@@ -172,7 +274,7 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        result = True
+        pass
 
     else:
         print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
@@ -191,9 +293,7 @@ def testClassState():
         print( 'State.checkState() Failed!!  Launch Exception', state.toString() )        
         result = False
 
-    else:
-        result = True
-
+    
     state._active = False
     state._run = False
     state._remove = False
@@ -205,7 +305,7 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        result = True
+        pass
 
     else:
         print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
@@ -222,7 +322,7 @@ def testClassState():
         state.checkState()
         
     except Exception:
-        result = True
+        pass
 
     else:
         print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
@@ -243,11 +343,12 @@ def testClassState():
         print( 'State.checkState() Failed!!  Launch Exception', state.toString() )
         result = False
 
-    else:
-        result = True
+    
+
+    
 
 
 
     return result
 
-print("Test class test result:", testClassState())
+print("State class test result:", testClassState())
