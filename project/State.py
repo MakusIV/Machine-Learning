@@ -41,14 +41,14 @@ class State:
 
         if self._energy < 0:
             self._energy = 0
-            self.setStop()
+            self.stop()
          
         self.evalutateEfficiency()        
 
         return self._energy
 
 
-    def updateHealth(event):
+    def updateHealth(self, event):
         """ update health level with event """
         
         if not event: #or not isistance(event, Event):
@@ -58,7 +58,7 @@ class State:
 
         if self._health < 0:
             self._health = 0
-            self._destroy()
+            self.destroy()
             return 0
 
         self.evalutateCritical()         
@@ -183,7 +183,7 @@ class State:
     def run(self):
         """Check state, set run state and return true. Raise Exception for state anomaly or return false for not correct conditions"""
 
-        if not active:
+        if not self._active:
             return False
 
         self._run = True

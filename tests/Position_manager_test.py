@@ -1,7 +1,7 @@
 # some_file.py
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
-sys.path.insert(1, '/home/marco/Documenti/Machine Learning/Automata/project')
+sys.path.insert(1, 'project')
 
 from Position_manager import Position_manager
 from Coordinate import Coordinate
@@ -247,6 +247,7 @@ def TestClassPosition_manager():
         result = False
         print("Position_manager.pm.getObjectInRange( coord, range ) Failed!" )
 
+    
     
 
 

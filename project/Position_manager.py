@@ -1,6 +1,7 @@
 ### The Manager of object position in the World
-import numpy as np
+#import numpy as np
 import General
+import random
 from Coordinate import Coordinate
 
 class Position_manager:
@@ -291,8 +292,13 @@ class Position_manager:
         
         
 
+    def getRandomCoord(self):
+        """Return an instance of Coordinate with random position inbound limits"""
+        x = random.randint(self.limits[0][0], self.limits[1][0])
+        y = random.randint(self.limits[0][2], self.limits[1][2])
+        z = random.randint(self.limits[0][2], self.limits[1][2])
 
-
+        return Coordinate(x = x, y = y, z = z)
 
 
 

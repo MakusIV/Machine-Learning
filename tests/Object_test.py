@@ -2,7 +2,7 @@
 # some_file.py
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
-sys.path.insert(1, '/home/marco/Documenti/Machine Learning/Automata/project')
+sys.path.insert(1, 'project')
 
 from Object import Object 
 from Coordinate import Coordinate
