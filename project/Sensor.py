@@ -30,3 +30,9 @@ class Sensor:
         self.name = General.setName('Sensor')
 
         return True
+
+    def perception(self, posMng, request_perception):
+        # Valuta quali sensori attivare e come attivarli in base alle info contenute in request_perception (Class Perception)
+        # Restituisce le informazioni sulle azioni effettuate quali stato, posizione degli attuatori
+        percept_info = None
+        return percept_info

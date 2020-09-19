@@ -28,3 +28,9 @@ class Actuator:
         self.name = General.setName('Actuator')
 
         return True
+
+    def eval_command(self, request_action):
+        # Valuta quali attuatori attivare e come attivarli in base alle info contenute in request_action (class Action)
+        # Restituisce le informazioni sulle azioni effettuate quali stato, posizione degli attuatori
+        action_info = None
+        return action_info
