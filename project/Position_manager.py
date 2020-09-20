@@ -3,6 +3,7 @@
 import General
 import random
 from Coordinate import Coordinate
+from Automa import Automa
 
 class Position_manager:
 
@@ -146,15 +147,40 @@ class Position_manager:
         """ Return a list of obj existents in position manager. If obj not exists return False"""
 
         try:
-            index = list( self.pos.values() )
+            obj = list( self.pos.values() )
 
         except ValueError:
             return False
 
-        if not index:
+        if not obj:
             return False
 
-        return index
+        return obj
+
+    
+    def listAutoma( self ):
+        """ Return a list of Automa existents in position manager. If Automa not exists return False"""
+        # da testare
+        objs = self.listObject()
+
+        if not objs:
+            return False
+        
+        automas = [obj for obj in objs if isinstance(obj, Automa)]
+
+        if not automas or len(automas)==0:
+            return False
+        
+        return automas
+
+
+
+
+    def isNotMoreAutoma( self ):
+        """ Return True if not lesser of one Automa exists in posMng"""        
+        objs = self.listObject()        
+
+        return any( isinstance(item, Automa) for item in objs)
 
 
     def getObjectInVolume(self, volume, dimension = None):
@@ -168,10 +194,12 @@ class Position_manager:
 
         if len(self.pos) >= ( volume[1][0] - volume[0][0] + 1 ) * ( volume[1][1] - volume[0][1] + 1 ) * ( volume[1][2] - volume[0][2] + 1 ):
             return self._getObjectInVolumeFromObjectList(volume)
+
         else:
             return self._getObjectInVolumeFromVolumeIteration(volume, dimension)
 
         return False
+
 
     def _getObjectInVolumeFromObjectList(self, volume):
         """ Return {  (x,y,z), obj } portion within volume. Return false if objects not presents within volume"""

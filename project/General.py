@@ -30,14 +30,14 @@ def checkSensor(sensor):
 
 def checkSensors(sensors):
 
-    if not sensor or not isinstance(sensors, list) or any(not isinstance(item, Sensor), sensors):
+    if not sensors or not isinstance(sensors, list) or any(not isinstance(item, Sensor) for item in sensors):
         return False
         
     return True
 
 def checkActuators(actuators):
 
-    if not actuators or not isinstance(actuators, list) or any(not isinstance(item, Actuator), actuators):
+    if not actuators or not isinstance(actuators, list) or any(not isinstance(item, Actuator) for item in actuators):
         return False
         
     return True
@@ -60,7 +60,7 @@ def checkObstacle(obstacle):
 
 def checkObstacles(obstacles):
 
-    if not obstacles or not isinstance(obstacles, list) or any(not isinstance(item, Obstacle), Obstacle):
+    if not obstacles or not isinstance(obstacles, list) or any(not isinstance(item, Obstacle) for item in Obstacle):
         return False
         
     return True
