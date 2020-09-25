@@ -4,6 +4,15 @@ import General
 import random
 from Coordinate import Coordinate
 from Automa import Automa
+from LoggerClass import Logger
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'Position_manager')
+
+
+
+
 
 class Position_manager:
 
@@ -16,6 +25,7 @@ class Position_manager:
         self.limits = limits 
         self.pos = {} ### key:coord, value:obj
         self.pos_ = [] #[    [ obj000, obj001, obj002 ], [  obj  pos_[1][1][1]= 
+        logger.logger.info("Position Manager created")
 
     def getName(self):
         return self.name
@@ -53,6 +63,9 @@ class Position_manager:
         obj.coord.setPosition(index)
         
         self.pos[index] = obj
+
+        logger.logger.debug("inserti obj: {0} at position: {1}".format(obj.getName, index))
+
         return True
 
     

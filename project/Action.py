@@ -5,15 +5,15 @@ from LoggerClass import Logger
 
 # LOGGING --
  
-logger = Logger(module_name = __name__, class_name = 'Event')
+logger = Logger(module_name = __name__, class_name = 'Action')
 
 
-class Event:
+class Action:
     
     def __init__(self, coord = None, name = None, dimension = None,  state = None  ):
 
         if not(self.setName(name) and self.setDimension(dimension) and self.setCoord(coord)) or not self.setState(state):
-            raise Exception("Invalid parameters! Event not istantiate.")
+            raise Exception("Invalid parameters! Action not istantiate.")
 
 
         self._name = None

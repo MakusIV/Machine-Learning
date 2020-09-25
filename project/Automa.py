@@ -5,6 +5,12 @@ from Actuator import Actuator
 from Sensor import Sensor
 from AI import AI
 import General
+from LoggerClass import Logger
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'Automa')
+
 
 class Automa(Object):
     """Automa derived from Object. """
@@ -28,10 +34,17 @@ class Automa(Object):
     # Methods
 
 
-    # La sequenza è percept --> evalutate --> action. Bisogna decidere se queste tre azioni devono
-    # essere svolte in una unità temporale ovvero ognuna in una unità temporale (forse è meglio)
-    # in quest'ultimo caso è necessaria una Queue è deve essere valutato come gestire i cambiamenti
+    # La sequenza è update --> percept --> evalutate --> action. 
+    # update: aggiorna lo stato dell'automa in base agli eventi contenuti nella coda degli eventi
+    # percept: utilizza i sensori per conoscere l'enviroment locale e aggiorna lo stato dell'automa
+    # evalutate: valuta le informazioni ottenute e determina l'azione da eseguite
+    # action: utilizza l'azione da eseguire per attivare gli attuatori necessari per lo svolgimento della stessa
+    
+    # Bisogna decidere se queste tre azioni devono
+    # essere svolte in una unità temporale ovvero ognuna in una unità temporale (più complicato)
+    # in quest'ultimo caso è necessaria una Queue per le azioni da eseguire e deve essere valutato come gestire i cambiamenti
     # dell'enviroments che avvengono tra una azione e la successiva.
+
     # Per semplificare è meglio eseguire le tre azioni come unico task
     
     # La AI è deputata esclusivamente alla valutazione delle informazioni ricevute dai sensori per 
@@ -40,7 +53,7 @@ class Automa(Object):
     
     def runTask(self, posManager):
 
-        self.updateStateForEvent() #check the eventsQueue and update state
+        self.update() #check the eventsQueue and update state
         percptInf = self.percept(posManager)
         self.action_executed = self.evalutate( percptInf )
         return self.action(self.action_executed)
@@ -78,7 +91,7 @@ class Automa(Object):
         """Update state, Sensor, Actuator states for Percept  info"""
         return True
 
-    def updateStateForEvent(self):
+    def update(self):
         """Update state, Sensor, Actuator states for check of eventsQueue"""        
         for event in self._eventsQueue:
             # evalutation for update state

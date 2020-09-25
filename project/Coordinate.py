@@ -1,4 +1,9 @@
-### CLASSI
+from LoggerClass import Logger
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'Coordinate')
+
 
 class Coordinate:
     

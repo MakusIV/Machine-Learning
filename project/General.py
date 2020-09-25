@@ -6,6 +6,36 @@ from Actuator import Actuator
 from Sensor import Sensor
 from AI import AI
 from Obstacle import Obstacle
+import logging
+
+# LOGGING --
+# non èpossibile usare la classe Logger per evitare le circular dependencies: Logger importa General e Geneal imprta Logger
+
+logging.basicConfig( level = logging.DEBUG )
+# Create a custom logger
+logger = logging.getLogger( __name__ )
+
+# Create handlers
+c_handler = logging.StreamHandler()
+f_handler = logging.FileHandler( 'Log_General.log' )
+c_handler.setLevel( logging.DEBUG )
+f_handler.setLevel( logging.ERROR )
+
+# Create formatters and add it to handlers
+c_format = logging.Formatter('%(name)s - %(levelname)s - %(funcName)s - %(message)s')
+f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(message)s')
+c_handler.setFormatter(c_format)
+f_handler.setFormatter(f_format)
+
+# Add handlers to the logger
+logger.addHandler(c_handler)
+logger.addHandler(f_handler)
+
+
+
+
+
+# METHODS
 
 def checkState(state):
 
@@ -94,16 +124,21 @@ def checkVolume(volume):
 def setId(name, id):
             
     if not id or not isinstance(id, int):
-        id = str(name) + '_#' + str( random.randint(1, 999999) )  # hashing or radInt
+        id = str( name ) + '_#' + str( random.randint( 1, 999999 ) )  # hashing or radInt
+
     else:
-        id = str(name) + '_#' + str(id)
+        id = str( name ) + '_#' + str( id )
     
     return id
 
 
 def setName(name):
+
             
-        if not name or not isinstance(name, str):
-            name = 'unamed_'+str(random.randint(1, 9999)) # hashing or radInt
+        if not name or not isinstance( name, str ):
+            name = 'unamed_#' + str( random.randint( 1, 9999 ) ) # hashing or radInt
+
+        else:
+            name = name + '_#' + str( random.randint( 1, 9999 ) ) # hashing or radInt
         
         return name

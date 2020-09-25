@@ -2,30 +2,54 @@ import random
 from Coordinate import Coordinate
 import General
 from State import State
+from LoggerClass import Logger
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'Actuator')
+
 
 class Actuator:
     
-    def __init__(self, coord = None, name = None, dimension = None,  state = None  ):
+    def __init__(self, name = None, power = None,  state = None  ):
+
+        if not(power and state ):
+            raise Exception("Invalid parameters! Actuator not istantiate.")
 
 
-            self.name = None
-            self.id = self.setId(None)            
-            self.state = None
+        self._name = None
+        self._id = None
+        self._power = power     
+        self._state = state
+
+        if not name:
+            self._name = General.setName('Actuator_Name')
+        else:
+            self._name = name
+
+        if not id:
+            self._id = General.setId('Actuator_ID')
+        else:
+            self._id = id
                         
-            if not(self.setName(name) or not self.setState(state):
-                raise Exception("Invalid parameters! Object not istantiate.")
-
+        
 
     def setId(self, id = None):
 
-        self.id = General.setId('Actuator', id)
+        if not id:
+            return False
+        else:
+            self._id = id        
             
         return True
 
 
     def setName(self, name):
 
-        self.name = General.setName('Actuator')
+        if not name:
+            return False
+        else:
+            self._name = name
 
         return True
 

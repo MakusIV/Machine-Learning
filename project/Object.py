@@ -2,23 +2,38 @@ import random
 from Coordinate import Coordinate
 import General
 from State import State
+from LoggerClass import Logger
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'Object')
 
 class Object:
     
-    def __init__(self, coord = None, name = None, dimension = None,  state = None  ):
+    def __init__(self, coord = None, name = None, dimension = None,  state = None, id = None  ):
 
 
             self.name = None
-            self.id = self.setId(None)
+            self.id = None
             self.dimension = None
+            
             self.coord = None
             self.state = None
-                        
-            if not(self.setName(name) and self.setDimension(dimension) and self.setCoord(coord)) or not self.setState(state):
-                raise Exception("Invalid parameters! Object not istantiate.")
-
-
             
+            self.setDimension(dimension)
+            self.setCoord(coord)
+            self.setState(state)
+
+            if not name:
+                self.name = General.setName('Object_Name')
+            else:
+                self.name = name
+
+            if not id:
+                self.id = General.setId('Object_ID', id)
+            else:
+                self.id = id
+                
 
     def getVertex(self):
 
@@ -56,17 +71,25 @@ class Object:
         return state
 
 
-    def setName(self, name):
-
-        self.name = General.setName(name)
-
-        return True
-
-    
     def setId(self, id = None):
 
-        self.id = General.setId('Object', id)
+        if not id:
+            return False
+        elif isinstance(id, str):
+            self.id = id       
+        else:
+            self.id = str( id )       
             
+        return True
+
+
+    def setName(self, name):
+
+        if not name:
+            return False
+        else:
+            self.name = name
+
         return True
             
 

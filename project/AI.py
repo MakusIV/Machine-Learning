@@ -4,6 +4,12 @@ from Resource import Resource
 from Obstacle import Obstacle
 from Action import Action
 import General
+from LoggerClass import Logger
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'AI')
+
 
 class AI:
 
@@ -17,11 +23,10 @@ class AI:
         self._state = state #Class State 
         self._env_state = env_state
 
-
         if not self.checkProperty():
             raise Exception("Invalid parameters! Object not istantiate.")
 
-
+        logger.logger.debug('AI Instantiate')
 
     # Methods
 

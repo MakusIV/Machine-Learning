@@ -1,3 +1,8 @@
+from LoggerClass import Logger
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'State')
 
 class State:
 

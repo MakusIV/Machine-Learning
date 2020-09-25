@@ -23,12 +23,12 @@ def testClassObject():
 
     obj = Object()
 
-    if not obj.name or not obj.id or not obj.dimension or not obj.coord or not isinstance(obj.name,str) or not isinstance(obj.id,int) or not isinstance(obj.dimension,list) or not isinstance(obj.coord,Coordinate):
+    if not obj.name or not obj.id or not obj.dimension or not obj.coord or not isinstance(obj.name,str) or not isinstance(obj.id,str) or not isinstance(obj.dimension,list) or not isinstance(obj.coord,Coordinate):
         print('Object.__Initit__ Failed!! ', obj.name, obj.id, obj.dimension, obj.coord)
         result = False 
 
 
-    obj = Object( Coordinate(2,2,2), 'Gregory', [5,5,5] ) 
+    obj = Object( coord = Coordinate(2,2,2), name = 'Gregory', dimension = [5,5,5] ) 
 
     if obj.name != 'Gregory' or obj.dimension != [5,5,5] or obj.getPosition() != [2,2,2]:
         print('Object.__Initit__ Failed!! ', obj.name, obj.id, obj.dimension, obj.getPosition())    
@@ -47,7 +47,7 @@ def testClassObject():
 
     obj.setId(999)
 
-    if obj.id != 'Object_#999':
+    if obj.id != '999':
         print('Object.setId() Failed!! ', obj.id)
         result = False 
 

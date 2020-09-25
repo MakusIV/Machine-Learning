@@ -2,32 +2,53 @@
 from Coordinate import Coordinate
 import General
 from State import State
+from LoggerClass import Logger
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'Sensor')
 
 class Sensor:
-    
-    def __init__(self, name = None, sensibility = None,  state = None  ):
+    # Il sensore non è una specializzazione di Object
 
+    def __init__(self, name = None, sensibility = None,  power = None, state = None  ):
 
-            self.name = None
-            self.id = self.setId(None)
-            self.state = None
-            self.power = None
-            self,ì.sensibility = None
+        if not( power and state and sensibility ):
+            raise Exception("Invalid parameters! Sensor not istantiate.")
+
+        self._name = None
+        self._id = None
+        self._state = state
+        self._power = power
+        self._sensibility = sensibility
+
+        if not name:
+            self._name = General.setName('Sensor_Name')
+        else:
+            self._name = name
+
+        if not id:
+            self._id = General.setId('Sensor_ID')
+        else:
+            self._id = id
                         
-            if not(self.setName(name) or not self.setState(state):
-                raise Exception("Invalid parameters! Object not istantiate.")
-
 
     def setId(self, id = None):
 
-        self.id = General.setId('Sensor', id)
+        if not id:
+            return False
+        else:
+            self._id = id        
             
         return True
 
 
     def setName(self, name):
 
-        self.name = General.setName('Sensor')
+        if not name:
+            return False
+        else:
+            self._name = name
 
         return True
 
