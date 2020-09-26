@@ -10,44 +10,46 @@ logger = Logger(module_name = __name__, class_name = 'Event')
 
 class Event:
     
-    def __init__(self, coord = None, name = None, dimension = None,  state = None  ):
+    def __init__(self, typ, volume,  time2go = 1, duration = 1, energy = None, power = None, mass = None  ):
 
-        if not(self.setName(name) and self.setDimension(dimension) and self.setCoord(coord)) or not self.setState(state):
-            raise Exception("Invalid parameters! Event not istantiate.")
+        if not self.checkParam(typ, volume,  time2go, duration, energy, power, mass):
+            raise Exception("Invalid parameters! Event not istantiate.")        
 
+        self._type = None # type: SHOT, PUSH, POP
+        self._id = General.setId(self._type, None)
+        self._volume = None
+        self._time2go = None
+        self._duration = None
+        self._energy = None
+        self._power = None
+        self._mass = None
 
-        self._name = None
-        self._id = None
+    def decrTime2Go(self):
+        self._time2go = self._time2go -1
+        return self._time2go
 
-        if not name:
-            self._name = General.setName('Event_Name')
-        else:
-            self._name = name
+    def decrDuration(self):
+        self._duration = self._duration - 1
+        return self._duration
 
-        if not id:
-            self._id = General.setId('Event_ID')
-        else:
-            self._id = id
+    
         
-        self.dimension = None
-        self.coord = None
-        self.state = None
-                    
-    def setId(self, id = None):
 
-        if not id:
+    def checkParam(self, typ, volume,  time2go, duration, energy, power, mass):
+
+        if not ( type == 'SHOT' or self._type == 'PUSH' orself._type == 'POP' ):
             return False
-        else:
-            self._id = id        
-            
+
+        if not General.checkVolume(volume) or not isinstance(time2go, int) or not isinstance(duration, int):
+            return False
+
+        if energy and not isinstance(energy, int):
+            return False
+
+        if power and not isinstance(power, int):
+            return False
+
+        if mass and not isinstance(mass, int):
+            return False
+
         return True
-
-
-    def setName(self, name):
-
-        if not name:
-            return False
-        else:
-            self._name = name
-
-        return True   
