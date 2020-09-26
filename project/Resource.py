@@ -1,5 +1,6 @@
 import Coordinate
 from LoggerClass import Logger
+from import General
 
 # LOGGING --
  

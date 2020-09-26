@@ -24,8 +24,9 @@ class Automa(Object):
         self._sensors = sensors# Class Sensor
         self._actuators = actuators#Class Actuators
         self.action_executed = None
-        self._eventsQueue = []
-                         
+        self._eventsQueue = {} #  {key: event id, value = event}
+        self._actionsQueue = {} #  {key: event id, value = action}
+
         if not self.checkProperty():
             raise Exception("Invalid properties! Automata not istantiate.")
 
@@ -55,10 +56,17 @@ class Automa(Object):
 
         self.update() #check the eventsQueue and update state
         percptInf = self.percept(posManager)
-        self.action_executed = self.evalutate( percptInf )
-        return self.action(self.action_executed)
+        self.evalutate( percptInf ) # create the action info to execute and inserts in the action Queue
+        return self.action() # return the Queue of the action info executed in a single task
 
-    
+
+
+    def update(self):
+        """Update state, Sensor, Actuator states for check of eventsQueue"""        
+        events = self.getEventActive()
+        # managed events active to update state, sensor, actuator
+        return True
+        
 
 
     def percept(self, posMng):
@@ -73,14 +81,19 @@ class Automa(Object):
 
     def evalutate(self, percept_info ):
         """Evalutate the info of the enviroments knows (percept info) and return the action to execute"""       
-        self.current_action  = self.ai.evalutate(percept_info, self._state)
-        return self.current_action
+        # determina quali sono le azioni che può svolgere in questo singolo task e le inserisce nella queue action
+        self._actionsQueue = self.ai.evalutate(percept_info, self._state) # noota: la queue si resetta ad ogni task
+        return True
+
 
     def action(self, request_action):
         """Activates Actuators for execution of Action. Return action informations."""
         #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
-        action_info = self._actuators.eval_command(request_action)
-        self.updateStateForAction( action_info )
+        actions_info = []
+        for act in self._actionsQueue:
+            action_info.append( self._actuators.eval_command(act) )
+            self.updateStateForAction( action_info )
+        return actions_info
 
 
     # vedi il libro
@@ -91,23 +104,35 @@ class Automa(Object):
         """Update state, Sensor, Actuator states for Percept  info"""
         return True
 
-    def update(self):
-        """Update state, Sensor, Actuator states for check of eventsQueue"""        
-        for event in self._eventsQueue:
-            # evalutation for update state
-            pass
-
-        self._eventsQueue.clear()
-        return True
-
     def updateStateForAction(self, action_info):
         """Update state, Sensor, Actuator states for Action info"""
         return True
 
     def insertEvent(self, event):
         """insert event in eventsQueue"""
-        if not checkEvent(event):
+        if not General.checkEvent(event):
             return False
-
-        self._eventsQueue.append(event)
+        self._eventsQueue.insert( event._id = event )
         return True
+
+    def removeEvent(self, event_id):
+        """remove event in eventsQueue"""
+        if not isinstance(event_id, int) :
+            return False
+        self._eventsQueue.pop( event_id )        
+        return True
+
+    def getEventActive(self):
+        """Return a list with activable events for a single task. Update the event Queue"""
+        active = []
+        for _, ev in self._eventsQueue:
+            if ev._t2g > 1: # event not activable in this task
+                ev._t2g = ev._t2g - 1 # decrement time to go
+            elif ev._t2g == 1 and ev._duration > 1: # event activable
+                ev._duration = ev._duration - 1
+                active.append(ev)
+            else: # end duration of the activate event
+                self.removeEvent( ev.event_id )         
+        return active
+
+    

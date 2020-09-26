@@ -1,5 +1,5 @@
 import logging
-
+import os
 
 # LOGGING --
 
@@ -24,6 +24,9 @@ class Logger:
         self._class_name = class_name
         self._set_consolle_log_level =  set_consolle_log_level
         self._set_file_log_level =  set_file_log_level        
+        self._log_dir = os.path.join(os.path.normpath(os.getcwd()), 'logs')
+        self._log_fname = os.path.join(self._log_dir, 'log_' + self._class_name + '.log')
+
 
         if not class_name:
             self._name = General.setName('Logger_Name')
@@ -36,7 +39,7 @@ class Logger:
 
         # Create handlers
         self.c_handler = logging.StreamHandler()
-        self.f_handler = logging.FileHandler( 'Log_' + self._class_name + '.log' )
+        self.f_handler = logging.FileHandler( self._log_fname )
         self.c_handler.setLevel( self._set_consolle_log_level )
         self.f_handler.setLevel( self._set_file_log_level )
 
