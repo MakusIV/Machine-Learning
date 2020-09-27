@@ -10,12 +10,13 @@ logger = Logger(module_name = __name__, class_name = 'Object')
 
 class Object:
     
-    def __init__(self, coord = None, name = None, dimension = None,  state = None, id = None  ):
+    def __init__(self, coord = None, name = None, dimension = None,  resilience = None, state = None, id = None  ):
 
 
             self.name = None
             self.id = None
             self.dimension = None
+            self.resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
             
             self.coord = None
             self.state = None
@@ -34,6 +35,15 @@ class Object:
             else:
                 self.id = id
                 
+
+    def evalutateDamage(self, energy, power):
+        """Evalutate the damage on sensor and update state"""
+        if power > self.resilience:
+            damage = power - self.resilience# in realtà il danno dovrebbe essere proporzionale all'energia
+            return self.state.decrementHealth( damage )
+        
+        return self.state.getHealth()
+
 
     def getVertex(self):
 
@@ -63,12 +73,12 @@ class Object:
         if not state or not isinstance(state, State):
             self._state = State()
         else:
-            self.state = state
+            self._state = state
 
         return True
 
     def getState(self):
-        return state
+        return self._state
 
 
     def setId(self, id = None):

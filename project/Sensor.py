@@ -11,27 +11,39 @@ logger = Logger(module_name = __name__, class_name = 'Sensor')
 class Sensor:
     # Il sensore non è una specializzazione di Object
 
-    def __init__(self, name = None, sensibility = None,  power = None, state = None  ):
+    def __init__(self, sensibility = 100,  power = 100, resilience = 100, name = None, state = None  ):
 
-        if not( power and state and sensibility ):
+        if not self.checkParam():
             raise Exception("Invalid parameters! Sensor not istantiate.")
 
-        self._name = None
-        self._id = None
+        self._name = name
+        self._id = General.setId('Sensor_ID') # Id generator automaticamente
         self._state = state
-        self._power = power
+        self._power = power# nota l'energia è gestita nello stato in quanto è variabile
         self._sensibility = sensibility
+        self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
 
-        if not name:
+        if not name or not isinstance(name, str):
             self._name = General.setName('Sensor_Name')
         else:
             self._name = name
 
-        if not id:
-            self._id = General.setId('Sensor_ID')
+        if not state or not isinstance(state, State):
+            self._state = State()
         else:
-            self._id = id
-                        
+            self.state = state
+
+
+
+
+    def evalutateDamage(self, energy, power):
+        """Evalutate the damage on sensor and update state"""
+        if power > self._resilience:
+            damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
+            return self._state.decrementHealth( damage )
+        
+        return self._state.getHealth()
+
 
     def setId(self, id = None):
 

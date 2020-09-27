@@ -15,11 +15,12 @@ logger = Logger(module_name = __name__, class_name = 'Automa')
 class Automa(Object):
     """Automa derived from Object. """
 
-    def __init__(self, name = 'Automa', dimension = [1, 1, 1], coord = None, state = State(run = True), ai = AI(), sensors= None, actuators = None   ):
+    def __init__(self, name = 'Automa', dimension = [1, 1, 1], resilience = 10, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None   ):
 
-        Object.__init__(self, name = name, dimension = dimension, coord = coord, state = state)
+        Object.__init__(self, name = name, dimension = dimension, resilience = resilience, coord = coord, state = state)
 
         self._ai = ai #AI Engine
+        self._power = power # nota l'energia è gestita nello stato in quanto è variabile        
         self._state = state #Class State        
         self._sensors = sensors# Class Sensor
         self._actuators = actuators#Class Actuators
@@ -64,11 +65,28 @@ class Automa(Object):
     def update(self):
         """Update state, Sensor, Actuator states for check of eventsQueue"""        
         events = self.getEventActive()
-        # managed events active to update state, sensor, actuator
+        # l'evento riguarda una posizione indipendentemente dall'eventuale target impostato, quindi in base 
+        # alle caratteristiche dell'evento che bissogna valutare quali elementi sono coinvolti e come sono
+        # coinvolti
+        
+        for k, ev in events: # scorre gli eventi da eseguire della lista eventi attivi
+            
+            if ev.isShot(): # solo per l'evento SHOT viene valutato l'eventuale danno
+                self.evalutateShot( ev )
+
+            if ev.isPop(): # viene valutato se l'automa può essere preso (sollevato). Si potrebbe considerare come nuovo componente dell'oggetto che ha generato l'evento.
+                self.evalutatePop( ev )
+
+            if ev.isPush(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
+                self.evalutatePush( ev )
+
+            if ev.isEat(): # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
+                self.evalutateEat( ev )
+
+    
         return True
         
-
-
+    
     def percept(self, posMng):
         """Percepts the enviroments with sensors, update the state and return percept informations."""
         #percept_info: le informazioni dopo l'attivazione dei sensori e lo stato degli stessi (classe)
@@ -90,9 +108,9 @@ class Automa(Object):
         """Activates Actuators for execution of Action. Return action informations."""
         #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
         actions_info = []
-        for act in self._actionsQueue:
-            action_info.append( self._actuators.eval_command(act) )
-            self.updateStateForAction( action_info )
+        for k, act in self._actionsQueue.items():
+            actions_info.append( self._actuators.eval_command(act) )
+            self.updateStateForAction( actions_info )
         return actions_info
 
 
@@ -112,27 +130,66 @@ class Automa(Object):
         """insert event in eventsQueue"""
         if not General.checkEvent(event):
             return False
-        self._eventsQueue.insert( event._id = event )
+
+        self._eventsQueue[ event._id ] = event
         return True
 
-    def removeEvent(self, event_id):
+    def removeEvent(self, event):
         """remove event in eventsQueue"""
-        if not isinstance(event_id, int) :
+        if not isinstance(event._id, int) :
             return False
-        self._eventsQueue.pop( event_id )        
+
+        self._eventsQueue.pop( event._id )        
         return True
 
     def getEventActive(self):
         """Return a list with activable events for a single task. Update the event Queue"""
-        active = []
-        for _, ev in self._eventsQueue:
-            if ev._t2g > 1: # event not activable in this task
-                ev._t2g = ev._t2g - 1 # decrement time to go
-            elif ev._t2g == 1 and ev._duration > 1: # event activable
-                ev._duration = ev._duration - 1
-                active.append(ev)
-            else: # end duration of the activate event
-                self.removeEvent( ev.event_id )         
+        active = [] # list of active events
+        
+        for k, ev in self._eventsQueue.items():
+
+            if ev.isAwaiting(): # event not activable in this task
+                ev.decrTime2Go() # decrement time to go
+                self._eventsQueue[ k ] = ev # update events queue
+
+            elif ev.isActivable(): # event activable
+                ev.decrDuration() # decrement duration
+                self._eventsQueue[ k ] = ev # update events queue
+                active.append( ev ) # insert the event in active events list
+
+            else: # expired event
+                self._eventsQueue.pop( ev.event_id ) #remove element from events queue 
+
         return active
 
-    
+    def evalutateShot( self, ev ):
+        """" valuta gli effetti dell'evento shot sui tutti gli elementi dell'automa """
+        
+        for sensor in self._sensors:
+            if sensor.evalutateDamage(ev._energy, ev._power) == 0: # valutazione del danno per il sensore. Se restituisce 0 il sensore è dsitrutto
+                self._sensors.pop( sensor )# elimina il sensore dalla lista sensori dell'automa
+
+        for actuator in self._actuators:
+            if actuator.evalutateDamage(ev._energy, ev._power)  == 0: # valutazione del danno per l'attuatore. Se restituisce 0 l'attuatore è dsitrutto
+                self._actuators.pop( actuator )# elimina il attuatore dalla lista attuatori dell'automa
+
+        if self.evalutateDamage(ev._energy, ev._power) == 0: # valutazione del danno per l'automa. Se restituisce 0 l'automa è dsitrutto
+            self._state.destroy()
+
+        return True
+
+
+    def evalutatePop( self, ev ):
+        """" valuta gli effetti dell'evento pop sull'automa """
+        # viene valutato se l'automa può essere preso (sollevato). Si potrebbe considerare come nuovo componente dell'oggetto che ha generato l'evento.
+        pass
+
+    def evalutatePush( self, ev ):
+        """" valuta gli effetti dell'evento push sull'automa """
+        # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
+        pass
+
+    def evalutateEat( self, ev ):
+        """" valuta gli effetti dell'evento eat sull'automa """
+        # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
+        pass

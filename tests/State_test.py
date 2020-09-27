@@ -140,11 +140,29 @@ def testClassState():
         print('State.state.evalutateCritical() Failed!! ', state._critical, state._health )
         result = False
 
+
+    state._health = 10    
+    state._active = True
+    state._anomaly = False
     state._critical = False
+    state._run = True
+    state._remove = False
+    state._destroy = False
+    damage = 5
+    
+    if state.decrementHealth(damage) != 5:
+        print('State.state.decrementHealth() Failed!! ', damage, state._health )
+        return False
 
-
+    if state.decrementHealth(damage) != 0 or not state._destroy or state._run:
+        print('State.state.decrementHealth() Failed!! ', damage, state._health, state._destroy, state._run )
+        return False
+    
+    state._critical = False
     state._active = False
     state._run = True
+    state._remove = False
+    state._destroy = False
     
 
     try:

@@ -7,6 +7,7 @@ from Sensor import Sensor
 from AI import AI
 from Obstacle import Obstacle
 import logging
+import os
 
 # LOGGING --
 # non èpossibile usare la classe Logger per evitare le circular dependencies: Logger importa General e Geneal imprta Logger
@@ -15,9 +16,13 @@ logging.basicConfig( level = logging.DEBUG )
 # Create a custom logger
 logger = logging.getLogger( __name__ )
 
+log_dir = os.path.join(os.path.normpath(os.getcwd()), 'logs')
+log_fname = os.path.join(log_dir, 'log_General.log')
+
+
 # Create handlers
 c_handler = logging.StreamHandler()
-f_handler = logging.FileHandler( 'Log_General.log' )
+f_handler = logging.FileHandler( log_fname )
 c_handler.setLevel( logging.DEBUG )
 f_handler.setLevel( logging.ERROR )
 

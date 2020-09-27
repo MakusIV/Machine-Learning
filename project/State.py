@@ -38,6 +38,7 @@ class State:
 
     def updateEnergy(self, power, delta_t):
         """ update energy level with power consumption in interval delta_t """
+        # unit test: ok
 
         if not power:
             return False
@@ -53,15 +54,16 @@ class State:
         return self._energy
 
 
-    def updateHealth(self, event):
-        """ update health level with event """
-        
-        if not event: #or not isistance(event, Event):
+    def decrementHealth(self, damage):
+        """ update state with damage """
+        # unit test: ok
+
+        if not self._active or not damage or not isinstance(damage, int):
             return False
 
-        self._health = self._health # - event.getHealthReduction()
+        self._health = self._health - damage
 
-        if self._health < 0:
+        if self._health <= 0:
             self._health = 0
             self.destroy()
             return 0
@@ -78,13 +80,15 @@ class State:
 
     def evalutateEfficiency(self):
         """Update efficiency from energy and health levels ad return efficiency level"""
-        
+        # unit test: ok
+
         self._efficiency = self._energy * self._health / 100
         return self._efficiency
 
     
     def evalutateAnomaly(self):
         """Update anomaly state from efficiency level and return it"""
+        # unit test: ok
 
         if (self._efficiency <= 3):
             self.setAnomaly(True)
@@ -94,6 +98,7 @@ class State:
 
     def evalutateCritical(self):
         """Upgrade critical state from health level and return it"""
+        # unit test: ok
 
         if (self._health <= 3 ):
             self.setCritical(True)
@@ -151,6 +156,7 @@ class State:
 
     def checkState(self):
         """Check state and return true if correct state is verificated or raise Exception for state anomaly"""
+        # unit test: ok
 
         wrongState = ( self._active and self._remove ) or ( self._run and ( not self._active or self._destroy or self._remove) or ( self._anomaly or self._critical ) and not self._active )
 
@@ -214,6 +220,7 @@ class State:
 
     def destroy(self):
         """Check state, set destroy state and return true. Raise Exception for state anomaly or return false for not correct conditions"""        
+        
 
         if self._remove or not self._active:
             return False 
