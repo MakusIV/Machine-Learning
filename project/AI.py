@@ -32,7 +32,10 @@ class AI:
 
     def checkProperty(self):
 
-        return General.checkState(self._state)
+        if not self._state or not isinstance(self._state, State):
+            return False
+            
+        return True
 
     def evalutate(self, percept_info, state):
         """Evalutate the info of the enviroments knows (percept_info), update internal and 

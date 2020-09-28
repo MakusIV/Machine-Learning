@@ -13,11 +13,11 @@ class Sensor:
 
     def __init__(self, sensibility = 100,  power = 100, resilience = 100, name = None, state = None  ):
 
-        if not self.checkParam():
+        if not self.checkParam( sensibility,  power, resilience ):
             raise Exception("Invalid parameters! Sensor not istantiate.")
 
         self._name = name
-        self._id = General.setId('Sensor_ID') # Id generator automaticamente
+        self._id = General.setId('Sensor_ID', None) # Id generator automaticamente 
         self._state = state
         self._power = power# nota l'energia è gestita nello stato in quanto è variabile
         self._sensibility = sensibility
@@ -34,6 +34,8 @@ class Sensor:
             self.state = state
 
 
+    def checkParam(self, sensibility,  power, resilience):
+        return sensibility <= 100 and sensibility >= 0 and power <= 100 and power >= 0 and  resilience <= 100 and resilience >= 0
 
 
     def evalutateDamage(self, energy, power):

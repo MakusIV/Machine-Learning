@@ -1,11 +1,6 @@
 ### General Methods
 
 import random
-from State import State
-from Actuator import Actuator
-from Sensor import Sensor
-from AI import AI
-from Obstacle import Obstacle
 import logging
 import os
 
@@ -42,63 +37,6 @@ logger.addHandler(f_handler)
 
 # METHODS
 
-def checkState(state):
-
-    if not state or not isinstance(state, State):
-        return False
-        
-    return True
-
-def checkEnvState(state):
-
-    if not state or not isinstance(state, EnvState):
-        return False
-        
-    return True
-
-def checkSensor(sensor):
-
-    if not sensor or not isinstance(sensor, Sensor):
-        return False
-        
-    return True
-
-def checkSensors(sensors):
-
-    if not sensors or not isinstance(sensors, list) or any(not isinstance(item, Sensor) for item in sensors):
-        return False
-        
-    return True
-
-def checkActuators(actuators):
-
-    if not actuators or not isinstance(actuators, list) or any(not isinstance(item, Actuator) for item in actuators):
-        return False
-        
-    return True
-
-
-def checkActuator(actuator):
-
-    if not actuator or not isinstance(state, Actuator):
-        return False
-        
-    return True
-
-
-def checkObstacle(obstacle):
-
-    if not obstacle or not isinstance(obstacle, Obstacle):
-        return False
-        
-    return True
-
-def checkObstacles(obstacles):
-
-    if not obstacles or not isinstance(obstacles, list) or any(not isinstance(item, Obstacle) for item in Obstacle):
-        return False
-        
-    return True
 
 
 def checkDimension(dimension):

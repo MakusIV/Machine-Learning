@@ -14,9 +14,9 @@ class State:
             self._remove = False # True only with start and run False
             self._anomaly = False # True only with active true. Depends from efficiency: efficiency <= 3 -> anomaly = True
             self._critical = False # True only with active true. Depends from health: helath <= 3 -> critical = True
-            self._efficiency = 10 #full
-            self._energy = 10 #full 
-            self._health = 10 #full            
+            self._efficiency = 100 #full
+            self._energy = 100 #full 
+            self._health = 100 #full            
 
             if not run:
                 self. _run = False
@@ -82,7 +82,7 @@ class State:
         """Update efficiency from energy and health levels ad return efficiency level"""
         # unit test: ok
 
-        self._efficiency = self._energy * self._health / 100
+        self._efficiency = self._energy * self._health / 10000
         return self._efficiency
 
     
@@ -90,7 +90,7 @@ class State:
         """Update anomaly state from efficiency level and return it"""
         # unit test: ok
 
-        if (self._efficiency <= 3):
+        if (self._efficiency <= 30):
             self.setAnomaly(True)
         
         return self._anomaly
@@ -100,7 +100,7 @@ class State:
         """Upgrade critical state from health level and return it"""
         # unit test: ok
 
-        if (self._health <= 3 ):
+        if (self._health <= 30 ):
             self.setCritical(True)
         
         return self._critical

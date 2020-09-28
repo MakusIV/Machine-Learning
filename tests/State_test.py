@@ -36,7 +36,7 @@ def testClassState():
         result = False
 
 
-    if state.updateEnergy(0.3, 10) != 7 or state.getEnergy() != 7 or state.getEfficiency() != 0.7:
+    if state.updateEnergy(0.3, 100) != 70 or state.getEnergy() != 70 or state.getEfficiency() != 0.7:
         print('State.state.updateEnergy Failed!! ', state.getEnergy(), state._energy, state._efficiency )
         result = False
 
