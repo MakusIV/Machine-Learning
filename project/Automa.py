@@ -15,7 +15,7 @@ logger = Logger(module_name = __name__, class_name = 'Automa')
 class Automa(Object):
     """Automa derived from Object. """
 
-    def __init__(self, name = 'Automa', dimension = [1, 1, 1], resilience = 10, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None   ):
+    def __init__(self, name = 'Automa', dimension = [1, 1, 1], resilience = 100, power = 100, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None   ):
 
         Object.__init__(self, name = name, dimension = dimension, resilience = resilience, coord = coord, state = state)
 
@@ -28,7 +28,7 @@ class Automa(Object):
         self._eventsQueue = {} #  {key: event id, value = event}
         self._actionsQueue = {} #  {key: event id, value = action}
 
-        if not self.checkProperty():
+        if not self.checkParam():
             raise Exception("Invalid properties! Automata not istantiate.")
 
     
@@ -115,8 +115,20 @@ class Automa(Object):
 
 
     # vedi il libro
-    def checkProperty(self):
-        return General.checkAI( self._ai ) and General.checkState( self._internal_state ) and General.checkSensors (self._sensors ) and General.checkActuators( self._actuator )
+    def checkParam(name, dimension, resilience, power, state, ai, coord, sensors, actuators):
+        result = True
+        
+    # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
+
+        if not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not resilience or not isinstance(resilience, int)  or not( resilience <= 100 and resilience >= 0):
+            return false
+
+        if not name or not isinstance(name, str) or not state or not isinstance(state, State) or not ai or not isinstance(ai, AI):
+            return False
+            
+        if not coord or not isinstance(coord, Coordinate) or not sensors or not isinstance(sensor, Sensor) or actuators or
+        if or not dimension or not isinstance(dimension, list)
+        return 
         
     def updateStateForPercept(self, percept_info):
         """Update state, Sensor, Actuator states for Percept  info"""

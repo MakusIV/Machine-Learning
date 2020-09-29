@@ -231,6 +231,13 @@ class State:
 
         return True
 
+    def checkStateClass(self, state):
+
+        if not state or not isinstance(state, State):
+            return False
+        
+        return True
+
 
     
 

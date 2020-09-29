@@ -10,37 +10,34 @@ logger = Logger(module_name = __name__, class_name = 'Object')
 
 class Object:
     
-    def __init__(self, coord = None, name = None, dimension = None,  resilience = None, state = None, id = None  ):
+    def __init__(self, coord = None, name = None, dimension = None,  resilience = None, state = None ):
 
 
-            self.name = None
-            self.id = None
-            self.dimension = None
-            self.resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
+            self._name = None
+            self._id = None
+            self._dimension = None
+            self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
             
-            self.coord = None
-            self.state = None
+            self._coord = None
+            self._state = None
             
             self.setDimension(dimension)
             self.setCoord(coord)
             self.setState(state)
 
             if not name:
-                self.name = General.setName('Object_Name')
+                self._name = General.setName('Object_Name')
+                self._id = General.setId('Object_ID', None)
             else:
-                self.name = name
-
-            if not id:
-                self.id = General.setId('Object_ID', id)
-            else:
-                self.id = id
+                self._name = name
+                self._id = General.setId(name + '_ID', None)
                 
 
     def evalutateDamage(self, energy, power):
         """Evalutate the damage on sensor and update state"""
-        if power > self.resilience:
-            damage = power - self.resilience# in realtà il danno dovrebbe essere proporzionale all'energia
-            return self.state.decrementHealth( damage )
+        if power > self._resilience:
+            damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
+            return self._state.decrementHealth( damage )
         
         return self.state.getHealth()
 
@@ -49,10 +46,10 @@ class Object:
 
         llr = self.coord.getPosition()
         
-        if len(self.dimension) == 3:
-            dim_x = self.dimensione[0]
-            dim_x = self.dimensione[1]
-            dim_x = self.dimensione[2]
+        if len(self._dimension) == 3:
+            dim_x = self._dimensione[0]
+            dim_y = self._dimensione[1]
+            dim_z = self._dimensione[2]
         
         elif expression:
             dim_x, dim_y, dim_z = dimension[0], dimension[0], dimension[0]
@@ -86,9 +83,9 @@ class Object:
         if not id:
             return False
         elif isinstance(id, str):
-            self.id = id       
+            self._id = id       
         else:
-            self.id = str( id )       
+            self._id = str( id )       
             
         return True
 
@@ -98,7 +95,7 @@ class Object:
         if not name:
             return False
         else:
-            self.name = name
+            self._name = name
 
         return True
             
@@ -107,9 +104,9 @@ class Object:
     def setDimension(self, dimension):
             
         if not General.checkDimension(dimension): # not dimension or not isinstance(dimension, list) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int) :
-            self.dimension = [random.randint(1, 3), random.randint(1, 3), random.randint(1, 3) ] # xdim, ydim, zdim
+            self._dimension = [random.randint(1, 3), random.randint(1, 3), random.randint(1, 3) ] # xdim, ydim, zdim
         else:
-            self.dimension = dimension
+            self._dimension = dimension
 
         return True
 
@@ -117,9 +114,9 @@ class Object:
     def setCoord(self, coord):
             
         if not coord or not isinstance(coord, Coordinate):
-            self.coord = Coordinate( random.randint(1, 99), random.randint(1, 99), random.randint(1, 99) ) # senza limiti
+            self._coord = Coordinate( random.randint(1, 99), random.randint(1, 99), random.randint(1, 99) ) # senza limiti
         else:
-            self.coord = coord
+            self._coord = coord
 
         return True
 
@@ -139,11 +136,11 @@ class Object:
         if not General.checkVolume(volume): #not volume or not isinstance( volume, list ):
             raise Exception('Invalid parameters')
 
-        pos = self.coord.getPosition()
+        pos = self._coord.getPosition()
 
-        x_not_intersection =  pos[0] > volume[1][0] or pos[0] + self.dimension[0] < volume[0][0] 
-        y_not_intersection =  pos[1] > volume[1][1] or pos[1] + self.dimension[1] < volume[0][1] 
-        z_not_intersection =  pos[2] > volume[1][2] or pos[2] + self.dimension[2] < volume[0][2] 
+        x_not_intersection =  pos[0] > volume[1][0] or pos[0] + self._dimension[0] < volume[0][0] 
+        y_not_intersection =  pos[1] > volume[1][1] or pos[1] + self._dimension[1] < volume[0][1] 
+        z_not_intersection =  pos[2] > volume[1][2] or pos[2] + self._dimension[2] < volume[0][2] 
 
         # not interection -> one or more axis not intersection
         if x_not_intersection or y_not_intersection or z_not_intersection:
@@ -159,23 +156,23 @@ class Object:
         if not coord or not isinstance(coord, Coordinate):
             return False       
 
-        return self.coord.distance(coord)
+        return self._coord.distance(coord)
         
 
     def getId(self):
-        return self.id
+        return self._id
 
 
     def getName(self):
-        return self.name
+        return self._name
 
     
     def getPosition(self):
-        return self.coord.getPosition()
+        return self._coord.getPosition()
 
 
     def getDimension(self):
-        return self.dimension
+        return self._dimension
 
     def to_string(self):
-        return 'Name: {0}  -  Id: {1}'.format(self.getName(), str(self.id))
+        return 'Name: {0}  -  Id: {1}'.format(self.getName(), str(self._id))

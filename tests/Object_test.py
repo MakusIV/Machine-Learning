@@ -17,44 +17,44 @@ def testClassObject():
 
     obj = Object( coord, 'Tullio', [10, 8, 6]  )
 
-    if obj.name!='Tullio' or obj.dimension != [10, 8, 6] or obj.coord != coord:
-        print('Object.__Initit__ Failed!! ', obj.name, obj.id, obj.dimension, obj.coord)
+    if obj._name!='Tullio' or obj._dimension != [10, 8, 6] or obj._coord != coord:
+        print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension, obj._coord)
         result = False 
 
     obj = Object()
 
-    if not obj.name or not obj.id or not obj.dimension or not obj.coord or not isinstance(obj.name,str) or not isinstance(obj.id,str) or not isinstance(obj.dimension,list) or not isinstance(obj.coord,Coordinate):
-        print('Object.__Initit__ Failed!! ', obj.name, obj.id, obj.dimension, obj.coord)
+    if not obj._name or not obj._id or not obj._dimension or not obj._coord or not isinstance(obj._name,str) or not isinstance(obj._id,str) or not isinstance(obj._dimension,list) or not isinstance(obj._coord,Coordinate):
+        print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension, obj._coord)
         result = False 
 
 
     obj = Object( coord = Coordinate(2,2,2), name = 'Gregory', dimension = [5,5,5] ) 
 
-    if obj.name != 'Gregory' or obj.dimension != [5,5,5] or obj.getPosition() != [2,2,2]:
-        print('Object.__Initit__ Failed!! ', obj.name, obj.id, obj.dimension, obj.getPosition())    
+    if obj._name != 'Gregory' or obj._dimension != [5,5,5] or obj.getPosition() != [2,2,2]:
+        print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension, obj.getPosition())    
         result = False 
 
     obj.setName('Ollio')
 
-    if obj.name != 'Ollio':
-        print('Object.setName() Failed!! ', obj.name)
+    if obj._name != 'Ollio':
+        print('Object.setName() Failed!! ', obj._name)
         result = False 
 
 
     if not obj.setName(12):
-        print('Object.setName() Failed!! ', obj.name)
+        print('Object.setName() Failed!! ', obj._name)
         result = False 
 
     obj.setId(999)
 
-    if obj.id != '999':
-        print('Object.setId() Failed!! ', obj.id)
+    if obj._id != '999':
+        print('Object.setId() Failed!! ', obj._id)
         result = False 
 
     obj.setDimension([1,1,1])
 
     if obj.getDimension() != [1,1,1]:
-        print('Object.setDimension() Failed!! ', obj.dimension)
+        print('Object.setDimension() Failed!! ', obj._dimension)
         result = False 
 
     obj.setCoord( Coordinate(2,2,2) )

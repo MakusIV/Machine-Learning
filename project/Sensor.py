@@ -11,6 +11,7 @@ logger = Logger(module_name = __name__, class_name = 'Sensor')
 class Sensor:
     # Il sensore non è una specializzazione di Object
 
+    # Unit test: ok
     def __init__(self, sensibility = 100,  power = 100, resilience = 100, name = None, state = None  ):
 
         if not self.checkParam( sensibility,  power, resilience ):
@@ -37,7 +38,7 @@ class Sensor:
     def checkParam(self, sensibility,  power, resilience):
         return sensibility <= 100 and sensibility >= 0 and power <= 100 and power >= 0 and  resilience <= 100 and resilience >= 0
 
-
+    # Unit test: 0k
     def evalutateDamage(self, energy, power):
         """Evalutate the damage on sensor and update state"""
         if power > self._resilience:
