@@ -66,13 +66,29 @@ class State:
         if self._health <= 0:
             self._health = 0
             self.destroy()
-            return 0
 
         self.evalutateCritical()         
         self.evalutateEfficiency()        
 
         return self._health
 
+
+
+    def decrementEnergy( self, energy_consumption ):
+        """ update energy proprerty with energy_consumption """
+
+        if not self._active or not energy_consumption or not isinstance(energy_consumption, int):
+            return False
+
+        self._energy = self._energy - energy_consumption
+
+        if self._energy < 0:
+            self._energy = 0
+            self.stop()
+         
+        self.evalutateEfficiency()        
+
+        return self._energy
 
 
     

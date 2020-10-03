@@ -14,7 +14,7 @@ class Logger:
     # NOTSET 	0
 
 
-    def __init__(self, module_name, class_name, set_consolle_log_level = logging.DEBUG, set_file_log_level = logging.ERROR, name = None,  ):  
+    def __init__(self, module_name, class_name, set_consolle_log_level = logging.WARNING, set_file_log_level = logging.DEBUG, name = None,  ):  
 
         if not( module_name and class_name ):
             raise Exception("Invalid parameters! Logger not istantiate.")

@@ -122,7 +122,7 @@ class Object:
 
 
     def isCollision(self, volume):
-        """Return True if object is within volume"""
+        """Return True if object's volume collide with volume"""
         # xd = dimension[0], yd = dimension[1], zd =dimension[2]
         # xvol_low = volume[0][0], yvol_low = volume[0][1], zvol_low = volume[0][2]
         # xvol_high = volume[1][0], yvol_high = volume[1][1], zvol_high = volume[1][2]
@@ -176,3 +176,29 @@ class Object:
 
     def to_string(self):
         return 'Name: {0}  -  Id: {1}'.format(self.getName(), str(self._id))
+
+    
+    def checkObjectClass(self, object):
+        """Return True if objects is a Object object otherwise False"""
+        if not object or not isinstance(object, Object):
+            return False
+        
+        return True
+
+    def checkObjectList(self, objects):
+
+        """Return True if objectsobject is a list of Object object otherwise False"""
+        if objects and isinstance(objects, list) and all( isinstance(object, Object) for object in objects ):
+            return True
+
+        return False
+
+     # vedi il libro
+    def checkParam(name, dimension, resilience, state, coord ):
+                
+        # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
+
+        if not name or not isinstance(name, str) or not state or not isinstance(state, State) or not coord or not isinstance(coord, Coordinate) or not resilience or not isinstance(resilience, int)  or not( resilience <= 100 and resilience >= 0) or not General.checkDimension(dimension):
+            return False
+            
+        return True

@@ -59,6 +59,23 @@ def testClassSensor():
         result = False 
     
 
+    if not Sensor.checkSensorClass(sensor, sensor):
+        print('Sensor.checkSensorClass(sensor) Failed!! ', sensor._state, sensor._state._health)
+        result = False 
+    
+    sensors = [Sensor(), Sensor(), Sensor(), Sensor()]
+
+    if not Sensor.checkSensorList(sensor, sensors):
+        print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
+        result = False
+
+    sensors = [Sensor(), Sensor(), list(), Sensor()]
+
+    if Sensor.checkSensorList(sensor, sensors):
+        print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
+        result = False  
+    
+
     return result
 
 print("Sensor class test result:", testClassSensor())

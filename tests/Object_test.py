@@ -167,8 +167,27 @@ def testClassObject():
         print('isCollision(volume) Failed!! ', obj.getPosition(), obj.getDimension(), volume)
         result = False 
 
+    if not Object.checkObjectClass(obj, obj):
+        print('Object.checkObjectClass(sensor) Failed!! ', obj._state, obj._state._health)
+        result = False 
+    
+    objects = [Object(), Object(), Object(), Object()]
+
+    if not Object.checkObjectList(obj, objects):
+        print('Sensor.checkObjectList(sensors) Failed!! ', objects[0]._id, objects[0]._state, objects[0]._state._health)
+        result = False 
+
+    objects = [Object(), Object(), list(), Object()]
+
+    if Object.checkObjectList(obj, objects):
+        print('Sensor.checkObjectList(sensors) Failed!! ', objects[0]._id, objects[0]._state, objects[0]._state._health)
+        result = False 
+
 
     return result
+
+
+
 
 print("Object class test result:", testClassObject())
 

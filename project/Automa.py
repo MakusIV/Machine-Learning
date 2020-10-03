@@ -7,9 +7,10 @@ from AI import AI
 import General
 from LoggerClass import Logger
 
+
 # LOGGING --
  
-logger = Logger(module_name = __name__, class_name = 'Automa')
+logger = Logger(module_name = __name__, set_consolle_log_level = logging.WARNING, set_file_log_level = logging.DEBUG, class_name = 'Automa')
 
 
 class Automa(Object):
@@ -22,8 +23,8 @@ class Automa(Object):
         self._ai = ai #AI Engine
         self._power = power # nota l'energia è gestita nello stato in quanto è variabile        
         self._state = state #Class State        
-        self._sensors = sensors# Class Sensor
-        self._actuators = actuators#Class Actuators
+        self._sensors = sensors# list of Sensor objects
+        self._actuators = actuators# list of Actuator objects
         self.action_executed = None
         self._eventsQueue = {} #  {key: event id, value = event}
         self._actionsQueue = {} #  {key: event id, value = action}
@@ -31,7 +32,7 @@ class Automa(Object):
         if not self.checkParam():
             raise Exception("Invalid properties! Automata not istantiate.")
 
-    
+        logger.logger.info("Automa {0} created".format(self._id))
     
     # Methods
 
@@ -54,10 +55,10 @@ class Automa(Object):
     # la proprietà 'env_state che rappresenta l'enviromets conosciuto dall'automa è interna e gestita nella AI
     
     def runTask(self, posManager):
-
+        
         self.update() #check the eventsQueue and update state
-        percptInf = self.percept(posManager)
-        self.evalutate( percptInf ) # create the action info to execute and inserts in the action Queue
+        list_obj = self.percept(posManager)
+        self.evalutate( list_obj ) # create the action info to execute and inserts in the action Queue
         return self.action() # return the Queue of the action info executed in a single task
 
 
@@ -89,12 +90,14 @@ class Automa(Object):
     
     def percept(self, posMng):
         """Percepts the enviroments with sensors, update the state and return percept informations."""
-        #percept_info: le informazioni dopo l'attivazione dei sensori e lo stato degli stessi (classe)
+        #percept_info: le informazioni dopo l'attivazione dei sensori: (energy_consumption, list_obj_detected)
         #request_percept: le informazioni riguardo tipo di sensori e modalità di attivazione
-        request_percept = None #definire la logica di utilizzo dei sensori (funzione dello stato??: minacciato, insicuro, allerta, normale, affamato, critico, ecc. ma sono info da chiedere alla ai?)
-        percept_info = self._sensors.perception( request_percept, posMng )# attiva i sensori per ottenere le informazioni sull'ambiente       
-        self.updateStateForPercept( percept_info )# aggiorna lo stato dell'automa
-        return percept_info 
+        operative_sensors = ( sensor for sensor in sensors if sensor.isOperative() )# Lista dei sensoori attivi
+        percept_info = ( sensor.perception( posMng, self.getPosition() ) for sensor in operative_sensors )# lista delle perception info ottenuta interrogando tutti i sensori operativi
+        list_obj = ( percept_info[ 1 ] for percept_info[ 1 ] in percept_info )
+        energy_consumption = ( percept_info[ 0 ] for percept_info[ 0 ] in percept_info )
+        self.updateStateForPercept( energy_consumption )# aggiorna lo stato dell'automa
+        return list_obj 
 
 
     def evalutate(self, percept_info ):
@@ -115,23 +118,20 @@ class Automa(Object):
 
 
     # vedi il libro
-    def checkParam(name, dimension, resilience, power, state, ai, coord, sensors, actuators):
-        result = True
-        
-    # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
+    def checkParam(power, ai, sensors, actuators):
+                
+        # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
 
-        if not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not resilience or not isinstance(resilience, int)  or not( resilience <= 100 and resilience >= 0):
+        if not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not ai or not isinstance(ai, AI)) or not sensors or not isinstance(sensors[0], Sensor) or not Sensor.checkSensorList(sensors[0], sensors) or not actuators or not isinstance(actuators[0], Actuator) or not Actuator.checkActuatorList(actuators[0], actuators):
             return false
 
-        if not name or not isinstance(name, str) or not state or not isinstance(state, State) or not ai or not isinstance(ai, AI):
-            return False
-            
-        if not coord or not isinstance(coord, Coordinate) or not sensors or not isinstance(sensor, Sensor) or actuators or
-        if or not dimension or not isinstance(dimension, list)
-        return 
+        return True
+
         
-    def updateStateForPercept(self, percept_info):
-        """Update state, Sensor, Actuator states for Percept  info"""
+    def updateStateForPercept(self, energy_consumption):
+        """Update state, Sensor, Actuator states for Percept  info"""                
+        total_sensor_consumption = sum( energy_consumption )
+        self._state.decrementEnergy( total_sensor_consumption )
         return True
 
     def updateStateForAction(self, action_info):

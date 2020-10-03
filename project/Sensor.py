@@ -3,6 +3,7 @@ from Coordinate import Coordinate
 import General
 from State import State
 from LoggerClass import Logger
+import random
 
 # LOGGING --
  
@@ -12,17 +13,19 @@ class Sensor:
     # Il sensore non è una specializzazione di Object
 
     # Unit test: ok
-    def __init__(self, sensibility = 100,  power = 100, resilience = 100, name = None, state = None  ):
+    def __init__(self, range, sensibility,  power = 100, resilience = 100, delta_t = 0.01, name = None, state = None  ):
 
-        if not self.checkParam( sensibility,  power, resilience ):
+        if not self.checkParam( range, sensibility,  power, resilience, delta_t ):
             raise Exception("Invalid parameters! Sensor not istantiate.")
 
         self._name = name
         self._id = General.setId('Sensor_ID', None) # Id generator automaticamente 
         self._state = state
         self._power = power# nota l'energia è gestita nello stato in quanto è variabile
+        self._range = range# è rappresentato da una distanza (int)
         self._sensibility = sensibility
         self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
+        self._delta_t = delta_t # Il tempo necessario per eseguire la detection serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli
 
         if not name or not isinstance(name, str):
             self._name = General.setName('Sensor_Name')
@@ -36,7 +39,14 @@ class Sensor:
 
 
     def checkParam(self, sensibility,  power, resilience):
-        return sensibility <= 100 and sensibility >= 0 and power <= 100 and power >= 0 and  resilience <= 100 and resilience >= 0
+        
+        if not( delta_t and delta_t <= 1 and _delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0:
+            return False
+
+        if not sensibility and not isinstance(sensibility, Sensibility):
+            return False
+
+        return True
 
     # Unit test: 0k
     def evalutateDamage(self, energy, power):
@@ -67,8 +77,54 @@ class Sensor:
 
         return True
 
-    def perception(self, posMng, request_perception):
-        # Valuta quali sensori attivare e come attivarli in base alle info contenute in request_perception (Class Perception)
+    def perception(self, posMng, position, request_perception = None):
+        # Attiva il sensore in base alle info contenute in request_perception, se request_perception è None utilizza i parametri di default
         # Restituisce le informazioni sulle azioni effettuate quali stato, posizione degli attuatori
+
         percept_info = None
+        # la perception individua gli oggetti presenti nel volume di scansione in base alla probabilità nel
+        # punto di scansione dove è presente l'oggetto. Per quanto riguarda la perceprion dell'enviroment tenere
+        # presente che una zona a temperatura pericolosa è rappresentata da un oggetto di volume pari alla zona
+        #interessata con proprietà temperaatura. Quindi durante la perception, individutato, l'oggetto
+        # obj.isGas() ---> automa.MaxTemp >= obj._temperature
+        
+        scanning_volumes = self._sensibility.get_probability_of_perception(position) # scanning_volume = (volume, probability)
+
+        detected_objs = None
+
+        for scan_vol in scanning_volumes:            
+            logger.logger.debug("scanning volume {0} to detect object".format( scanning_volumes.index( scan_vol[0] ) ))
+            prob = random.randint(1,100)/100
+            volume_prob = scan_vol[1] * self._test.getEfficiency()
+            logger.logger.debug("prob:{0}, volume_prob:{1}".format(prob, volume_prob))
+
+            if prob < volume_prob:
+                detected_objs = posMng.getObjectInVolume( scan_vol[ 0 ] )
+                logger.logger.debug("detected {0} objects and inserted in detected object list".format( len(detected_objs)))
+
+        energy_consumption = self._power * self._delta_t # l'energia è presente nello stato del sensore, tuttavia è l'automa che fornisce energia al sensore quindi ha senso restituire all'automa la info sul consumo energetico relativo alla perception
+        #enviroment perception:  temp, emc, gas ecc
+
+        percept_info = (energy_consumption, detected_objs)
+
         return percept_info
+
+
+    def checkSensorClass(self, sensor):
+        """Return True if sensors is a Sensor object otherwise False"""
+        if not sensor or not isinstance(sensor, Sensor):
+            return False
+        
+        return True
+
+    def checkSensorList(self, sensors):
+
+        """Return True if sensors is a list of Sensor object otherwise False"""
+        if sensors and isinstance(sensors, list) and all( isinstance(sensor, Sensor) for sensor in sensors ):
+            return True
+
+        return False
+
+    def isOperative(self):
+        """Return true if sensor state is running"""
+        return self._state.isRunning()
