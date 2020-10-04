@@ -3,6 +3,7 @@
 import random
 import logging
 import os
+import math
 
 # LOGGING --
 # non èpossibile usare la classe Logger per evitare le circular dependencies: Logger importa General e Geneal imprta Logger
@@ -42,7 +43,7 @@ logger.addHandler(f_handler)
 def checkDimension(dimension):
     """ Return True if dimension is an list normalized as dimension:  dimension: [int dim_x, int dim_y, int dim_z]"""
 
-    if not dimension or not isinstance(dimension, list) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int):
+    if not dimension or not ( isinstance(dimension, list) or isinstance(dimension, tuple) ) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int):
             return False
     
     return True
@@ -57,9 +58,9 @@ def checkVolume(volume):
     elif not isinstance( volume[0][0], int ) or not isinstance( volume[0][1], int ) or not isinstance( volume[0][2], int ) or not isinstance( volume[1][0], int ) or not isinstance( volume[1][1], int ) or not isinstance( volume[1][2], int ):
              return False
 
-    
-    if volume[0][0] > volume[1][0] and volume[0][1] > volume[1][1] and volume[0][2] > volume[1][2]:
-        return False
+    # LO ESCLUDO DAL TEST IN QUANTO IN UN CONTESTO RELATIVO CON COOORDINATE NEGATIVE I LIMITI SUPERIORI E INFERIORI DEL VOLUME SI INVERTONO ANCHE UTILIZZANDO ABS NON E' POSSIBILE GARANTIRE COERENZA (VEDI Sensibility.get_probability_of_perception)
+    #if abs( volume[0][0] ) > abs( volume[1][0] ) and abs( volume[0][1] ) > abs( volume[1][1] ) and abs( volume[0][2] ) > abs( volume[1][2] ):
+    #    return False
     
     return True
 
