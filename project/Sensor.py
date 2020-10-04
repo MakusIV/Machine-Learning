@@ -4,6 +4,7 @@ import General
 from State import State
 from LoggerClass import Logger
 import random
+from Sensibility import Sensibility
 
 # LOGGING --
  
@@ -13,17 +14,17 @@ class Sensor:
     # Il sensore non è una specializzazione di Object
 
     # Unit test: ok
-    def __init__(self, range, sensibility,  power = 100, resilience = 100, delta_t = 0.01, name = None, state = None  ):
+    def __init__(self, range_max, power = 100, resilience = 100, delta_t = 0.01, accuracy = None, name = None, state = None  ):
 
-        if not self.checkParam( range, sensibility,  power, resilience, delta_t ):
+        if not self.checkParam( range_max, accuracy,  power, resilience, delta_t ):
             raise Exception("Invalid parameters! Sensor not istantiate.")
 
         self._name = name
         self._id = General.setId('Sensor_ID', None) # Id generator automaticamente 
         self._state = state
         self._power = power# nota l'energia è gestita nello stato in quanto è variabile
-        self._range = range# è rappresentato da una distanza (int)
-        self._sensibility = sensibility
+        self._range = range_max# è rappresentato da una distanza (int)
+        self._sensibility = Sensibility( max_range = (1000, 1000, 1000), accuracy = accuracy )
         self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
         self._delta_t = delta_t # Il tempo necessario per eseguire la detection serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli
 
@@ -38,12 +39,12 @@ class Sensor:
             self.state = state
 
 
-    def checkParam(self, sensibility,  power, resilience):
+    def checkParam(self, range_max, accuracy,  power, resilience, delta_t):
         
-        if not( delta_t and delta_t <= 1 and _delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0:
+        if not( range_max and range_max >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0):
             return False
-
-        if not sensibility and not isinstance(sensibility, Sensibility):
+        
+        if accuracy and accuracy <=0:
             return False
 
         return True

@@ -8,13 +8,14 @@ logger = Logger(module_name = __name__, class_name = 'Sensibility')
 
 class Sensibility:
     
-    def __init__(self, max_range, type_space = 'TETRAHEDRIC'):
+    def __init__(self, max_range, accuracy = 5, type_space = 'TETRAHEDRIC'):
 
         if not self.checkParam( max_range, type_space ):
             raise Exception("Invalid parameters! Sensibility not istantiate.")
 
         self._type_space = type_space
         self._max_range = max_range
+        self._accuracy = accuracy
         
         
     
@@ -28,10 +29,9 @@ class Sensibility:
 
     def get_probability_of_perception(self, start_percept_position):
 
-        position = 4
-
+        
         if self._type_space == 'TETRAHEDRIC':            
-            return self.get_tetrahedric_probability( start_percept_position, position)
+            return self.get_tetrahedric_probability( start_percept_position, self._accuracy )
 
         #if self._type_space == 'SPHERICAL':
         #    return self.spherical_sensibility(target_position)

@@ -196,22 +196,21 @@ class Position_manager:
         return any( isinstance(item, Automa) for item in objs)
 
 
-    def getObjectInVolume(self, volume):
+    def getObjectInVolume(self, volume, dimension):
         """ Return {  (x,y,z), obj } portion within volume. Return false if objects not presents within volume"""
         
         if not volume:
             return False
 
-        #if not dimension:
-         #   dimension = [3, 3, 3]
+        if not dimension:# la dimensione presunta dell'oggetto
+            dimension = [3, 3, 3]
 
-        #if len(self.pos) >= ( volume[1][0] - volume[0][0] + 1 ) * ( volume[1][1] - volume[0][1] + 1 ) * ( volume[1][2] - volume[0][2] + 1 ):
-         #   return self._getObjectInVolumeFromObjectList(volume)
+        if len(self.pos) >= ( dimension[0] + volume[1][0] - volume[0][0] + 1 ) * ( dimension[1] + volume[1][1] - volume[0][1] + 1 ) * ( dimension[3] + volume[1][2] - volume[0][2] + 1 ):
+            return self._getObjectInVolumeFromObjectList(volume)
 
-        #else:
-         #   return self._getObjectInVolumeFromVolumeIteration(volume, dimension)
+        else:
+            return self._getObjectInVolumeFromVolumeIteration(volume, dimension)
 
-        return self._getObjectInVolumeFromObjectList(volume)
 
 
     def _getObjectInVolumeFromObjectList(self, volume):
@@ -247,8 +246,8 @@ class Position_manager:
         # volume = ( (xl, yl, zl), (xh, yh, zh) ), dimension = [ xd, yd, zd]
         # nota: valuta la presenza di un object solo con la coordinata di riferimento
         # nota 2: NON VA BENE IN QUANTO CONSIDERA SOLO LA POSIZIONE DI RIFERIMENTO DELL'OGGETTO MA NON LE SUE DIMENSIONI
-        # PERTANTO 
-
+        # nota 3: dovresti definire step d'incremento iterazioni in base alla dimensione dell'oggetto (le coordinate xf, yf, zf)
+        
         detected = {}
 
         self.normalizeVolume( volume )
@@ -266,6 +265,7 @@ class Position_manager:
 
         if len( detected ) == 0:
             return False
+
 
         return detected
 

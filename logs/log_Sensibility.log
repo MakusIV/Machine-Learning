@@ -403,3 +403,69 @@
 2020-10-04 13:33:07,845 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-950, -1125, -1500], [-1201, -1351, -1701]], probability:0.75
 2020-10-04 13:33:07,847 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-1200, -1350, -1700], [-1451, -1576, -1901]], probability:0.5
 2020-10-04 13:33:07,848 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[-1450, -1575, -1900], [-1701, -1801, -2101]], probability:0.25
+2020-10-04 14:36:42,283 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.25 dim_volumes:(250, 225, 200)
+2020-10-04 14:36:42,284 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[0, 0, 0], [249, 224, 199]], probability:1.0
+2020-10-04 14:36:42,284 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[250, 225, 200], [499, 449, 399]], probability:0.75
+2020-10-04 14:36:42,285 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[500, 450, 400], [749, 674, 599]], probability:0.5
+2020-10-04 14:36:42,286 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[750, 675, 600], [999, 899, 799]], probability:0.25
+2020-10-04 14:36:42,286 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.25 dim_volumes:(250, 225, 200)
+2020-10-04 14:36:42,286 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[101, 234, 200], [350, 458, 399]], probability:1.0
+2020-10-04 14:36:42,287 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[351, 459, 400], [600, 683, 599]], probability:0.75
+2020-10-04 14:36:42,287 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[601, 684, 600], [850, 908, 799]], probability:0.5
+2020-10-04 14:36:42,288 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[851, 909, 800], [1100, 1133, 999]], probability:0.25
+2020-10-04 14:36:42,288 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.25 dim_volumes:(250, 225, 200)
+2020-10-04 14:36:42,288 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[-700, -900, -1300], [-451, -676, -1101]], probability:1.0
+2020-10-04 14:36:42,289 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-450, -675, -1100], [-201, -451, -901]], probability:0.75
+2020-10-04 14:36:42,289 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-200, -450, -900], [49, -226, -701]], probability:0.5
+2020-10-04 14:36:42,289 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[50, -225, -700], [299, -1, -501]], probability:0.25
+2020-10-04 14:36:42,290 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.25 dim_volumes:(-250, -225, -200)
+2020-10-04 14:36:42,290 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[0, 0, 0], [-251, -226, -201]], probability:1.0
+2020-10-04 14:36:42,291 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-250, -225, -200], [-501, -451, -401]], probability:0.75
+2020-10-04 14:36:42,291 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-500, -450, -400], [-751, -676, -601]], probability:0.5
+2020-10-04 14:36:42,292 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[-750, -675, -600], [-1001, -901, -801]], probability:0.25
+2020-10-04 14:36:42,292 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.25 dim_volumes:(-250, -225, -200)
+2020-10-04 14:36:42,293 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[101, 234, 200], [-150, 8, -1]], probability:1.0
+2020-10-04 14:36:42,293 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-149, 9, 0], [-400, -217, -201]], probability:0.75
+2020-10-04 14:36:42,294 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-399, -216, -200], [-650, -442, -401]], probability:0.5
+2020-10-04 14:36:42,294 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[-649, -441, -400], [-900, -667, -601]], probability:0.25
+2020-10-04 14:36:42,295 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.25 dim_volumes:(-250, -225, -200)
+2020-10-04 14:36:42,325 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[-700, -900, -1300], [-951, -1126, -1501]], probability:1.0
+2020-10-04 14:36:42,327 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-950, -1125, -1500], [-1201, -1351, -1701]], probability:0.75
+2020-10-04 14:36:42,333 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-1200, -1350, -1700], [-1451, -1576, -1901]], probability:0.5
+2020-10-04 14:36:42,389 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[-1450, -1575, -1900], [-1701, -1801, -2101]], probability:0.25
+2020-10-04 14:43:22,815 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.2 dim_volumes:(200, 180, 160)
+2020-10-04 14:43:22,815 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[0, 0, 0], [199, 179, 159]], probability:1.0
+2020-10-04 14:43:22,816 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[200, 180, 160], [399, 359, 319]], probability:0.8
+2020-10-04 14:43:22,816 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[400, 360, 320], [599, 539, 479]], probability:0.6
+2020-10-04 14:43:22,867 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[600, 540, 480], [799, 719, 639]], probability:0.3999999999999999
+2020-10-04 14:43:22,868 - Sensibility - DEBUG - get_tetrahedric_probability - volume:4, volume points:[[800, 720, 640], [999, 899, 799]], probability:0.19999999999999996
+2020-10-04 14:43:22,869 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.2 dim_volumes:(200, 180, 160)
+2020-10-04 14:43:22,870 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[101, 234, 200], [300, 413, 359]], probability:1.0
+2020-10-04 14:43:22,870 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[301, 414, 360], [500, 593, 519]], probability:0.8
+2020-10-04 14:43:22,871 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[501, 594, 520], [700, 773, 679]], probability:0.6
+2020-10-04 14:43:22,872 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[701, 774, 680], [900, 953, 839]], probability:0.3999999999999999
+2020-10-04 14:43:22,954 - Sensibility - DEBUG - get_tetrahedric_probability - volume:4, volume points:[[901, 954, 840], [1100, 1133, 999]], probability:0.19999999999999996
+2020-10-04 14:43:22,955 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.2 dim_volumes:(200, 180, 160)
+2020-10-04 14:43:22,957 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[-700, -900, -1300], [-501, -721, -1141]], probability:1.0
+2020-10-04 14:43:22,990 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-500, -720, -1140], [-301, -541, -981]], probability:0.8
+2020-10-04 14:43:23,016 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-300, -540, -980], [-101, -361, -821]], probability:0.6
+2020-10-04 14:43:23,018 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[-100, -360, -820], [99, -181, -661]], probability:0.3999999999999999
+2020-10-04 14:43:23,019 - Sensibility - DEBUG - get_tetrahedric_probability - volume:4, volume points:[[100, -180, -660], [299, -1, -501]], probability:0.19999999999999996
+2020-10-04 14:43:23,020 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.2 dim_volumes:(-200, -180, -160)
+2020-10-04 14:43:23,020 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[0, 0, 0], [-201, -181, -161]], probability:1.0
+2020-10-04 14:43:23,020 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-200, -180, -160], [-401, -361, -321]], probability:0.8
+2020-10-04 14:43:23,021 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-400, -360, -320], [-601, -541, -481]], probability:0.6
+2020-10-04 14:43:23,021 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[-600, -540, -480], [-801, -721, -641]], probability:0.3999999999999999
+2020-10-04 14:43:23,022 - Sensibility - DEBUG - get_tetrahedric_probability - volume:4, volume points:[[-800, -720, -640], [-1001, -901, -801]], probability:0.19999999999999996
+2020-10-04 14:43:23,023 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.2 dim_volumes:(-200, -180, -160)
+2020-10-04 14:43:23,050 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[101, 234, 200], [-100, 53, 39]], probability:1.0
+2020-10-04 14:43:23,052 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-99, 54, 40], [-300, -127, -121]], probability:0.8
+2020-10-04 14:43:23,052 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-299, -126, -120], [-500, -307, -281]], probability:0.6
+2020-10-04 14:43:23,053 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[-499, -306, -280], [-700, -487, -441]], probability:0.3999999999999999
+2020-10-04 14:43:23,053 - Sensibility - DEBUG - get_tetrahedric_probability - volume:4, volume points:[[-699, -486, -440], [-900, -667, -601]], probability:0.19999999999999996
+2020-10-04 14:43:23,054 - Sensibility - DEBUG - get_tetrahedric_probability - step_prob_volumes:0.2 dim_volumes:(-200, -180, -160)
+2020-10-04 14:43:23,054 - Sensibility - DEBUG - get_tetrahedric_probability - volume:0, volume points:[[-700, -900, -1300], [-901, -1081, -1461]], probability:1.0
+2020-10-04 14:43:23,055 - Sensibility - DEBUG - get_tetrahedric_probability - volume:1, volume points:[[-900, -1080, -1460], [-1101, -1261, -1621]], probability:0.8
+2020-10-04 14:43:23,055 - Sensibility - DEBUG - get_tetrahedric_probability - volume:2, volume points:[[-1100, -1260, -1620], [-1301, -1441, -1781]], probability:0.6
+2020-10-04 14:43:23,056 - Sensibility - DEBUG - get_tetrahedric_probability - volume:3, volume points:[[-1300, -1440, -1780], [-1501, -1621, -1941]], probability:0.3999999999999999
+2020-10-04 14:43:23,084 - Sensibility - DEBUG - get_tetrahedric_probability - volume:4, volume points:[[-1500, -1620, -1940], [-1701, -1801, -2101]], probability:0.19999999999999996
