@@ -5,6 +5,7 @@ import random
 from Coordinate import Coordinate
 from Automa import Automa
 from LoggerClass import Logger
+from Object import Object
 
 # LOGGING --
  
@@ -23,8 +24,8 @@ class Position_manager:
     def __init__( self, name = 'Fuffy', limits = [ [-50, -50, -50], [50, 50, 50] ] ):
         self.name = name
         self.limits = limits 
-        self.pos = {} ### key:coord, value:obj
-        self.pos_ = [] #[    [ obj000, obj001, obj002 ], [  obj  pos_[1][1][1]= 
+        self.pos = {} # index:(x,y,z), value:obj
+        self.map = {} # index:(x, y, z), value: id_obj 
         logger.logger.info("Position Manager created")
 
     def getName(self):
@@ -56,15 +57,31 @@ class Position_manager:
 
         if not res:
             return False
-
-        if self.pos.get(index):
-            return False
-
-        obj.coord.setPosition(index)
         
-        self.pos[index] = obj
+        dimension = obj.getDimension()
+        mapped_cell = []
 
-        logger.logger.debug("inserti obj: {0} at position: {1}".format(obj.getName, index))
+        for z in range( index[ 2 ], index[ 2 ] + dimension[ 2 ] ):
+            for y in range( index[ 1 ], index[ 1 ] + dimension[ 1 ] ):
+                for x in range( index[ 0 ], index[ 0 ] + dimension[ 0 ] ): 
+                    
+                    if self.map.get( ( x, y, z ) ):# verifica se la cella corrente è già mappata con un object id                   
+                        
+                        for i in mapped_cell:#  elimina le celle mappate
+                            self.map.pop(i)
+
+                        logger.logger.debug( "position_busy @:{0} exist obj: {1} ".format( index, self.map.get( ( x, y, z ) ) ) )
+                        return False
+                    
+                    mapped_cell.append( (x, y, z) )
+                    self.map[ ( x, y, z ) ] = obj.getId()
+                    logger.logger.debug( "mapped obj: {0} at position: {1} ".format( obj.getId(), ( x, y, z ) ) )
+
+
+        obj._coord.setPosition( index )        
+        self.pos[ index ] = obj
+
+        logger.logger.debug( "inserted obj: {0} at position: {1} ".format( obj.getName(), index ) )
 
         return True
 
@@ -81,80 +98,143 @@ class Position_manager:
         if not index:
             return False
 
-        self.pos.pop( index ) 
+        self.pos.pop( index ) # rimuove l'obj dal position dict
+        dimension = obj.getDimension()
+
+        # rimuove gli id dell'obj dalla map dict
+        for z in range( index[ 2 ], index[ 2 ] + dimension[ 2 ] ):
+            for y in range( index[ 1 ], index[ 1 ] + dimension[ 1 ] ):
+                for x in range( index[ 0 ], index[ 0 ] + dimension[ 0 ] ):
+                    cell = self.map.get( ( x, y, z ) )
+                    self.map.pop( (x, y, z) )
+
+                    if not cell or cell.value != obj.getId():
+                        logger.logger.error( "exist obj: {0} not present at map position: {1} ".format( obj.getId(), index ) )
+                        
+                    
+
         return index
 
 
     def removeObjectAtCoord( self, index ):
-        """ Remove if exist obj in index position and return index. If obj not exists return False"""
+        """ Remove if exist obj in index position and return index. 
+            If obj not exists return False"""
         
         if not index:
             return False
                 
-        obj = self.pos.pop( index, None)
+        obj_id = self.map.get( index )
 
-        if not obj:
+        if not obj_id:
             return False
+        
+        obj_data = self.searchObject( obj_id )
 
-        self.pos[ index ] = None        
-        return obj
+        if obj_data and obj_data[0] and obj_data[1]:
+            self.pos[ obj_data[0] ] = None
+            dimension = obj_data[ 1 ].getDimension()
+
+            # rimuove gli id dell'obj dalla map dict
+            for z in range( index[ 2 ], index[ 2 ] + dimension[ 2 ] ):
+                for y in range( index[ 1 ], index[ 1 ] + dimension[ 1 ] ):
+                    for x in range( index[ 0 ], index[ 0 ] + dimension[ 0 ] ):
+                        cell = self.map.get( ( x, y, z ) )
+                        
+                        if not cell or cell.value != obj_data[ 1 ].getId():
+                            logger.logger.error( "exist obj: {0} not present at map position: {1} ".format( obj_id, (x, y, z) ) )
+                            
+                        self.map.pop( (x, y, z) )
+
+            
+        return index
+
+
+        
 
 
     def changeObject(self, index, new_obj):
-        """ Update obj, in index position dictionary and return old object if exists. If index or obj is None or index is out of limits return False"""
+        """ Insert new_obj in index pos dictionary and remove an old object if presents. Return old object if exists. 
+            If index or obj is None or index is out of limits return False"""
         
         if not index or not new_obj or not self.inLimits(index, self.limits):
             return False
 
-        result = self.pos.get( index )
+        old_obj = self.getObjectAtCoord( index )
 
-        if not result:
-            return False
+        if old_obj:
+            self.removeObject( old_obj )
 
-        self.pos[ index ] = new_obj
-        return result 
+        self.insertObject( index, new_obj)
 
+        return old_obj 
+
+        
     
     def getObjectAtCoord( self, index ):
-        """ Return obj at coord index. Return false if obj not presents"""
+        """ Return obj at index. Return false if obj not presents @ index"""
 
         if not index:
             return False
         
         obj = self.pos.get( index )
 
-        if not obj:
-            return False
+        if obj:
+            logger.logger.debug( "detected @:{0} obj_id: {1} ".format( index, obj.getId() ) )
+            return obj
 
-        return obj
+        obj_id = self.map.get( index )
+
+        if obj_id:
+            logger.logger.debug( "detected @:{0} obj_id: {1} ".format( index, obj_id ) )
+            return self.pos.get( index )
+                                            
+        logger.logger.debug( "obj not detected @ {0}".format( index ) )
+
+        return False
 
 
     def getObject( self, obj ):
-        """ Return obj at coord index. Return false if obj not presents"""
+        """ Return obj if exists in pos dictionary. Return false if obj not presents
+            param obj = obj, obj.id"""
 
-        if not obj:
+        obj_searched = self.searchObject( obj )
+
+        if not obj_searched:
             return False
 
-        index = self.searchObject( obj )
+        return obj_searched[1]
+    
         
-        if not index:
-            return False
-
-        return self.pos.get( index )
 
 
     def searchObject( self, obj ):
-        """ Search [obj] in position dictionary and return coord position. If obj not exists return False"""
+        """ Search obj in pos dictionary and return (obj position, obj). If obj not exists return False
+            param obj = obj, obj.id"""
 
+        obj_searched = None
+
+        if obj and isinstance(obj, Object):
+            return self.getIndexWithObject( obj )            
+            
+        elif obj and isinstance(obj, str):
+            return self.getObjectWithId( obj )
+        
+        return False
+
+
+    def getIndexWithObject( self, obj ):
+        """Return the (position, object) of the object"""
+        
+        if not obj:
+            return False
+        
         try:
             index = list( self.pos.keys() )[ list( self.pos.values() ).index( obj ) ]
-
+            return ( index, obj )
+        
         except ValueError:
             return False
-
     
-        return index
-
 
     def listObject( self ):
         """ Return a list of obj existents in position manager. If obj not exists return False"""
@@ -196,20 +276,17 @@ class Position_manager:
         return any( isinstance(item, Automa) for item in objs)
 
 
-    def getObjectInVolume(self, volume, dimension):
+    def getObjectInVolume(self, volume):
         """ Return {  (x,y,z), obj } portion within volume. Return false if objects not presents within volume"""
         
         if not volume:
             return False
-
-        if not dimension:# la dimensione presunta dell'oggetto
-            dimension = [3, 3, 3]
-
-        if len(self.pos) >= ( dimension[0] + volume[1][0] - volume[0][0] + 1 ) * ( dimension[1] + volume[1][1] - volume[0][1] + 1 ) * ( dimension[3] + volume[1][2] - volume[0][2] + 1 ):
-            return self._getObjectInVolumeFromObjectList(volume)
+        # se la dimensione della lista è inferiore al numero di iterazioni del loop che scandisce tutte le posizioni del volume        
+        if len( self.pos ) >= ( volume[1][0] - volume[0][0] + 1 ) * ( volume[1][1] - volume[0][1] + 1 ) * ( volume[1][2] - volume[0][2] + 1 ):
+            return self._getObjectInVolumeFromObjectList( volume ) # itera la pos dict
 
         else:
-            return self._getObjectInVolumeFromVolumeIteration(volume, dimension)
+            return self._getObjectInVolumeFromVolumeIteration( volume ) # itera le posizioni del volume
 
 
 
@@ -225,14 +302,15 @@ class Position_manager:
         if not volume:
             return False
 
+        detected = {}
         objects = self.listObject()
 
         if not objects:
             return False
 
-        detected = [ obj for obj in objects if obj.isCollision(volume)]
+        detected =  { obj.getPosition(): obj for obj in objects if obj.isCollision(volume) } 
 
-        if not detected or len(detected) == 0:
+        if len(detected) == 0:
             return False
 
         return detected
@@ -242,34 +320,51 @@ class Position_manager:
 
     def _getObjectInVolumeFromVolumeIteration(self, volume, dimension):
         """ Return {  (x,y,z), obj } portion within volume. Return false if objects not presents within volume"""
-        # DEPRECATED
+        # 
         # volume = ( (xl, yl, zl), (xh, yh, zh) ), dimension = [ xd, yd, zd]
-        # nota: valuta la presenza di un object solo con la coordinata di riferimento
-        # nota 2: NON VA BENE IN QUANTO CONSIDERA SOLO LA POSIZIONE DI RIFERIMENTO DELL'OGGETTO MA NON LE SUE DIMENSIONI
-        # nota 3: dovresti definire step d'incremento iterazioni in base alla dimensione dell'oggetto (le coordinate xf, yf, zf)
+        # nota: valuta la presenza di un object in un determinato volume considerando la dimensione presunta dell'oggetto.
+        # In sostanza se la dimensione volumetrica dell'oggetto è più grande di quella stimata, questo metodo protrebbe non 
+        # riscontrare la presenza di un oggetto in un volume dove una parte di esso è invece presente.
         
         detected = {}
 
         self.normalizeVolume( volume )
 
-        for z in range(volume[0][2], volume[1][2] + 1 + dimension[2]):
-           
-           for y in range(volume[0][1], volume[1][1] + 1 + dimension[1]):
-              
+        for z in range(volume[0][2], volume[1][2] + 1 + dimension[2]):           
+           for y in range(volume[0][1], volume[1][1] + 1 + dimension[1]):              
               for x in range(volume[0][0], volume[1][0] + 1 + dimension[0]):
-                    
-                    obj = self.getObjectAtCoord( ( x, y, z) )
-                    
-                    if obj:
-                        detected[ (x, y, z) ] = obj
 
-        if len( detected ) == 0:
+                    obj_id = self.map.get ( (x, y, z) )
+
+                    if obj_id:
+                        detected[ (x, y, z) ] = self.getObjectWithId( obj_id )
+
+        if not detected or len( detected ) == 0:
             return False
-
 
         return detected
 
 
+    def checkMap( self, index ):
+        """Return id object if map(index) contains an id, otherwise False"""
+        id_obj = self.map.get( index )
+
+        if id_obj:
+            return id_obj
+
+        return False
+
+
+    def getObjectWithId( self, id ):
+        """Return (position, object) with object.id = id, otherwise False"""
+        try:
+            obj_searched = {  obj_.getId(): obj_ for obj_ in self.pos.values() }.get( obj )
+            index = obj_searched.getPosition()
+            return (index, obj_searched)
+
+        except ValueError:
+            return False
+        
 
 
     def normalizeVolume(self, limits):  

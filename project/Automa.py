@@ -10,7 +10,7 @@ from LoggerClass import Logger
 
 # LOGGING --
  
-logger = Logger(module_name = __name__, set_consolle_log_level = logging.WARNING, set_file_log_level = logging.DEBUG, class_name = 'Automa')
+logger = Logger(module_name = __name__, set_consolle_log_level = 30, set_file_log_level = 10, class_name = 'Automa')
 
 
 class Automa(Object):
@@ -122,7 +122,7 @@ class Automa(Object):
                 
         # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
 
-        if not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not ai or not isinstance(ai, AI)) or not sensors or not isinstance(sensors[0], Sensor) or not Sensor.checkSensorList(sensors[0], sensors) or not actuators or not isinstance(actuators[0], Actuator) or not Actuator.checkActuatorList(actuators[0], actuators):
+        if not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not ai or not isinstance(ai, AI) or not sensors or not isinstance(sensors[0], Sensor) or not Sensor.checkSensorList(sensors[0], sensors) or not actuators or not isinstance(actuators[0], Actuator) or not Actuator.checkActuatorList(actuators[0], actuators):
             return false
 
         return True

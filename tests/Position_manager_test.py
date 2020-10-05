@@ -70,15 +70,17 @@ def TestClassPosition_manager():
     obj = Object('Citrullus')
     coord = (2, 2, 2)
     pm.insertObject( coord, obj )
+    res = pm.searchObject( obj )
 
-    if coord != pm.searchObject( obj ):
+    if not res[0] or coord != res[0]:
         result = False
         print("Position_manager.searchObject( obj ) Failed! Object not found")
 
     obj = Object('_test')
     coord = (1, 1, 1)
+    res = pm.searchObject( obj )
 
-    if coord == pm.searchObject( obj ):
+    if not res or not res[0] or coord == res[0]:
         result = False
         print("Position_manager.searchObject( obj ) Failed! Not inserted object found")
 
