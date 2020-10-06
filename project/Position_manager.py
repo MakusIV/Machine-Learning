@@ -78,7 +78,7 @@ class Position_manager:
                     logger.logger.debug( "mapped obj: {0} at position: {1} ".format( obj.getId(), ( x, y, z ) ) )
 
 
-        obj._coord.setPosition( index )        
+        obj._coord.setPosition( index ) # aggiorna la coord dell'obj con la posizione d'inserimento      
         self.pos[ index ] = obj
 
         logger.logger.debug( "inserted obj: {0} at position: {1} ".format( obj.getName(), index ) )
@@ -93,12 +93,14 @@ class Position_manager:
         if not obj:
             return False
         
-        index = self.searchObject(obj)
+        obj_data = self.searchObject(obj)
 
-        if not index:
+        if not obj_data or obj_data[1] != obj:
             return False
+        
+        index = obj_data[0]
 
-        self.pos.pop( index ) # rimuove l'obj dal position dict
+        self.pos.pop( obj_data[0] ) # rimuove l'obj dal position dict
         dimension = obj.getDimension()
 
         # rimuove gli id dell'obj dalla map dict
@@ -107,12 +109,13 @@ class Position_manager:
                 for x in range( index[ 0 ], index[ 0 ] + dimension[ 0 ] ):
                     cell = self.map.get( ( x, y, z ) )
                     self.map.pop( (x, y, z) )
+                    
 
-                    if not cell or cell.value != obj.getId():
+                    if not cell or cell != obj.getId():
                         logger.logger.error( "exist obj: {0} not present at map position: {1} ".format( obj.getId(), index ) )
                         
                     
-
+        logger.logger.debug( "removed obj: {0} @: {1}".format( obj.getId(), index ) )
         return index
 
 
@@ -131,7 +134,7 @@ class Position_manager:
         obj_data = self.searchObject( obj_id )
 
         if obj_data and obj_data[0] and obj_data[1]:
-            self.pos[ obj_data[0] ] = None
+            self.pos.pop( obj_data[0] ) # rimuove dal pos dict l'obj
             dimension = obj_data[ 1 ].getDimension()
 
             # rimuove gli id dell'obj dalla map dict
@@ -140,35 +143,56 @@ class Position_manager:
                     for x in range( index[ 0 ], index[ 0 ] + dimension[ 0 ] ):
                         cell = self.map.get( ( x, y, z ) )
                         
-                        if not cell or cell.value != obj_data[ 1 ].getId():
+                        if not cell or cell != obj_data[ 1 ].getId():
                             logger.logger.error( "exist obj: {0} not present at map position: {1} ".format( obj_id, (x, y, z) ) )
                             
                         self.map.pop( (x, y, z) )
 
-            
-        return index
+        logger.logger.debug( "removed obj: {0} @: {1}".format( obj_data[1].getId(), index ) )
+        return obj_data[1]
 
 
         
 
 
     def changeObject(self, index, new_obj):
-        """ Insert new_obj in index pos dictionary and remove an old object if presents. Return old object if exists. 
-            If index or obj is None or index is out of limits return False"""
+        """ Insert new_obj in index position of pos dictionary and remove a previous object. Return previous object. 
+            If index or obj is None or index is out of limits or a previous object not existens return False"""
         
         if not index or not new_obj or not self.inLimits(index, self.limits):
             return False
 
-        old_obj = self.getObjectAtCoord( index )
+        previous_obj = self.getObjectAtCoord( index )
 
-        if old_obj:
-            self.removeObject( old_obj )
-
-        self.insertObject( index, new_obj)
-
-        return old_obj 
-
+        if previous_obj:
+            self.removeObject( previous_obj )
+            self.insertObject( index, new_obj)
+            logger.logger.debug( "Changed obj: {0} with obj: {1} @: {2}".format( new_obj.getId(), previous_obj.getId(), index ) )
+            return previous_obj 
         
+        logger.logger.debug( "Not changed obj: {0} @: {1}, because not exists a previous object in that position".format( new_obj.getId(), index ) )
+        return False
+
+
+    def moveObject(self, index, obj):
+        """ Move obj in index free position in pos dictionary and return True. 
+            If index or obj is None or index is out of limits or a previous object existens return False"""
+        
+        if not index or not obj or not self.inLimits(index, self.limits):
+            return False
+
+        previous_obj = self.getObjectAtCoord( index )
+
+        if not previous_obj:
+            previous_pos = obj.getPosition()
+            self.removeObject(obj)            
+            self.insertObject( index, obj)
+            logger.logger.debug( "Moved obj: {0} from: {1} to: {2}".format( obj.getId(), previous_pos, index ) )
+            return True 
+        
+        logger.logger.debug( "Not moved obj: {0} from: {1} to: {2}, because exists an object in that position".format( obj.getId(), previous_pos, index ) )
+        return False
+    
     
     def getObjectAtCoord( self, index ):
         """ Return obj at index. Return false if obj not presents @ index"""
@@ -211,8 +235,6 @@ class Position_manager:
         """ Search obj in pos dictionary and return (obj position, obj). If obj not exists return False
             param obj = obj, obj.id"""
 
-        obj_searched = None
-
         if obj and isinstance(obj, Object):
             return self.getIndexWithObject( obj )            
             
@@ -229,7 +251,7 @@ class Position_manager:
             return False
         
         try:
-            index = list( self.pos.keys() )[ list( self.pos.values() ).index( obj ) ]
+            index = tuple( self.pos.keys() )[ list( self.pos.values() ).index( obj ) ]
             return ( index, obj )
         
         except ValueError:
@@ -327,17 +349,20 @@ class Position_manager:
         # riscontrare la presenza di un oggetto in un volume dove una parte di esso è invece presente.
         
         detected = {}
+        exclude_position = dict()
 
-        self.normalizeVolume( volume )
+        self.isNormalizedVolume( volume )
 
         for z in range(volume[0][2], volume[1][2] + 1 + dimension[2]):           
            for y in range(volume[0][1], volume[1][1] + 1 + dimension[1]):              
               for x in range(volume[0][0], volume[1][0] + 1 + dimension[0]):
 
-                    obj_id = self.map.get ( (x, y, z) )
+                    if not exclude_position[ ( x, y, z ) ]:
+                        obj_id = self.map.get ( (x, y, z) )
 
-                    if obj_id:
-                        detected[ (x, y, z) ] = self.getObjectWithId( obj_id )
+                        if obj_id:
+                            detected[ (x, y, z) ] = self.getObjectWithId( obj_id )
+                            exclude_position = { **exclude_position, **detected[ (x, y, z) ][1].getVolumePosition() }
 
         if not detected or len( detected ) == 0:
             return False
@@ -358,7 +383,7 @@ class Position_manager:
     def getObjectWithId( self, id ):
         """Return (position, object) with object.id = id, otherwise False"""
         try:
-            obj_searched = {  obj_.getId(): obj_ for obj_ in self.pos.values() }.get( obj )
+            obj_searched = {  obj_.getId(): obj_ for obj_ in self.pos.values() }.get( id )
             index = obj_searched.getPosition()
             return (index, obj_searched)
 
@@ -367,7 +392,7 @@ class Position_manager:
         
 
 
-    def normalizeVolume(self, limits):  
+    def isNormalizedVolume(self, limits):  
 
         result = False      
 

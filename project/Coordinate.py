@@ -267,7 +267,7 @@ class Coordinate:
     
     def getPosition(self):
         """Return (x, y, z) list"""
-        return [self.x, self.y, self.z]
+        return (self.x, self.y, self.z)
 
     def setPosition(self, pos):
         """Set x,y,z"""

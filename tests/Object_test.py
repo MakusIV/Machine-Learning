@@ -15,7 +15,7 @@ def testClassObject():
 
     coord = Coordinate (3, 4, 7)
 
-    obj = Object( coord, 'Tullio', [10, 8, 6]  )
+    obj = Object( coord=coord, name='Tullio', dimension=[10, 8, 6]  )
 
     if obj._name!='Tullio' or obj._dimension != [10, 8, 6] or obj._coord != coord:
         print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension, obj._coord)
@@ -23,16 +23,17 @@ def testClassObject():
 
     obj = Object()
 
-    if not obj._name or not obj._id or not obj._dimension or not obj._coord or not isinstance(obj._name,str) or not isinstance(obj._id,str) or not isinstance(obj._dimension,list) or not isinstance(obj._coord,Coordinate):
-        print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension, obj._coord)
+    if not obj._name or not obj._id or not obj._dimension or not isinstance(obj._name,str) or not isinstance(obj._id,str) or not ( isinstance(obj._dimension,list) or isinstance(obj._dimension, tuple) ):
+        print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension)
         result = False 
 
 
-    obj = Object( coord = Coordinate(2,2,2), name = 'Gregory', dimension = [5,5,5] ) 
+    obj = Object( coord = Coordinate(2,2,2), name = 'Gregory', dimension = [5,5,5] )     
 
-    if obj._name != 'Gregory' or obj._dimension != [5,5,5] or obj.getPosition() != [2,2,2]:
+    if obj._name != 'Gregory' or obj._dimension != [5,5,5] or obj.getPosition() != (2,2,2):
         print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension, obj.getPosition())    
         result = False 
+
 
     obj.setName('Ollio')
 
@@ -59,7 +60,7 @@ def testClassObject():
 
     obj.setCoord( Coordinate(2,2,2) )
 
-    if obj.getPosition() != [2, 2, 2]:
+    if obj.getPosition() != (2, 2, 2):
         print('Object.setCoord() Failed!! ', obj.getPosition())
         result = False 
 
@@ -174,13 +175,34 @@ def testClassObject():
     objects = [Object(), Object(), Object(), Object()]
 
     if not Object.checkObjectList(obj, objects):
-        print('Sensor.checkObjectList(sensors) Failed!! ', objects[0]._id, objects[0]._state, objects[0]._state._health)
+        print('Object.checkObjectList(sensors) Failed!! ', objects[0]._id, objects[0]._state, objects[0]._state._health)
         result = False 
 
     objects = [Object(), Object(), list(), Object()]
 
     if Object.checkObjectList(obj, objects):
-        print('Sensor.checkObjectList(sensors) Failed!! ', objects[0]._id, objects[0]._state, objects[0]._state._health)
+        print('Object.checkObjectList(sensors) Failed!! ', objects[0]._id, objects[0]._state, objects[0]._state._health)
+        result = False 
+
+    x = 24
+    y = 27
+    z = 19
+    dimension = [2,2,2]
+    obj = Object( coord = Coordinate(x,y,z), name = 'Marcantony', dimension = dimension ) 
+    volume_position = obj.getVolumePosition() 
+
+    if not ( volume_position[ (x,y,z) ] and volume_position[ (x+dimension[0]-1,y+dimension[1]-1,z+dimension[2]-1) ] and volume_position[ (x,y+dimension[1]-1,z) ] and volume_position[ (x+dimension[0]-1,y,z+dimension[2]-1) ] ):
+        print('Object.getVolumePosition() Failed!! ', volume_position[ (x,y,z) ] , volume_position[ (x+dimension[0]-1,y+dimension[1]-1,z+dimension[2]-1) ] , volume_position[ (x,y+dimension[1]-1,z) ] , volume_position[ (x+dimension[0]-1,y,z+dimension[2]-1) ])
+        result = False 
+
+    try:
+        not ( volume_position[ (x-1,y,z) ] and volume_position[ (x,y,z+dimension[2]) ] and volume_position[ (x,y+dimension[1],z) ] and volume_position[ (x+dimension[0],y,z+dimension[2]) ] )
+
+    except Exception:
+        pass
+
+    else:
+        print('Object.getVolumePosition() Failed!! ', volume_position[ (x-1,y,z) ], volume_position[ (x,y,z+dimension[2]) ], volume_position[ (x,y+dimension[1],z) ], volume_position[ (x+dimension[0],y,z+dimension[2])] )
         result = False 
 
 

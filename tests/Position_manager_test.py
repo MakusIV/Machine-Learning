@@ -40,7 +40,7 @@ def TestClassPosition_manager():
     
     
     pos = (10, 10, 10)
-    obj = Object('Citrullus')
+    obj = Object(name = 'OBJECT_1', dimension = (1,2,2), coord = Coordinate(2, 2, 2) )
 
     if True != pm.insertObject( pos, obj ):
         result = False
@@ -65,28 +65,31 @@ def TestClassPosition_manager():
     
     if True == pm.insertObject( pos, obj ):
         result = False
-        print("Position_manager.insertObject( coord, obj ) Failed! Limits coord not detected", coord.to_string(), pm.getLimits(), pm.pos[coord].getName())
+        print("Position_manager.insertObject( coord, obj ) Failed! Limits coord not detected", pm.getLimits(), pm.pos[coord].getName())
 
-    obj = Object('Citrullus')
-    coord = (2, 2, 2)
-    pm.insertObject( coord, obj )
+
+    pm.setLimits([ [-100, -100, -100], [100, 100, 100] ])
+
+    obj = Object(name = 'OBJECT_2', dimension = (2,1,2) )
+    position = (15, 15, 7)
+    pm.insertObject( position, obj )
     res = pm.searchObject( obj )
 
-    if not res[0] or coord != res[0]:
+    if not res or not res[0] or position != res[0]:
         result = False
         print("Position_manager.searchObject( obj ) Failed! Object not found")
 
-    obj = Object('_test')
-    coord = (1, 1, 1)
+    position = (18, 17, 19)
+    obj = Object(name = 'OBJECT_3', dimension = (1,1,1) )
     res = pm.searchObject( obj )
 
-    if not res or not res[0] or coord == res[0]:
+    if res and res[0]:
         result = False
         print("Position_manager.searchObject( obj ) Failed! Not inserted object found")
 
-    pm.insertObject( coord, obj )    
+    pm.insertObject( position, obj )    
 
-    if coord != pm.removeObject( obj ):
+    if position != pm.removeObject( obj ):
         result = False
         print("Position_manager.removeObject( obj ) Failed! Object not removed")
 
@@ -94,19 +97,19 @@ def TestClassPosition_manager():
         result = False
         print("Position_manager.removeObject( obj ) Failed! Unexistent object removed")
 
-    pm.insertObject( coord, obj )
+    pm.insertObject( position, obj )
 
-    if obj != pm.removeObjectAtCoord( coord ):
+    if obj != pm.removeObjectAtCoord( position ):
         result = False
         print("Position_manager.removeObjectAtCoord( obj ) Failed! Object not removed")
 
-    if pm.removeObjectAtCoord( coord ):
+    if pm.removeObjectAtCoord( position ):
         result = False
         print("Position_manager.removeObjectAtCoord( obj ) Failed! Unexistent object removed")
     
 
-    old_obj = Object('Old')
-    new_obj = Object('New')
+    old_obj = Object(name = 'OBJECT_4', dimension = (1,1,1) )
+    new_obj = Object(name = 'OBJECT_5', dimension = (3,2,1) )
     pos = (4, 4, 4)
     pos1 = pos
     pm.insertObject( pos, old_obj )
@@ -137,16 +140,16 @@ def TestClassPosition_manager():
         print("Position_manager.pm.getObjectAtCoord( pos ) Failed!")
 
 
-    limits = [ [-50, -50, -50], [50, 50, 50] ]
+    limits = [ [-100, -100, -100], [100, 100, 100] ]
 
-    if not pm.normalizeVolume(limits) and limits != pm.getLimits():
+    if not pm.isNormalizedVolume(limits) and limits != pm.getLimits():
         result = False
-        print("Position_manager.pm.normalizeVolume(limits) Failed!", limits, pm.getLimits(), detected.count())
+        print("Position_manager.pm.isNormalizedVolume(limits) Failed!", limits, pm.getLimits(), detected.count())
 
 
-    detected = pm._getObjectInVolumeFromVolumeIteration( [ [-50, -50, -50], [50, 50, 50] ], [0, 0, 0] )
+    detected = pm._getObjectInVolumeFromVolumeIteration( limits, [0, 0, 0] )
 
-    if not detected or len( detected )!= 2:
+    if not detected or len( detected )!= len( pm.listObject ):
         result = False
         print("Position_manager.pm._getObjectInVolumeFromVolumeIteration( volume ) Failed!", pm.getLimits() )
 

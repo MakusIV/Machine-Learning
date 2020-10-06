@@ -270,7 +270,7 @@ def testClassCoordinate():
 
     coord1.setPosition( [1,1,1] )
     
-    if [1,1,1] != coord1.getPosition():
+    if (1,1,1) != coord1.getPosition():
         result = False
         print("testClassCoordinate().setPosition() Failed!", coord1.getPosition()) 
 

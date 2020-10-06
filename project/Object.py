@@ -10,19 +10,15 @@ logger = Logger(module_name = __name__, class_name = 'Object')
 
 class Object:
     
-    def __init__(self, coord = None, name = None, dimension = None,  resilience = None, state = None ):
+    def __init__(self, dimension = (1, 1, 1), resilience = 100, coord = None, name = None, state = None ):
 
 
             self._name = None
             self._id = None
-            self._dimension = None
-            self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
-            
-            self._coord = None
+            self._dimension = dimension
+            self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)            
+            self._coord = coord
             self._state = None
-            
-            self.setDimension(dimension)
-            self.setCoord(coord)
             self.setState(state)
 
             if not name:
@@ -32,6 +28,8 @@ class Object:
                 self._name = name
                 self._id = General.setId(name + '_ID', None)
                 
+            if not coord:
+                self._coord = Coordinate(0, 0, 0)
 
     def evalutateDamage(self, energy, power):
         """Evalutate the damage on sensor and update state"""
@@ -78,12 +76,14 @@ class Object:
         return self._state
 
 
-    def setId(self, id = None):
+    def setId(self, id):
 
         if not id:
             return False
+
         elif isinstance(id, str):
             self._id = id       
+        
         else:
             self._id = str( id )       
             
@@ -104,7 +104,7 @@ class Object:
     def setDimension(self, dimension):
             
         if not General.checkDimension(dimension): # not dimension or not isinstance(dimension, list) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int) :
-            self._dimension = [random.randint(1, 3), random.randint(1, 3), random.randint(1, 3) ] # xdim, ydim, zdim
+            return False
         else:
             self._dimension = dimension
 
@@ -114,7 +114,7 @@ class Object:
     def setCoord(self, coord):
             
         if not coord or not isinstance(coord, Coordinate):
-            self._coord = Coordinate( random.randint(1, 99), random.randint(1, 99), random.randint(1, 99) ) # senza limiti
+            return False
         else:
             self._coord = coord
 
@@ -202,3 +202,17 @@ class Object:
             return False
             
         return True
+
+    def getVolumePosition(self):
+        """Return the position of the object's volume"""
+        
+        position = self.getPosition()
+        dimension = self.getDimension()
+        volume_position = dict()
+
+        for z in range( position[ 2 ], position[ 2 ] + dimension[ 2 ] ):           
+           for y in range( position[ 1 ], position[ 1 ] + dimension[ 1 ] ):              
+              for x in range( position[ 0 ], position[ 0 ] + dimension[ 0 ] ):
+                  volume_position[ ( x, y, z ) ] = True
+
+        return volume_position
