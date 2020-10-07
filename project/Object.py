@@ -170,6 +170,9 @@ class Object:
     def getPosition(self):
         return self._coord.getPosition()
 
+    def setPosition(self, position):
+        self._coord.setPosition( position )
+
 
     def getDimension(self):
         return self._dimension
@@ -194,16 +197,16 @@ class Object:
         return False
 
      # vedi il libro
-    def checkParam(name, dimension, resilience, state, coord ):
+    def checkParam(self, name, dimension, resilience, state, coord ):
                 
         # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
 
-        if not name or not isinstance(name, str) or not state or not isinstance(state, State) or not coord or not isinstance(coord, Coordinate) or not resilience or not isinstance(resilience, int)  or not( resilience <= 100 and resilience >= 0) or not General.checkDimension(dimension):
+        if not name or not isinstance( name, str ) or not state or not isinstance( state, State ) or not coord or not isinstance( coord, Coordinate ) or not resilience or not isinstance( resilience, int )  or not( resilience <= 100 and resilience >= 0 ) or not General.checkDimension( dimension ):
             return False
             
         return True
 
-    def getVolumePosition(self):
+    def getVolumePosition( self ):
         """Return the position of the object's volume"""
         
         position = self.getPosition()
@@ -216,3 +219,11 @@ class Object:
                   volume_position[ ( x, y, z ) ] = True
 
         return volume_position
+
+    def getVolume( self ):
+        """Return [ [ position ], [ position + dimensione ] ] """
+        
+        position = self.getPosition() 
+        dimension = self.getDimension()
+
+        return [ position, [ position[ 0 ] + dimension[ 0 ], position[ 1 ] + dimension[ 1 ], position[ 2 ] + dimension[ 2 ] ] ] 

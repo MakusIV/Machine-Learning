@@ -56,6 +56,8 @@ def TestClassPosition_manager():
         result = False
         print("Position_manager.insertObject( coord, obj ) Failed! None coord not detected", pos)
 
+
+
     if True == pm.insertObject( pos, None ):
         result = False
         print("Position_manager.insertObject( coord, obj ) Failed! None obj nt detected", pos)
@@ -68,19 +70,20 @@ def TestClassPosition_manager():
         print("Position_manager.insertObject( coord, obj ) Failed! Limits coord not detected", pm.getLimits(), pm.pos[coord].getName())
 
 
-    pm.setLimits([ [-100, -100, -100], [100, 100, 100] ])
+    pm.setLimits([ [0, 0, 0], [60, 60, 60] ])
 
     obj = Object(name = 'OBJECT_2', dimension = (2,1,2) )
     position = (15, 15, 7)
     pm.insertObject( position, obj )
     res = pm.searchObject( obj )
 
+
     if not res or not res[0] or position != res[0]:
         result = False
         print("Position_manager.searchObject( obj ) Failed! Object not found")
 
     position = (18, 17, 19)
-    obj = Object(name = 'OBJECT_3', dimension = (1,1,1) )
+    obj = Object(name = 'OBJECT_3', dimension = (3,4,2) )
     res = pm.searchObject( obj )
 
     if res and res[0]:
@@ -93,6 +96,29 @@ def TestClassPosition_manager():
         result = False
         print("Position_manager.removeObject( obj ) Failed! Object not removed")
 
+    position = (16, 15, 7)
+    
+    if pm.insertObject( position, obj ):
+        result = False
+        print("Position_manager.removeObject( obj ) Failed! Object inserted in busy position")
+
+
+    position = (13, 12, 6)
+
+    if pm.insertObject( position, obj ):
+        result = False
+        print("Position_manager.removeObject( obj ) Failed! Object inserted in busy position")
+
+
+    position = (17, 16, 9)
+
+    pm.insertObject( position, obj )
+
+    if position != pm.removeObject( obj ):
+        result = False
+        print("Position_manager.removeObject( obj ) Failed! Object not removed")
+
+
     if pm.removeObject( obj ):
         result = False
         print("Position_manager.removeObject( obj ) Failed! Unexistent object removed")
@@ -102,6 +128,7 @@ def TestClassPosition_manager():
     if obj != pm.removeObjectAtCoord( position ):
         result = False
         print("Position_manager.removeObjectAtCoord( obj ) Failed! Object not removed")
+
 
     if pm.removeObjectAtCoord( position ):
         result = False
@@ -139,25 +166,25 @@ def TestClassPosition_manager():
         result = False
         print("Position_manager.pm.getObjectAtCoord( pos ) Failed!")
 
+    limits = [ [0, 0, 0], [60, 60, 60] ]
 
-    limits = [ [-100, -100, -100], [100, 100, 100] ]
 
-    if not pm.isNormalizedVolume(limits) and limits != pm.getLimits():
+    if not pm.volumeNormalization(limits) and limits != pm.getLimits():
         result = False
-        print("Position_manager.pm.isNormalizedVolume(limits) Failed!", limits, pm.getLimits(), detected.count())
+        print("Position_manager.pm.isNormalizedVolume(limits) Failed!", limits, pm.getLimits())
 
 
-    detected = pm._getObjectInVolumeFromVolumeIteration( limits, [0, 0, 0] )
+    detected = pm._getObjectInVolumeFromVolumeIteration( limits )
 
-    if not detected or len( detected )!= len( pm.listObject ):
+    if not detected or len( detected )!= len( pm.listObject() ):
         result = False
         print("Position_manager.pm._getObjectInVolumeFromVolumeIteration( volume ) Failed!", pm.getLimits() )
 
 
     
-    pm.setLimits( [ [-50, -50, -50], [50, 50, 50] ] )
+    pm.setLimits( [ [-5, -5, -5], [50, 50, 50] ] )
 
-    detected = pm._getObjectInVolumeFromVolumeIteration( pm.getLimits(), [5, 5, 5] )
+    detected = pm._getObjectInVolumeFromVolumeIteration( pm.getLimits() )
 
     if not detected or len( detected )!= 3:
         result = False
@@ -182,31 +209,31 @@ def TestClassPosition_manager():
 
     detected = pm._getObjectInVolumeFromObjectList( [ [0, 0, 0], [4, 4, 4] ] )
 
-    if not detected or len( detected )!= 2:
+    if not detected or len( detected )!= 1:
         result = False
         print("Position_manager.pm._getObjectInVolumeFromObjectList( volume ) Failed!", detected )
 
 
     
     for i in range(30):
-        pm.insertObject( (20 + i, 20 + i, 20 + i), Object('New_'+str(i)) )
+        pm.insertObject( position = (20 + i, 20 + i, 20 + i), obj = Object(name = 'New_'+str(i)) )
     
 
     detected = pm.getObjectInVolume( [ [0, 0, 0], [100, 100, 100] ] )
 
     if not detected or len( detected )!= 33:
         result = False
-        print("Position_manager.pm.getObjectInVolume( volume ) Failed!", detected )
+        print("Position_manager.pm.getObjectInVolume( volume = [ [0, 0, 0], [100, 100, 100] ] ) Failed!", detected )
 
 
-    detected = pm.getObjectInVolume( [ [2, 2, 2], [2, 2, 2] ] )
+    detected = pm.getObjectInVolume( [ [2, 2, 2], [4, 4, 4] ] )
 
     if not detected or len( detected )!= 1:
         result = False
-        print("Position_manager.pm.getObjectInVolume( volume ) Failed!", detected )
+        print("Position_manager.pm.getObjectInVolume( volume = [ [2, 2, 2], [2, 2, 2] ] ) Failed!", detected )
 
 
-    pm.getObjectAtCoord( (10, 10, 10) ).setDimension( [ 5, 5, 5] )
+    pm.changeObjectDimension( pm.getObjectAtCoord( (10, 10, 10) ), [ 5, 5, 5] )
 
     detected = pm._getObjectInVolumeFromObjectList( [ [13, 13, 13], [14, 14, 14] ] )
 
@@ -232,25 +259,25 @@ def TestClassPosition_manager():
     
 
 
-    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [3], [0, 0, 0] )
+    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [4], [0, 0, 0] )
 
     if not detected or len( detected )!= 1:
         result = False
-        print("Position_manager.pm.getObjectInRange( coord, range ) Failed!" )
-
-
-    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [4], [0, 0, 0] )
-
-    if not detected or len( detected )!= 2:
-        result = False
-        print("Position_manager.pm.getObjectInRange( coord, range ) Failed!" )
+        print("Position_manager.pm.getObjectInRange( coord, range = 4 ) Failed!" )
 
 
     detected = pm.getObjectInRange( Coordinate(0, 0, 0), [10], [0, 0, 0] )
 
+    if not detected or len( detected )!= 2:
+        result = False
+        print("Position_manager.pm.getObjectInRange( coord, range = 5 ) Failed!" )
+
+
+    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [15], [0, 0, 0] )
+
     if not detected or len( detected )!= 3:
         result = False
-        print("Position_manager.pm.getObjectInRange( coord, range ) Failed!" )
+        print("Position_manager.pm.getObjectInRange( coord, range = 15 ) Failed!" )
 
     
     
