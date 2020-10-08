@@ -102,11 +102,17 @@ class Object:
 
     
     def setDimension(self, dimension):
-            
-        if not General.checkDimension(dimension): # not dimension or not isinstance(dimension, list) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int) :
+
+        if not dimension or not isinstance(dimension, tuple) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int):
             return False
         else:
             self._dimension = dimension
+
+     
+        #if not General.checkDimension(dimension): # not dimension or not isinstance(dimension, list) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int) :
+         #   return False
+        #else:
+         #   self._dimension = dimension
 
         return True
 
@@ -220,10 +226,13 @@ class Object:
 
         return volume_position
 
-    def getVolume( self ):
+    def getVolume( self, position = None, dimension = None ):
         """Return [ [ position ], [ position + dimensione ] ] """
         
-        position = self.getPosition() 
-        dimension = self.getDimension()
+        if position == None:
+            position = self.getPosition() 
+        
+        if dimension == None:
+            dimension = self.getDimension()
 
         return [ position, [ position[ 0 ] + dimension[ 0 ], position[ 1 ] + dimension[ 1 ], position[ 2 ] + dimension[ 2 ] ] ] 

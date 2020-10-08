@@ -233,7 +233,18 @@ def TestClassPosition_manager():
         print("Position_manager.pm.getObjectInVolume( volume = [ [2, 2, 2], [2, 2, 2] ] ) Failed!", detected )
 
 
-    pm.changeObjectDimension( pm.getObjectAtCoord( (10, 10, 10) ), [ 5, 5, 5] )
+    pm.changeObjectDimension( pm.getObjectAtCoord( (10, 10, 10) ), ( 5, 5, 5 ) )
+
+    if pm.getObjectAtCoord( (10, 10, 10) ).getDimension() != (5, 5, 5):
+        result = False
+        print("Position_manager.pm.changeObjectDimension Failed!", pm.getObjectAtCoord( (10, 10, 10) ).getDimension(), (5, 5, 5)  )
+
+    pm.changeObjectDimension( pm.getObjectAtCoord( (10, 10, 10) ), ( 5, 41, 5 ) )
+
+    if pm.getObjectAtCoord( (10, 10, 10) ).getDimension() != (5, 5, 5):
+        result = False
+        print("Position_manager.pm.changeObjectDimension Failed!", pm.getObjectAtCoord( (10, 10, 10) ).getDimension(), (5, 5, 5)  )
+
 
     detected = pm._getObjectInVolumeFromObjectList( [ [13, 13, 13], [14, 14, 14] ] )
 
