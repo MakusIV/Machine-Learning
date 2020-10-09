@@ -14,7 +14,7 @@ class Sensor:
     # Il sensore non è una specializzazione di Object
 
     # Unit test: ok
-    def __init__(self, range_max, power = 100, resilience = 100, delta_t = 0.01, accuracy = None, name = None, state = None  ):
+    def __init__(self, position, range_max, power = 100, resilience = 100, delta_t = 0.01, accuracy = None, name = None, state = None  ):
 
         if not self.checkParam( range_max, accuracy,  power, resilience, delta_t ):
             raise Exception("Invalid parameters! Sensor not istantiate.")
@@ -22,6 +22,7 @@ class Sensor:
         self._name = name
         self._id = General.setId('Sensor_ID', None) # Id generator automaticamente 
         self._state = state
+        self._position = position
         self._power = power# nota l'energia è gestita nello stato in quanto è variabile
         self._range = range_max# è rappresentato da una distanza (int)
         self._sensibility = Sensibility( max_range = (1000, 1000, 1000), accuracy = accuracy )
@@ -50,7 +51,7 @@ class Sensor:
         return True
 
     # Unit test: 0k
-    def evalutateDamage(self, energy, power):
+    def evalutateSelfDamage(self, energy, power):
         """Evalutate the damage on sensor and update state"""
         if power > self._resilience:
             damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
@@ -78,7 +79,7 @@ class Sensor:
 
         return True
 
-    def perception(self, posMng, position, request_perception = None):
+    def perception(self, posMng, request_perception = None):
         # Attiva il sensore in base alle info contenute in request_perception, se request_perception è None utilizza i parametri di default
         # Restituisce le informazioni sulle azioni effettuate quali stato, posizione degli attuatori
 
@@ -89,28 +90,37 @@ class Sensor:
         #interessata con proprietà temperaatura. Quindi durante la perception, individutato, l'oggetto
         # obj.isGas() ---> automa.MaxTemp >= obj._temperature
         
-        scanning_volumes = self._sensibility.get_probability_of_perception(position) # scanning_volume = (volume, probability)
+        scanning_volumes = self._sensibility.get_probability_of_perception( self._position ) # scanning_volume = (volume, probability)
 
         detected_objs = None
 
         for scan_vol in scanning_volumes:            
             logger.logger.debug("scanning volume {0} to detect object".format( scanning_volumes.index( scan_vol[0] ) ))
-            prob = random.randint(1,100)/100
-            volume_prob = scan_vol[1] * self._test.getEfficiency()
-            logger.logger.debug("prob:{0}, volume_prob:{1}".format(prob, volume_prob))
+            prob = random.randint( 1, 100 ) / 100
+            volume_prob = scan_vol[ 1 ] * self._state.getEfficiency()
+            logger.logger.debug( "prob:{0}, volume_prob:{1}".format( prob, volume_prob ) )
 
             if prob < volume_prob:
                 detected_objs = posMng.getObjectInVolume( scan_vol[ 0 ] )
                 logger.logger.debug("detected {0} objects and inserted in detected object list".format( len(detected_objs)))
 
-        energy_consumption = self._power * self._delta_t # l'energia è presente nello stato del sensore, tuttavia è l'automa che fornisce energia al sensore quindi ha senso restituire all'automa la info sul consumo energetico relativo alla perception
+        energy_sensor = self._state.updateEnergy( self._power, self._delta_t )
+        
+        # l'energia è presente nello stato del sensore, tuttavia è l'automa che fornisce energia al sensore quindi ha senso 
+        # restituire all'automa la info sul consumo energetico relativo alla perception
+        # In questa prima versione decremento solo l'energia del sensore, quando questa diventa 0 l'automa deve provveedere
+        # a ricaricare l'energia del sensore tramite la propria energia (con un fattore di  moltiplicazione: 1 energia automa = x energia sensore)
+
         #enviroment perception:  temp, emc, gas ecc
 
-        percept_info = (energy_consumption, detected_objs)
+        percept_info = (energy_sensor, detected_objs)
 
         return percept_info
 
 
+
+
+    # test: ok
     def checkSensorClass(self, sensor):
         """Return True if sensors is a Sensor object otherwise False"""
         if not sensor or not isinstance(sensor, Sensor):

@@ -6,28 +6,29 @@ sys.path.insert(1, 'project')
 from State import State
 from Sensor import Sensor
 from Sensibility import Sensibility
-
+from Position_manager import Position_manager
+from Object import Object
 
 def testClassSensor():
 
     result = True    
-    sensor = Sensor( range_max = 10 )
+    sensor = Sensor( position = (0, 0, 0), range_max = 10 )
 
 
-    if not sensor._sensibility or not isinstance(sensor._sensibility, Sensibility) or sensor._power != 100 or sensor._resilience != 100 or not sensor._name or not sensor._state:
+    if sensor._position != (0, 0, 0) or not sensor._sensibility or not isinstance(sensor._sensibility, Sensibility) or sensor._power != 100 or sensor._resilience != 100 or not sensor._name or not sensor._state:
         print('Sensor Failed!! ', sensor._sensibility, sensor._power, sensor._resilience)
         result = False 
     
-    sensor = Sensor(range_max = 100, accuracy=20, power=20, resilience=20, name='tullio', state = State())
+    sensor = Sensor( position = (0, 0, 0), range_max = 100, accuracy=20, power=20, resilience=20, name='tullio', state = State() )
 
-    if sensor._sensibility != 20 or sensor._power != 20 or sensor._resilience != 20 or sensor._name != 'tullio' or not sensor._state:
+    if sensor._position != (0, 0, 0) or not sensor._sensibility or sensor._power != 20 or sensor._resilience != 20 or sensor._name != 'tullio' or not sensor._state:
         print('Sensor Failed!! ', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state)
         result = False 
     
 
 
     try:
-        sensor = Sensor(sensibility=-1, power=-1, resilience=-1)
+        sensor = Sensor( position = (0, 0, 0), sensibility=-1, power=-1, resilience=-1)
         
     except Exception:
         pass
@@ -38,7 +39,7 @@ def testClassSensor():
 
 
     try:
-        sensor = Sensor(sensibility=10, power=1, resilience=101)
+        sensor = Sensor( position = (0, 0, 0), sensibility=10, power=1, resilience=101)
         
     except Exception:
         pass
@@ -49,32 +50,55 @@ def testClassSensor():
 
 
     
-    # Sensor.evalutateDamage( energy, power )
-    sensor = Sensor(range_max=50, power=50, resilience=50)
-    sensor.evalutateDamage(energy = 100, power = 60)
+    # test Sensor.evalutateDamage( energy, power )
+    sensor = Sensor( position = (0, 0, 0), range_max=50, power=50, resilience=50)
+    sensor.evalutateSelfDamage(energy = 100, power = 60)
 
     if sensor._state._health != 90:
-        print('Sensor.evalutateDamage(energy = 100, power = 60) Failed!! ', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state, sensor._state._health)
+        print('Sensor.evalutatSelfDamage(energy = 100, power = 60) Failed!! ', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state, sensor._state._health)
         result = False 
     
+
+    # test checkSensorClass()
 
     if not Sensor.checkSensorClass(sensor, sensor):
         print('Sensor.checkSensorClass(sensor) Failed!! ', sensor._state, sensor._state._health)
         result = False 
     
-    sensors = [Sensor( range_max = 100 ), Sensor( range_max = 100  ), Sensor(range_max = 100 ), Sensor( range_max = 100 )]
+    # test checkSensorList()
 
-    if not Sensor.checkSensorList(sensor, sensors):
+    sensors = [Sensor( position = (0, 0, 0), range_max = 100 ), Sensor( position = (0, 0, 0), range_max = 100  ), Sensor( position = (0, 0, 0), range_max = 100 ), Sensor( position = (0, 0, 0), range_max = 100 )]
+
+    if not Sensor.checkSensorList(sensor, sensors): 
         print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
         result = False
 
-    sensors = [Sensor( range_max = 100 ), Sensor(range_max = 100 ), list(), Sensor(range_max = 100 )]
+    
+    sensors = [Sensor( position = (0, 0, 0), range_max = 100 ), Sensor( position = (0, 0, 0), range_max = 100 ), list(), Sensor( position = (0, 0, 0), range_max = 100 )]
 
     if Sensor.checkSensorList(sensor, sensors):
         print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
         result = False  
     
+    # test sensor.perception()
+    num_object = 100
+    num_objects_for_linear = int( (num_object)**(1/3) )    
+    object_dimension = (3, 2, 1)
+    separation_from_objects = 7
+    incr = ( object_dimension[0] + separation_from_objects, object_dimension[2] + separation_from_objects, object_dimension[2] + separation_from_objects )
+    dim_linear = ( num_objects_for_linear * incr[0], num_objects_for_linear * incr[2], num_objects_for_linear * incr[2] )
+    bound = ( int( dim_linear[0]/2 ), int( dim_linear[1]/2 ), int( dim_linear[2]/2 ) )
+
+    pm = Position_manager('position manager', [ [ -bound[0] , -bound[1], -bound[2]], [ bound[0], bound[1], bound[2] ] ])
+
+    for z in range(-bound[2], bound[2], incr[2]):
+        for y in range(-bound[1], bound[1], incr[1]):
+            for x in range(-bound[0], bound[0], incr[0]):
+                pm.insertObject( position = (x, y, z), obj = Object(name = 'New_'+str( int(  ((bound[0] + x)%dim_linear[0])/incr[0] + 10*((bound[1] + y)%dim_linear[1])/incr[1] + 100*((bound[2] + z)%dim_linear[2])/incr[2] ) ), dimension = ( object_dimension[0], object_dimension[1], object_dimension[2] )) )
+    
+    sensor.perception( pm, sensor._position )
 
     return result
+
 
 print("Sensor class test result:", testClassSensor())

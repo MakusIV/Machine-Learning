@@ -270,30 +270,55 @@ def TestClassPosition_manager():
     
 
 
-    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [4], [0, 0, 0] )
+    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [4] )
 
     if not detected or len( detected )!= 1:
         result = False
         print("Position_manager.pm.getObjectInRange( coord, range = 4 ) Failed!" )
 
 
-    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [10], [0, 0, 0] )
+    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [10, 10, 10] )
 
     if not detected or len( detected )!= 2:
         result = False
         print("Position_manager.pm.getObjectInRange( coord, range = 5 ) Failed!" )
 
 
-    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [15], [0, 0, 0] )
+    detected = pm.getObjectInRange( Coordinate(0, 0, 0), [15] )
 
     if not detected or len( detected )!= 3:
         result = False
         print("Position_manager.pm.getObjectInRange( coord, range = 15 ) Failed!" )
 
+    pm.showPos()
+
+    # verifica di pm.moveObject() impostato in modo da verificare il corretto spostamento di un object in una
+    # posizione occupata dal suo volume
+    obj = detected.popitem()[1][1]
+    old_position = obj._coord.getPosition()
+    new_position = ( old_position[0] + 1, old_position[1] + 1, old_position[2] + 1 )
+    pm.moveObject( new_position, obj )
     
-    
+    if obj._coord.getPosition() != new_position:
+        result = False
+        print( "Position_manager.moveObject() Failed! Object not moved in correct position ", new_position, obj._coord.getPosition(), pm.showMap() )
 
 
+    # verifica di pm.moveObject() impostato in modo da verificare il che non venga effettuato lo spostamento di un object in una
+    # posizione occupata da un altro object
+    obj_2 = detected.popitem()[1][1]
+    pm.changeObjectDimension( obj_2, (3, 5, 4 ) )
+    old_position = obj._coord.getPosition()
+    new_position = ( old_position[0] - 2, old_position[1] - 4, old_position[2] -3 )
+    pm.moveObject( new_position, obj_2 )
+    
+    if obj._coord.getPosition() == new_position:
+        result = False
+        print( "Position_manager.moveObject() Failed! Object moved in busy position ", new_position, obj._coord.getPosition(), pm.showMap() )
+
+
+    pm.showPos()
+    pm.showMap()
     
     
     #pm.show()

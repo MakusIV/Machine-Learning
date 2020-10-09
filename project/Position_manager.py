@@ -221,7 +221,8 @@ class Position_manager:
         logger.logger.debug( "Not changed obj: {0} @: {1}, because not exists a previous object in that position".format( new_obj.getId(), index ) )
         return False
 
-    # DA TESTARE *********************************************************
+
+    # test: ok
     def moveObject(self, position, obj):
         """ Move obj in position in pos dictionary and return True. 
             If position or obj is None or position is out of limits or a previous object existens return False"""
@@ -233,10 +234,10 @@ class Position_manager:
             previous_pos = obj.getPosition()
             self.removeObject(obj)            
             self.insertObject( position, obj)
-            logger.logger.debug( "Moved obj: {0} from: {1} to: {2}".format( obj.getId(), previous_pos, index ) )
+            logger.logger.debug( "Moved obj: {0} from: {1} to: {2}".format( obj.getId(), previous_pos, position ) )
             return True 
         
-        logger.logger.debug( "Not moved obj: {0} from: {1} to: {2}, because exists an object in that position".format( obj.getId(), previous_pos, index ) )
+        logger.logger.debug( "Not moved obj: {0} from: {1} to: {2}, because exists an object in that position".format( obj.getId(), previous_pos, position) )
         return False
     
     
@@ -477,7 +478,7 @@ class Position_manager:
 
 
     # test: ok
-    def getObjectInRange(self, coord, range, dimension):
+    def getObjectInRange(self, coord, range):
 
         """ Return {  (x,y,z), obj } portion within volume positionated in coord and range dimension. Return false if objects not presents within volume"""
         # range = [int] or [int, int, int]
@@ -498,7 +499,7 @@ class Position_manager:
             
         elif isinstance(range[0], int) and isinstance(range[1], int) and isinstance(range[2], int):
 
-            volume = [ [ coord.x, coord.y, coord.z ], [ coord.x + range[0], coord.y + range[2], coord.z + range[2] ] ]
+            volume = [ [ coord.x, coord.y, coord.z ], [ coord.x + range[0], coord.y + range[1], coord.z + range[2] ] ]
         
         else:
             return False

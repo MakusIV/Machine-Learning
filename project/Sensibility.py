@@ -26,7 +26,7 @@ class Sensibility:
 
 
 
-
+    # tets: ok
     def get_probability_of_perception(self, start_percept_position):
 
         
@@ -43,7 +43,7 @@ class Sensibility:
         #    return self.pyramidal_sensibility(target_position)
 
         
-
+    # test: ok
     def get_tetrahedric_probability(self, position, num_volumes):
         """Return [subvolume, probability] where subvolume is a volume subset (volume/num_volumes)"""
         #position = start position of scanning
