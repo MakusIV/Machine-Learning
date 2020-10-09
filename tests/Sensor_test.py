@@ -8,18 +8,24 @@ from Sensor import Sensor
 from Sensibility import Sensibility
 from Position_manager import Position_manager
 from Object import Object
+from LoggerClass import Logger
+
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'Sensor_test')
 
 def testClassSensor():
 
     result = True    
-    sensor = Sensor( position = (0, 0, 0), range_max = 10 )
+    sensor = Sensor( position = (0, 0, 0), range_max = (10, 10, 10) )
 
 
     if sensor._position != (0, 0, 0) or not sensor._sensibility or not isinstance(sensor._sensibility, Sensibility) or sensor._power != 100 or sensor._resilience != 100 or not sensor._name or not sensor._state:
         print('Sensor Failed!! ', sensor._sensibility, sensor._power, sensor._resilience)
         result = False 
     
-    sensor = Sensor( position = (0, 0, 0), range_max = 100, accuracy=20, power=20, resilience=20, name='tullio', state = State() )
+    sensor = Sensor( position = (0, 0, 0), range_max = (100, 100, 100), accuracy=20, power=20, resilience=20, name='tullio', state = State() )
 
     if sensor._position != (0, 0, 0) or not sensor._sensibility or sensor._power != 20 or sensor._resilience != 20 or sensor._name != 'tullio' or not sensor._state:
         print('Sensor Failed!! ', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state)
@@ -51,7 +57,7 @@ def testClassSensor():
 
     
     # test Sensor.evalutateDamage( energy, power )
-    sensor = Sensor( position = (0, 0, 0), range_max=50, power=50, resilience=50)
+    sensor = Sensor( position = (0, 0, 0), range_max=(50, 50, 50), power=50, resilience=50)
     sensor.evalutateSelfDamage(energy = 100, power = 60)
 
     if sensor._state._health != 90:
@@ -67,34 +73,35 @@ def testClassSensor():
     
     # test checkSensorList()
 
-    sensors = [Sensor( position = (0, 0, 0), range_max = 100 ), Sensor( position = (0, 0, 0), range_max = 100  ), Sensor( position = (0, 0, 0), range_max = 100 ), Sensor( position = (0, 0, 0), range_max = 100 )]
+    sensors = [Sensor( position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( position = (0, 0, 0), range_max = (100, 100, 100)  ), Sensor( position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( position = (0, 0, 0), range_max = (100, 100, 100) )]
 
     if not Sensor.checkSensorList(sensor, sensors): 
         print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
         result = False
 
     
-    sensors = [Sensor( position = (0, 0, 0), range_max = 100 ), Sensor( position = (0, 0, 0), range_max = 100 ), list(), Sensor( position = (0, 0, 0), range_max = 100 )]
+    sensors = [Sensor( position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( position = (0, 0, 0), range_max = (100, 100, 100) ), list(), Sensor( position = (0, 0, 0), range_max = (100, 100, 100) )]
 
     if Sensor.checkSensorList(sensor, sensors):
         print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
         result = False  
     
     # test sensor.perception()
-    num_object = 100
-    num_objects_for_linear = int( (num_object)**(1/3) )    
+    num_objects = 100
+    num_objects_for_linear = int( (num_objects)**(1/3) )    
     object_dimension = (3, 2, 1)
     separation_from_objects = 7
     incr = ( object_dimension[0] + separation_from_objects, object_dimension[2] + separation_from_objects, object_dimension[2] + separation_from_objects )
     dim_linear = ( num_objects_for_linear * incr[0], num_objects_for_linear * incr[2], num_objects_for_linear * incr[2] )
     bound = ( int( dim_linear[0]/2 ), int( dim_linear[1]/2 ), int( dim_linear[2]/2 ) )
+    logger.logger.info("num_objects:{0},  num_objects_for_linear:{1},  object_dimension:{2},  separation_from_objects:{3},  incr:{4},  dim_linear:{4},  bound:{5}".format( num_objects,  num_objects_for_linear, object_dimension, separation_from_objects, incr, dim_linear, bound) )
 
-    pm = Position_manager('position manager', [ [ -bound[0] , -bound[1], -bound[2]], [ bound[0], bound[1], bound[2] ] ])
+    pm = Position_manager(name='position manager', limits = [ [ -bound[0] , -bound[1], -bound[2]], [ bound[0], bound[1], bound[2] ] ])
 
     for z in range(-bound[2], bound[2], incr[2]):
         for y in range(-bound[1], bound[1], incr[1]):
             for x in range(-bound[0], bound[0], incr[0]):
-                pm.insertObject( position = (x, y, z), obj = Object(name = 'New_'+str( int(  ((bound[0] + x)%dim_linear[0])/incr[0] + 10*((bound[1] + y)%dim_linear[1])/incr[1] + 100*((bound[2] + z)%dim_linear[2])/incr[2] ) ), dimension = ( object_dimension[0], object_dimension[1], object_dimension[2] )) )
+                pm.insertObject( position = (x, y, z), obj = Object(name = 'New_'+str( int(  ((bound[0] + x)%dim_linear[0])/incr[0] + num_objects_for_linear*((bound[1] + y)%dim_linear[1])/incr[1] + num_objects_for_linear*num_objects_for_linear*((bound[2] + z)%dim_linear[2])/incr[2] ) ), dimension = ( object_dimension[0], object_dimension[1], object_dimension[2] )) )
     
     sensor.perception( pm, sensor._position )
 

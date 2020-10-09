@@ -14,7 +14,7 @@ class Sensor:
     # Il sensore non è una specializzazione di Object
 
     # Unit test: ok
-    def __init__(self, position, range_max, power = 100, resilience = 100, delta_t = 0.01, accuracy = None, name = None, state = None  ):
+    def __init__(self, position, range_max, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None  ):
 
         if not self.checkParam( range_max, accuracy,  power, resilience, delta_t ):
             raise Exception("Invalid parameters! Sensor not istantiate.")
@@ -24,8 +24,8 @@ class Sensor:
         self._state = state
         self._position = position
         self._power = power# nota l'energia è gestita nello stato in quanto è variabile
-        self._range = range_max# è rappresentato da una distanza (int)
-        self._sensibility = Sensibility( max_range = (1000, 1000, 1000), accuracy = accuracy )
+        self._range = range_max# è rappresentato da una tupla di distanze (x_d:int, y_d:int, z_d:int)
+        self._sensibility = Sensibility( range_max, accuracy = accuracy )
         self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
         self._delta_t = delta_t # Il tempo necessario per eseguire la detection serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli
 
@@ -42,7 +42,7 @@ class Sensor:
 
     def checkParam(self, range_max, accuracy,  power, resilience, delta_t):
         
-        if not( range_max and range_max >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0):
+        if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0):
             return False
         
         if accuracy and accuracy <=0:
@@ -92,16 +92,31 @@ class Sensor:
         
         scanning_volumes = self._sensibility.get_probability_of_perception( self._position ) # scanning_volume = (volume, probability)
 
+
+
         detected_objs = None
 
-        for scan_vol in scanning_volumes:            
-            logger.logger.debug("scanning volume {0} to detect object".format( scanning_volumes.index( scan_vol[0] ) ))
+        for item in scanning_volumes:   
+
+            scan_vol = item[0]
+        
+            _, low_vertex, high_vertex, _, _ = posMng.volumeInLimits( scan_vol )
+
+            if not low_vertex:
+                #vertici minimi volume fuori i limiti interrompe l'iterazione e l'esecuzione della scansione del volume di ricerca
+                break
+
+            if not high_vertex:
+                #vertici massimi volume superiori ai limti scaltatura volume di ricerca 
+                scan_vol = posMng.volumeNormalization(scan_vol)    
+            
+            logger.logger.debug("scanning volume {0} to detect object".format( scanning_volumes.index( item ) ))
             prob = random.randint( 1, 100 ) / 100
-            volume_prob = scan_vol[ 1 ] * self._state.getEfficiency()
+            volume_prob = item[ 1 ] * self._state.getEfficiency()
             logger.logger.debug( "prob:{0}, volume_prob:{1}".format( prob, volume_prob ) )
 
             if prob < volume_prob:
-                detected_objs = posMng.getObjectInVolume( scan_vol[ 0 ] )
+                detected_objs = posMng.getObjectInVolume( scan_vol )
                 logger.logger.debug("detected {0} objects and inserted in detected object list".format( len(detected_objs)))
 
         energy_sensor = self._state.updateEnergy( self._power, self._delta_t )

@@ -1,0 +1,1 @@
+2020-10-10 00:39:05,079 - __main__ - INFO - testClassSensor - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(10, 8, 8),  bound:(40, 32, 32)

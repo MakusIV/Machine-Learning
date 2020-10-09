@@ -1,0 +1,21 @@
+2020-10-09 23:58:35,007 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-10 00:00:02,686 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-10 00:00:02,687 - Sensor - DEBUG - perception - prob:0.21, volume_prob:0.9
+2020-10-10 00:00:02,692 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-10-10 00:05:03,154 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-10 00:05:03,155 - Sensor - DEBUG - perception - prob:0.73, volume_prob:0.9
+2020-10-10 00:05:03,170 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-10-10 00:25:22,984 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-10 00:25:22,997 - Sensor - DEBUG - perception - prob:0.92, volume_prob:0.9
+2020-10-10 00:25:22,998 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-10-10 00:25:22,999 - Sensor - DEBUG - perception - prob:0.89, volume_prob:0.7200000000000001
+2020-10-10 00:30:04,076 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-10 00:30:04,077 - Sensor - DEBUG - perception - prob:0.58, volume_prob:0.9
+2020-10-10 00:30:04,078 - Sensor - DEBUG - perception - detected 4 objects and inserted in detected object list
+2020-10-10 00:30:04,079 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-10-10 00:30:04,080 - Sensor - DEBUG - perception - prob:0.98, volume_prob:0.7200000000000001
+2020-10-10 00:39:06,170 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-10 00:39:06,170 - Sensor - DEBUG - perception - prob:0.86, volume_prob:0.9
+2020-10-10 00:39:06,172 - Sensor - DEBUG - perception - detected 4 objects and inserted in detected object list
+2020-10-10 00:39:06,198 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-10-10 00:39:06,200 - Sensor - DEBUG - perception - prob:0.97, volume_prob:0.7200000000000001

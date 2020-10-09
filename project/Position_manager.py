@@ -60,7 +60,7 @@ class Position_manager:
             return False
 
         volume = obj.getVolume(position = position)
-        res, _, _ = self.volumeInLimits( volume )
+        res, _, _, _, _ = self.volumeInLimits( volume )
 
         if res:
             obj._coord.setPosition( position ) # aggiorna la coord dell'obj con la posizione d'inserimento 
@@ -156,7 +156,7 @@ class Position_manager:
         """Change object dimension and updating map position"""        
         
         volume = obj.getVolume(dimension = new_dimension)
-        res, _, _ = self.volumeInLimits( volume )
+        res, _, _, _, _ = self.volumeInLimits( volume )
 
         if not res:
             logger.logger.debug( "Outrange. Object changing dimension not executed for obj: {0} actual dimension: {1} proposed dimension:{2} ".format( obj.getId(), obj.getDimension(), new_dimension ) )    
@@ -525,7 +525,7 @@ class Position_manager:
         low_vertex_res, vl_res = self.inLimits( volume[ 0 ], self.limits )
         high_vertex_res, vh_res = self.inLimits( volume[ 1 ], self.limits )
 
-        return low_vertex_res and high_vertex_res, vl_res, vh_res
+        return low_vertex_res and high_vertex_res, low_vertex_res, high_vertex_res, vl_res, vh_res
 
 
     # test: ok
