@@ -79,6 +79,7 @@ class Sensor:
 
         return True
 
+    # test: ok    
     def perception(self, posMng, request_perception = None):
         # Attiva il sensore in base alle info contenute in request_perception, se request_perception è None utilizza i parametri di default
         # Restituisce le informazioni sulle azioni effettuate quali stato, posizione degli attuatori
@@ -94,7 +95,7 @@ class Sensor:
 
 
 
-        detected_objs = None
+        detected_objs = dict()
 
         for item in scanning_volumes:   
 
@@ -112,12 +113,18 @@ class Sensor:
             
             logger.logger.debug("scanning volume {0} to detect object".format( scanning_volumes.index( item ) ))
             prob = random.randint( 1, 100 ) / 100
-            volume_prob = item[ 1 ] * self._state.getEfficiency()
-            logger.logger.debug( "prob:{0}, volume_prob:{1}".format( prob, volume_prob ) )
+            volume_prob = item[ 1 ] * self._state.getEfficiency()            
+            logger.logger.debug( "prob:{0}, volume_prob:{1}, scanning volume:{2}".format( prob, volume_prob, prob < volume_prob ) )
 
             if prob < volume_prob:
-                detected_objs = posMng.getObjectInVolume( scan_vol )
-                logger.logger.debug("detected {0} objects and inserted in detected object list".format( len(detected_objs)))
+                detected = posMng.getObjectInVolume( scan_vol )
+                num_object_detected = 0            
+
+                if detected:
+                    detected_objs.update( detected )
+                    num_object_detected = len(detected)
+                
+                logger.logger.debug("detected {0} objects and inserted in detected object list".format( num_object_detected ))
 
         energy_sensor = self._state.updateEnergy( self._power, self._delta_t )
         
@@ -129,7 +136,7 @@ class Sensor:
         #enviroment perception:  temp, emc, gas ecc
 
         percept_info = (energy_sensor, detected_objs)
-
+        logger.logger.debug("detected {0} objects and consumed {1} energy. Energy avalaible: {2}".format( len( detected_objs ), self._power * self._delta_t, energy_sensor ))
         return percept_info
 
 

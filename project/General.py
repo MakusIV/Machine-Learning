@@ -33,12 +33,24 @@ logger.addHandler(c_handler)
 logger.addHandler(f_handler)
 
 
+# VALUES
 
+SENSOR_TYPE = ("radio", "infrared", "optical", "nuclear", "electric", "acoustics", "chemist")
 
 
 # METHODS
 
+def checkSensorType(type):
+    
+    if not type or not isinstance(type, str):
+        return False
 
+    for val in SENSOR_TYPE:
+
+        if val == type:
+            return True
+    
+    return False
 
 def checkDimension(dimension):
     """ Return True if dimension is an list normalized as dimension:  dimension: [int dim_x, int dim_y, int dim_z]"""

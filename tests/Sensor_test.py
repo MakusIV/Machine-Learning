@@ -57,7 +57,7 @@ def testClassSensor():
 
     
     # test Sensor.evalutateDamage( energy, power )
-    sensor = Sensor( position = (0, 0, 0), range_max=(50, 50, 50), power=50, resilience=50)
+    sensor = Sensor( position = (0, 0, 0), range_max=(50, 50, 50), power=50, resilience=50, accuracy=7)
     sensor.evalutateSelfDamage(energy = 100, power = 60)
 
     if sensor._state._health != 90:
@@ -87,7 +87,7 @@ def testClassSensor():
         result = False  
     
     # test sensor.perception()
-    num_objects = 100
+    num_objects = 300
     num_objects_for_linear = int( (num_objects)**(1/3) )    
     object_dimension = (3, 2, 1)
     separation_from_objects = 7
@@ -106,6 +106,5 @@ def testClassSensor():
     sensor.perception( pm, sensor._position )
 
     return result
-
 
 print("Sensor class test result:", testClassSensor())

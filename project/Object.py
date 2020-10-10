@@ -10,8 +10,8 @@ logger = Logger(module_name = __name__, class_name = 'Object')
 
 class Object:
     
-    def __init__(self, dimension = (1, 1, 1), resilience = 100, coord = None, name = None, state = None ):
 
+    def __init__(self, dimension = (1, 1, 1), resilience = 100, emissivity = {"radio": 0, "infrared": 0, "optical": 0, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0}, coord = None, name = None, state = None ):
 
             self._name = None
             self._id = None
@@ -20,6 +20,7 @@ class Object:
             self._coord = coord
             self._state = None
             self.setState(state)
+            self._emissivity = emissivity
 
             if not name:
                 self._name = General.setName('Object_Name')
@@ -31,26 +32,41 @@ class Object:
             if not coord:
                 self._coord = Coordinate(0, 0, 0)
 
+            
+
+            if not self.checkParam(self._name, self._dimension, self._resilience, self._state, self._coord, self._emissivity ):
+                raise Exception("Invalid parameters! Object not istantiate.")
+
+
+    def getEmissivity(self):
+        return self._emissivity
+
+    def setEmissivity(self, emissivity):
+        self._emissivity = emissivity
+
     def evalutateDamage(self, energy, power):
         """Evalutate the damage on sensor and update state"""
         if power > self._resilience:
             damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
             return self._state.decrementHealth( damage )
         
-        return self.state.getHealth()
+        return self._state.getHealth()
 
 
     def getVertex(self):
 
-        llr = self.coord.getPosition()
+        llr = self._coord.getPosition()
         
         if len(self._dimension) == 3:
-            dim_x = self._dimensione[0]
-            dim_y = self._dimensione[1]
-            dim_z = self._dimensione[2]
+            dim_x = self._dimension[0]
+            dim_y = self._dimension[1]
+            dim_z = self._dimension[2]
         
-        elif expression:
-            dim_x, dim_y, dim_z = dimension[0], dimension[0], dimension[0]
+        elif len(self._dimension) == 1:
+            dim_x, dim_y, dim_z = self._dimension[0], self._dimension[0], self._dimension[0]
+        
+        else:
+            raise ValueError("sel._dimension as length != 1 or 3")
 
         vertex = {  'llr': llr, 
                     'lhr': [llr[0], llr[1], llr[2] + dim_z], 
@@ -203,13 +219,26 @@ class Object:
         return False
 
      # vedi il libro
-    def checkParam(self, name, dimension, resilience, state, coord ):
+    def checkParam(self, name, dimension, resilience, state, coord, emissivity ):
                 
         # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
 
         if not name or not isinstance( name, str ) or not state or not isinstance( state, State ) or not coord or not isinstance( coord, Coordinate ) or not resilience or not isinstance( resilience, int )  or not( resilience <= 100 and resilience >= 0 ) or not General.checkDimension( dimension ):
             return False
-            
+        
+        if not emissivity or not isinstance(emissivity, dict) or len(emissivity) != 7:
+            return False
+
+        # Verificare se possibile utilizzare la comphrension:
+        #res = any( [True for typ in self._emissivity.keys if typ == ele for ele in General.SENSOR_TYPE] )
+        for typ in self._emissivity.keys():
+            if General.checkSensorType(typ):
+                res = True
+                break
+
+        if not res:
+            return False            
+
         return True
 
     def getVolumePosition( self ):
