@@ -14,9 +14,9 @@ class Sensor:
     # Il sensore non è una specializzazione di Object
 
     # Unit test: ok
-    def __init__(self, position, range_max, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None  ):
+    def __init__(self, position, range_max, typ, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None  ):
 
-        if not self.checkParam( range_max, accuracy,  power, resilience, delta_t ):
+        if not self.checkParam( typ, range_max, accuracy,  power, resilience, delta_t ):
             raise Exception("Invalid parameters! Sensor not istantiate.")
 
         self._name = name
@@ -28,6 +28,7 @@ class Sensor:
         self._sensibility = Sensibility( range_max, accuracy = accuracy )
         self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
         self._delta_t = delta_t # Il tempo necessario per eseguire la detection serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli
+        self._type = typ # la grandezza che il sensore misura (vedi General.SENSOR_TYPE)
 
         if not name or not isinstance(name, str):
             self._name = General.setName('Sensor_Name')
@@ -40,12 +41,15 @@ class Sensor:
             self.state = state
 
 
-    def checkParam(self, range_max, accuracy,  power, resilience, delta_t):
+    def checkParam(self, typ, range_max, accuracy,  power, resilience, delta_t):
         
         if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0):
             return False
         
         if accuracy and accuracy <=0:
+            return False
+        
+        if not typ or not General.checkSensorType( _type = typ ):
             return False
 
         return True

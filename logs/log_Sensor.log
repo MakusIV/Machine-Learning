@@ -163,3 +163,15 @@
 2020-10-10 09:22:14,715 - Sensor - DEBUG - perception - scanning volume 3 to detect object
 2020-10-10 09:22:14,715 - Sensor - DEBUG - perception - prob:0.74, volume_prob:0.5142857142857142, scanning volume:False
 2020-10-10 09:22:14,716 - Sensor - DEBUG - perception - detected 2 objects and consumed 0.5 energy. Energy avalaible: 99.5
+2020-10-10 21:53:35,060 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-10 21:53:35,113 - Sensor - DEBUG - perception - prob:0.47, volume_prob:0.9, scanning volume:True
+2020-10-10 21:53:35,147 - Sensor - DEBUG - perception - detected 1 objects and inserted in detected object list
+2020-10-10 21:53:35,178 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-10-10 21:53:35,218 - Sensor - DEBUG - perception - prob:0.11, volume_prob:0.7714285714285715, scanning volume:True
+2020-10-10 21:53:35,220 - Sensor - DEBUG - perception - detected 1 objects and inserted in detected object list
+2020-10-10 21:53:35,222 - Sensor - DEBUG - perception - scanning volume 2 to detect object
+2020-10-10 21:53:35,223 - Sensor - DEBUG - perception - prob:0.87, volume_prob:0.6428571428571429, scanning volume:False
+2020-10-10 21:53:35,224 - Sensor - DEBUG - perception - scanning volume 3 to detect object
+2020-10-10 21:53:35,225 - Sensor - DEBUG - perception - prob:0.43, volume_prob:0.5142857142857142, scanning volume:True
+2020-10-10 21:53:35,229 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-10-10 21:53:35,258 - Sensor - DEBUG - perception - detected 2 objects and consumed 0.5 energy. Energy avalaible: 99.5

@@ -18,46 +18,46 @@ logger = Logger(module_name = __name__, class_name = 'Sensor_test')
 def testClassSensor():
 
     result = True    
-    sensor = Sensor( position = (0, 0, 0), range_max = (10, 10, 10) )
+    sensor = Sensor( position = (0, 0, 0), range_max = (10, 10, 10), typ = "thermal" )
 
 
-    if sensor._position != (0, 0, 0) or not sensor._sensibility or not isinstance(sensor._sensibility, Sensibility) or sensor._power != 100 or sensor._resilience != 100 or not sensor._name or not sensor._state:
+    if sensor._position != (0, 0, 0) or not sensor._sensibility or not isinstance(sensor._sensibility, Sensibility) or sensor._power != 100 or sensor._resilience != 100 or not sensor._name or not sensor._state or not sensor._type or sensor._type != 'thermal':
         print('Sensor Failed!! ', sensor._sensibility, sensor._power, sensor._resilience)
         result = False 
     
-    sensor = Sensor( position = (0, 0, 0), range_max = (100, 100, 100), accuracy=20, power=20, resilience=20, name='tullio', state = State() )
+    sensor = Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100), accuracy=20, power=20, resilience=20, name='tullio', state = State() )
 
-    if sensor._position != (0, 0, 0) or not sensor._sensibility or sensor._power != 20 or sensor._resilience != 20 or sensor._name != 'tullio' or not sensor._state:
+    if sensor._position != (0, 0, 0) or not sensor._sensibility or sensor._power != 20 or sensor._resilience != 20 or sensor._name != 'tullio' or not sensor._state or not sensor._type or sensor._type != 'radio':
         print('Sensor Failed!! ', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state)
         result = False 
     
 
 
     try:
-        sensor = Sensor( position = (0, 0, 0), sensibility=-1, power=-1, resilience=-1)
+        sensor = Sensor( position = (0, 0, 0), sensibility=-1, power=-1, resilience=-1, typ = "radio")
         
     except Exception:
         pass
 
     else:
-        print( 'Sensor Failed!!  Not launch Exception', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state )
+        print( 'Sensor Failed!!  Not launch Exception', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state , sensor._type)
         result = False
 
 
     try:
-        sensor = Sensor( position = (0, 0, 0), sensibility=10, power=1, resilience=101)
+        sensor = Sensor( position = (0, 0, 0), sensibility=10, power=1, resilience=101, typ = "radio")
         
     except Exception:
         pass
 
     else:
-        print( 'Sensor Failed!!  Not launch Exception', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state )
+        print( 'Sensor Failed!!  Not launch Exception', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state, sensor._type )
         result = False
 
 
     
     # test Sensor.evalutateDamage( energy, power )
-    sensor = Sensor( position = (0, 0, 0), range_max=(50, 50, 50), power=50, resilience=50, accuracy=7)
+    sensor = Sensor( typ = "radio", position = (0, 0, 0), range_max=(50, 50, 50), power=50, resilience=50, accuracy=7)
     sensor.evalutateSelfDamage(energy = 100, power = 60)
 
     if sensor._state._health != 90:
@@ -73,14 +73,14 @@ def testClassSensor():
     
     # test checkSensorList()
 
-    sensors = [Sensor( position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( position = (0, 0, 0), range_max = (100, 100, 100)  ), Sensor( position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( position = (0, 0, 0), range_max = (100, 100, 100) )]
+    sensors = [Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100)  ), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) )]
 
     if not Sensor.checkSensorList(sensor, sensors): 
         print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
         result = False
 
     
-    sensors = [Sensor( position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( position = (0, 0, 0), range_max = (100, 100, 100) ), list(), Sensor( position = (0, 0, 0), range_max = (100, 100, 100) )]
+    sensors = [Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) ), list(), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) )]
 
     if Sensor.checkSensorList(sensor, sensors):
         print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)

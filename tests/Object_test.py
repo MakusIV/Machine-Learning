@@ -34,6 +34,14 @@ def testClassObject():
         print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension, obj.getPosition())    
         result = False 
 
+    try:
+        obj = Object( coord = Coordinate(2,2,2), name = 'Antony', dimension = [5,5,5], emissivity = {"radio": 0, "thermal": 0, "optical": 0, "nuclear": 0, "electric": 0, "minchiatic": 0, "chemist": 0} )     
+    except Exception:
+        pass
+    else:
+        print('Object.__Initit__ Failed!! ', obj._name, obj._id, obj._dimension, obj.getPosition())    
+        result = False 
+
 
     obj.setName('Ollio')
 

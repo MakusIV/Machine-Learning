@@ -11,16 +11,27 @@ logger = Logger(module_name = __name__, class_name = 'Object')
 class Object:
     
 
-    def __init__(self, dimension = (1, 1, 1), resilience = 100, emissivity = {"radio": 0, "infrared": 0, "optical": 0, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0}, coord = None, name = None, state = None ):
+    def __init__(self, dimension = (1, 1, 1), resilience = 100, emissivity = {"radio": 0, "thermal": 0, "optical": 0, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0}, coord = None, name = None, state = None ):
 
-            self._name = None
+            self._name = name
             self._id = None
             self._dimension = dimension
             self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)            
             self._coord = coord
             self._state = None
             self.setState(state)
-            self._emissivity = emissivity
+            self._emissivity = None
+            
+            if not self.checkParam( dimension, resilience, state, coord ):
+                raise Exception("Invalid parameters! Object not istantiate.")
+
+
+            if emissivity and self.checkEmissivity( emissivity ):
+                self._emissivity = emissivity
+            else:
+                self.setEmissivity(emissivity = 'default')
+
+            
 
             if not name:
                 self._name = General.setName('Object_Name')
@@ -32,17 +43,32 @@ class Object:
             if not coord:
                 self._coord = Coordinate(0, 0, 0)
 
-            
+        
+    def checkEmissivity(self, emissivity):
+        
+        if not emissivity or not isinstance(emissivity, dict) or len(emissivity) != len( General.SENSOR_TYPE ):
+            return False
 
-            if not self.checkParam(self._name, self._dimension, self._resilience, self._state, self._coord, self._emissivity ):
-                raise Exception("Invalid parameters! Object not istantiate.")
+        # Verificare se possibile utilizzare la comphrension:
+        #res = any( [True for typ in self._emissivity.keys if typ == ele for ele in General.SENSOR_TYPE] )
+        
+        return all( [  [ True for typ in emissivity if typ == ele ]  for ele in General.SENSOR_TYPE ] )
+                    
 
 
     def getEmissivity(self):
         return self._emissivity
 
     def setEmissivity(self, emissivity):
-        self._emissivity = emissivity
+
+        if emissivity == 'default':
+            emissivity = dict()
+            for val in General.SENSOR_TYPE:
+                emissivity[val] = 0
+        else:
+            self._emissivity = emissivity
+        
+        return emissivity
 
     def evalutateDamage(self, energy, power):
         """Evalutate the damage on sensor and update state"""
@@ -219,26 +245,13 @@ class Object:
         return False
 
      # vedi il libro
-    def checkParam(self, name, dimension, resilience, state, coord, emissivity ):
+    def checkParam(self, dimension, resilience, state, coord ):
                 
         # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
 
-        if not name or not isinstance( name, str ) or not state or not isinstance( state, State ) or not coord or not isinstance( coord, Coordinate ) or not resilience or not isinstance( resilience, int )  or not( resilience <= 100 and resilience >= 0 ) or not General.checkDimension( dimension ):
+        if state != None and not isinstance( state, State ) or coord != None and not isinstance( coord, Coordinate ) or resilience != None and ( not isinstance( resilience, int )  or not( resilience <= 100 and resilience >= 0 ) ) or not General.checkDimension( dimension ):
             return False
-        
-        if not emissivity or not isinstance(emissivity, dict) or len(emissivity) != 7:
-            return False
-
-        # Verificare se possibile utilizzare la comphrension:
-        #res = any( [True for typ in self._emissivity.keys if typ == ele for ele in General.SENSOR_TYPE] )
-        for typ in self._emissivity.keys():
-            if General.checkSensorType(typ):
-                res = True
-                break
-
-        if not res:
-            return False            
-
+                
         return True
 
     def getVolumePosition( self ):

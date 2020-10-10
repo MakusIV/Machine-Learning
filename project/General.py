@@ -35,19 +35,19 @@ logger.addHandler(f_handler)
 
 # VALUES
 
-SENSOR_TYPE = ("radio", "infrared", "optical", "nuclear", "electric", "acoustics", "chemist")
+SENSOR_TYPE = ("radio", "thermal", "optical", "nuclear", "electric", "acoustics", "chemist")
 
 
 # METHODS
 
-def checkSensorType(type):
+def checkSensorType(_type):
     
-    if not type or not isinstance(type, str):
+    if not _type or not isinstance(_type, str):
         return False
 
     for val in SENSOR_TYPE:
 
-        if val == type:
+        if val == _type:
             return True
     
     return False

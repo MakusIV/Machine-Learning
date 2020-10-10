@@ -14,3 +14,4 @@
 2020-10-10 09:18:16,675 - __main__ - INFO - testClassSensor - num_objects:300,  num_objects_for_linear:6,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(10, 8, 8),  bound:(60, 48, 48)
 2020-10-10 09:20:17,306 - __main__ - INFO - testClassSensor - num_objects:300,  num_objects_for_linear:6,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(10, 8, 8),  bound:(60, 48, 48)
 2020-10-10 09:22:11,222 - __main__ - INFO - testClassSensor - num_objects:300,  num_objects_for_linear:6,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(10, 8, 8),  bound:(60, 48, 48)
+2020-10-10 21:53:18,136 - __main__ - INFO - testClassSensor - num_objects:300,  num_objects_for_linear:6,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(10, 8, 8),  bound:(60, 48, 48)
