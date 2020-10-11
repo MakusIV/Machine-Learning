@@ -26,10 +26,10 @@ class Object:
                 raise Exception("Invalid parameters! Object not istantiate.")
 
 
-            if emissivity and self.checkEmissivity( emissivity ):
+            if emissivity and self.checkEmissivityParam( emissivity ):
                 self._emissivity = emissivity
             else:
-                self.setEmissivity(emissivity = 'default')
+                raise Exception("Invalid emissivity! Object not istantiate.")
 
             
 
@@ -44,7 +44,7 @@ class Object:
                 self._coord = Coordinate(0, 0, 0)
 
         
-    def checkEmissivity(self, emissivity):
+    def checkEmissivityParam(self, emissivity):
         
         if not emissivity or not isinstance(emissivity, dict) or len(emissivity) != len( General.SENSOR_TYPE ):
             return False
@@ -53,8 +53,15 @@ class Object:
         #res = any( [True for typ in self._emissivity.keys if typ == ele for ele in General.SENSOR_TYPE] )
         
         return all( [  [ True for typ in emissivity if typ == ele ]  for ele in General.SENSOR_TYPE ] )
-                    
+    
+    def getEmissivityForType( self, emissivity_type ):
+        """Return emissivity level for that emissivity_type. If emissivity_type not presents in General.SENSOR_TYPE return False"""
+        try:
+            return self._emissivity.get( emissivity_type )
 
+        except ValueError:
+            return False
+        
 
     def getEmissivity(self):
         return self._emissivity

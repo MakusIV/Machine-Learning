@@ -18,6 +18,7 @@ class Sensibility:
         self._accuracy = accuracy
         
         
+        
     
     def checkParam( self, max_range, type_space ):
         if not max_range or not General.checkDimension(max_range) or type_space != 'TETRAHEDRIC':

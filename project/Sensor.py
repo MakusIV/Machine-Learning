@@ -14,9 +14,9 @@ class Sensor:
     # Il sensore non è una specializzazione di Object
 
     # Unit test: ok
-    def __init__(self, position, range_max, typ, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None  ):
+    def __init__(self, position, range_max, typ, emissivity_perception = 1, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None  ):
 
-        if not self.checkParam( typ, range_max, accuracy,  power, resilience, delta_t ):
+        if not self.checkParam( emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t ):
             raise Exception("Invalid parameters! Sensor not istantiate.")
 
         self._name = name
@@ -29,6 +29,7 @@ class Sensor:
         self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
         self._delta_t = delta_t # Il tempo necessario per eseguire la detection serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli
         self._type = typ # la grandezza che il sensore misura (vedi General.SENSOR_TYPE)
+        self._emissivity_perception = emissivity_perception # il livello minimo di emessivity che il sensore rileva. Da confrontare con l'emmisivity di un oggetto da rilevare. Più piccolo è questo lavoro e più il sensore è capace di rilevare, 0: rileva tutto
 
         if not name or not isinstance(name, str):
             self._name = General.setName('Sensor_Name')
@@ -41,9 +42,9 @@ class Sensor:
             self.state = state
 
 
-    def checkParam(self, typ, range_max, accuracy,  power, resilience, delta_t):
+    def checkParam(self, emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t):
         
-        if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0):
+        if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0 and  emissivity_perception and  emissivity_perception <= 100 and emissivity_perception > 0):
             return False
         
         if accuracy and accuracy <=0:
@@ -122,13 +123,21 @@ class Sensor:
 
             if prob < volume_prob:
                 detected = posMng.getObjectInVolume( scan_vol )
-                num_object_detected = 0            
-
+                                            
                 if detected:
-                    detected_objs.update( detected )
-                    num_object_detected = len(detected)
-                
-                logger.logger.debug("detected {0} objects and inserted in detected object list".format( num_object_detected ))
+                    logger.logger.debug( "exists {0} objects in sub-volume".format( len(detected) ) )
+                    num_object_detected = 0
+
+                    for elem in detected.values():
+                        object_emissivity_level = elem[1].getEmissivityForType( self._type )
+                        
+                        if object_emissivity_level >= self._emissivity_perception:
+                            detected_objs.update( { elem[0]: elem } )
+                            num_object_detected = num_object_detected + 1
+                            logger.logger.debug("detected object: {0}  with emissivity type, level: {1}, {2} using intensity sensor: {3}, and inserted in detected object list".format( elem[1].getId(), self._type, object_emissivity_level, self._emissivity_perception ))
+                            
+                    
+                    logger.logger.debug( "detected {0} objects and inserted in detected object list".format( num_object_detected ) )
 
         energy_sensor = self._state.updateEnergy( self._power, self._delta_t )
         
@@ -140,7 +149,7 @@ class Sensor:
         #enviroment perception:  temp, emc, gas ecc
 
         percept_info = (energy_sensor, detected_objs)
-        logger.logger.debug("detected {0} objects and consumed {1} energy. Energy avalaible: {2}".format( len( detected_objs ), self._power * self._delta_t, energy_sensor ))
+        logger.logger.debug("detected {0} objects and consumed {1} energy. Sensor energy avalaible: {2}".format( len( detected_objs ), self._power * self._delta_t, energy_sensor ))
         return percept_info
 
 
