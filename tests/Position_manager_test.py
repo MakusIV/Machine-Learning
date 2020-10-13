@@ -294,7 +294,7 @@ def TestClassPosition_manager():
 
     # verifica di pm.moveObject() impostato in modo da verificare il corretto spostamento di un object in una
     # posizione occupata dal suo volume
-    obj = detected.popitem()[1][1]
+    obj = detected.popitem()[1]
     old_position = obj._coord.getPosition()
     new_position = ( old_position[0] + 1, old_position[1] + 1, old_position[2] + 1 )
     pm.moveObject( new_position, obj )
@@ -306,7 +306,7 @@ def TestClassPosition_manager():
 
     # verifica di pm.moveObject() impostato in modo da verificare il che non venga effettuato lo spostamento di un object in una
     # posizione occupata da un altro object
-    obj_2 = detected.popitem()[1][1]
+    obj_2 = detected.popitem()[1]
     pm.changeObjectDimension( obj_2, (3, 5, 4 ) )
     old_position = obj._coord.getPosition()
     new_position = ( old_position[0] - 2, old_position[1] - 4, old_position[2] -3 )

@@ -86,26 +86,22 @@ class Sensor:
 
     # test: ok    
     def perception(self, posMng, request_perception = None):
+        """Return percept_info: (energy_sensor, detected_objs) detected. detected_objs = { ( x, y, z): obj }"""
         # Attiva il sensore in base alle info contenute in request_perception, se request_perception è None utilizza i parametri di default
         # Restituisce le informazioni sulle azioni effettuate quali stato, posizione degli attuatori
 
         percept_info = None
         # la perception individua gli oggetti presenti nel volume di scansione in base alla probabilità nel
-        # punto di scansione dove è presente l'oggetto. Per quanto riguarda la perceprion dell'enviroment tenere
+        # punto di scansione dove è presente l'oggetto. Per quanto riguarda la perception dell'enviroment tenere
         # presente che una zona a temperatura pericolosa è rappresentata da un oggetto di volume pari alla zona
-        #interessata con proprietà temperaatura. Quindi durante la perception, individutato, l'oggetto
+        # interessata con proprietà temperatura. Quindi durante la perception, individutato, l'oggetto
         # obj.isGas() ---> automa.MaxTemp >= obj._temperature
         
         scanning_volumes = self._sensibility.get_probability_of_perception( self._position ) # scanning_volume = (volume, probability)
-
-
-
         detected_objs = dict()
 
         for item in scanning_volumes:   
-
-            scan_vol = item[0]
-        
+            scan_vol = item[0]        
             _, low_vertex, high_vertex, _, _ = posMng.volumeInLimits( scan_vol )
 
             if not low_vertex:
@@ -122,21 +118,20 @@ class Sensor:
             logger.logger.debug( "prob:{0}, volume_prob:{1}, scanning volume:{2}".format( prob, volume_prob, prob < volume_prob ) )
 
             if prob < volume_prob:
-                detected = posMng.getObjectInVolume( scan_vol )
+                detected = posMng.getObjectInVolume( scan_vol )# detected: {  (x,y,z), obj }
                                             
                 if detected:
                     logger.logger.debug( "exists {0} objects in sub-volume".format( len(detected) ) )
                     num_object_detected = 0
 
-                    for elem in detected.values():
-                        object_emissivity_level = elem[1].getEmissivityForType( self._type )
+                    for elem in detected.values():# elem: obj
+                        object_emissivity_level = elem.getEmissivityForType( self._type )
                         
                         if object_emissivity_level >= self._emissivity_perception:
-                            detected_objs.update( { elem[0]: elem } )
+                            detected_objs.update( { elem.getPosition(): elem } )
                             num_object_detected = num_object_detected + 1
-                            logger.logger.debug("detected object: {0}  with emissivity type, level: {1}, {2} using intensity sensor: {3}, and inserted in detected object list".format( elem[1].getId(), self._type, object_emissivity_level, self._emissivity_perception ))
-                            
-                    
+                            logger.logger.debug("detected object: {0}  with emissivity type, level: {1}, {2} using intensity sensor: {3}, and inserted in detected object list".format( elem.getId(), self._type, object_emissivity_level, self._emissivity_perception ))
+                                                
                     logger.logger.debug( "detected {0} objects and inserted in detected object list".format( num_object_detected ) )
 
         energy_sensor = self._state.updateEnergy( self._power, self._delta_t )

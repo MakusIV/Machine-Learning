@@ -92,11 +92,11 @@ class Automa(Object):
         """Percepts the enviroments with sensors, update the state and return percept informations."""
         #percept_info: le informazioni dopo l'attivazione dei sensori: (energy_consumption, list_obj_detected)
         #request_percept: le informazioni riguardo tipo di sensori e modalità di attivazione
-        operative_sensors = ( sensor for sensor in sensors if sensor.isOperative() )# Lista dei sensoori attivi
-        percept_info = ( sensor.perception( posMng, self.getPosition() ) for sensor in operative_sensors )# lista delle perception info ottenuta interrogando tutti i sensori operativi
-        list_obj = ( percept_info[ 1 ] for percept_info[ 1 ] in percept_info )
+        operative_sensors = ( sensor for sensor in self._sensors if sensor.isOperative() )# Lista dei sensoori attivi
+        percept_info = ( sensor.perception( posMng, self.getPosition() ) for sensor in operative_sensors )# lista delle perception info ottenuta interrogando tutti i sensori operativi. La percept_info: percept_info: (energy_sensor, detected_objs) detected. detected_objs = { ( x, y, z): obj }
+        list_obj = ( percept_info[ 1 ] for percept_info[ 1 ] in percept_info )# lista degli object
         energy_consumption = ( percept_info[ 0 ] for percept_info[ 0 ] in percept_info )
-        self.updateStateForPercept( energy_consumption )# aggiorna lo stato dell'automa
+        self.updateStateForEnergyConsumption( energy_consumption )# aggiorna lo stato dell'automa
         return list_obj 
 
 
@@ -128,7 +128,7 @@ class Automa(Object):
         return True
 
         
-    def updateStateForPercept(self, energy_consumption):
+    def updateStateForEnergyConsumption(self, energy_consumption):
         """Update state, Sensor, Actuator states for Percept  info"""                
         total_sensor_consumption = sum( energy_consumption )
         self._state.decrementEnergy( total_sensor_consumption )

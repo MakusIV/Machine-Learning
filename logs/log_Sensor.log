@@ -372,3 +372,33 @@
 2020-10-11 10:45:20,778 - Sensor - DEBUG - perception - scanning volume 2 to detect object
 2020-10-11 10:45:20,779 - Sensor - DEBUG - perception - prob:0.18, volume_prob:0.6396428571428572, scanning volume:True
 2020-10-11 10:45:20,780 - Sensor - DEBUG - perception - detected 0 objects and consumed 0.5 energy. Sensor energy avalaible: 99.0
+2020-10-13 22:53:19,562 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-13 22:53:19,603 - Sensor - DEBUG - perception - prob:0.07, volume_prob:0.9, scanning volume:True
+2020-10-13 22:53:49,052 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-13 22:53:49,054 - Sensor - DEBUG - perception - prob:0.86, volume_prob:0.9, scanning volume:True
+2020-10-13 23:07:59,639 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-13 23:07:59,640 - Sensor - DEBUG - perception - prob:0.68, volume_prob:0.9, scanning volume:True
+2020-10-13 23:09:17,310 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-13 23:09:17,339 - Sensor - DEBUG - perception - prob:0.35, volume_prob:0.9, scanning volume:True
+2020-10-13 23:09:17,342 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-10-13 23:09:17,357 - Sensor - DEBUG - perception - detected object: New_42_ID_#680441  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-10-13 23:09:17,369 - Sensor - DEBUG - perception - detected 1 objects and inserted in detected object list
+2020-10-13 23:09:17,403 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-10-13 23:09:17,408 - Sensor - DEBUG - perception - prob:0.1, volume_prob:0.7714285714285715, scanning volume:True
+2020-10-13 23:09:17,414 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-10-13 23:09:17,464 - Sensor - DEBUG - perception - detected object: New_63_ID_#307467  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-10-13 23:09:17,471 - Sensor - DEBUG - perception - detected 1 objects and inserted in detected object list
+2020-10-13 23:09:17,473 - Sensor - DEBUG - perception - scanning volume 2 to detect object
+2020-10-13 23:09:17,476 - Sensor - DEBUG - perception - prob:0.48, volume_prob:0.6428571428571429, scanning volume:True
+2020-10-13 23:09:17,481 - Sensor - DEBUG - perception - detected 2 objects and consumed 0.5 energy. Sensor energy avalaible: 99.5
+2020-10-13 23:09:19,152 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-10-13 23:09:19,153 - Sensor - DEBUG - perception - prob:0.14, volume_prob:0.8955, scanning volume:True
+2020-10-13 23:09:19,154 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-10-13 23:09:19,155 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-10-13 23:09:19,155 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-10-13 23:09:19,156 - Sensor - DEBUG - perception - prob:0.73, volume_prob:0.7675714285714286, scanning volume:True
+2020-10-13 23:09:19,158 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-10-13 23:09:19,158 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-10-13 23:09:19,159 - Sensor - DEBUG - perception - scanning volume 2 to detect object
+2020-10-13 23:09:19,164 - Sensor - DEBUG - perception - prob:0.42, volume_prob:0.6396428571428572, scanning volume:True
+2020-10-13 23:09:19,180 - Sensor - DEBUG - perception - detected 0 objects and consumed 0.5 energy. Sensor energy avalaible: 99.0

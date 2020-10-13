@@ -413,8 +413,8 @@ class Position_manager:
                         obj_id = self.map.get ( (x, y, z) )
 
                         if obj_id:
-                            detected[ (x, y, z) ] = self.getObjectWithId( obj_id )
-                            exclude_position = { **exclude_position, **detected[ (x, y, z) ][1].getVolumePosition() }
+                            detected[ (x, y, z) ] = self.getObjectWithId( obj_id )[ 1 ]
+                            exclude_position = { **exclude_position, **detected[ (x, y, z) ].getVolumePosition() }
 
         if not detected or len( detected ) == 0:
             return False
