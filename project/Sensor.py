@@ -14,14 +14,14 @@ class Sensor:
     # Il sensore non è una specializzazione di Object
 
     # Unit test: ok
-    def __init__(self, position, range_max, typ, emissivity_perception = 1, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None  ):
+    def __init__(self, position, range_max, typ, emissivity_perception = 1, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None ):
 
-        if not self.checkParam( emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t ):
+        if not self.checkParam( position, emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t ):
             raise Exception("Invalid parameters! Sensor not istantiate.")
 
         self._name = name
         self._id = General.setId('Sensor_ID', None) # Id generator automaticamente 
-        self._state = state
+        self._state = State( run = True)
         self._position = position
         self._power = power# nota l'energia è gestita nello stato in quanto è variabile
         self._range = range_max# è rappresentato da una tupla di distanze (x_d:int, y_d:int, z_d:int)
@@ -36,13 +36,8 @@ class Sensor:
         else:
             self._name = name
 
-        if not state or not isinstance(state, State):
-            self._state = State()
-        else:
-            self.state = state
-
-
-    def checkParam(self, emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t):
+    
+    def checkParam(self, position, emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t):
         
         if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0 and  emissivity_perception and  emissivity_perception <= 100 and emissivity_perception > 0):
             return False
@@ -50,7 +45,7 @@ class Sensor:
         if accuracy and accuracy <=0:
             return False
         
-        if not typ or not General.checkSensorType( _type = typ ):
+        if not typ or not General.checkSensorType( _type = typ ) and not General.checkPosition( position ):
             return False
 
         return True

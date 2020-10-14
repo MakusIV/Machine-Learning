@@ -10,31 +10,41 @@ logger = Logger(module_name = __name__, class_name = 'Actuator')
 
 
 class Actuator:
-    
-    def __init__(self, name = None, power = None,  resilience = None, state = None  ):
+    #position, range_max, typ, emissivity_perception = 1, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None 
+    def __init__(self, position, range_max, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None  ):
 
-        if not(power and state ):
+        if not self.checkParam( position, typ, range_max, power, resilience, delta_t ):
             raise Exception("Invalid parameters! Actuator not istantiate.")
 
-
-        self._name = None
-        self._id = None
+        self._name = name
+        self._id = General.setId('Actuator_ID', None) # Id generator automaticamente
         self._power = power# nota l'energia è gestita nello stato in quanto è variabile  
-        self._state = state
-        self._resilence = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
+        self._range = range_max# è rappresentato da una tupla di distanze (x_d:int, y_d:int, z_d:int)
+        self._state = State( run = True )
+        self._resilence = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al actuatore)
+        self._delta_t = delta_t # Il tempo necessario per eseguire l'attuazione serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli
+        self._type = typ # il tipo di attuazione (vedi General.ACTUATOR_TYPE)
+      
 
         if not name:
             self._name = General.setName('Actuator_Name')
         else:
             self._name = name
 
-        if not id:
-            self._id = General.setId('Actuator_ID')
-        else:
-            self._id = id
+
+    def checkParam(self, position, typ, range_max,  power, resilience, delta_t):
+        
+        if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0 ):
+            return False
+        
+        if not typ or not General.checkActuatorType( _type = typ ) and not General.checkPosition( position ):
+            return False
+
+        return True
+
                         
     def evalutateDamage(self, energy, power):
-        """Evalutate the damage on sensor and update state"""
+        """Evalutate the damage on actuator and update state"""
         if power > self._resilience:
             damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
             return self._state.decrementHealth( damage )
@@ -66,3 +76,32 @@ class Actuator:
         # Restituisce le informazioni sulle azioni effettuate quali stato, posizione degli attuatori
         action_info = None
         return action_info
+
+    # test: ok
+    def checkActuatorClass(self, actuator):
+        """Return True if actuators is a actuator object otherwise False"""
+        if not actuator or not isinstance(actuator, Actuator):
+            return False
+        
+        return True
+
+    def checkActuatorList(self, actuators):
+
+        """Return True if actuators is a list of Actuator object otherwise False"""
+        if actuators and isinstance(actuators, list) and all( isinstance(actuator, Actuator) for actuator in actuators ):
+            return True
+
+        return False
+
+    def isOperative(self):
+        """Return true if actuator state is running"""
+        return self._state.isRunning()
+
+
+    def evalutateSelfDamage(self, energy, power):
+        """Evalutate the damage on sensor and update state"""
+        if power > self._resilience:
+            damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
+            return self._state.decrementHealth( damage )
+        
+        return self._state.getHealth()

@@ -25,7 +25,7 @@ def testClassSensor():
         print('Sensor Failed!! ', sensor._sensibility, sensor._power, sensor._resilience)
         result = False 
     
-    sensor = Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100), accuracy=20, power=20, resilience=20, name='tullio', state = State() )
+    sensor = Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100), accuracy=20, power=20, resilience=20, name='tullio' )
 
     if sensor._position != (0, 0, 0) or not sensor._sensibility or sensor._power != 20 or sensor._resilience != 20 or sensor._name != 'tullio' or not sensor._state or not sensor._type or sensor._type != 'radio':
         print('Sensor Failed!! ', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state)

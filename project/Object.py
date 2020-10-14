@@ -18,9 +18,9 @@ class Object:
             self._dimension = dimension
             self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)            
             self._coord = coord
-            self._state = None
+            self._state = state
             self.setState(state)
-            self._emissivity = None
+            self._emissivity = emissivity
             
             if not self.checkParam( dimension, resilience, state, coord ):
                 raise Exception("Invalid parameters! Object not istantiate.")
@@ -45,7 +45,7 @@ class Object:
 
         
     def checkEmissivityParam(self, emissivity):
-        
+        """Return True if conformity of the emissivity is verified"""
         if not emissivity or not isinstance(emissivity, dict) or len(emissivity) != len( General.SENSOR_TYPE ):
             return False
 
@@ -115,7 +115,7 @@ class Object:
     def setState(self, state):
 
         if not state or not isinstance(state, State):
-            self._state = State()
+            self._state = State( run = True )
         else:
             self._state = state
 
@@ -244,22 +244,23 @@ class Object:
         return True
 
     def checkObjectList(self, objects):
-
         """Return True if objectsobject is a list of Object object otherwise False"""
+
         if objects and isinstance(objects, list) and all( isinstance(object, Object) for object in objects ):
             return True
 
         return False
 
+
      # vedi il libro
     def checkParam(self, dimension, resilience, state, coord ):
-                
-        # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
-
+        """Return True if conformity of the parameters is verified"""   
+    
         if state != None and not isinstance( state, State ) or coord != None and not isinstance( coord, Coordinate ) or resilience != None and ( not isinstance( resilience, int )  or not( resilience <= 100 and resilience >= 0 ) ) or not General.checkDimension( dimension ):
             return False
                 
         return True
+
 
     def getVolumePosition( self ):
         """Return the position of the object's volume"""

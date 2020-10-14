@@ -15,8 +15,8 @@ class Event:
         if not self.checkParam(typ, volume,  time2go, duration, energy, power, mass):
             raise Exception("Invalid parameters! Event not istantiate.")        
 
-        self._type = None # type: SHOT, PUSH, POP, EAT
-        self._id = General.setId(self._type, None) # l'id vieene generato automaticamente nel runtime per ogni istanza creata
+        self._type = None # type: HIT, PUSH, POP, ADSORB, MOVE
+        self._id = General.setId(self._type, None) # l'id viene generato automaticamente nel runtime per ogni istanza creata
         self._volume = None
         self._time2go = None
         self._duration = None
@@ -45,19 +45,21 @@ class Event:
     def isPop(self):
         return self._type == 'POP'
 
-    def isShot(self):
-        return self._type == 'SHOT'
+    def isHit(self):
+        return self._type == 'HIT'
 
-    def isEat(self):
-        return self._type == 'EAT'
+    def isAdsorb(self):
+        return self._type == 'ADSORB'
 
+    def isMove(self):
+        return self._type == 'MOVE'
 
     
     
 
     def checkParam(self, typ, volume,  time2go, duration, energy, power, mass):
 
-        if not ( type == 'SHOT' or self._type == 'PUSH' orself._type == 'POP' ):
+        if not ( type == 'HIT' or typ == 'PUSH' or typ == 'POP' or typ == 'ADSORB' ):
             return False
 
         if not General.checkVolume(volume) or not isinstance(time2go, int) or not isinstance(duration, int):

@@ -16,20 +16,20 @@ logger = Logger(module_name = __name__, set_consolle_log_level = 30, set_file_lo
 class Automa(Object):
     """Automa derived from Object. """
 
-    def __init__(self, name = 'Automa', dimension = [1, 1, 1], resilience = 100, power = 100, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None   ):
+    def __init__(self, name = 'Automa', dimension = [1, 1, 1], resilience = 100, power = 100, emissivity = {"radio": 50, "thermal": 50, "optical": 100, "nuclear": 0, "electric": 50, "acoustics": 100, "chemist": 0}, coord = None, sensors= None, actuators = None ):
 
-        Object.__init__(self, name = name, dimension = dimension, resilience = resilience, coord = coord, state = state)
+        Object.__init__(self, name = name, dimension = dimension, resilience = resilience, emissivity = emissivity, coord = coord)
 
-        self._ai = ai #AI Engine
+        self._ai = AI() #AI Engine
         self._power = power # nota l'energia è gestita nello stato in quanto è variabile        
-        self._state = state #Class State        
+        self._state = State(run = True) #Class State        
         self._sensors = sensors# list of Sensor objects
-        self._actuators = actuators# list of Actuator objects
+        self._actuators = actuators# list of Actuator objects. NO DEVE ESSERE UNA CLASSE CHE CONTIENE LA LISTA DEGLI ATTUATORI. QUESTA CLASSE DEVE IMPLEMENTARE IL METODO PER VALUTARE QUALI ATTUATORI ATTIVARE IN BASE AL COMANDO RICEVUTO
         self.action_executed = None
         self._eventsQueue = {} #  {key: event id, value = event}
         self._actionsQueue = {} #  {key: event id, value = action}
 
-        if not self.checkParam():
+        if not self.checkParamAutoma(power, sensors, actuators):
             raise Exception("Invalid properties! Automata not istantiate.")
 
         logger.logger.info("Automa {0} created".format(self._id))
@@ -59,6 +59,7 @@ class Automa(Object):
         self.update() #check the eventsQueue and update state
         list_obj = self.percept(posManager)
         self.evalutate( list_obj ) # create the action info to execute and inserts in the action Queue
+        logger.logger.info("Automa: {0} running task: update internal state, execute perception and detected {1} object, evalutate and executed action()".format( self._id, len( list_obj ) ))
         return self.action() # return the Queue of the action info executed in a single task
 
 
@@ -71,7 +72,8 @@ class Automa(Object):
         # coinvolti
         
         for k, ev in events: # scorre gli eventi da eseguire della lista eventi attivi
-            
+            logger.logger.debug("Automa: {0} active event {1}".format( self._id, ev._type ))
+
             if ev.isShot(): # solo per l'evento SHOT viene valutato l'eventuale danno
                 self.evalutateShot( ev )
 
@@ -84,7 +86,7 @@ class Automa(Object):
             if ev.isEat(): # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
                 self.evalutateEat( ev )
 
-    
+        logger.logger.debug("Automa: {0} executed update internal state".format( self._id ))
         return True
         
     
@@ -97,6 +99,7 @@ class Automa(Object):
         list_obj = ( percept_info[ 1 ] for percept_info[ 1 ] in percept_info )# lista degli object
         energy_consumption = ( percept_info[ 0 ] for percept_info[ 0 ] in percept_info )
         self.updateStateForEnergyConsumption( energy_consumption )# aggiorna lo stato dell'automa
+        logger.logger.debug("Automa: {0} execute perception: activated {1} sensor, detected {2} object, energy consumed: {3}".format( self._id, len( operative_sensors ), len( list_obj ), energy_consumption  ))
         return list_obj 
 
 
@@ -104,27 +107,36 @@ class Automa(Object):
         """Evalutate the info of the enviroments knows (percept info) and return the action to execute"""       
         # determina quali sono le azioni che può svolgere in questo singolo task e le inserisce nella queue action
         self._actionsQueue = self.ai.evalutate(percept_info, self._state) # noota: la queue si resetta ad ogni task
+        logger.logger.debug("Automa: {0} execute evalutate percept_info: created actionQueue with {1} items".format( self._id, len( self._actionsQueue ) ))
         return True
 
 
     def action(self, request_action):
         """Activates Actuators for execution of Action. Return action informations."""
         #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
-        actions_info = []
-        for k, act in self._actionsQueue.items():
-            actions_info.append( self._actuators.eval_command(act) )
+        actions_info = [] # (action_type, position, object)
+
+        for _, act in self._actionsQueue.items():
+            # in base ad act devi determinare quali attuatori sono coinvolti e attivarli
+            # actuators_activation: (actuator, action_description)
+            actuators_activation = self.eval_actuators_activation( act ) # questa funzione deve anche valutare gli attuatori attivi e se questi sono sufficienti per compiere l'atto altrimenti deve restituire false o un atto ridotto
+            logger.logger.debug("Automa: {0} execute action: act:created actionQueue with {1} items".format( self._id, len( self._actionsQueue ) ))
+
+            for act in actuators_activation:               
+                actions_info.append( act[0].exec_command( act[ 1 ]) )# act[0]: actuator, act[1]: action_description
+
             self.updateStateForAction( actions_info )
+
+        logger.logger.debug("Automa: {0} executed action: created action_info with {1} items".format( self._id, len( action_info ) ))
         return actions_info
 
 
     # vedi il libro
-    def checkParam(power, ai, sensors, actuators):
-                
-        # INSERISCI I TEST DI VERIFICA DELLE CLASSI NELLE CLASSI STESSE E ANCHE LA VERIFICA DELLE LISTE 
-
-        if not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not ai or not isinstance(ai, AI) or not sensors or not isinstance(sensors[0], Sensor) or not Sensor.checkSensorList(sensors[0], sensors) or not actuators or not isinstance(actuators[0], Actuator) or not Actuator.checkActuatorList(actuators[0], actuators):
-            return false
-
+    def checkParamAutoma(self, power, sensors, actuators):            
+        """Return True if conformity of the parameters is verified"""
+        
+        if not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not sensors or not isinstance(sensors[0], Sensor) or not Sensor.checkSensorList(sensors[0], sensors) or not actuators or not isinstance(actuators[0], Actuator) or not Actuator.checkActuatorList(actuators[0], actuators):
+            return False
         return True
 
         
@@ -205,3 +217,51 @@ class Automa(Object):
         """" valuta gli effetti dell'evento eat sull'automa """
         # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
         pass
+
+    def eval_actuators_activation( self, act ):
+        # act: (action_type, position or object)
+        # return: # actuators_activation: (actuator, action_description)
+        if not General.checkAct( act ):
+            raise Exception("action not found!")
+        action_type = act[0]
+
+        if action_type == 'move' or action_type =='run':
+            actuators = self.getActuators( actuator_class = 'mover' )
+            
+            if action_type == 'move':
+                speed = 0.7 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
+            else:
+                speed = 1 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
+            
+            position = act[1]
+            return (actuators, action_type, position, speed)
+            
+        elif action_type == 'take':
+            actuators = self.getActuators( actuator_class = 'object_manipulator' )
+            obj = act[1]
+            return (actuators, action_type, obj)
+
+        elif action_type == 'catch':
+            actuators = self.getActuators( actuator_class = 'object_catcher' )
+            obj = act[1]
+            return (actuators, action_type, obj)
+        
+        elif action_type == 'eat' or action_type == 'suck':
+            actuators = self.getActuators( actuator_class = 'object_adsorber' )
+
+            if action_type == 'suck':
+                actuators = actuators.get('sucker')
+            else:
+                actuators = actuators.get('jaw')
+
+            obj = act[1]
+            return (actuators, action_type, obj)
+        
+
+        if General.isDimension( act[1] ):
+            
+        elif isinstance( act[1], Object):
+            
+
+
+        if act[0] == 'move'
