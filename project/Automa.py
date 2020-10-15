@@ -219,49 +219,70 @@ class Automa(Object):
         pass
 
     def eval_actuators_activation( self, act ):
+        """Choice the actuators for activation in relation with act"""
         # act: (action_type, position or object)
         # return: # actuators_activation: (actuator, action_description)
+        
         if not General.checkAct( act ):
             raise Exception("action not found!")
         action_type = act[0]
 
-        if action_type == 'move' or action_type =='run':
+        # actuators:  { key: actuator_type, value: actuator }
+        if action_type == 'move' or action_type == 'run' or action_type == 'escape':
             actuators = self.getActuators( actuator_class = 'mover' )
             
             if action_type == 'move':
                 speed = 0.7 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
+
             else:
                 speed = 1 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
             
-            position = act[1]
+            position = act[ 1 ]
             return (actuators, action_type, position, speed)
             
         elif action_type == 'take':
             actuators = self.getActuators( actuator_class = 'object_manipulator' )
-            obj = act[1]
+            obj = act[ 1 ]
             return (actuators, action_type, obj)
 
         elif action_type == 'catch':
             actuators = self.getActuators( actuator_class = 'object_catcher' )
-            obj = act[1]
+            obj = act[ 1 ]
             return (actuators, action_type, obj)
         
-        elif action_type == 'eat' or action_type == 'suck':
+        elif action_type == 'eat':
             actuators = self.getActuators( actuator_class = 'object_adsorber' )
-
-            if action_type == 'suck':
-                actuators = actuators.get('sucker')
-            else:
-                actuators = actuators.get('jaw')
-
-            obj = act[1]
+            obj = act[ 1 ]
             return (actuators, action_type, obj)
+
+        elif action_type == 'shot':
+            actuators = self.getActuators( actuator_class = 'plasma_launcher' )  + self.getActuators( actuator_class = 'projectile_launcher' )
+            obj = act[ 1 ]
+            return ( actuators, action_type, obj )
+
+        elif action_type == 'hit':
+            actuators = self.getActuators( actuator_class = 'object_hitter' )
+            obj = act[ 1 ]
+            return ( actuators, action_type, obj )
         
+        elif action_type == 'attack':
+            actuators = self.getActuators( actuator_class = 'object_catcher' ) + self.getActuators( actuator_class = 'projectile_launcher' ) + self.getActuators( actuator_class = 'plasma_launcher' ) +     actuators.append( self.getActuators( actuator_class = 'object_hitter' ) )
+            actuators = self.eval_best_actuators( actuators )
+            obj = act[ 1 ]
+            return ( actuators, action_type, obj )
+        
+        else:
+            raise Exception("action_type not found!!")
 
-        if General.isDimension( act[1] ):
-            
-        elif isinstance( act[1], Object):
-            
+        return
 
+    def getActuators( self, actuator_class ):
+        """Return list of actuator with actuator_class propriety """
+        actuators = list()
 
-        if act[0] == 'move'
+        for actuator in self._actuators:
+
+            if actuator.isType( actuator_class ):
+                actuators.append( actuator )
+        
+        return actuators

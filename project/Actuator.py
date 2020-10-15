@@ -11,7 +11,7 @@ logger = Logger(module_name = __name__, class_name = 'Actuator')
 
 class Actuator:
     #position, range_max, typ, emissivity_perception = 1, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None 
-    def __init__(self, position, range_max, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None  ):
+    def __init__(self, position, range_max, class_, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None  ):
 
         if not self.checkParam( position, typ, range_max, power, resilience, delta_t ):
             raise Exception("Invalid parameters! Actuator not istantiate.")
@@ -24,6 +24,8 @@ class Actuator:
         self._resilence = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al actuatore)
         self._delta_t = delta_t # Il tempo necessario per eseguire l'attuazione serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli
         self._type = typ # il tipo di attuazione (vedi General.ACTUATOR_TYPE)
+        self._class = class_ # la classe dell'attuatore (vedi General.ACTUATOR_TYPE)
+        self._position = position
       
 
         if not name:
@@ -33,7 +35,7 @@ class Actuator:
 
 
     def checkParam(self, position, typ, range_max,  power, resilience, delta_t):
-        
+        """Return True if conformity of the parameters is verified"""
         if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0 ):
             return False
         
@@ -42,7 +44,18 @@ class Actuator:
 
         return True
 
+
+    def isType( self, actuator_type):
+        """Return True if actuator have self._type == actuator_type"""
+        return self._type == actuator_type
                         
+    
+
+    def isClass( self, actuator_class):
+        """Return True if actuator have self._class == actuator_class"""   
+        return self._class == actuator_class
+    
+
     def evalutateDamage(self, energy, power):
         """Evalutate the damage on actuator and update state"""
         if power > self._resilience:
@@ -51,6 +64,10 @@ class Actuator:
         
         return self._state.getHealth()
     
+    
+    def exec_command(self, action_decription):
+        # action description: 
+
 
     def setId(self, id = None):
 

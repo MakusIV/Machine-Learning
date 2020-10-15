@@ -39,7 +39,7 @@ SENSOR_TYPE = ( "radio", "thermal", "optical", "nuclear", "electric", "acoustics
 
 ACTUATOR_CLASS = ( "object_manipulator", "mover", "plasma_launcher", "projectile_launcher", "object_catcher", "object_adsorber", "object_hitter" )
 
-ACTION_TYPE = ( "move", "run", "take", "catch", "eat", "suck", "attack", "escape", "nothing", "shot", "hit" )
+ACTION_TYPE = ( "move", "run", "take", "catch", "eat", "attack", "escape", "nothing", "shot", "hit" )
 
 EVENT_TYPE = ( "PUSH", "POP", "HIT", "ADSORB", "MOVE" ) # la differenza tra PUSH e HIT è nell'energia-potenza impressa, mentre tra POP e ADSORB è che con EAT l'oggetto "preso" dovrebbe essere eliminato
 
