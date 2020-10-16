@@ -43,40 +43,45 @@ ACTION_TYPE = ( "move", "run", "take", "catch", "eat", "attack", "escape", "noth
 
 EVENT_TYPE = ( "PUSH", "POP", "HIT", "ADSORB", "MOVE" ) # la differenza tra PUSH e HIT è nell'energia-potenza impressa, mentre tra POP e ADSORB è che con EAT l'oggetto "preso" dovrebbe essere eliminato
 
-ACTUATOR_TYPE = {  "mover": [   { '2-legs': { 'power': 40, 'speed': 70, 'accuracy': 100, 'resilience':20, 'strength': 30 } },
-                                { '4-legs': { 'power': 60, 'speed': 60, 'accuracy': 70, 'resilience': 40, 'strength': 60 } },
-                                { '2-wheels': { 'power': 20, 'speed': 80, 'accuracy': 50, 'resilience': 30, 'strength': 20 } },
-                                { '4-wheels': { 'power': 30, 'speed': 70, 'accuracy': 40, 'resilience': 60, 'strength': 40 } },
-                                { 'crawler': { 'power': 80, 'speed': 40, 'accuracy': 30, 'resilience': 100, 'strength': 100 } },
-                                { 'hoover': { 'power': 100, 'speed': 100, 'accuracy': 10, 'resilience': 30, 'strength': 70 } } ],
-                    
-    "object_manipulator":   [   { 'hand': { 'power': 20, 'speed': 70, 'accuracy': 100, 'resilience':20, 'strength': 40 } },
-                                { 'clamp': { 'power': 80, 'speed': 50, 'accuracy': 60, 'resilience': 80, 'strength': 100 } },
-                                { 'tentacle': { 'power': 50, 'speed': 80, 'accuracy': 40, 'resilience': 50, 'strength': 80 } } ],
-
-    "projectile_launcher":      [   { 'heavy_cannon': { 'power': 80, 'speed': 10, 'accuracy': 100, 'resilience':100, 'strength': 100 } },
-                                { 'medium_cannon': { 'power': 60, 'speed': 30, 'accuracy': 85, 'resilience': 85, 'strength': 85 } },
-                                { 'light_cannon': { 'power': 40, 'speed': 60, 'accuracy': 70, 'resilience': 70, 'strength': 70 } },
-                                { 'heavy_machine_gun': { 'power': 60, 'speed': 70, 'accuracy': 60, 'resilience':50, 'strength': 60 } },
-                                { 'medium__machine_gun': { 'power': 40, 'speed': 85, 'accuracy': 50, 'resilience': 30, 'strength': 50 } },
-                                { 'light__machine_gun': { 'power': 20, 'speed': 100, 'accuracy': 30, 'resilience': 10, 'strength': 30 } } ],
-
-    "plasma_launcher":      [   { 'flamethrower': { 'power': 50, 'speed': 50, 'accuracy': 20, 'resilience':80, 'strength': 70 } },
-                                { 'laser': { 'power': 70, 'speed': 100, 'accuracy': 100, 'resilience': 50, 'strength': 80 } },
-                                { 'plasma': { 'power': 80, 'speed': 80, 'accuracy': 60, 'resilience': 50, 'strength': 100 } } ],
+ACTUATOR_TYPE = {  
     
-    "object_catcher":       [   { 'harpoon': { 'power': 40, 'speed': 100, 'accuracy': 70, 'resilience':40, 'strength': 80 } },
-                                { 'clamp': { 'power': 70, 'speed': 70, 'accuracy': 40, 'resilience': 70, 'strength': 80 } },
-                                { 'hand': { 'power': 50, 'speed': 50, 'accur acy': 90, 'resilience': 55, 'strength': 50 } } ],
+    "mover":                {   "2-legs": { "power": 40, "speed": 70, "accuracy": 100, "resilience":20, "strength": 30 },
+                                "4-legs": { "power": 60, "speed": 60, "accuracy": 70, "resilience": 40, "strength": 60 },
+                                "2-wheels": { "power": 20, "speed": 80, "accuracy": 50, "resilience": 30, "strength": 20 },
+                                "4-wheels": { "power": 30, "speed": 70, "accuracy": 40, "resilience": 60, "strength": 40 },
+                                "crawler": { "power": 80, "speed": 40, "accuracy": 30, "resilience": 100, "strength": 100 },
+                                "hoover": { "power": 100, "speed": 100, "accuracy": 10, "resilience": 30, "strength": 70 }  },                    
 
-    "object_adsorber":      [   { 'jaw': { 'power': 70, 'speed': 60, 'accuracy': 70, 'resilience':80, 'strength': 90 } },                                
-                                { 'sucker': { 'power': 40, 'speed': 80, 'accuracy': 90, 'resilience': 30, 'strength': 30 } } ],
-    
-    "object_hitter":        [   { 'hammer': { 'power': 50, 'speed': 100, 'accuracy': 60, 'resilience':100, 'strength': 90 } },
-                                { 'chainsaw':  { 'power': 80, 'speed': 50, 'accuracy': 40, 'resilience': 70, 'strength': 70 } },
-                                { 'drill': { 'power': 70, 'speed': 70, 'accuracy': 80, 'resilience': 55, 'strength': 75 } } ],
+    "object_manipulator":   {   "hand": { "power": 20, "speed": 70, "accuracy": 100, "resilience":20, "strength": 40 },
+                                "clamp": { "power": 80, "speed": 50, "accuracy": 60, "resilience": 80, "strength": 100 },
+                                "tentacle": { "power": 50, "speed": 80, "accuracy": 40, "resilience": 50, "strength": 80 }  },
+
+    "projectile_launcher":  {   "heavy_cannon": { "power": 80, "speed": 10, "accuracy": 100, "resilience":100, "strength": 100 },
+                                "medium_cannon": { "power": 60, "speed": 30, "accuracy": 85, "resilience": 85, "strength": 85 },
+                                "light_cannon": { "power": 40, "speed": 60, "accuracy": 70, "resilience": 70, "strength": 70 },
+                                "heavy_machine_gun": { "power": 60, "speed": 70, "accuracy": 60, "resilience":50, "strength": 60 },
+                                "medium__machine_gun": { "power": 40, "speed": 85, "accuracy": 50, "resilience": 30, "strength": 50 },
+                                "light__machine_gun": { "power": 20, "speed": 100, "accuracy": 30, "resilience": 10, "strength": 30 }  },
+
+    "plasma_launcher":      {   "flamethrower": { "power": 50, "speed": 50, "accuracy": 20, "resilience":80, "strength": 70 },
+                                "laser": { "power": 70, "speed": 100, "accuracy": 100, "resilience": 50, "strength": 80 },
+                                "plasma": { "power": 80, "speed": 80, "accuracy": 60, "resilience": 50, "strength": 100 }  },
+
+    "object_catcher":       {   "harpoon": { "power": 40, "speed": 100, "accuracy": 70, "resilience":40, "strength": 80 },
+                                "clamp": { "power": 70, "speed": 70, "accuracy": 40, "resilience": 70, "strength": 80 },
+                                "hand": { "power": 50, "speed": 50, "accur acy": 90, "resilience": 55, "strength": 50 }  },
+
+    "object_adsorber":      {   "jaw": { "power": 70, "speed": 60, "accuracy": 70, "resilience":80, "strength": 90 },                            
+                                "sucker": { "power": 40, "speed": 80, "accuracy": 90, "resilience": 30, "strength": 30 }  },
+
+    "object_hitter":        {   "hammer": { "power": 50, "speed": 100, "accuracy": 60, "resilience":100, "strength": 90 },
+                                "chainsaw":  { "power": 80, "speed": 50, "accuracy": 40, "resilience": 70, "strength": 70 },
+                                "drill": { "power": 70, "speed": 70, "accuracy": 80, "resilience": 55, "strength": 75 }  }
                     
                     }
+
+#[]
+
 
 # METHODS
 
@@ -92,17 +97,17 @@ def checkSensorType(_type):
     
     return False
 
-def checkActuatorType(_type):
+def checkActuatorTypeAndClass(_type, _class):
     
-    if not _type or not isinstance(_type, str):
+    if not _type or not _class or not isinstance(_type, str) or not isinstance(_class, str):
         return False
 
-    for val in ACTUATOR_TYPE:
-
-        if val == _type:
+    if any( [True for key in ACTUATOR_TYPE.keys() if key == _class] ):
+        if any( [True for key in ACTUATOR_TYPE[ _class ].keys() if key == _type ] ):
             return True
-    
+
     return False
+
 
 def checkDimension(dimension):
     """ Return True if dimension is a list normalized as dimension:  dimension: [int dim_x, int dim_y, int dim_z]"""

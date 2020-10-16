@@ -5,6 +5,7 @@ import sys
 sys.path.insert(1, 'project')
 from Actuator import Actuator
 import General
+from LoggerClass import Logger
 
 
 # LOGGING --
@@ -16,107 +17,105 @@ def testClassActuator():
     result = True 
 
     #position, range_max, class_, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None   
-    actuator = Actuator( position = (0, 0, 0), range_max = 100, class_ = 'mover', typ = '2-legs' )
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' )
 
 
-    if actuator._position != (0, 0, 0) or not actuator._name or actuator._power != 100 or actuator._resilience != 100 or not actuator._state or actuator._delta_t != 0.01 :
+    if actuator._position != ( 0, 0, 0 ) or not actuator._name or actuator._power != 100 or actuator._resilience != 100 or not actuator._state or actuator._delta_t != 0.01 :
         print('Actuator Failed!! ', actuator._position, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
         result = False 
     
     
 
     try:
-        sensor = Sensor( position = (0, 0, 0), sensibility=-1, power=-1, resilience=-1, typ = "radio")
+        actuator = Actuator( position = (0, 0, 0), range_max = 1, class_ = 'mover', typ = '2-legs' )
+
         
     except Exception:
         pass
 
     else:
-        print( 'Sensor Failed!!  Not launch Exception', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state , sensor._type)
+        print('Actuator Failed!! Not launch exception for not valid range_max parameter 1', actuator._range, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
         result = False
 
 
     try:
-        sensor = Sensor( position = (0, 0, 0), sensibility=10, power=1, resilience=101, typ = "radio")
+        actuator = Actuator( position = (0, 0, 0), range_max = (1, 1, -1), class_ = 'mover', typ = '2-legs', power = 100 )
         
     except Exception:
         pass
 
     else:
-        print( 'Sensor Failed!!  Not launch Exception', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state, sensor._type )
+        print('Actuator Failed!! Not launch exception for not valid range_max parameter (1, 1, -1)', actuator._range, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
         result = False
 
 
-    
-    # test Sensor.evalutateDamage( energy, power )
-    sensor = Sensor( typ = "radio", position = (0, 0, 0), range_max=(50, 50, 50), power=50, resilience=50, accuracy=7)
-    sensor.evalutateSelfDamage(energy = 100, power = 60)
+    try:
+        actuator = Actuator( position = (0, 0, 0), range_max = (10, 10, 10), class_ = 'mover', typ = '2-foot', power = 100 )
+        
+    except Exception:
+        pass
 
-    if sensor._state._health != 90:
-        print('Sensor.evalutatSelfDamage(energy = 100, power = 60) Failed!! ', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state, sensor._state._health)
-        result = False 
-    
+    else:
+        print('Actuator Failed!! Not launch exception  for not valid typ parameter', actuator._class, actuator._type, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
+        result = False
 
-    # test checkSensorClass()
 
-    if not Sensor.checkSensorClass(sensor, sensor):
-        print('Sensor.checkSensorClass(sensor) Failed!! ', sensor._state, sensor._state._health)
-        result = False 
-    
-    # test checkSensorList()
 
-    sensors = [Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100)  ), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) )]
 
-    if not Sensor.checkSensorList(sensor, sensors): 
-        print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
+    try:
+        actuator = Actuator( position = (0, 0, 0), range_max = (10, 10, 10), class_ = 'object_pusher', typ = '2-legs', power = 100 )
+        
+    except Exception:
+        pass
+
+    else:
+        print('Actuator Failed!! Not launch exception  for not valid class parameter', actuator._class, actuator._type, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
         result = False
 
     
-    sensors = [Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) ), list(), Sensor( typ = "radio", position = (0, 0, 0), range_max = (100, 100, 100) )]
+    try:
+        actuator = Actuator( position = (0, 0, 0), range_max = (10, 10, 10), class_ = 'object_hitter', typ = '2-legs', power = 100 )
+        
+    except Exception:
+        pass
 
-    if Sensor.checkSensorList(sensor, sensors):
-        print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
+    else:
+        print('Actuator Failed!! Not launch exception  for not valid class parameter typ not in that class', actuator._class, actuator._type, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
+        result = False
+
+
+    # test Actuator.evalutateDamage( energy, power )
+    actuator = Actuator( position = (0, 0, 0), range_max = (50, 50, 50), class_ = 'mover', typ = '2-legs', power = 50, resilience = 50 )
+    actuator.evalutateSelfDamage(energy = 100, power = 60)
+
+    if actuator._state._health != 90:
+        print('Actuator.evalutatSelfDamage(energy = 100, power = 60) Failed!! ', actuator._power, actuator._resilience, actuator._name, actuator._state, actuator._state._health)
+        result = False 
+    
+
+    # test checkActuatorClass()
+
+    if not Actuator.checkActuatorClass(actuator, actuator):
+        print('Actuator.checkActuatorClass(sensor) Failed!! ', actuator._state, actuator._state._health)
+        result = False 
+    
+    
+
+    actuators = [ Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ), Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ), Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ) ]
+
+    if not Actuator.checkActuatorList(actuator, actuators): 
+        print('Actuator.checkSensorList(sensors) Failed!! ', actuators[0]._id, actuators[0]._state, actuators[0]._state._health)
+        result = False
+
+    
+    actuators = [ Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ), Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ), list(), Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ) ]
+
+    if Actuator.checkActuatorList(actuator, actuators): 
+        print('Actuator.checkSensorList(sensors) Failed!! ', actuators[0]._id, actuators[0]._state, actuators[0]._state._health)
         result = False  
     
-    # test sensor.perception()-test with object emissivity > sensor emissivity_perception: sensor should be percept object
-    num_objects = 100
-    num_objects_for_linear = int( (num_objects)**(1/3) )    
-    object_dimension = (3, 2, 1)
-    separation_from_objects = 7
-    incr = ( object_dimension[0] + separation_from_objects, object_dimension[2] + separation_from_objects, object_dimension[2] + separation_from_objects )
-    dim_linear = ( num_objects_for_linear * incr[0], num_objects_for_linear * incr[2], num_objects_for_linear * incr[2] )
-    bound = ( int( dim_linear[0]/2 ), int( dim_linear[1]/2 ), int( dim_linear[2]/2 ) )
-    logger.logger.info("num_objects:{0},  num_objects_for_linear:{1},  object_dimension:{2},  separation_from_objects:{3},  incr:{4},  dim_linear:{5},  bound:{6}".format( num_objects,  num_objects_for_linear, object_dimension, separation_from_objects, incr, dim_linear, bound) )
-
-    pm = Position_manager(name='position manager', limits = [ [ -bound[0] , -bound[1], -bound[2]], [ bound[0], bound[1], bound[2] ] ])
-
-    for z in range(-bound[2], bound[2], incr[2]):
-        for y in range(-bound[1], bound[1], incr[1]):
-            for x in range(-bound[0], bound[0], incr[0]):
-                pm.insertObject( position = (x, y, z), obj = Object(name = 'New_'+str( int(  ((bound[0] + x)%dim_linear[0])/incr[0] + num_objects_for_linear*((bound[1] + y)%dim_linear[1])/incr[1] + num_objects_for_linear*num_objects_for_linear*((bound[2] + z)%dim_linear[2])/incr[2] ) ), dimension = ( object_dimension[0], object_dimension[1], object_dimension[2]) , emissivity = {"radio": 5, "thermal": 0, "optical": 0, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0 } ) )
     
-    sensor.perception( pm, sensor._position )
-
-    # test sensor.perception()-test with object emissivity < sensor emissivity_perception: sensor not should be percept object
-    num_objects = 100
-    num_objects_for_linear = int( (num_objects)**(1/3) )    
-    object_dimension = (3, 2, 1)
-    separation_from_objects = 7
-    incr = ( object_dimension[0] + separation_from_objects, object_dimension[2] + separation_from_objects, object_dimension[2] + separation_from_objects )
-    dim_linear = ( num_objects_for_linear * incr[0], num_objects_for_linear * incr[2], num_objects_for_linear * incr[2] )
-    bound = ( int( dim_linear[0]/2 ), int( dim_linear[1]/2 ), int( dim_linear[2]/2 ) )
-    logger.logger.info("num_objects:{0},  num_objects_for_linear:{1},  object_dimension:{2},  separation_from_objects:{3},  incr:{4},  dim_linear:{5},  bound:{6}".format( num_objects,  num_objects_for_linear, object_dimension, separation_from_objects, incr, dim_linear, bound) )
-
-    pm = Position_manager(name='position manager', limits = [ [ -bound[0] , -bound[1], -bound[2]], [ bound[0], bound[1], bound[2] ] ])
-
-    for z in range(-bound[2], bound[2], incr[2]):
-        for y in range(-bound[1], bound[1], incr[1]):
-            for x in range(-bound[0], bound[0], incr[0]):
-                pm.insertObject( position = (x, y, z), obj = Object(name = 'New_'+str( int(  ((bound[0] + x)%dim_linear[0])/incr[0] + num_objects_for_linear*((bound[1] + y)%dim_linear[1])/incr[1] + num_objects_for_linear*num_objects_for_linear*((bound[2] + z)%dim_linear[2])/incr[2] ) ), dimension = ( object_dimension[0], object_dimension[1], object_dimension[2]) , emissivity = {"radio": 0, "thermal": 0, "optical": 0, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0 } ) )
-    
-    sensor.perception( pm, sensor._position )
-
 
     return result
 
-print("Sensor class test result:", testClassActuator())
+print("Actuator class test result:", testClassActuator())
