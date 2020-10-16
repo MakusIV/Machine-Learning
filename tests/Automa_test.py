@@ -8,6 +8,15 @@ from Automa import Automa
 from Sensor import Sensor
 from Actuator import Actuator
 from Coordinate import Coordinate
+from Position_manager import Position_manager
+from Object import Object
+
+from LoggerClass import Logger
+
+
+# LOGGING --
+ 
+logger = Logger(module_name = __name__, class_name = 'Automa_test')
 
 
 
@@ -19,15 +28,52 @@ def testClassAutoma():
     #name = 'Automa', dimension = [1, 1, 1], resilience = 10, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None      
     coord = Coordinate( 0, 0, 0 )
     sensors = [ Sensor( typ = "radio", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( typ = "optical", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( typ = "thermal", position = coord.getPosition(), range_max = (100, 100, 100) )]
-    actuators = [ Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), typ = "move", power = 100,  resilience = 100, delta_t = 0.01 ), Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), typ = "move", power = 100,  resilience = 100, delta_t = 0.01 ) ]
+    actuators = [ Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01 ), Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01 ) ]
     automa = Automa(coord = coord, sensors = sensors, actuators = actuators)
-
+    
+    # TEST: OK
     if automa._name != 'Automa' or automa._dimension != [1, 1, 1] or automa._resilience != 100 or automa._power != 100 or not automa._state or not isinstance(automa._state, State) or not automa._state.isRunning():
         print('Automa Failed!! ', automa._name, automa._dimension, automa._resilience, automa._state)
         result = False 
     
     
+
+
+
+
     
+    # create positione manager for manage enviroments, create object and populate pm
+    num_objects = 100
+    num_objects_for_linear = int( (num_objects)**(1/3) )    
+    object_dimension = (3, 2, 1)
+    separation_from_objects = 7
+    incr = ( object_dimension[0] + separation_from_objects, object_dimension[2] + separation_from_objects, object_dimension[2] + separation_from_objects )
+    dim_linear = ( num_objects_for_linear * incr[0], num_objects_for_linear * incr[2], num_objects_for_linear * incr[2] )
+    bound = ( int( dim_linear[0]/2 ), int( dim_linear[1]/2 ), int( dim_linear[2]/2 ) )
+    logger.logger.info( "num_objects:{0},  num_objects_for_linear:{1},  object_dimension:{2},  separation_from_objects:{3},  incr:{4},  dim_linear:{5},  bound:{6}".format( num_objects,  num_objects_for_linear, object_dimension, separation_from_objects, incr, dim_linear, bound ) )
+
+    pm = Position_manager( name ='position manager', limits = [ [ -bound[0] , -bound[1], -bound[2]], [ bound[0], bound[1], bound[2] ] ] )
+
+    for z in range(-bound[2], bound[2], incr[2]):
+        for y in range(-bound[1], bound[1], incr[1]):
+            for x in range(-bound[0], bound[0], incr[0]):
+                
+                if z == -bound[2] and y == -bound[1] and x == -bound[0]:
+                    pm.insertObject( position = (x, y, z), obj = automa )    
+                else:
+                    pm.insertObject( position = (x, y, z), obj = Object(name = 'New_'+str( int(  ((bound[0] + x)%dim_linear[0])/incr[0] + num_objects_for_linear*((bound[1] + y)%dim_linear[1])/incr[1] + num_objects_for_linear*num_objects_for_linear*((bound[2] + z)%dim_linear[2])/incr[2] ) ), dimension = ( object_dimension[0], object_dimension[1], object_dimension[2]) , emissivity = {"radio": 5, "thermal": 0, "optical": 5, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0 } ) )
+    
+    # TEST: OK
+    obj_list = automa.percept( pm )
+
+    if len( obj_list ) == 0:
+        print('Automa.percept() Failed len(object_list) = 0 !! ', automa._id, obj_list)
+        result = False 
+    
+
+
+
+
 
     return result
 

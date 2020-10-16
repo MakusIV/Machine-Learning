@@ -2,3 +2,16 @@
 2020-10-14 12:22:26,757 - Automa - INFO - __init__ - Automa Automa_ID_#665438 created
 2020-10-14 12:31:13,845 - Automa - INFO - __init__ - Automa Automa_ID_#915415 created
 2020-10-14 12:37:16,318 - Automa - INFO - __init__ - Automa Automa_ID_#806550 created
+2020-10-16 23:07:44,457 - Automa - INFO - __init__ - Automa Automa_ID_#893253 created
+2020-10-16 23:28:22,784 - Automa - INFO - __init__ - Automa Automa_ID_#842127 created
+2020-10-16 23:33:04,801 - Automa - INFO - __init__ - Automa Automa_ID_#66418 created
+2020-10-16 23:34:55,009 - Automa - INFO - __init__ - Automa Automa_ID_#941131 created
+2020-10-16 23:43:39,694 - Automa - INFO - __init__ - Automa Automa_ID_#389496 created
+2020-10-16 23:44:51,074 - Automa - INFO - __init__ - Automa Automa_ID_#654791 created
+2020-10-16 23:46:01,099 - Automa - INFO - __init__ - Automa Automa_ID_#801961 created
+2020-10-16 23:47:21,074 - Automa - INFO - __init__ - Automa Automa_ID_#897424 created
+2020-10-16 23:47:21,238 - Automa - DEBUG - percept - Automa: Automa_ID_#897424 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-16 23:52:53,812 - Automa - INFO - __init__ - Automa Automa_ID_#150853 created
+2020-10-16 23:52:54,045 - Automa - DEBUG - percept - Automa: Automa_ID_#150853 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-16 23:54:15,899 - Automa - INFO - __init__ - Automa Automa_ID_#218073 created
+2020-10-16 23:54:16,096 - Automa - DEBUG - percept - Automa: Automa_ID_#218073 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]

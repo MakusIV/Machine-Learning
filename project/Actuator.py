@@ -34,7 +34,7 @@ class Actuator:
             self._name = name
 
 
-    def checkParam(self, position, class_, typ, range_max,  power, resilience, delta_t):
+    def checkParam( self, position, class_, typ, range_max,  power, resilience, delta_t ):
         """Return True if conformity of the parameters is verified"""
         if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0 ):
             return False
@@ -45,32 +45,27 @@ class Actuator:
         return True
 
 
-    def isType( self, actuator_type):
+    def isType( self, actuator_type ):
         """Return True if actuator have self._type == actuator_type"""
         return self._type == actuator_type
                         
     
 
-    def isClass( self, actuator_class):
+    def isClass( self, actuator_class ):
         """Return True if actuator have self._class == actuator_class"""   
         return self._class == actuator_class
     
 
-    def evalutateDamage(self, energy, power):
-        """Evalutate the damage on actuator and update state"""
-        if power > self._resilience:
-            damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
-            return self._state.decrementHealth( damage )
-        
-        return self._state.getHealth()
-    
-    
-    def exec_command(self, action_decription):
+    def isClassAndType( self, actuator_class, actuator_type ):
+        """Return True if actuator have self._class == actuator_class and self._type == actuator_type """   
+        return self._type == actuator_type and self._class == actuator_class
+
+    def exec_command( self, action_decription ):
         # action description: 
         pass
 
 
-    def setId(self, id = None):
+    def setId( self, id = None ):
 
         if not id:
             return False
@@ -117,7 +112,7 @@ class Actuator:
 
 
     def evalutateSelfDamage(self, energy, power):
-        """Evalutate the damage on sensor and update state"""
+        """Evalutate the damage on actuator and update state"""
         if power > self._resilience:
             damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
             return self._state.decrementHealth( damage )

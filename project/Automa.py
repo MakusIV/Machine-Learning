@@ -10,29 +10,29 @@ from LoggerClass import Logger
 
 # LOGGING --
  
-logger = Logger(module_name = __name__, set_consolle_log_level = 30, set_file_log_level = 10, class_name = 'Automa')
+logger = Logger( module_name = __name__, set_consolle_log_level = 30, set_file_log_level = 10, class_name = 'Automa' )
 
 
 class Automa(Object):
     """Automa derived from Object. """
 
-    def __init__(self, name = 'Automa', dimension = [1, 1, 1], resilience = 100, power = 100, emissivity = {"radio": 50, "thermal": 50, "optical": 100, "nuclear": 0, "electric": 50, "acoustics": 100, "chemist": 0}, coord = None, sensors= None, actuators = None ):
+    def __init__( self, name = 'Automa', dimension = [1, 1, 1], resilience = 100, power = 100, emissivity = {"radio": 50, "thermal": 50, "optical": 100, "nuclear": 0, "electric": 50, "acoustics": 100, "chemist": 0}, coord = None, sensors= None, actuators = None ):
 
-        Object.__init__(self, name = name, dimension = dimension, resilience = resilience, emissivity = emissivity, coord = coord)
+        Object.__init__( self, name = name, dimension = dimension, resilience = resilience, emissivity = emissivity, coord = coord )
 
         self._ai = AI() #AI Engine
         self._power = power # nota l'energia è gestita nello stato in quanto è variabile        
-        self._state = State(run = True) #Class State        
+        self._state = State( run = True ) #Class State        
         self._sensors = sensors# list of Sensor objects
         self._actuators = actuators# list of Actuator objects. NO DEVE ESSERE UNA CLASSE CHE CONTIENE LA LISTA DEGLI ATTUATORI. QUESTA CLASSE DEVE IMPLEMENTARE IL METODO PER VALUTARE QUALI ATTUATORI ATTIVARE IN BASE AL COMANDO RICEVUTO
         self.action_executed = None
         self._eventsQueue = {} #  {key: event id, value = event}
         self._actionsQueue = {} #  {key: event id, value = action}
 
-        if not self.checkParamAutoma(power, sensors, actuators):
-            raise Exception("Invalid properties! Automata not istantiate.")
+        if not self.checkParamAutoma( power, sensors, actuators ):
+            raise Exception( "Invalid properties! Automata not istantiate." )
 
-        logger.logger.info("Automa {0} created".format(self._id))
+        logger.logger.info( "Automa {0} created".format( self._id ) )
     
     # Methods
 
@@ -54,12 +54,12 @@ class Automa(Object):
     # l'aggiornamento dello stato dell'automa per definire l'azione da compiere in base a queste informazioni.
     # la proprietà 'env_state che rappresenta l'enviromets conosciuto dall'automa è interna e gestita nella AI
     
-    def runTask(self, posManager):
+    def runTask( self, posManager ):
         
         self.update() #check the eventsQueue and update state
-        list_obj = self.percept(posManager)
+        list_obj = self.percept( posManager )
         self.evalutate( list_obj ) # create the action info to execute and inserts in the action Queue
-        logger.logger.info("Automa: {0} running task: update internal state, execute perception and detected {1} object, evalutate and executed action()".format( self._id, len( list_obj ) ))
+        logger.logger.info( "Automa: {0} running task: update internal state, execute perception and detected {1} object, evalutate and executed action()".format( self._id, len( list_obj ) ))
         return self.action() # return the Queue of the action info executed in a single task
 
 
@@ -71,7 +71,7 @@ class Automa(Object):
         # alle caratteristiche dell'evento che bissogna valutare quali elementi sono coinvolti e come sono
         # coinvolti
         
-        for k, ev in events: # scorre gli eventi da eseguire della lista eventi attivi
+        for _, ev in events: # scorre gli eventi da eseguire della lista eventi attivi
             logger.logger.debug("Automa: {0} active event {1}".format( self._id, ev._type ))
 
             if ev.isShot(): # solo per l'evento SHOT viene valutato l'eventuale danno
@@ -94,10 +94,10 @@ class Automa(Object):
         """Percepts the enviroments with sensors, update the state and return percept informations."""
         #percept_info: le informazioni dopo l'attivazione dei sensori: (energy_consumption, list_obj_detected)
         #request_percept: le informazioni riguardo tipo di sensori e modalità di attivazione
-        operative_sensors = ( sensor for sensor in self._sensors if sensor.isOperative() )# Lista dei sensoori attivi
-        percept_info = ( sensor.perception( posMng, self.getPosition() ) for sensor in operative_sensors )# lista delle perception info ottenuta interrogando tutti i sensori operativi. La percept_info: percept_info: (energy_sensor, detected_objs) detected. detected_objs = { ( x, y, z): obj }
-        list_obj = ( percept_info[ 1 ] for percept_info[ 1 ] in percept_info )# lista degli object
-        energy_consumption = ( percept_info[ 0 ] for percept_info[ 0 ] in percept_info )
+        operative_sensors = [ sensor for sensor in self._sensors if sensor.isOperative() ]# Lista dei sensori attivi
+        percept_infos = [ sensor.perception( posMng, self.getPosition() ) for sensor in operative_sensors ]# lista delle perception info ottenuta interrogando tutti i sensori operativi. La percept_info: percept_info: (energy_sensor, detected_objs) detected. detected_objs = { ( x, y, z): obj }
+        list_obj = [ percept_info[ 1 ] for percept_info in percept_infos ]# lista degli object
+        energy_consumption = [ percept_info[ 0 ] for percept_info in percept_infos ]
         self.updateStateForEnergyConsumption( energy_consumption )# aggiorna lo stato dell'automa
         logger.logger.debug("Automa: {0} execute perception: activated {1} sensor, detected {2} object, energy consumed: {3}".format( self._id, len( operative_sensors ), len( list_obj ), energy_consumption  ))
         return list_obj 
