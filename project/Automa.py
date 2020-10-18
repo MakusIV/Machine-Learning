@@ -16,6 +16,7 @@ logger = Logger( module_name = __name__, set_consolle_log_level = 30, set_file_l
 class Automa(Object):
     """Automa derived from Object. """
 
+    # TEST: OK
     def __init__( self, name = 'Automa', dimension = [1, 1, 1], resilience = 100, power = 100, emissivity = {"radio": 50, "thermal": 50, "optical": 100, "nuclear": 0, "electric": 50, "acoustics": 100, "chemist": 0}, coord = None, sensors= None, actuators = None ):
 
         Object.__init__( self, name = name, dimension = dimension, resilience = resilience, emissivity = emissivity, coord = coord )
@@ -89,7 +90,7 @@ class Automa(Object):
         logger.logger.debug("Automa: {0} executed update internal state".format( self._id ))
         return True
         
-    
+    # TEST: OK
     def percept(self, posMng):
         """Percepts the enviroments with sensors, update the state and return percept informations."""
         #percept_info: le informazioni dopo l'attivazione dei sensori: (energy_consumption, list_obj_detected)
@@ -130,7 +131,7 @@ class Automa(Object):
         logger.logger.debug("Automa: {0} executed action: created action_info with {1} items".format( self._id, len( action_info ) ))
         return actions_info
 
-
+    
     # vedi il libro
     def checkParamAutoma(self, power, sensors, actuators):            
         """Return True if conformity of the parameters is verified"""
@@ -218,18 +219,21 @@ class Automa(Object):
         # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
         pass
 
+    
+
     def eval_actuators_activation( self, act ):
         """Choice the actuators for activation in relation with act"""
         # act: (action_type, position or object)
         # return: # actuators_activation: (actuator, action_description)
         
-        if not General.checkAct( act ):
+        if not act or not isinstance(act, list) or not General.checkActionType( act[0] ) or not( isinstance( act[1], Object) or General.checkPosition( act[1] ) ):
             raise Exception("action not found!")
+
         action_type = act[0]
 
         # actuators:  { key: actuator_type, value: actuator }
         if action_type == 'move' or action_type == 'run' or action_type == 'escape':
-            actuators = self.getActuators( actuator_class = 'mover' )
+            actuators = self.getActuators( actuator_class = 'mover', only_active = True )
             
             if action_type == 'move':
                 speed = 0.7 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
@@ -237,52 +241,58 @@ class Automa(Object):
             else:
                 speed = 1 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
             
-            position = act[ 1 ]
-            return (actuators, action_type, position, speed)
+            position = act[ 1 ]            
+            return [ actuators, action_type, position, speed ]
             
         elif action_type == 'take':
             actuators = self.getActuators( actuator_class = 'object_manipulator' )
             obj = act[ 1 ]
-            return (actuators, action_type, obj)
+            return [ actuators, action_type, obj ]
 
         elif action_type == 'catch':
             actuators = self.getActuators( actuator_class = 'object_catcher' )
             obj = act[ 1 ]
-            return (actuators, action_type, obj)
+            return [ actuators, action_type, obj ]
         
         elif action_type == 'eat':
             actuators = self.getActuators( actuator_class = 'object_adsorber' )
             obj = act[ 1 ]
-            return (actuators, action_type, obj)
+            return [ actuators, action_type, obj ]
 
         elif action_type == 'shot':
             actuators = self.getActuators( actuator_class = 'plasma_launcher' )  + self.getActuators( actuator_class = 'projectile_launcher' )
             obj = act[ 1 ]
-            return ( actuators, action_type, obj )
+            return [ actuators, action_type, obj ]
 
         elif action_type == 'hit':
             actuators = self.getActuators( actuator_class = 'object_hitter' )
             obj = act[ 1 ]
-            return ( actuators, action_type, obj )
+            return [ actuators, action_type, obj ]
         
         elif action_type == 'attack':
             actuators = self.getActuators( actuator_class = 'object_catcher' ) + self.getActuators( actuator_class = 'projectile_launcher' ) + self.getActuators( actuator_class = 'plasma_launcher' ) +     actuators.append( self.getActuators( actuator_class = 'object_hitter' ) )
             actuators = self.eval_best_actuators( actuators )
             obj = act[ 1 ]
-            return ( actuators, action_type, obj )
+            return [ actuators, action_type, obj ]
         
         else:
             raise Exception("action_type not found!!")
 
         return
 
-    def getActuators( self, actuator_class ):
+    def getActuators( self, actuator_class, only_active = None ):
         """Return list of actuator with actuator_class propriety """
         actuators = list()
+
 
         for actuator in self._actuators:
 
             if actuator.isType( actuator_class ):
-                actuators.append( actuator )
+                
+                if not only_active:
+                    actuators.append( actuator )
+
+                elif actuator.isOperative():
+                    actuators.append( actuator )
         
         return actuators

@@ -93,6 +93,11 @@ def testClassActuator():
         result = False 
     
 
+    if not actuator.isOperative():
+        print('Actuator.isOperative() Failed!! ', actuator._state, actuator._state._run)
+        result = False 
+    
+
     # test checkActuatorClass()
 
     if not Actuator.checkActuatorClass(actuator, actuator):
@@ -108,6 +113,7 @@ def testClassActuator():
         result = False
 
     
+
     actuators = [ Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ), Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ), list(), Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ) ]
 
     if Actuator.checkActuatorList(actuator, actuators): 

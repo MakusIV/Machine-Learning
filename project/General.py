@@ -85,6 +85,11 @@ ACTUATOR_TYPE = {
 
 # METHODS
 
+def checkActionType(_type):
+    """Return True if _type is compliance with standard type defined for ACTION_TYPE in General.py"""
+    return _type != None and isinstance(_type, str) and any( [ True for el in ACTION_TYPE if el == _type ] )
+
+
 def checkSensorType(_type):
     """Return True if _type is compliance with standard type defined for Sensor in General.py"""
     return _type != None and isinstance(_type, str) and any( [ True for el in SENSOR_TYPE if el == _type ] )

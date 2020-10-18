@@ -31,14 +31,19 @@ def testClassAutoma():
     actuators = [ Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01 ), Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01 ) ]
     automa = Automa(coord = coord, sensors = sensors, actuators = actuators)
     
-    # TEST: OK
+    
     if automa._name != 'Automa' or automa._dimension != [1, 1, 1] or automa._resilience != 100 or automa._power != 100 or not automa._state or not isinstance(automa._state, State) or not automa._state.isRunning():
         print('Automa Failed!! ', automa._name, automa._dimension, automa._resilience, automa._state)
         result = False 
     
+
+    action = [ 'move', (10, 10, 10) ] #(action_type, position or object) 
+    actuators_activation = automa.eval_actuators_activation( action )
+
+    if not actuators_activation or not isinstance(actuators_activation, list) or not actuators[0].checkActuatorList( actuators_activation[0] )  or actuators_activation[1] != ( 10, 10, 10 ):
+        print('Automa.eval_actuators_activation( action ) Failed!!', actuators_activation[0], actuators_activation[1])
+        result = False 
     
-
-
 
 
     
@@ -63,7 +68,7 @@ def testClassAutoma():
                 else:
                     pm.insertObject( position = (x, y, z), obj = Object(name = 'New_'+str( int(  ((bound[0] + x)%dim_linear[0])/incr[0] + num_objects_for_linear*((bound[1] + y)%dim_linear[1])/incr[1] + num_objects_for_linear*num_objects_for_linear*((bound[2] + z)%dim_linear[2])/incr[2] ) ), dimension = ( object_dimension[0], object_dimension[1], object_dimension[2]) , emissivity = {"radio": 5, "thermal": 0, "optical": 5, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0 } ) )
     
-    # TEST: OK
+    
     obj_list = automa.percept( pm )
 
     if len( obj_list ) == 0:

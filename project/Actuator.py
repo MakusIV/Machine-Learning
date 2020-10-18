@@ -57,6 +57,11 @@ class Actuator:
         return self._class == actuator_class
     
 
+    def isOperative(self):
+        """Return true if sensor state is running"""
+        return self._state.isRunning()
+        
+
     #TEST: OK
     def isClassAndType( self, actuator_class, actuator_type ):
         """Return True if actuator have self._class == actuator_class and self._type == actuator_type """   
