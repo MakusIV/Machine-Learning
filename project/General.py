@@ -86,27 +86,19 @@ ACTUATOR_TYPE = {
 # METHODS
 
 def checkSensorType(_type):
-    
-    if not _type or not isinstance(_type, str):
-        return False
+    """Return True if _type is compliance with standard type defined for Sensor in General.py"""
+    return _type != None and isinstance(_type, str) and any( [ True for el in SENSOR_TYPE if el == _type ] )
 
-    for val in SENSOR_TYPE:
 
-        if val == _type:
-            return True
-    
-    return False
+def checkEventType(_type):
+    """Return True if _type is compliance with standard type defined for Event in General.py"""
+    return _type != None and isinstance(_type, str) and any( [ True for el in EVENT_TYPE if el == _type ] )
+
+
 
 def checkActuatorTypeAndClass(_type, _class):
-    
-    if not _type or not _class or not isinstance(_type, str) or not isinstance(_class, str):
-        return False
-
-    if any( [True for key in ACTUATOR_TYPE.keys() if key == _class] ):
-        if any( [True for key in ACTUATOR_TYPE[ _class ].keys() if key == _type ] ):
-            return True
-
-    return False
+    """Return True if _type and _class are compliance with standard type and class defined for Actuator in General.py"""
+    return _type != None and _class != None and isinstance(_type, str) and isinstance(_class, str) and any( [True for key in ACTUATOR_TYPE.keys() if key == _class] ) and any( [True for key in ACTUATOR_TYPE[ _class ].keys() if key == _type ] )
 
 
 def checkDimension(dimension):

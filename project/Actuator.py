@@ -34,6 +34,7 @@ class Actuator:
             self._name = name
 
 
+    #TEST: OK
     def checkParam( self, position, class_, typ, range_max,  power, resilience, delta_t ):
         """Return True if conformity of the parameters is verified"""
         if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0 ):
@@ -56,6 +57,7 @@ class Actuator:
         return self._class == actuator_class
     
 
+    #TEST: OK
     def isClassAndType( self, actuator_class, actuator_type ):
         """Return True if actuator have self._class == actuator_class and self._type == actuator_type """   
         return self._type == actuator_type and self._class == actuator_class
@@ -90,7 +92,8 @@ class Actuator:
         action_info = None
         return action_info
 
-    # test: ok
+
+    #TEST: OK
     def checkActuatorClass(self, actuator):
         """Return True if actuators is a actuator object otherwise False"""
         if not actuator or not isinstance(actuator, Actuator):
@@ -98,6 +101,8 @@ class Actuator:
         
         return True
 
+
+    #TEST: OK
     def checkActuatorList(self, actuators):
 
         """Return True if actuators is a list of Actuator object otherwise False"""
@@ -106,11 +111,13 @@ class Actuator:
 
         return False
 
+
     def isOperative(self):
         """Return true if actuator state is running"""
         return self._state.isRunning()
 
 
+    # TEST: OK
     def evalutateSelfDamage(self, energy, power):
         """Evalutate the damage on actuator and update state"""
         if power > self._resilience:

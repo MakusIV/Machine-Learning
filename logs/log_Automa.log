@@ -15,3 +15,5 @@
 2020-10-16 23:52:54,045 - Automa - DEBUG - percept - Automa: Automa_ID_#150853 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
 2020-10-16 23:54:15,899 - Automa - INFO - __init__ - Automa Automa_ID_#218073 created
 2020-10-16 23:54:16,096 - Automa - DEBUG - percept - Automa: Automa_ID_#218073 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-18 10:56:42,310 - Automa - INFO - __init__ - Automa Automa_ID_#430138 created
+2020-10-18 10:56:43,725 - Automa - DEBUG - percept - Automa: Automa_ID_#430138 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
