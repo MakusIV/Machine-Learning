@@ -68,8 +68,21 @@ class Actuator:
         return self._type == actuator_type and self._class == actuator_class
 
     def exec_command( self, action_decription ):
-        # action description: 
-        pass
+        # action description: [ actuators, action_type, position, speed ]
+        # ACTION_TYPE = ( "move", "run", "take", "catch", "eat", "attack", "escape", "nothing", "shot", "hit" )
+        # il controllo e la scelta dell'attuatore da utilizzare per un determinato comando viene
+        # fatta in automa quindi qui dovresti eseguire l'azione indipendentemente dall'interpretazione del comando
+        # l'eventuale movimento, colpo, e conseguenze varie è valutato in automa
+        # qui dovresti considerare solo gli effetti sull'attuatore
+        # due possibilità o crei speccializazioni di attuatori con exec_command in override
+        # oppure inserisci nei parametri del metodo il tipo di attuatore e il comando e qui selezioni
+        # il metodo di esecuzione specifico per quell'attuatore. Quindi qui dovrai definire i varii metodi per 
+        # ogni attuatore. Forse è meglio utilizzare l'ereditarietà
+        
+
+
+        return energy_consume, resilience_loss 
+        
 
 
     def setId( self, id = None ):

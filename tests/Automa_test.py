@@ -37,16 +37,25 @@ def testClassAutoma():
         result = False 
     
 
+    # test: automa.eval_actuators_activation( action )
+    #
     action = [ 'move', (10, 10, 10) ] #(action_type, position or object) 
     actuators_activation = automa.eval_actuators_activation( action )
 
-    if not actuators_activation or not isinstance(actuators_activation, list) or not actuators[0].checkActuatorList( actuators_activation[0] )  or actuators_activation[1] != ( 10, 10, 10 ):
+    if not actuators_activation or not isinstance(actuators_activation, list) or not actuators[0].checkActuatorList( actuators_activation[0] ) or actuators_activation[1] != 'move' or actuators_activation[2] != ( 10, 10, 10 ):
         print('Automa.eval_actuators_activation( action ) Failed!!', actuators_activation[0], actuators_activation[1])
         result = False 
     
 
-
+    action(self, request_action):
+    """Activates Actuators for execution of Action. Return action informations."""
+    #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
+    # actions_info = [] # (action_type, position, object)
     
+
+
+    # test: automa.percept( pm )
+    #     
     # create positione manager for manage enviroments, create object and populate pm
     num_objects = 100
     num_objects_for_linear = int( (num_objects)**(1/3) )    
@@ -71,7 +80,7 @@ def testClassAutoma():
     
     obj_list = automa.percept( pm )
 
-    if len( obj_list ) == 0:
+    if len( obj_list ) == 0 or not isinstance( obj_list, list) or any( False for obj in obj_list if not isinstance( obj, Object ) ):
         print('Automa.percept() Failed len(object_list) = 0 !! ', automa._id, obj_list)
         result = False 
     

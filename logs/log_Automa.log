@@ -31,3 +31,95 @@
 2020-10-18 21:01:23,170 - Automa - DEBUG - percept - Automa: Automa_ID_#766130 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
 2020-10-18 21:02:29,923 - Automa - INFO - __init__ - Automa Automa_ID_#497731 created
 2020-10-18 21:02:30,189 - Automa - DEBUG - percept - Automa: Automa_ID_#497731 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-19 11:32:27,547 - Automa - INFO - __init__ - Automa Automa_ID_#323803 created
+2020-10-19 11:32:30,029 - Automa - DEBUG - percept - Automa: Automa_ID_#323803 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-19 13:08:18,626 - Automa - INFO - __init__ - Automa Automa_ID_#962710 created
+2020-10-19 13:09:36,666 - Automa - INFO - __init__ - Automa Automa_ID_#405783 created
+2020-10-19 13:11:44,842 - Automa - INFO - __init__ - Automa Automa_ID_#642810 created
+2020-10-19 13:12:13,003 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#642810, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:15:37,066 - Automa - INFO - __init__ - Automa Automa_ID_#764013 created
+2020-10-19 13:15:37,141 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#764013, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:15:38,918 - Automa - DEBUG - updateStateForEnergyConsumption - Automa: Automa_ID_#764013 update state for energy consumption: total_sensor_consumption: 297.0, self._state._energy: 100
+2020-10-19 13:15:38,939 - Automa - DEBUG - percept - Automa: Automa_ID_#764013 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-19 13:21:04,280 - Automa - INFO - __init__ - Automa Automa_ID_#924512 created
+2020-10-19 13:21:04,281 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#924512, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:25:08,079 - Automa - INFO - __init__ - Automa Automa_ID_#520860 created
+2020-10-19 13:25:08,081 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#520860, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:27:13,609 - Automa - INFO - __init__ - Automa Automa_ID_#896235 created
+2020-10-19 13:27:13,609 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#896235, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:27:15,184 - Automa - DEBUG - updateStateForEnergyConsumption - Automa: Automa_ID_#896235 update state for energy consumption: total_sensor_consumption: 297.0, self._state._energy: 100
+2020-10-19 13:27:15,185 - Automa - DEBUG - percept - Automa: Automa_ID_#896235 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-19 13:27:30,184 - Automa - INFO - __init__ - Automa Automa_ID_#100131 created
+2020-10-19 13:27:30,186 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#100131, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:28:59,263 - Automa - INFO - __init__ - Automa Automa_ID_#697281 created
+2020-10-19 13:28:59,266 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#697281, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:30:06,892 - Automa - INFO - __init__ - Automa Automa_ID_#277146 created
+2020-10-19 13:30:06,894 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#277146, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:32:11,070 - Automa - INFO - __init__ - Automa Automa_ID_#535794 created
+2020-10-19 13:32:11,086 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#535794, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:32:32,748 - Automa - INFO - __init__ - Automa Automa_ID_#293247 created
+2020-10-19 13:32:32,749 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#293247, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:32:49,665 - Automa - INFO - __init__ - Automa Automa_ID_#764770 created
+2020-10-19 13:32:49,667 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#764770, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:39:37,037 - Automa - INFO - __init__ - Automa Automa_ID_#229013 created
+2020-10-19 13:39:37,038 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#229013, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:41:01,874 - Automa - INFO - __init__ - Automa Automa_ID_#352366 created
+2020-10-19 13:41:01,875 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#352366, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:41:15,930 - Automa - INFO - __init__ - Automa Automa_ID_#891378 created
+2020-10-19 13:41:15,931 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#891378, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:41:17,002 - Automa - DEBUG - updateStateForEnergyConsumption - Automa: Automa_ID_#891378 update state for energy consumption: total_sensor_consumption: 297.0, self._state._energy: 100
+2020-10-19 13:41:17,003 - Automa - DEBUG - percept - Automa: Automa_ID_#891378 execute perception: activated 3 sensor, detected 3 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-19 13:41:38,071 - Automa - INFO - __init__ - Automa Automa_ID_#894028 created
+2020-10-19 13:41:38,084 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#894028, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:44:22,397 - Automa - INFO - __init__ - Automa Automa_ID_#223823 created
+2020-10-19 13:44:22,416 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#223823, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:47:31,911 - Automa - INFO - __init__ - Automa Automa_ID_#419990 created
+2020-10-19 13:47:31,953 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#419990, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 13:58:12,855 - Automa - INFO - __init__ - Automa Automa_ID_#381843 created
+2020-10-19 13:58:12,883 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#381843, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 14:00:28,628 - Automa - INFO - __init__ - Automa Automa_ID_#221183 created
+2020-10-19 14:00:28,663 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#221183, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 14:04:14,660 - Automa - INFO - __init__ - Automa Automa_ID_#614353 created
+2020-10-19 14:04:14,667 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#614353, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 14:50:04,527 - Automa - INFO - __init__ - Automa Automa_ID_#872761 created
+2020-10-19 14:50:04,561 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#872761, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 14:51:18,963 - Automa - INFO - __init__ - Automa Automa_ID_#776248 created
+2020-10-19 14:51:18,977 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#776248, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 14:52:45,908 - Automa - INFO - __init__ - Automa Automa_ID_#981968 created
+2020-10-19 14:52:45,916 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#981968, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:03:04,953 - Automa - INFO - __init__ - Automa Automa_ID_#524647 created
+2020-10-19 15:03:04,987 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#524647, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:04:09,194 - Automa - INFO - __init__ - Automa Automa_ID_#851537 created
+2020-10-19 15:04:09,225 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#851537, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:05:42,722 - Automa - INFO - __init__ - Automa Automa_ID_#327031 created
+2020-10-19 15:05:42,726 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#327031, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:07:06,088 - Automa - INFO - __init__ - Automa Automa_ID_#522993 created
+2020-10-19 15:07:06,095 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#522993, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:09:00,885 - Automa - INFO - __init__ - Automa Automa_ID_#335690 created
+2020-10-19 15:09:00,892 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#335690, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:10:31,691 - Automa - INFO - __init__ - Automa Automa_ID_#102591 created
+2020-10-19 15:10:31,721 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#102591, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:12:41,841 - Automa - INFO - __init__ - Automa Automa_ID_#368891 created
+2020-10-19 15:12:41,865 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#368891, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:14:32,059 - Automa - INFO - __init__ - Automa Automa_ID_#159556 created
+2020-10-19 15:14:32,063 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#159556, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:18:42,180 - Automa - INFO - __init__ - Automa Automa_ID_#598499 created
+2020-10-19 15:18:42,190 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#598499, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:21:55,425 - Automa - INFO - __init__ - Automa Automa_ID_#581656 created
+2020-10-19 15:21:55,457 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#581656, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:22:42,401 - Automa - DEBUG - updateStateForEnergyConsumption - Automa: Automa_ID_#581656 update state for energy consumption: total_sensor_consumption: 297.0, self._state._energy: 100
+2020-10-19 15:22:42,408 - Automa - DEBUG - percept - Automa: Automa_ID_#581656 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-19 15:23:52,115 - Automa - INFO - __init__ - Automa Automa_ID_#156298 created
+2020-10-19 15:23:52,117 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#156298, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:23:54,201 - Automa - DEBUG - updateStateForEnergyConsumption - Automa: Automa_ID_#156298 update state for energy consumption: total_sensor_consumption: 297.0, self._state._energy: 100
+2020-10-19 15:23:54,203 - Automa - DEBUG - percept - Automa: Automa_ID_#156298 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-19 15:26:57,329 - Automa - INFO - __init__ - Automa Automa_ID_#959332 created
+2020-10-19 15:26:57,330 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#959332, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 15:26:59,448 - Automa - DEBUG - updateStateForEnergyConsumption - Automa: Automa_ID_#959332 update state for energy consumption: total_sensor_consumption: 297.0, self._state._energy: 100
+2020-10-19 15:26:59,449 - Automa - DEBUG - percept - Automa: Automa_ID_#959332 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-19 16:00:53,924 - Automa - INFO - __init__ - Automa Automa_ID_#286594 created
+2020-10-19 16:00:53,926 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#286594, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 16:01:23,509 - Automa - INFO - __init__ - Automa Automa_ID_#954854 created
+2020-10-19 16:01:23,510 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#954854, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
+2020-10-19 16:01:25,897 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#954854 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-19 16:01:25,899 - Automa - DEBUG - percept - Automa: Automa_ID_#954854 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]

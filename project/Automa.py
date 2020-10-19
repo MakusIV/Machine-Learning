@@ -95,12 +95,18 @@ class Automa(Object):
         """Percepts the enviroments with sensors, update the state and return percept informations."""
         #percept_info: le informazioni dopo l'attivazione dei sensori: (energy_consumption, list_obj_detected)
         #request_percept: le informazioni riguardo tipo di sensori e modalità di attivazione
+        list_obj = list()
         operative_sensors = [ sensor for sensor in self._sensors if sensor.isOperative() ]# Lista dei sensori attivi
         percept_infos = [ sensor.perception( posMng, self.getPosition() ) for sensor in operative_sensors ]# lista delle perception info ottenuta interrogando tutti i sensori operativi. La percept_info: percept_info: (energy_sensor, detected_objs) detected. detected_objs = { ( x, y, z): obj }
-        list_obj = [ percept_info[ 1 ] for percept_info in percept_infos ]# lista degli object
-        energy_consumption = [ percept_info[ 0 ] for percept_info in percept_infos ]
-        self.updateStateForEnergyConsumption( energy_consumption )# aggiorna lo stato dell'automa
-        logger.logger.debug("Automa: {0} execute perception: activated {1} sensor, detected {2} object, energy consumed: {3}".format( self._id, len( operative_sensors ), len( list_obj ), energy_consumption  ))
+        list_item =  [ percept_info[ 1 ].values() for percept_info in percept_infos ]# lista degli object    
+        
+        for item in list_item:
+            for obj in item:
+                if obj._id != self._id:
+                    list_obj.append( obj )# lista degli object    
+        energy_consume = [ percept_info[ 0 ] for percept_info in percept_infos ]
+        self.updateStateForEnergyConsume( energy_consume )# aggiorna lo stato dell'automa
+        logger.logger.debug("Automa: {0} execute perception: activated {1} sensor, detected {2} object, energy consumed: {3}".format( self._id, len( operative_sensors ), len( list_obj ), energy_consume  ))
         return list_obj 
 
 
@@ -112,19 +118,20 @@ class Automa(Object):
         return True
 
 
-    def action(self, request_action):
+    def action(self):
         """Activates Actuators for execution of Action. Return action informations."""
         #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
-        actions_info = [] # (action_type, position, object)
+        actions_info = [] # (action_type, energy_consume, position, object)
 
-        for _, act in self._actionsQueue.items():
+        for _, action in self._actionsQueue.items():
             # in base ad act devi determinare quali attuatori sono coinvolti e attivarli
             # actuators_activation: (actuator, action_description)
-            actuators_activation = self.eval_actuators_activation( act ) # questa funzione deve anche valutare gli attuatori attivi e se questi sono sufficienti per compiere l'atto altrimenti deve restituire false o un atto ridotto
-            logger.logger.debug("Automa: {0} execute action: act:created actionQueue with {1} items".format( self._id, len( self._actionsQueue ) ))
+            actuators_activation = self.eval_actuators_activation( action ) # questa funzione deve anche valutare gli attuatori attivi e se questi sono sufficienti per compiere l'atto altrimenti deve restituire false o un atto ridotto
+            logger.logger.debug("Automa: {0} defined actuators activation. number of the actuators_activation: {1}".format( self._id, len( actuators_activation ) ))
 
             for act in actuators_activation:               
-                actions_info.append( act[0].exec_command( act[ 1 ]) )# act[0]: actuator, act[1]: action_description
+                actions_info.append( act[0].exec_command( act[ 1 ] ) )# act[0]: actuator, act[1]: action_description
+                logger.logger.debug("Automa: {0}. Actuator: {1}, execute action: {2}".format( self._id, act[0]._id, act[1] ))
 
             self.updateStateForAction( actions_info )
 
@@ -140,11 +147,12 @@ class Automa(Object):
             return False
         return True
 
-        
-    def updateStateForEnergyConsumption(self, energy_consumption):
+     # TEST: OK (indirect throw percept method)
+    def updateStateForEnergyConsume(self, energy_consume):
         """Update state, Sensor, Actuator states for Percept  info"""                
-        total_sensor_consumption = sum( energy_consumption )
-        self._state.decrementEnergy( total_sensor_consumption )
+        total_sensor_consume = sum( energy_consume )
+        self._state.decrementEnergy( total_sensor_consume )
+        logger.logger.debug("Automa: {0} update state for energy consume: total_sensor_consume: {1}, self._state._energy: {2}".format( self._id, total_sensor_consume, self._state._energy ))
         return True
 
     def updateStateForAction(self, action_info):
@@ -157,6 +165,7 @@ class Automa(Object):
             return False
 
         self._eventsQueue[ event._id ] = event
+        logger.logger.debug("Automa: {0} inserted new event in queue, event id: {1}, events in queue: {2}".format( self._id, event._id, len( self._eventsQueue ) ))
         return True
 
     def removeEvent(self, event):
@@ -165,6 +174,7 @@ class Automa(Object):
             return False
 
         self._eventsQueue.pop( event._id )        
+        logger.logger.debug("Automa: {0} removed event in queue, event id: {1}, events in queue: {2}".format( self._id, event._id, len( self._eventsQueue ) ))
         return True
 
     def getEventActive(self):
@@ -188,43 +198,51 @@ class Automa(Object):
         return active
 
     def evalutateShot( self, ev ):
-        """" valuta gli effetti dell'evento shot sui tutti gli elementi dell'automa """
+        """" evalutate event shot effect """
         
         for sensor in self._sensors:
             if sensor.evalutateDamage(ev._energy, ev._power) == 0: # valutazione del danno per il sensore. Se restituisce 0 il sensore è dsitrutto
-                self._sensors.pop( sensor )# elimina il sensore dalla lista sensori dell'automa
+                self._sensors.pop( sensor ) # elimina il sensore dalla lista sensori dell'automa
+                logger.logger.debug("Automa: {0} deleted sensor: {1} for damage".format( self._id, sensor._id ))
 
         for actuator in self._actuators:
             if actuator.evalutateDamage(ev._energy, ev._power)  == 0: # valutazione del danno per l'attuatore. Se restituisce 0 l'attuatore è dsitrutto
-                self._actuators.pop( actuator )# elimina il attuatore dalla lista attuatori dell'automa
+                self._actuators.pop( actuator ) # elimina il attuatore dalla lista attuatori dell'automa
+                logger.logger.debug("Automa: {0} deleted actuator: {1} for damage".format( self._id, actuator._id ))
 
         if self.evalutateDamage(ev._energy, ev._power) == 0: # valutazione del danno per l'automa. Se restituisce 0 l'automa è dsitrutto
             self._state.destroy()
+            logger.logger.debug("Automa: {0} destroyed for damage".format( self._id ))
 
         return True
 
 
     def evalutatePop( self, ev ):
-        """" valuta gli effetti dell'evento pop sull'automa """
+        """" evalutate event pop effect """
         # viene valutato se l'automa può essere preso (sollevato). Si potrebbe considerare come nuovo componente dell'oggetto che ha generato l'evento.
         pass
 
     def evalutatePush( self, ev ):
-        """" valuta gli effetti dell'evento push sull'automa """
+        """" evalutate event push effect """
         # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
         pass
 
-    def evalutateEat( self, ev ):
-        """" valuta gli effetti dell'evento eat sull'automa """
+    def evalutateSAdsorb( self, ev ):
+        """" evalutate event eat effect """
         # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
         pass
 
-    
+    def evalutateMove( self, ev ):
+        """" evalutate event move effect """
+        # viene valutato se l'automa può Muoversi
+        pass
 
+    
+    # TEST: OK
     def eval_actuators_activation( self, act ):
         """Choice the actuators for activation in relation with act"""
         # act: (action_type, position or object)
-        # return: # actuators_activation: (actuator, action_description)
+        # return: # actuators_activation: (actuator, position or object, other parameters)
         
         if not act or not isinstance(act, list) or not General.checkActionType( act[0] ) or not( isinstance( act[1], Object) or General.checkPosition( act[1] ) ):
             raise Exception("action not found!")
@@ -233,8 +251,8 @@ class Automa(Object):
 
         # actuators:  { key: actuator_type, value: actuator }
         if action_type == 'move' or action_type == 'run' or action_type == 'escape':
-            actuators = self.getActuators( actuator_class = 'mover', only_active = True )
-            
+            actuators = self.getActuators( actuator_class = 'mover', only_active = True )            
+
             if action_type == 'move':
                 speed = 0.7 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
 
@@ -242,40 +260,48 @@ class Automa(Object):
                 speed = 1 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
             
             position = act[ 1 ]            
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, position: {3} and speed: {4}".format( self._id, len( actuators ), action_type, position, speed ))
             return [ actuators, action_type, position, speed ]
             
         elif action_type == 'take':
             actuators = self.getActuators( actuator_class = 'object_manipulator' )
             obj = act[ 1 ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
             return [ actuators, action_type, obj ]
 
         elif action_type == 'catch':
             actuators = self.getActuators( actuator_class = 'object_catcher' )
             obj = act[ 1 ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
             return [ actuators, action_type, obj ]
         
         elif action_type == 'eat':
             actuators = self.getActuators( actuator_class = 'object_adsorber' )
             obj = act[ 1 ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
             return [ actuators, action_type, obj ]
 
         elif action_type == 'shot':
             actuators = self.getActuators( actuator_class = 'plasma_launcher' )  + self.getActuators( actuator_class = 'projectile_launcher' )
             obj = act[ 1 ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
             return [ actuators, action_type, obj ]
 
         elif action_type == 'hit':
             actuators = self.getActuators( actuator_class = 'object_hitter' )
             obj = act[ 1 ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
             return [ actuators, action_type, obj ]
         
         elif action_type == 'attack':
             actuators = self.getActuators( actuator_class = 'object_catcher' ) + self.getActuators( actuator_class = 'projectile_launcher' ) + self.getActuators( actuator_class = 'plasma_launcher' ) +     actuators.append( self.getActuators( actuator_class = 'object_hitter' ) )
             actuators = self.eval_best_actuators( actuators )
             obj = act[ 1 ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
             return [ actuators, action_type, obj ]
         
         else:
+            logger.logger.error("Automa: {0}, raised exception: 'action_type not found!!' ".format( self._id, len( actuators ), action_type, obj._id ))
             raise Exception("action_type not found!!")
 
         return
@@ -287,7 +313,7 @@ class Automa(Object):
 
         for actuator in self._actuators:
 
-            if actuator.isType( actuator_class ):
+            if actuator.isClass( actuator_class ):
                 
                 if not only_active:
                     actuators.append( actuator )

@@ -120,6 +120,7 @@ class Sensor:
                     num_object_detected = 0
 
                     for elem in detected.values():# elem: obj
+
                         object_emissivity_level = elem.getEmissivityForType( self._type )
                         
                         if object_emissivity_level >= self._emissivity_perception:
