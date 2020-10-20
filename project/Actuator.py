@@ -67,9 +67,10 @@ class Actuator:
         """Return True if actuator have self._class == actuator_class and self._type == actuator_type """   
         return self._type == actuator_type and self._class == actuator_class
 
-    def exec_command( self, action_decription ):
-        # action description: [ actuators, action_type, position, speed ]
+    def exec_command( self, mySelf, posManager, action_param ):
+        # action param: actuators_activation: [ Automa, action_type, position or obj, ..other params ] ][ action_type, speed, strenght, duration ecc. ]
         # ACTION_TYPE = ( "move", "run", "take", "catch", "eat", "attack", "escape", "nothing", "shot", "hit" )
+        # return actions_info = (action_type, energy_consume, position, object)
         # il controllo e la scelta dell'attuatore da utilizzare per un determinato comando viene
         # fatta in automa quindi qui dovresti eseguire l'azione indipendentemente dall'interpretazione del comando
         # l'eventuale movimento, colpo, e conseguenze varie è valutato in automa
@@ -77,12 +78,71 @@ class Actuator:
         # due possibilità o crei speccializazioni di attuatori con exec_command in override
         # oppure inserisci nei parametri del metodo il tipo di attuatore e il comando e qui selezioni
         # il metodo di esecuzione specifico per quell'attuatore. Quindi qui dovrai definire i varii metodi per 
-        # ogni attuatore. Forse è meglio utilizzare l'ereditarietà
+        # ogni attuatore. Forse è meglio utilizzare l'ereditarietà       
+
+        if self._class == "object_manipulator":
+            return object_manipolating( mySelf, posManager, action_param )
+
+        elif self._class == 'mover':       
+            result_action = moving( mySelf, posManager, action_param ):
+            return [ result_action, energy_consume, new_automa_position ]
+
+        elif self._class == "plasma_launcher":
+            return plasma_launching( mySelf, posManager, action_param )
+
+        elif self._class == "projectile_launcher":
+            return projectile_launching( mySelf, posManager, action_param ) 
+
+        elif self._class == "object_catcher":
+            return object_catching( mySelf, posManager, action_param )
+
+        elif self._class == "object_adsorber":
+            return object_adsorbing( mySelf, posManager, action_param )
         
+        elif self._class == "object_hitter":
+            return object_hitting( mySelf, posManager, action_param )
+
+        else:
+            raise Exception("Actuator class not defined")
 
 
-        return energy_consume, resilience_loss 
+        return
+
+    
+    def object_manipolating( self, mySelf, posManager, action_param ):
+        pass
         
+    def object_catching( self, mySelf, posManager, action_param ):
+        pass
+    
+    def object_adsorbing( self, mySelf, posManager, action_param ):
+        pass
+    
+    def object_hitting( self, mySelf, posManager, action_param ):
+        pass
+    
+    def moving( self, mySelf, posManager, action_param ):
+        """Exec move action and return action_info"""
+        # action_type: move
+        # action_param: [position, direction, speed]
+        # devi muovere l'automa ma i metodi sono in Coord
+        new_coord = Coordinate( mySelf.getPosition() )
+    
+        for i in range( int( action_param[ 2 ] * General.MAX_SPEED / 100 ) ):
+            new_coord.move( action_param[ 1 ] )
+            if not posManager.moveObject( new_coord ):
+                return False
+        
+        return True
+
+
+
+    def projectile_launching( self, mySelf, posManager, action_param):
+        pass
+    
+    def plasma_launching( self, mySelf, posManager, action_param):
+        pass
+
 
 
     def setId( self, id = None ):

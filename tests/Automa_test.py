@@ -47,8 +47,8 @@ def testClassAutoma():
         result = False 
     
 
-    action(self, request_action):
-    """Activates Actuators for execution of Action. Return action informations."""
+    action(self, request_action)
+    #"""Activates Actuators for execution of Action. Return action informations."""
     #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
     # actions_info = [] # (action_type, position, object)
     

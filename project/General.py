@@ -35,6 +35,8 @@ logger.addHandler(f_handler)
 
 # VALUES
 
+MAX_SPEED = 10 # velocità max in numero di posizioni percorribili in un singolo task
+
 SENSOR_TYPE = ( "radio", "thermal", "optical", "nuclear", "electric", "acoustics", "chemist" )
 
 ACTUATOR_CLASS = ( "object_manipulator", "mover", "plasma_launcher", "projectile_launcher", "object_catcher", "object_adsorber", "object_hitter" )

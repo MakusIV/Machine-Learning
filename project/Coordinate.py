@@ -17,7 +17,7 @@ class Coordinate:
     
     
     def move(self, direct):
-        """ return new Coordinate istance evalutated from direction string:
+        """ update x, y, z regards direction string:
         foward, back, right, lef, foward_up, back_up, right_up, left_up,
         foward_down, back_down, right_down, left_down.
         Not recognized direction raise a ValueError exception

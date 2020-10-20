@@ -61,7 +61,7 @@ class Automa(Object):
         list_obj = self.percept( posManager )
         self.evalutate( list_obj ) # create the action info to execute and inserts in the action Queue
         logger.logger.info( "Automa: {0} running task: update internal state, execute perception and detected {1} object, evalutate and executed action()".format( self._id, len( list_obj ) ))
-        return self.action() # return the Queue of the action info executed in a single task
+        return self.action( posManager ) # return the Queue of the action info executed in a single task
 
 
 
@@ -118,19 +118,19 @@ class Automa(Object):
         return True
 
 
-    def action(self):
+    def action(self, posManager ):
         """Activates Actuators for execution of Action. Return action informations."""
         #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
         actions_info = [] # (action_type, energy_consume, position, object)
 
         for _, action in self._actionsQueue.items():
             # in base ad act devi determinare quali attuatori sono coinvolti e attivarli
-            # actuators_activation: (actuator, action_description)
+            # actuators_activation: [ actuators,  [ self, action_type, position or obj, ..other params ] ]
             actuators_activation = self.eval_actuators_activation( action ) # questa funzione deve anche valutare gli attuatori attivi e se questi sono sufficienti per compiere l'atto altrimenti deve restituire false o un atto ridotto
             logger.logger.debug("Automa: {0} defined actuators activation. number of the actuators_activation: {1}".format( self._id, len( actuators_activation ) ))
 
             for act in actuators_activation:               
-                actions_info.append( act[0].exec_command( act[ 1 ] ) )# act[0]: actuator, act[1]: action_description
+                actions_info.append( act[0].exec_command( posManager, self, act[ 1 ] ) )# act[0]: actuator, act[1]: action_description
                 logger.logger.debug("Automa: {0}. Actuator: {1}, execute action: {2}".format( self._id, act[0]._id, act[1] ))
 
             self.updateStateForAction( actions_info )
@@ -242,7 +242,7 @@ class Automa(Object):
     def eval_actuators_activation( self, act ):
         """Choice the actuators for activation in relation with act"""
         # act: (action_type, position or object)
-        # return: # actuators_activation: (actuator, position or object, other parameters)
+        # return: # actuators_activation: [ actuators,  [ action_type, position or obj, ..other params, self ] ]
         
         if not act or not isinstance(act, list) or not General.checkActionType( act[0] ) or not( isinstance( act[1], Object) or General.checkPosition( act[1] ) ):
             raise Exception("action not found!")
@@ -261,44 +261,44 @@ class Automa(Object):
             
             position = act[ 1 ]            
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, position: {3} and speed: {4}".format( self._id, len( actuators ), action_type, position, speed ))
-            return [ actuators, action_type, position, speed ]
+            return [ actuators,  [ action_type, position, speed ] ]
             
         elif action_type == 'take':
             actuators = self.getActuators( actuator_class = 'object_manipulator' )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, action_type, obj ]
+            return [ actuators, [ action_type, obj ] ]
 
         elif action_type == 'catch':
             actuators = self.getActuators( actuator_class = 'object_catcher' )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, action_type, obj ]
+            return [ actuators, [ action_type, obj ] ]
         
         elif action_type == 'eat':
             actuators = self.getActuators( actuator_class = 'object_adsorber' )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, action_type, obj ]
+            return [ actuators, [ action_type, obj ] ]
 
         elif action_type == 'shot':
             actuators = self.getActuators( actuator_class = 'plasma_launcher' )  + self.getActuators( actuator_class = 'projectile_launcher' )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, action_type, obj ]
+            return [ actuators, [ action_type, obj ] ]
 
         elif action_type == 'hit':
             actuators = self.getActuators( actuator_class = 'object_hitter' )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, action_type, obj ]
+            return [ actuators, [ action_type, obj ] ]
         
         elif action_type == 'attack':
             actuators = self.getActuators( actuator_class = 'object_catcher' ) + self.getActuators( actuator_class = 'projectile_launcher' ) + self.getActuators( actuator_class = 'plasma_launcher' ) +     actuators.append( self.getActuators( actuator_class = 'object_hitter' ) )
             actuators = self.eval_best_actuators( actuators )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, action_type, obj ]
+            return [ actuators, [ action_type, obj ] ]
         
         else:
             logger.logger.error("Automa: {0}, raised exception: 'action_type not found!!' ".format( self._id, len( actuators ), action_type, obj._id ))
