@@ -16,6 +16,39 @@ class Coordinate:
         self.z = z
     
     
+
+    def eval_direction(self, pos, des):
+        """Evalutate direction from parameters"""
+
+        dir_ = None
+
+        if pos[ 1 ] > des[ 1 ]:
+            dir_ = "back_"
+        
+        elif pos[ 1 ] < des[ 1 ]:
+            dir_ = "foward_"
+        
+
+        if pos[ 2 ] > des[ 2 ]:
+            dir_ = dir_ + "down_"
+        
+        elif pos[ 1 ] < des[ 1 ]:
+            dir_ = dir_ + "up_"
+
+        
+        if pos[ 0 ] > des[ 0 ]:
+            dir_ = dir_ + "left"
+        
+        elif pos[ 0 ] < des[ 0 ]:
+            dir_ = dir_ + "right"
+                
+        
+
+        return dir_
+
+        
+        
+
     def move(self, direct):
         """ update x, y, z regards direction string:
         foward, back, right, lef, foward_up, back_up, right_up, left_up,

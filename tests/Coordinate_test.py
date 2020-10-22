@@ -275,6 +275,10 @@ def testClassCoordinate():
         print("testClassCoordinate().setPosition() Failed!", coord1.getPosition()) 
 
 
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 1, 1, 1 ) ) != 'foward_up_right':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 1, 1 ) ) ) 
+
     
 
     return result

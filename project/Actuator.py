@@ -67,6 +67,7 @@ class Actuator:
         """Return True if actuator have self._class == actuator_class and self._type == actuator_type """   
         return self._type == actuator_type and self._class == actuator_class
 
+
     def exec_command( self, mySelf, posManager, action_param ):
         # action param: actuators_activation: [ Automa, action_type, position or obj, ..other params ] ][ action_type, speed, strenght, duration ecc. ]
         # ACTION_TYPE = ( "move", "run", "take", "catch", "eat", "attack", "escape", "nothing", "shot", "hit" )
@@ -78,13 +79,13 @@ class Actuator:
         # due possibilità o crei speccializazioni di attuatori con exec_command in override
         # oppure inserisci nei parametri del metodo il tipo di attuatore e il comando e qui selezioni
         # il metodo di esecuzione specifico per quell'attuatore. Quindi qui dovrai definire i varii metodi per 
-        # ogni attuatore. Forse è meglio utilizzare l'ereditarietà       
+        # ogni attuatore. Forse è meglio utilizzare l'ereditarietà. No definisco qui le diverse funzioni da utilizzare per ogni attuatore       
 
         if self._class == "object_manipulator":
             return object_manipolating( mySelf, posManager, action_param )
 
         elif self._class == 'mover':       
-            result_action = moving( mySelf, posManager, action_param ):
+            result_action = moving( mySelf, posManager, action_param )
             return [ result_action, energy_consume, new_automa_position ]
 
         elif self._class == "plasma_launcher":
@@ -124,12 +125,14 @@ class Actuator:
     def moving( self, mySelf, posManager, action_param ):
         """Exec move action and return action_info"""
         # action_type: move
-        # action_param: [position, direction, speed]
-        # devi muovere l'automa ma i metodi sono in Coord
+        # action_param: [position, speed], position è la posizione verso cui muovere
+        # direction: "foward", "up" ecc
         new_coord = Coordinate( mySelf.getPosition() )
+        direction = new_coord.eval_direction( new_coord.getPosition(), position))
     
-        for i in range( int( action_param[ 2 ] * General.MAX_SPEED / 100 ) ):
-            new_coord.move( action_param[ 1 ] )
+        for _ in range( int( action_param[ 1 ] * General.MAX_SPEED / 100 ) ):# la velocità determina il numero di iterazioni
+            new_coord.move( direction )
+            
             if not posManager.moveObject( new_coord ):
                 return False
         
