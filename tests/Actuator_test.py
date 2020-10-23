@@ -6,6 +6,9 @@ sys.path.insert(1, 'project')
 from Actuator import Actuator
 import General
 from LoggerClass import Logger
+from Automa import Automa
+from Position_manager import Position_manager
+from Sensor import Sensor
 
 
 # LOGGING --
@@ -120,7 +123,32 @@ def testClassActuator():
         print('Actuator.checkSensorList(sensors) Failed!! ', actuators[0]._id, actuators[0]._state, actuators[0]._state._health)
         result = False  
     
-    
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1)
+    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    automa = Automa( actuators = [ actuator ], sensors = sensors )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )
+    target_position = (5, 5, 3)
+    moved, energy_actuator = actuator.moving( automa, posMng, [ target_position, 0.6 ]  )
+
+    if not moved or energy_actuator != actuator._state.getEnergy() or automa.getPosition() != (3, 3, 3): 
+        print('Actuator.moving() Failed!! A', moved, energy_actuator, actuator._state.getEnergy(), automa.getPosition(), target_position )
+        result = False     
+
+
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1)
+    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    automa = Automa( actuators = [ actuator ], sensors = sensors )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )
+    target_position = (5, 5, 3)
+    moved, energy_actuator = actuator.moving( automa, posMng, [ target_position, 0.2 ]  )
+
+    if not moved or energy_actuator != actuator._state.getEnergy() or automa.getPosition() != (2, 2, 2): 
+        print('Actuator.moving() Failed!! B', moved, energy_actuator, actuator._state.getEnergy(), automa.getPosition(), target_position )
+        result = False     
+
+
 
     return result
 

@@ -73,7 +73,7 @@ def testClassCoordinate():
     
     coord2.back()
     
-    if coord2.y != 3:
+    if coord2.y != 1:
         result = False
         print("testClassCoordinate().back() Failed!", coord2.y)      
     
@@ -92,106 +92,157 @@ def testClassCoordinate():
     
     coord3.move('foward_right')
         
-    if coord3.x != 2 and coord3.y != 1 and coord3.z !=3:
+    if coord3.x != 2 and coord3.y != 3 and coord3.z !=3:
         result = False
         print("testClassCoordinate().move(foward_right) Failed!", coord3.to_string())      
     
     coord3.move('foward_left')
     
-    if coord3.x != 1 and coord3.y != 0 and coord3.z !=3:
+    if coord3.x != 1 and coord3.y != 4 and coord3.z !=3:
         result = False
         print("testClassCoordinate().move(foward_left) Failed!", coord3.to_string())      
         
     
     coord3.move('foward_up')  
     
-    if coord3.x != 1 and coord3.y != -1 and coord3.z !=4:
+    if coord3.x != 1 and coord3.y != 5 and coord3.z !=4:
         result = False
         print("testClassCoordinate().move(foward_up) Failed!", coord3.to_string())      
     
     coord3.move('foward_down')    
     
-    if coord3.x != 1 and coord3.y != -2 and coord3.z !=3:
+    if coord3.x != 1 and coord3.y != 6 and coord3.z !=3:
         result = False
         print("testClassCoordinate().move(foward_down) Failed!", coord3.to_string())     
         
     coord3.move('foward_down_right')    
     
-    if coord3.x != 2 and coord3.y != -3 and coord3.z !=2:
+    if coord3.x != 2 and coord3.y != 7 and coord3.z !=2:
         result = False
         print("testClassCoordinate().move(foward_down_right) Failed!", coord3.to_string())   
         
     coord3.move('foward_down_left')    
     
-    if coord3.x != 1 and coord3.y != -4 and coord3.z !=1:
+    if coord3.x != 1 and coord3.y != 8 and coord3.z !=1:
         result = False
         print("testClassCoordinate().move(foward_down_left) Failed!", coord3.to_string())   
         
         
     coord3.move('foward_up_right')    
     
-    if coord3.x != 2 and coord3.y != -5 and coord3.z !=2:
+    if coord3.x != 2 and coord3.y != 9 and coord3.z !=2:
         result = False
         print("testClassCoordinate().move(foward_up_right) Failed!", coord3.to_string())   
         
     coord3.move('foward_up_left')    
     
-    if coord3.x != 1 and coord3.y != -6 and coord3.z !=3:
+    if coord3.x != 1 and coord3.y != 10 and coord3.z !=3:
         result = False
         print("testClassCoordinate().move(foward_up_left) Failed!", coord3.to_string())   
 
     
-    coord3.move('back_right')
+    coord3.move('backward_right')
         
-    if coord3.x != 2 and coord3.y != -5 and coord3.z !=3:
+    if coord3.x != 2 and coord3.y != 9 and coord3.z !=3:
         result = False
         print("testClassCoordinate().move(back_right) Failed!", coord3.to_string())      
     
-    coord3.move('back_left')
+    coord3.move('backward_left')
     
-    if coord3.x != 1 and coord3.y != -4 and coord3.z !=3:
+    if coord3.x != 1 and coord3.y != 8 and coord3.z !=3:
         result = False
         print("testClassCoordinate().move(back_left) Failed!", coord3.to_string())      
         
     
-    coord3.move('back_up')  
+    coord3.move('backward_up')  
     
-    if coord3.x != 1 and coord3.y != -3 and coord3.z !=4:
+    if coord3.x != 1 and coord3.y != 7 and coord3.z !=4:
         result = False
-        print("testClassCoordinate().move(back_up) Failed!", coord3.to_string())      
+        print("testClassCoordinate().move(backward_up) Failed!", coord3.to_string())      
     
-    coord3.move('back_down')    
+    coord3.move('backward_down')    
     
-    if coord3.x != 1 and coord3.y != -2 and coord3.z !=3:
+    if coord3.x != 1 and coord3.y != 6 and coord3.z !=3:
         result = False
-        print("testClassCoordinate().move(back_down) Failed!", coord3.to_string())     
+        print("testClassCoordinate().move(backward_down) Failed!", coord3.to_string())     
         
-    coord3.move('back_down_right')    
+    coord3.move('backward_down_right')    
     
-    if coord3.x != 2 and coord3.y != -1 and coord3.z !=2:
+    if coord3.x != 2 and coord3.y != 5 and coord3.z !=2:
         result = False
-        print("testClassCoordinate().move(back_down_right) Failed!", coord3.to_string())   
+        print("testClassCoordinate().move(backward_down_right) Failed!", coord3.to_string())   
         
-    coord3.move('back_down_left')    
+    coord3.move('backward_down_left')    
     
-    if coord3.x != 1 and coord3.y != 0 and coord3.z !=1:
+    if coord3.x != 1 and coord3.y != 4 and coord3.z !=1:
         result = False
-        print("testClassCoordinate().move(back_down_left) Failed!", coord3.to_string())   
+        print("testClassCoordinate().move(backward_down_left) Failed!", coord3.to_string())   
         
         
-    coord3.move('back_up_right')    
+    coord3.move('backward_up_right')    
     
-    if coord3.x != 2 and coord3.y != -5 and coord3.z !=2:
+    if coord3.x != 2 and coord3.y != 3 and coord3.z != 2:
         result = False
-        print("testClassCoordinate().move(back_up_right) Failed!", coord3.to_string())   
+        print("testClassCoordinate().move(backward_up_right) Failed!", coord3.to_string())   
         
-    coord3.move('back_up_left')    
+    coord3.move('backward_up_left')    
     
-    if coord3.x != 1 and coord3.y != -6 and coord3.z !=3:
+    if coord3.x != 1 and coord3.y != 2 and coord3.z != 3:
         result = False
-        print("testClassCoordinate().move(back_up_left) Failed!", coord3.to_string())   
+        print("testClassCoordinate().move(backward_up_left) Failed!", coord3.to_string())   
     
+    coord3.move('_up_left')    
     
+    if coord3.x != 0 and coord3.y != 2 and coord3.z != 4:
+        result = False
+        print("testClassCoordinate().move(_up_left) Failed!", coord3.to_string())   
+    
+    coord3.move('_down_left')    
+    
+    if coord3.x != -1 and coord3.y != 2 and coord3.z != 3:
+        result = False
+        print("testClassCoordinate().move(_down_left) Failed!", coord3.to_string())   
+    
+    coord3.move('_left')    
+    
+    if coord3.x != -2 and coord3.y != 2 and coord3.z != 3:
+        result = False
+        print("testClassCoordinate().move(_left) Failed!", coord3.to_string())   
+
+    coord3.move('_right')    
+    
+    if coord3.x != -1 and coord3.y != 2 and coord3.z != 3:
+        result = False
+        print("testClassCoordinate().move(_right) Failed!", coord3.to_string())   
+    
+    coord3.move('_up_right')    
+    
+    if coord3.x != 0 and coord3.y != 2 and coord3.z != 4:
+        result = False
+        print("testClassCoordinate().move(_up_right) Failed!", coord3.to_string())   
+    
+    coord3.move('_down_right')    
+    
+    if coord3.x != 1 and coord3.y != 2 and coord3.z != 3:
+        result = False
+        print("testClassCoordinate().move(_up_right) Failed!", coord3.to_string())   
+    
+
+    coord3.move('_down')    
+    
+    if coord3.x != 1 and coord3.y != 2 and coord3.z != 2:
+        result = False
+        print("testClassCoordinate().move(_down) Failed!", coord3.to_string())   
+    
+
+    coord3.move('_up')    
+    
+    if coord3.x != 1 and coord3.y != 2 and coord3.z != 3:
+        result = False
+        print("testClassCoordinate().move(_up) Failed!", coord3.to_string())   
+    
+
+
     limits = [ [0, 0, 0], [2, 2, 2]] 
     res, val = coord1.in_limits(limits)    
     coord1 = Coordinate(1,1,1)
@@ -268,7 +319,7 @@ def testClassCoordinate():
 
     
 
-    coord1.setPosition( [1,1,1] )
+    coord1.setPosition( (1,1,1) )
     
     if (1,1,1) != coord1.getPosition():
         result = False
@@ -280,6 +331,96 @@ def testClassCoordinate():
         print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 1, 1 ) ) ) 
 
     
+    if coord1.eval_direction( ( 0, 0, 0 ), ( -1, 1, 1 ) ) != 'foward_up_left':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( -1, 1, 1 ) ) ) 
+
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 0, 1, 1 ) ) != 'foward_up':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 0, 1, 1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 1, 1, -1 ) ) != 'foward_down_right':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 1, -1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( -1, 1, -1 ) ) != 'foward_down_left':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( -1, 1, -1 ) ) ) 
+
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 0, 1, -1 ) ) != 'foward_down':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 0, 1, -1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 0, 1, 0 ) ) != 'foward':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 0, 1, 0 ) ) ) 
+
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 1, -1, 1 ) ) != 'backward_up_right':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, -1, 1 ) ) ) 
+
+    
+    if coord1.eval_direction( ( 0, 0, 0 ), ( -1, -1, 1 ) ) != 'backward_up_left':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( -1, -1, 1 ) ) ) 
+
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 0, -1, 1 ) ) != 'backward_up':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 0, -1, 1 ) ) ) 
+
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 1, -1, -1 ) ) != 'backward_down_right':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, -1, -1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( -1, -1, -1 ) ) != 'backward_down_left':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( -1, -1, -1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 0, -1, -1 ) ) != 'backward_down':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 0, -1, -1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 0, -1, 0 ) ) != 'backward':
+        result = False
+        print("testClassCoordinate().eval_direction() Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 0, -1, 0 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( -1, 0, 0 ) ) != '_left':
+        result = False
+        print("testClassCoordinate().eval_direction(): _left, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( -1, 0, 0 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( -1, 0, -1 ) ) != '_down_left':
+        result = False
+        print("testClassCoordinate().eval_direction(): _down_left, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( -1, 0, -1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( -1, 0, 1 ) ) != '_up_left':
+        result = False
+        print("testClassCoordinate().eval_direction(): _up_left, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( -1, 0, 1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, 0 ) ) != '_right':
+        result = False
+        print("testClassCoordinate().eval_direction(): _right, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, 0 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, -1 ) ) != '_down_right':
+        result = False
+        print("testClassCoordinate().eval_direction(): _down_right, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, -1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, 1 ) ) != '_up_right':
+        result = False
+        print("testClassCoordinate().eval_direction(): _up_right, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, 1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 0, 0, 1 ) ) != '_up':
+        result = False
+        print("testClassCoordinate().eval_direction(): _up, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, 1 ) ) ) 
+
+    if coord1.eval_direction( ( 0, 0, 0 ), ( 0, 0, -1 ) ) != '_down':
+        result = False
+        print("testClassCoordinate().eval_direction(): _down, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, 1 ) ) ) 
+
 
     return result
 

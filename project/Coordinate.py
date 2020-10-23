@@ -1,4 +1,5 @@
 from LoggerClass import Logger
+import General
 
 # LOGGING --
  
@@ -10,37 +11,51 @@ class Coordinate:
     """ Rappresents a coordinate in an x, y, z  system """
     
     
-    def __init__(self, x = 0, y = 0, z = 0):
-        self.x = x
-        self.y = y
-        self.z = z
-    
+    def __init__(self, x = None, y = None, z = None):
+
+        if  x != None and not y and not z and General.checkPosition( x ):
+            self.x = x[ 0 ]
+            self.y = x[ 1 ]
+            self.z = x[ 2 ]
+        
+        elif x != None and isinstance(x, int) and y != None and isinstance(y, int) and z != None and isinstance(z, int):
+            self.x = x
+            self.y = y
+            self.z = z
+        
+        elif not x and not y and not z:
+            self.x = 0
+            self.y = 0
+            self.z = 0
+
+        else:
+            raise Exception( "Invalid properties! Coordinate not istantiate." )
     
 
     def eval_direction(self, pos, des):
         """Evalutate direction from parameters"""
 
-        dir_ = None
+        dir_ = ""
 
         if pos[ 1 ] > des[ 1 ]:
-            dir_ = "back_"
+            dir_ = "backward"
         
         elif pos[ 1 ] < des[ 1 ]:
-            dir_ = "foward_"
+            dir_ = "foward"
         
 
         if pos[ 2 ] > des[ 2 ]:
-            dir_ = dir_ + "down_"
+            dir_ = dir_ + "_down"
         
-        elif pos[ 1 ] < des[ 1 ]:
-            dir_ = dir_ + "up_"
+        elif pos[ 2 ] < des[ 2 ]:
+            dir_ = dir_ + "_up"
 
         
         if pos[ 0 ] > des[ 0 ]:
-            dir_ = dir_ + "left"
+            dir_ = dir_ + "_left"
         
         elif pos[ 0 ] < des[ 0 ]:
-            dir_ = dir_ + "right"
+            dir_ = dir_ + "_right"
                 
         
 
@@ -51,8 +66,11 @@ class Coordinate:
 
     def move(self, direct):
         """ update x, y, z regards direction string:
-        foward, back, right, lef, foward_up, back_up, right_up, left_up,
-        foward_down, back_down, right_down, left_down.
+        foward, foward_left. foward_right, foward_up_left, foward_up_right, foward_down_left, foward_down_right, foward_up, foward_down
+        backward, backward_left. backward_right, backward_up_left, backward_up_right, backward_down_left, backward_down_right, bacward_up, backward_down       
+        _left, _up_left, _down_left
+        _right, _up_right, _down_right
+        _up, _down
         Not recognized direction raise a ValueError exception
         """
         if direct == 'foward':
@@ -94,59 +112,73 @@ class Coordinate:
             self.down()
             self.right()                
             
-        elif direct == 'back':
+        elif direct == 'backward':
             self.back()
             
-        elif direct == 'back_left':
+        elif direct == 'backward_left':
             self.back()
             self.left()
             
-        elif direct == 'back_right':
+        elif direct == 'backward_right':
             self.back()
             self.right()            
             
-        elif direct == 'back_up':            
+        elif direct == 'backward_up':            
             self.back()
             self.up()
             
-        elif direct == 'back_up_left':
+        elif direct == 'backward_up_left':
             self.back()
             self.up()
             self.left()
             
-        elif direct == 'back_up_right':
+        elif direct == 'backward_up_right':
             self.back()
             self.up()
             self.right()
             
-        elif direct == 'back_down':            
+        elif direct == 'backward_down':            
             self.back()
             self.down()        
         
-        elif direct == 'back_down_left':
+        elif direct == 'backward_down_left':
             self.back()
             self.down()
             self.left()
             
-        elif direct == 'back_down_right':
+        elif direct == 'backward_down_right':
             self.back()
             self.down()
             self.right()
                             
-        elif direct == 'left':                    
+        elif direct == '_left':                    
             self.left()
             
-        elif direct == 'left_up':
+        elif direct == '_up_left':
             self.left()
             self.up()
                     
-        elif direct == 'right':
+        elif direct == '_down_left':
+            self.left()
+            self.down()
+                
+        elif direct == '_right':
             self.right()
             
-        elif direct == 'right_up':
+        elif direct == '_up_right':
             self.right()
             self.up()                                    
-            
+
+        elif direct == '_down_right':
+            self.right()
+            self.down()      
+
+        elif direct == '_up':
+            self.up()                                    
+
+        elif direct == '_down':            
+            self.down()                                       
+                    
         else:
             return False
         
@@ -155,11 +187,11 @@ class Coordinate:
     
     def foward(self):
         """decrease y of 1"""
-        self.y = self.y - 1
+        self.y = self.y + 1
 
     def back(self):
         """increase y of 1"""
-        self.y = self.y + 1
+        self.y = self.y - 1
 
     def left(self):
         """decrease x of 1"""
@@ -305,7 +337,7 @@ class Coordinate:
     def setPosition(self, pos):
         """Set x,y,z"""
 
-        if not pos or not ( isinstance(pos, list) or isinstance(pos, tuple ))or len(pos) != 3 or not isinstance(pos[0], int) or not isinstance(pos[1], int) or not isinstance(pos[2], int):
+        if not pos or not isinstance(pos, tuple ) or len(pos) != 3 or not isinstance(pos[0], int) or not isinstance(pos[1], int) or not isinstance(pos[2], int):
             return False
         
         self.x = pos[0]

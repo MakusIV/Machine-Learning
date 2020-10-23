@@ -251,50 +251,54 @@ class Automa(Object):
 
         # actuators:  { key: actuator_type, value: actuator }
         if action_type == 'move' or action_type == 'run' or action_type == 'escape':
-            actuators = self.getActuators( actuator_class = 'mover', only_active = True )            
+            actuator = self.getActuator( actuator_class = 'mover' )            
 
             if action_type == 'move':
-                speed = 0.7 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
-
-            else:
-                speed = 1 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
+                speed_perc = 0.7 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
             
-            position = act[ 1 ]            
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, position: {3} and speed: {4}".format( self._id, len( actuators ), action_type, position, speed ))
-            return [ actuators,  [ action_type, position, speed ] ]
+            else:
+                speed_perc = 1 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
+                        
+
+            target_position = act[ 1 ]            
+            logger.logger.debug("Automa: {0}, created actuators_activation  actuator, action_type: {1}, target_position: {2} and speed_perc: {3}".format( self._id, action_type, target_position, speed_perc ))
+            # NOTA!!!: L'esecuzione dell'azione move da parte di un attuatore, comporta lo spostamento effettivo dell'automa, quindi n attutori effettueranno complessivamente n move -> SBAGLIATO
+            # Ciò significa che per l'esecuzione della action_type move deve essere azionato un solo attuatore che rappresenta l'insieme dei dispositivi dedicati a questo tipo di azione
+            # nella actuators lista sarà quindi composta da un solo attuatore
+            return [ actuator,  [ action_type, target_position, speed_perc ] ]            
             
         elif action_type == 'take':
-            actuators = self.getActuators( actuator_class = 'object_manipulator' )
+            actuator = self.getActuator( actuator_class = 'object_manipulator' )
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, [ action_type, obj ] ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
+            return [ actuator, [ action_type, obj ] ]
 
         elif action_type == 'catch':
-            actuators = self.getActuators( actuator_class = 'object_catcher' )
+            actuator = self.getActuator( actuator_class = 'object_catcher' )
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, [ action_type, obj ] ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
+            return [ actuator, [ action_type, obj ] ]
         
         elif action_type == 'eat':
-            actuators = self.getActuators( actuator_class = 'object_adsorber' )
+            actuator = self.getActuator( actuator_class = 'object_adsorber' )
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, [ action_type, obj ] ]
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
+            return [ actuator, [ action_type, obj ] ]
 
         elif action_type == 'shot':
-            actuators = self.getActuators( actuator_class = 'plasma_launcher' )  + self.getActuators( actuator_class = 'projectile_launcher' )
+            actuators = self.getActuator( actuator_class = 'plasma_launcher' )  + self.getActuator( actuator_class = 'projectile_launcher' )
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuators, [ action_type, obj ] ]
 
         elif action_type == 'hit':
-            actuators = self.getActuators( actuator_class = 'object_hitter' )
+            actuator = self.getActuator( actuator_class = 'object_hitter' )
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
+            logger.logger.debug("Automa: {0}, created actuators_activation list with included:  action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuators, [ action_type, obj ] ]
         
         elif action_type == 'attack':
-            actuators = self.getActuators( actuator_class = 'object_catcher' ) + self.getActuators( actuator_class = 'projectile_launcher' ) + self.getActuators( actuator_class = 'plasma_launcher' ) +     actuators.append( self.getActuators( actuator_class = 'object_hitter' ) )
+            actuators = self.getActuator( actuator_class = 'object_catcher' ) + self.getActuator( actuator_class = 'projectile_launcher' ) + self.getActuator( actuator_class = 'plasma_launcher' ) + self.getActuator( actuator_class = 'object_hitter' )
             actuators = self.eval_best_actuators( actuators )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
@@ -306,19 +310,12 @@ class Automa(Object):
 
         return
 
-    def getActuators( self, actuator_class, only_active = None ):
-        """Return list of actuator with actuator_class propriety """
-        actuators = list()
-
+    def getActuator( self, actuator_class ):
+        """Return actuator with actuator_class propriety. If actuator doesn't exists or is not operative return False """
 
         for actuator in self._actuators:
 
-            if actuator.isClass( actuator_class ):
-                
-                if not only_active:
-                    actuators.append( actuator )
+            if actuator.isClass( actuator_class ) and actuator.isOperative():        
+                return actuator
 
-                elif actuator.isOperative():
-                    actuators.append( actuator )
-        
-        return actuators
+        return False

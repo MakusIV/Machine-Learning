@@ -42,12 +42,12 @@ def testClassAutoma():
     action = [ 'move', (10, 10, 10) ] #(action_type, position or object) 
     actuators_activation = automa.eval_actuators_activation( action )
 
-    if not actuators_activation or not isinstance(actuators_activation, list) or not actuators[0].checkActuatorList( actuators_activation[0] ) or actuators_activation[1] != 'move' or actuators_activation[2] != ( 10, 10, 10 ):
+    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != 'move' or actuators_activation[1][1] != ( 10, 10, 10 ) or actuators_activation[1][2] != 0.7:
         print('Automa.eval_actuators_activation( action ) Failed!!', actuators_activation[0], actuators_activation[1])
         result = False 
     
 
-    action(self, request_action)
+    #action(self, request_action)
     #"""Activates Actuators for execution of Action. Return action informations."""
     #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
     # actions_info = [] # (action_type, position, object)

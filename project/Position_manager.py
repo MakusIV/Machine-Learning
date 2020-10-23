@@ -230,14 +230,18 @@ class Position_manager:
         if not position or not obj or not self.inLimits(position, self.limits):
             return False
 
-        if not self.getObjectAtCoord( position ):# veirifca se è presente un altro oggetto in position
+        previous_pos = None
+
+        existent_object = self.getObjectAtCoord( position )
+
+        if not existent_object or existent_object.getId() == obj.getId():# verifica se è presente un altro oggetto in position
             previous_pos = obj.getPosition()
             self.removeObject(obj)            
             self.insertObject( position, obj)
             logger.logger.debug( "Moved obj: {0} from: {1} to: {2}".format( obj.getId(), previous_pos, position ) )
             return True 
         
-        logger.logger.debug( "Not moved obj: {0} from: {1} to: {2}, because exists an object in that position".format( obj.getId(), previous_pos, position) )
+        logger.logger.debug( "Not moved obj: {0} from: {1} to: {2}, because exists object {2} in that position".format( obj.getId(), previous_pos, position, existent_object.getId() ) )
         return False
     
     
@@ -251,7 +255,7 @@ class Position_manager:
         obj = self.pos.get( position )
 
         if obj:
-            logger.logger.debug( "detected @:{0} obj_id: {1} ".format( position, obj.getId() ) )
+            logger.logger.debug( "detected @:{0} obj_id: {1}".format( position, obj.getId() ) )
             return obj
 
         obj_id = self.map.get( position )

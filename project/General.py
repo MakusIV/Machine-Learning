@@ -119,7 +119,7 @@ def checkDimension(dimension):
 def checkPosition(position):
     """ Return True if position is a tuple normalized as dimension:  dimension: ( int dim_x, int dim_y, int dim_z)"""
 
-    if not position or not isinstance(position, tuple) and not len(position) == 3 or not isinstance( position[0], int) or not  isinstance( position[1], int) or not  isinstance( position[2], int):
+    if not position or not ( isinstance(position, tuple) and len(position) == 3 ) or not isinstance( position[0], int) or not  isinstance( position[1], int) or not  isinstance( position[2], int):
             return False
     
     return True

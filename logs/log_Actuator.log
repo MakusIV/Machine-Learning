@@ -1,0 +1,54 @@
+2020-10-23 17:11:27,243 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#597368 not executed move action. Iteration: 0 Energy_actuator 100
+2020-10-23 17:23:38,463 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#743792 executed move action. Iteration: 0 Energy_actuator 94.0
+2020-10-23 17:23:38,486 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#743792 not executed move action. Iteration: 1 Energy_actuator 94.0
+2020-10-23 17:39:01,795 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#852509 executed move action. Iteration: 0 Energy_actuator 94.0
+2020-10-23 17:39:01,825 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#852509 executed move action. Iteration: 1 Energy_actuator 88.0
+2020-10-23 17:39:01,857 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#852509 executed move action. Iteration: 2 Energy_actuator 82.0
+2020-10-23 17:39:01,862 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#852509 executed move action. Iteration: 3 Energy_actuator 76.0
+2020-10-23 17:39:01,894 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#852509 executed move action. Iteration: 4 Energy_actuator 70.0
+2020-10-23 17:39:01,927 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#852509 executed move action. Iteration: 5 Energy_actuator 64.0
+2020-10-23 17:45:41,425 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#937679 from: (0, 0, 0) to: (10, 9, 8) -  Evalutate direction: foward_up_right
+2020-10-23 17:45:41,505 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#937679 executed move action. Iteration: 0 Energy_actuator 94.0
+2020-10-23 17:45:41,587 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#937679 executed move action. Iteration: 1 Energy_actuator 88.0
+2020-10-23 17:45:41,714 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#937679 executed move action. Iteration: 2 Energy_actuator 82.0
+2020-10-23 17:45:42,019 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#937679 executed move action. Iteration: 3 Energy_actuator 76.0
+2020-10-23 17:45:42,266 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#937679 executed move action. Iteration: 4 Energy_actuator 70.0
+2020-10-23 17:45:42,272 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#937679 executed move action. Iteration: 5 Energy_actuator 64.0
+2020-10-23 17:53:09,958 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#771613 from: (0, 0, 0) to: (10, 9, 8) -  Evalutate direction: foward_up_right
+2020-10-23 17:53:10,098 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#771613 executed move action. Iteration: 0 Energy_actuator 94.0
+2020-10-23 17:53:10,174 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#771613 executed move action. Iteration: 1 Energy_actuator 88.0
+2020-10-23 17:53:10,180 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#771613 executed move action. Iteration: 2 Energy_actuator 82.0
+2020-10-23 17:53:10,212 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#771613 executed move action. Iteration: 3 Energy_actuator 76.0
+2020-10-23 17:53:10,280 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#771613 executed move action. Iteration: 4 Energy_actuator 70.0
+2020-10-23 17:53:10,348 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#771613 executed move action. Iteration: 5 Energy_actuator 64.0
+2020-10-23 17:54:47,197 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#923201 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-10-23 17:54:47,261 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#923201 executed move action. Iteration: 0 Energy_actuator 94.0
+2020-10-23 17:54:47,327 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#923201 executed move action. Iteration: 1 Energy_actuator 88.0
+2020-10-23 17:54:47,403 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#923201 executed move action. Iteration: 2 Energy_actuator 82.0
+2020-10-23 17:54:47,462 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#923201 executed move action. Iteration: 3 Energy_actuator 76.0
+2020-10-23 17:54:47,561 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#923201 executed move action. Iteration: 4 Energy_actuator 70.0
+2020-10-23 17:54:47,597 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#923201 executed move action. Iteration: 5 Energy_actuator 64.0
+2020-10-23 18:09:39,617 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#755227 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-10-23 18:09:39,660 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#755227 num Iteration: (6, 5) 
+2020-10-23 18:10:04,630 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#479333 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-10-23 18:10:04,631 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#479333 num Iteration: 5 
+2020-10-23 18:10:04,683 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#479333 executed move action. Iteration: 0 Energy_actuator 94.0
+2020-10-23 18:10:04,759 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#479333 executed move action. Iteration: 1 Energy_actuator 88.0
+2020-10-23 18:10:04,763 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#479333 executed move action. Iteration: 2 Energy_actuator 82.0
+2020-10-23 18:10:04,794 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#479333 executed move action. Iteration: 3 Energy_actuator 76.0
+2020-10-23 18:10:04,798 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#479333 executed move action. Iteration: 4 Energy_actuator 70.0
+2020-10-23 18:10:04,799 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#479333 executed move action. Iteration: 4 Energy_actuator 70.0
+2020-10-23 18:11:15,412 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#940005 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-10-23 18:11:15,413 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#940005 num Iteration: 3 
+2020-10-23 18:11:15,425 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#940005 executed move action. Iteration: 0 Energy_actuator 94.0
+2020-10-23 18:11:15,436 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#940005 executed move action. Iteration: 1 Energy_actuator 88.0
+2020-10-23 18:11:15,508 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#940005 executed move action. Iteration: 2 Energy_actuator 82.0
+2020-10-23 18:13:37,729 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#579621 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-10-23 18:13:37,767 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#579621 num Iteration: 3 
+2020-10-23 18:13:37,776 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#579621 executed move action. Iteration: 0 Energy_actuator 94.0
+2020-10-23 18:13:37,812 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#579621 executed move action. Iteration: 1 Energy_actuator 88.0
+2020-10-23 18:13:37,890 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#579621 executed move action. Iteration: 2 Energy_actuator 82.0
+2020-10-23 18:13:37,894 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#109639 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-10-23 18:13:37,894 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#109639 num Iteration: 2 
+2020-10-23 18:13:37,960 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#109639 executed move action. Iteration: 0 Energy_actuator 98.0
+2020-10-23 18:13:38,060 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#109639 executed move action. Iteration: 1 Energy_actuator 96.0

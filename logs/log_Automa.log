@@ -123,3 +123,66 @@
 2020-10-19 16:01:23,510 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#954854, created actuators_activation list with included: list of 2 acutators, action_type: move, position: (10, 10, 10) and speed: 0.7
 2020-10-19 16:01:25,897 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#954854 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
 2020-10-19 16:01:25,899 - Automa - DEBUG - percept - Automa: Automa_ID_#954854 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 13:02:14,457 - Automa - INFO - __init__ - Automa Automa_ID_#377813 created
+2020-10-23 13:03:53,369 - Automa - INFO - __init__ - Automa Automa_ID_#337401 created
+2020-10-23 13:04:27,578 - Automa - INFO - __init__ - Automa Automa_ID_#159480 created
+2020-10-23 13:04:27,579 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#159480, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:04:54,898 - Automa - INFO - __init__ - Automa Automa_ID_#871193 created
+2020-10-23 13:04:54,898 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#871193, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:04:57,334 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#871193 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-23 13:04:57,335 - Automa - DEBUG - percept - Automa: Automa_ID_#871193 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 13:07:25,766 - Automa - INFO - __init__ - Automa Automa_ID_#489970 created
+2020-10-23 13:07:25,766 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#489970, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:07:30,386 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#489970 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-23 13:07:30,431 - Automa - DEBUG - percept - Automa: Automa_ID_#489970 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 13:07:32,644 - Automa - INFO - __init__ - Automa Automa_ID_#532516 created
+2020-10-23 13:07:32,645 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#532516, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:07:36,431 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#532516 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-23 13:07:36,433 - Automa - DEBUG - percept - Automa: Automa_ID_#532516 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 13:07:54,915 - Automa - INFO - __init__ - Automa Automa_ID_#285645 created
+2020-10-23 13:07:54,915 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#285645, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:07:59,033 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#285645 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-23 13:07:59,035 - Automa - DEBUG - percept - Automa: Automa_ID_#285645 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 13:10:24,616 - Automa - INFO - __init__ - Automa Automa_ID_#35762 created
+2020-10-23 13:10:24,617 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#35762, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:11:25,574 - Automa - INFO - __init__ - Automa Automa_ID_#337273 created
+2020-10-23 13:11:25,575 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#337273, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:11:28,694 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#337273 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-23 13:11:28,695 - Automa - DEBUG - percept - Automa: Automa_ID_#337273 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 13:13:01,828 - Automa - INFO - __init__ - Automa Automa_ID_#104676 created
+2020-10-23 13:13:01,829 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#104676, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:13:04,024 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#104676 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-23 13:13:04,025 - Automa - DEBUG - percept - Automa: Automa_ID_#104676 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 13:16:31,473 - Automa - INFO - __init__ - Automa Automa_ID_#414952 created
+2020-10-23 13:16:31,484 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#414952, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 13:16:35,608 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#414952 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-23 13:16:35,614 - Automa - DEBUG - percept - Automa: Automa_ID_#414952 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 15:44:02,507 - Automa - INFO - __init__ - Automa Automa_ID_#593141 created
+2020-10-23 15:44:02,532 - Automa - DEBUG - eval_actuators_activation - Automa: Automa_ID_#593141, created actuators_activation  actuator, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-10-23 15:44:05,060 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#593141 update state for energy consume: total_sensor_consume: 297.0, self._state._energy: 100
+2020-10-23 15:44:05,061 - Automa - DEBUG - percept - Automa: Automa_ID_#593141 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99.0, 99.0, 99.0]
+2020-10-23 16:02:18,863 - Automa - INFO - __init__ - Automa Automa_ID_#652419 created
+2020-10-23 16:05:50,535 - Automa - INFO - __init__ - Automa Automa_ID_#616677 created
+2020-10-23 16:28:56,033 - Automa - INFO - __init__ - Automa Automa_ID_#825470 created
+2020-10-23 16:29:33,845 - Automa - INFO - __init__ - Automa Automa_ID_#335083 created
+2020-10-23 16:34:23,756 - Automa - INFO - __init__ - Automa Automa_ID_#281022 created
+2020-10-23 16:35:11,175 - Automa - INFO - __init__ - Automa Automa_ID_#436726 created
+2020-10-23 16:42:37,625 - Automa - INFO - __init__ - Automa Automa_ID_#180612 created
+2020-10-23 16:43:56,325 - Automa - INFO - __init__ - Automa Automa_ID_#293278 created
+2020-10-23 16:44:29,373 - Automa - INFO - __init__ - Automa Automa_ID_#922697 created
+2020-10-23 16:47:12,195 - Automa - INFO - __init__ - Automa Automa_ID_#53104 created
+2020-10-23 16:49:36,002 - Automa - INFO - __init__ - Automa Automa_ID_#217564 created
+2020-10-23 17:09:47,485 - Automa - INFO - __init__ - Automa Automa_ID_#547262 created
+2020-10-23 17:11:27,214 - Automa - INFO - __init__ - Automa Automa_ID_#253825 created
+2020-10-23 17:23:38,406 - Automa - INFO - __init__ - Automa Automa_ID_#325763 created
+2020-10-23 17:38:09,064 - Automa - INFO - __init__ - Automa Automa_ID_#359875 created
+2020-10-23 17:38:27,903 - Automa - INFO - __init__ - Automa Automa_ID_#53131 created
+2020-10-23 17:39:01,651 - Automa - INFO - __init__ - Automa Automa_ID_#929710 created
+2020-10-23 17:45:41,376 - Automa - INFO - __init__ - Automa Automa_ID_#186040 created
+2020-10-23 17:53:09,806 - Automa - INFO - __init__ - Automa Automa_ID_#490661 created
+2020-10-23 17:54:47,139 - Automa - INFO - __init__ - Automa Automa_ID_#371031 created
+2020-10-23 18:09:39,599 - Automa - INFO - __init__ - Automa Automa_ID_#111905 created
+2020-10-23 18:10:04,627 - Automa - INFO - __init__ - Automa Automa_ID_#717589 created
+2020-10-23 18:11:15,355 - Automa - INFO - __init__ - Automa Automa_ID_#503878 created
+2020-10-23 18:13:37,695 - Automa - INFO - __init__ - Automa Automa_ID_#326751 created
+2020-10-23 18:13:37,891 - Automa - INFO - __init__ - Automa Automa_ID_#412359 created
