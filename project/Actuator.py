@@ -122,6 +122,7 @@ class Actuator:
     def object_hitting( self, mySelf, posManager, action_param ):
         pass
     
+    # TEST: OK
     def moving( self, automa, posManager, action_param ):
         """Exec move action and return action_info"""
         # action_type: move
