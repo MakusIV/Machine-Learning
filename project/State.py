@@ -43,7 +43,7 @@ class State:
         if not power:
             return False
 
-        self._energy = self._energy - power * delta_t
+        self._energy = self._energy - int( round( power * delta_t ) )
 
         if self._energy < 0:
             self._energy = 0
@@ -98,7 +98,7 @@ class State:
         """Update efficiency from energy and health levels ad return efficiency level"""
         # unit test: ok
 
-        self._efficiency = self._energy * self._health / 10000
+        self._efficiency = int( round( self._energy * self._health / 100 ) )
         return self._efficiency
 
     

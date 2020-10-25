@@ -11,19 +11,21 @@ import Automa_test as au
 
 test = []
 
-test.append(pmt.TestClassPosition_manager() )
-test.append( obj.testClassObject()  )
-test.append( coord.testClassCoordinate() )
-test.append( st.testClassState() )
-test.append( sen.testClassSensor() )
-test.append( act.testClassActuator() )
-test.append( sensi.testClassSensibility() )
-test.append( au.testClassAutoma() )
+test.append( ["TestClassPosition_manager", pmt.TestClassPosition_manager() ] )
+test.append( ["testClassObject", obj.testClassObject() ]  )
+test.append( ["testClassCoordinate", coord.testClassCoordinate() ] )
+test.append( ["testClassState", st.testClassState() ] )
+test.append( ["testClassSensor", sen.testClassSensor() ] )
+test.append( ["testClassActuator", act.testClassActuator() ] )
+test.append( ["testClassSensibility", sensi.testClassSensibility() ] )
+test.append( ["testClassAutoma", au.testClassAutoma() ] )
 
 result = True
 
 for t in test:
-    if not t:
-        result = False
 
-print("All test result: ", result)
+    if not t[1]:
+        result = False
+    print(t[ 0 ], t[ 1 ])
+
+print("----------------------------------------------------->  All test result: ", result)

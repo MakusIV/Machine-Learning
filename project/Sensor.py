@@ -70,6 +70,10 @@ class Sensor:
         return True
 
 
+    def getId( self ):
+        return self._id
+
+
     def setName(self, name):
 
         if not name:

@@ -10,6 +10,8 @@ from Actuator import Actuator
 from Coordinate import Coordinate
 from Position_manager import Position_manager
 from Object import Object
+from Event import Event
+from Action import Action
 
 from LoggerClass import Logger
 
@@ -39,19 +41,54 @@ def testClassAutoma():
 
     # test: automa.eval_actuators_activation( action )
     #
-    action = [ 'move', (10, 10, 10) ] #(action_type, position or object) 
+    action = [ 'move', (10, 10, 10), 0.7 ] #(action_type, position or object) 
     actuators_activation = automa.eval_actuators_activation( action )
 
-    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != 'move' or actuators_activation[1][1] != ( 10, 10, 10 ) or actuators_activation[1][2] != 0.7:
+    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != ( 10, 10, 10 ) or actuators_activation[1][1] != 0.7:
+        print('Automa.eval_actuators_activation( action ) Failed!!', actuators_activation[0], actuators_activation[1])
+        result = False 
+
+    action = [ 'run', (10, 10, 10) ] #(action_type, position or object) 
+    actuators_activation = automa.eval_actuators_activation( action )
+
+    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != ( 10, 10, 10 ) or actuators_activation[1][1] != 1:
         print('Automa.eval_actuators_activation( action ) Failed!!', actuators_activation[0], actuators_activation[1])
         result = False 
     
 
-    #action(self, request_action)
-    #"""Activates Actuators for execution of Action. Return action informations."""
-    #action_info: le informazioni dopo l'attivazione degli attuatori e lo stato degli stessi( classe)
-    # actions_info = [] # (action_type, position, object)
+    # test: automa.action( request_action )
+    #   action_info: result of action, actuator's energy state
+    #typ, time2go = 1, duration = 1, position = None, obj = None, param = None 
+    action = Action( typ = 'move', time2go = 0, duration = 1, position = (10, 10, 10), param = 0.7 ) #(action_type, position or object) 
+    automa.insertAction( action )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )
+    action_info = automa.action(posMng)
+
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 93:
+        print('Automa.action(posMng) Failed!!',action_info[0][0], action_info[0][1])
+        result = False 
     
+
+    # test: automa.action( request_action )
+    #   action_info: result of action, actuator's energy state
+    #typ, time2go = 1, duration = 1, position = None, obj = None, param = None 
+    action = Action( typ = 'run', time2go = 0, duration = 1, position = (10, 10, 10), param = None ) #(action_type, position or object) 
+    automa.insertAction( action )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )
+    action_info = automa.action(posMng)
+
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 83:
+        print('Automa.action(posMng) Failed!!',action_info[0][0], action_info[0][1])
+        result = False 
+    
+
+
+    print("------------------------------------------------------------------------------------------------------------")
+    print( action_info )
+    print("------------------------------------------------------------------------------------------------------------")
+
 
 
     # test: automa.percept( pm )

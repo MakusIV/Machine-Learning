@@ -88,6 +88,7 @@ def testClassActuator():
 
 
     # test Actuator.evalutateDamage( energy, power )
+
     actuator = Actuator( position = (0, 0, 0), range_max = (50, 50, 50), class_ = 'mover', typ = '2-legs', power = 50, resilience = 50 )
     actuator.evalutateSelfDamage(energy = 100, power = 60)
 
@@ -107,7 +108,7 @@ def testClassActuator():
         print('Actuator.checkActuatorClass(sensor) Failed!! ', actuator._state, actuator._state._health)
         result = False 
     
-    
+    # test checkActuatorList()
 
     actuators = [ Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ), Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ), Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' ) ]
 
@@ -123,16 +124,19 @@ def testClassActuator():
         print('Actuator.checkSensorList(sensors) Failed!! ', actuators[0]._id, actuators[0]._state, actuators[0]._state._health)
         result = False  
     
+
+    # test moving()
+
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1)
     sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )
     target_position = (5, 5, 3)
-    moved, energy_actuator = actuator.moving( automa, posMng, [ target_position, 0.6 ]  )
+    moved, energy_actuator, position_rached = actuator.moving( automa, posMng, [ target_position, 0.6 ]  )
 
-    if not moved or energy_actuator != actuator._state.getEnergy() or automa.getPosition() != (3, 3, 3): 
-        print('Actuator.moving() Failed!! A', moved, energy_actuator, actuator._state.getEnergy(), automa.getPosition(), target_position )
+    if not moved or energy_actuator != actuator._state.getEnergy() or automa.getPosition() != (3, 3, 3) or not position_rached: 
+        print('Actuator.moving() Failed!! A', moved, energy_actuator, position_rached, actuator._state.getEnergy(), automa.getPosition(), target_position )
         result = False     
 
 
@@ -142,10 +146,28 @@ def testClassActuator():
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )
     target_position = (5, 5, 3)
-    moved, energy_actuator = actuator.moving( automa, posMng, [ target_position, 0.2 ]  )
+    moved, energy_actuator, position_rached = actuator.moving( automa, posMng, [ target_position, 0.2 ]  )
+
+    if not moved or energy_actuator != actuator._state.getEnergy() or automa.getPosition() != (2, 2, 2) or position_rached: 
+        print('Actuator.moving() Failed!! B', moved, energy_actuator, actuator._state.getEnergy(), automa.getPosition(), target_position )
+        result = False     
+
+
+    # test exec_command()
+
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1)
+    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    automa = Automa( actuators = [ actuator ], sensors = sensors )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )
+    target_position = (5, 5, 3)
+
+    action_info = actuator.exec_command( automa, posMng, [ target_position, 0.2 ] )
+    moved = action_info[ 0 ]
+    energy_actuator = action_info[ 1 ]
 
     if not moved or energy_actuator != actuator._state.getEnergy() or automa.getPosition() != (2, 2, 2): 
-        print('Actuator.moving() Failed!! B', moved, energy_actuator, actuator._state.getEnergy(), automa.getPosition(), target_position )
+        print('Actuator.exc_command() - move - Failed!! ', moved, energy_actuator, actuator._state.getEnergy(), automa.getPosition(), target_position )
         result = False     
 
 

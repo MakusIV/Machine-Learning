@@ -15,14 +15,14 @@ class Event:
         if not self.checkParam(typ, volume,  time2go, duration, energy, power, mass):
             raise Exception("Invalid parameters! Event not istantiate.")        
 
-        self._type = None # type: HIT, PUSH, POP, ADSORB, MOVE
+        self._type = None # type: HIT, PUSH, POP, ASSIMILATE, MOVE
         self._id = General.setId(self._type, None) # l'id viene generato automaticamente nel runtime per ogni istanza creata
-        self._volume = None
-        self._time2go = None
-        self._duration = None
-        self._energy = None
-        self._power = None
-        self._mass = None
+        self._volume = volume
+        self._time2go = time2go
+        self._duration = duration
+        self._energy = energy
+        self._power = power
+        self._mass = mass
    
 
     def decrTime2Go(self):
@@ -34,10 +34,10 @@ class Event:
         return self._duration
 
     def isActivable(self):
-        return self._time2go == 1 and self._duration > 1
+        return self._time2go == 0 and self._duration > 0
 
     def isAwaiting(self):
-        return self._time2go > 1
+        return self._time2go > 0
 
     def isPush(self):
         return self._type == 'PUSH'
@@ -48,8 +48,8 @@ class Event:
     def isHit(self):
         return self._type == 'HIT'
 
-    def isAdsorb(self):
-        return self._type == 'ADSORB'
+    def isAssimilate(self):
+        return self._type == 'ASSIMILATE'
 
     def isMove(self):
         return self._type == 'MOVE'
@@ -59,7 +59,7 @@ class Event:
 
     def checkParam(self, typ, volume,  time2go, duration, energy, power, mass):
 
-        if not ( type == 'HIT' or typ == 'PUSH' or typ == 'POP' or typ == 'ADSORB' ):
+        if not General.checkEventType( typ ):
             return False
 
         if not General.checkVolume(volume) or not isinstance(time2go, int) or not isinstance(duration, int):

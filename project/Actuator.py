@@ -67,11 +67,11 @@ class Actuator:
         """Return True if actuator have self._class == actuator_class and self._type == actuator_type """   
         return self._type == actuator_type and self._class == actuator_class
 
-
-    def exec_command( self, mySelf, posManager, action_param ):
-        # action param: actuators_activation: [ Automa, action_type, position or obj, ..other params ] ][ action_type, speed, strenght, duration ecc. ]
+    #TEST: OK
+    def exec_command( self, automa, posManager, param ):
+        # param: [ position or obj, ..other params ]
         # ACTION_TYPE = ( "move", "run", "take", "catch", "eat", "attack", "escape", "nothing", "shot", "hit" )
-        # return actions_info = (action_type, energy_consume, position, object)
+        # return actions_info = [boolean for execute action, energy level of actuator]
         # il controllo e la scelta dell'attuatore da utilizzare per un determinato comando viene
         # fatta in automa quindi qui dovresti eseguire l'azione indipendentemente dall'interpretazione del comando
         # l'eventuale movimento, colpo, e conseguenze varie è valutato in automa
@@ -81,27 +81,27 @@ class Actuator:
         # il metodo di esecuzione specifico per quell'attuatore. Quindi qui dovrai definire i varii metodi per 
         # ogni attuatore. Forse è meglio utilizzare l'ereditarietà. No definisco qui le diverse funzioni da utilizzare per ogni attuatore       
 
-        if self._class == "object_manipulator":
-            return self.object_manipolating( mySelf, posManager, action_param )
+        if self._class == "object_manipulator":            
+            return self.object_manipolating( automa, posManager, param )
 
-        elif self._class == 'mover':       
-            moved, energy_actuator = self.moving( mySelf, posManager, action_param )
-            return [ moved, energy_actuator ] # [is_moved: True or False, energy_consume]
+        elif self._class == 'mover':                   
+            moved, energy_actuator, position_reached = self.moving( automa, posManager, param )
+            return [ moved, energy_actuator, position_reached ] # [True or False, energy_consume, True or False]
 
         elif self._class == "plasma_launcher":
-            return self.plasma_launching( mySelf, posManager, action_param )
+            return self.plasma_launching( automa, posManager, param )
 
         elif self._class == "projectile_launcher":
-            return self.projectile_launching( mySelf, posManager, action_param ) 
+            return self.projectile_launching( automa, posManager, param ) 
 
         elif self._class == "object_catcher":
-            return self.object_catching( mySelf, posManager, action_param )
+            return self.object_catching( automa, posManager, param )
 
-        elif self._class == "object_adsorber":
-            return self.object_adsorbing( mySelf, posManager, action_param )
+        elif self._class == "object_assimilator":
+            return self.object_assimilating( automa, posManager, param )
         
         elif self._class == "object_hitter":
-            return self.object_hitting( mySelf, posManager, action_param )
+            return self.object_hitting( automa, posManager, param )
 
         else:
             raise Exception("Actuator class not defined")
@@ -110,67 +110,72 @@ class Actuator:
         return
 
     
-    def object_manipolating( self, mySelf, posManager, action_param ):
+    def object_manipolating( self, mySelf, posManager, param ):
         pass
         
-    def object_catching( self, mySelf, posManager, action_param ):
+    def object_catching( self, mySelf, posManager, param ):
         pass
     
-    def object_adsorbing( self, mySelf, posManager, action_param ):
+    def object_assimilating( self, mySelf, posManager, param ):
         pass
     
-    def object_hitting( self, mySelf, posManager, action_param ):
+    def object_hitting( self, mySelf, posManager, param ):
         pass
     
     # TEST: OK
-    def moving( self, automa, posManager, action_param ):
+    def moving( self, automa, posManager, param ):
         """Exec move action and return action_info"""
         # action_type: move
-        # action_param: [target_position, speed_perc], position è la posizione verso cui muovere
+        # param: [target_position, speed_perc], position è la posizione verso cui muovere[ action_type, position or obj, ..other params ]
         # direction: 
         # foward, foward_left. foward_right, foward_up_left, foward_up_right, foward_down_left, foward_down_right, foward_up, foward_down
         # backward, backward_left. backward_right, backward_up_left, backward_up_right, backward_down_left, backward_down_right, bacward_up, backward_down       
         # _left, _up_left, _down_left
         # _right, _up_right, _down_right
         # _up, _down
+        position_reached = False
         automa_position = automa.getPosition()
         automa_coord = Coordinate( automa_position )
-        next_position = action_param[ 0 ]
-        speed_perc = action_param[ 1 ]
+        next_position = param[ 0 ]
+        speed_perc = param[ 1 ]
         direction = automa_coord.eval_direction( automa_position, next_position)
         logger.logger.debug("Actuator: {0} from: {1} to: {2} -  Evalutate direction: {3}".format( self._id, automa_position, next_position, direction ))
         energy_actuator = self._state.getEnergy()
-        distance_min = min( int( speed_perc * General.MAX_SPEED ), min( abs( automa_position[ 0 ] - next_position[ 0 ] ), abs( automa_position[ 1 ] - next_position[ 1 ] ), abs( automa_position[ 2 ] - next_position[ 2 ] ) ) )
-        logger.logger.debug("Actuator: {0} num Iteration: {1} ".format( self._id, distance_min ))
+        max_dist_for_single_iteration = int( speed_perc * General.MAX_SPEED ) 
+        min_dist_from_pos_to_dest = min( abs( automa_position[ 0 ] - next_position[ 0 ] ), abs( automa_position[ 1 ] - next_position[ 1 ] ), abs( automa_position[ 2 ] - next_position[ 2 ] ) )
+        num_iteration = min( max_dist_for_single_iteration,  min_dist_from_pos_to_dest) # min_dist_from_pos_to_dest determina il massimo numero di posizioni che è possibile percorrere limitando di fatto lo spostamento possibile nelle altre dimensioni: sarebbe necessario gestire il movimento distinguendo ogni lo spostamento in ogni dimensione
 
-        for i in range( distance_min ):# la velocità determina il numero di iterazioni
+        if max_dist_for_single_iteration >= min_dist_from_pos_to_dest:
+            position_reached = True
+
+        logger.logger.debug("Actuator: {0} -  max_dist_for_single_iteration: {1},  min_dist_from_pos_to_dest: {2},  num Iteration: {3} ".format( self._id, max_dist_for_single_iteration,  min_dist_from_pos_to_dest, num_iteration ))
+
+        for i in range( num_iteration ):# la velocità determina il numero di iterazioni
             automa_coord.move( direction )
             automa_position = automa_coord.getPosition()
-
             
             if not posManager.moveObject( automa_coord.getPosition(), automa ):
-                logger.logger.debug("Actuator: {0} not executed move action. Iteration: {1} Energy_actuator {2}".format( self._id, i, energy_actuator ))
-                return False, energy_actuator
-            # l'energia è presente nello stato del sensore, tuttavia è l'automa che fornisce energia al sensore quindi ha senso 
+                logger.logger.debug("Actuator: {0} not executed move action. Iteration: {1} Energy_actuator {2}  position_reached {3}".format( self._id, i, energy_actuator, position_reached ))
+                return False, energy_actuator, position_reached
+            # l'energia è presente nello stato dell'attuatore, tuttavia è l'automa che fornisce energia all'attuatore quindi ha senso 
             # restituire all'automa la info sul consumo energetico relativo alla perception
-            # In questa prima versione decremento solo l'energia del sensore, quando questa diventa 0 l'automa deve provveedere
-            # a ricaricare l'energia del sensore tramite la propria energia (con un fattore di  moltiplicazione: 1 energia automa = x energia sensore)
+            # In questa prima versione decremento solo l'energia dell'attuatore, quando questa diventa 0 l'automa deve provveedere
+            # a ricaricare l'energia dell'attuatore tramite la propria energia (con un fattore di  moltiplicazione: 1 energia automa = x energia sensore)
             energy_actuator = self._state.updateEnergy( self._power * speed_perc, self._delta_t )
-            logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2}".format( self._id, i, energy_actuator ))
+            logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2} position_reached {3}".format( self._id, i, energy_actuator, position_reached ))
         
             if automa_position[ 0 ] == next_position[ 0 ] or automa_position[ 0 ] == next_position[ 0 ] or automa_position[ 0 ] == next_position[ 0 ]:
-                logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2}".format( self._id, i, energy_actuator ))
-                return True, energy_actuator
+                logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2}  position_reached {3}".format( self._id, i, energy_actuator, position_reached ))
+                return True, energy_actuator, position_reached
             
-
-        return True, energy_actuator
-
+        return True, energy_actuator, position_reached
 
 
-    def projectile_launching( self, mySelf, posManager, action_param):
+
+    def projectile_launching( self, mySelf, posManager, param):
         pass
     
-    def plasma_launching( self, mySelf, posManager, action_param):
+    def plasma_launching( self, mySelf, posManager, param):
         pass
 
 
@@ -184,6 +189,8 @@ class Actuator:
             
         return True
 
+    def getId( self ):
+        return self._id
 
     def setName(self, name):
 
