@@ -31,6 +31,7 @@ class Automa(Object):
         self.action_executed = None
         self._eventsQueue = {} #  {key: event id, value = event}
         self._actionsQueue = {} #  {key: event id, value = action}
+        self._objectToke = []
 
         if not self.checkParamAutoma( power, sensors, actuators ):
             raise Exception( "Invalid properties! Automata not istantiate." )
@@ -322,9 +323,9 @@ class Automa(Object):
             # nella actuators lista sarà quindi composta da un solo attuatore
             return [ actuator,  [ target_position, speed_perc ] ]            
             
-        elif action_type == 'take':
+        elif action_type == 'translate':
             actuator = self.getActuator( actuator_class = 'object_manipulator' )
-            obj = act[ 1 ]
+            obj = act[ 1 ]            
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuator, [ obj ] ]
 
@@ -335,29 +336,57 @@ class Automa(Object):
             return [ actuator, [ obj ] ]
         
         elif action_type == 'eat':
-            actuator = self.getActuator( actuator_class = 'object_adsorber' )
+            actuator = self.getActuator( actuator_class = 'object_assimilator' )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuator, [ obj ] ]
 
         elif action_type == 'shot':
-            actuators = self.getActuator( actuator_class = 'plasma_launcher' )  + self.getActuator( actuator_class = 'projectile_launcher' )
+            actuators = []
+            plasma_actuators = self.getActuator( actuator_class = 'plasma_launcher' )
+            projectile_actuators = self.getActuator( actuator_class = 'projectile_launcher' )
+            
+            if plasma_actuators:                                
+                actuators.append( plasma_actuators )
+            
+            if projectile_actuators:
+                actuators.append( projectile_actuators )
+
+            actuator = actuators[ 0 ] #self.eval_best_actuators( actuators ) # Qui logica per decidere quale attuatore è meglio utilizzare
+
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
-            return [ actuators, [ obj ] ]
+            return [ actuator, [ obj ] ]
 
         elif action_type == 'hit':
             actuator = self.getActuator( actuator_class = 'object_hitter' )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included:  action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
-            return [ actuators, [ obj ] ]
+            return [ actuator, [ obj ] ]
         
         elif action_type == 'attack':
-            actuators = self.getActuator( actuator_class = 'object_catcher' ) + self.getActuator( actuator_class = 'projectile_launcher' ) + self.getActuator( actuator_class = 'plasma_launcher' ) + self.getActuator( actuator_class = 'object_hitter' )
-            actuators = self.eval_best_actuators( actuators )
+            actuators = []
+            catcher_actuators = self.getActuator( actuator_class = 'object_catcher' ) 
+            projectile_actuators = self.getActuator( actuator_class = 'projectile_launcher' )
+            plasma_actuators = self.getActuator( actuator_class = 'plasma_launcher' )
+            hitter_actuators = self.getActuator( actuator_class = 'object_hitter' )
+
+            if plasma_actuators:
+                actuators.append( plasma_actuators )
+            
+            if projectile_actuators:
+                actuators.append( projectile_actuators )
+
+            if catcher_actuators:
+                actuators.append( catcher_actuators )
+            
+            if hitter_actuators:
+                actuators.append( hitter_actuators )
+            
+            actuator = self.eval_best_actuators( actuators ) # Qui logica per decidere quale attuatore è meglio utilizzare
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
-            return [ actuators, [ obj ] ]
+            return [ actuator, [ obj ] ]
         
         else:
             logger.logger.error("Automa: {0}, raised exception: 'action_type not found!!' ".format( self._id, len( actuators ), action_type, obj._id ))
@@ -374,3 +403,22 @@ class Automa(Object):
                 return actuator
 
         return False
+
+    def setActuator( self, actuator):
+        """Insert an Actuator in actuators list"""
+        if not actuator or not isinstance(actuator, Actuator):
+            return False
+        self._actuators.append( actuator )
+        return True
+
+
+
+    def catchObject( self, obj):
+        """Inserted obj in object catched list and set id automa in object take_from property"""
+        if not obj:
+            return False
+
+        obj.setCaught_from( self._id )
+        self._objectCatched.append( obj )
+
+        return True

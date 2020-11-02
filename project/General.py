@@ -41,7 +41,7 @@ SENSOR_TYPE = ( "radio", "thermal", "optical", "nuclear", "electric", "acoustics
 
 ACTUATOR_CLASS = ( "object_manipulator", "mover", "plasma_launcher", "projectile_launcher", "object_catcher", "object_assimilator", "object_hitter" )
 
-ACTION_TYPE = ( "move", "run", "take", "catch", "eat", "attack", "nothing", "shot", "hit" )
+ACTION_TYPE = ( "move", "run", "translate", "catch", "eat", "attack", "nothing", "shot", "hit" )
 
 EVENT_TYPE = ( "PUSH", "POP", "HIT", "ASSIMILATE", "MOVE" ) # la differenza tra PUSH e HIT è nell'energia-potenza impressa, mentre tra POP e ADSORB è che con EAT l'oggetto "preso" dovrebbe essere eliminato
 
@@ -91,9 +91,9 @@ ACTUATOR_TYPE = {
 def getActuatorParam(_class, _type):
     """Return power, speed, accuracy, resilience, strenght for actuator of that _class and _type, otherwise False"""
     
-    #if not checkActuatorTypeAndClass(_type, _class) non serve in quato il controllo viene effettuato al momento della creazione dell'istanza dell'Actuator
+    #if not checkActuatorTypeAndClass(_type, _class) non serve in quanto il controllo viene effettuato al momento della creazione dell'istanza dell'Actuator
     #    return False
-    return ACTUATOR_TYPE.index.get( _class ).get( _type ).values()
+    return ACTUATOR_TYPE.get( _class ).get( _type ).values()
 
 def checkActionType(_type):
     """Return True if _type is compliance with standard type defined for ACTION_TYPE in General.py"""

@@ -21,6 +21,7 @@ class Object:
             self._state = state
             self.setState(state)
             self._emissivity = emissivity
+            self._caught_from = None #l'id dell'oggetto che ha preso (catturato) questo oggetto
             
             if not self.checkParam( dimension, resilience, state, coord ):
                 raise Exception("Invalid parameters! Object not istantiate.")
@@ -43,8 +44,21 @@ class Object:
             if not coord:
                 self._coord = Coordinate(0, 0, 0)
 
+
+    def setCaught_from( self, automa_id ):
+
+        if not automa_id or not isinstance(automa_id, Automa):
+            return False
         
-    def checkEmissivityParam(self, emissivity):
+        self._caught_from = automa_id
+        return True
+
+
+    def getCaught_from( self ):
+
+        return self._caught_from
+        
+    def checkEmissivityParam( self, emissivity ):
         """Return True if conformity of the emissivity is verified"""
         if not emissivity or not isinstance(emissivity, dict) or len(emissivity) != len( General.SENSOR_TYPE ):
             return False

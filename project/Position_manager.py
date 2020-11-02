@@ -103,11 +103,12 @@ class Position_manager:
     
     # test: ok
     def removeObject( self, obj ):
-        """ Remove [obj] in position dictionary and return index position. If obj not exists return False"""
+        """ Remove obj in position dictionary and return index position. If obj not exists return False
+            param bj or obj.id"""
         
         if not obj:
             return False
-        
+
         obj_data = self.searchObject(obj)
 
         if obj_data and obj_data[0] and obj_data[1]:

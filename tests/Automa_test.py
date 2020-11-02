@@ -45,14 +45,60 @@ def testClassAutoma():
     actuators_activation = automa.eval_actuators_activation( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != ( 10, 10, 10 ) or actuators_activation[1][1] != 0.7:
-        print('Automa.eval_actuators_activation( action ) Failed!!', actuators_activation[0], actuators_activation[1])
+        print('Automa.eval_actuators_activation( action ) move  Failed!!', actuators_activation[0], actuators_activation[1])
         result = False 
 
     action = [ 'run', (10, 10, 10) ] #(action_type, position or object) 
     actuators_activation = automa.eval_actuators_activation( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != ( 10, 10, 10 ) or actuators_activation[1][1] != 1:
-        print('Automa.eval_actuators_activation( action ) Failed!!', actuators_activation[0], actuators_activation[1])
+        print('Automa.eval_actuators_activation( action ) run Failed!!', actuators_activation[0], actuators_activation[1])
+        result = False 
+
+    automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "object_manipulator", typ = "clamp", power = 100,  resilience = 100, delta_t = 0.01 ) )
+    obj = Object( coord = Coordinate( 10, 10, 10 ) )
+    action = [ 'translate', obj ] #(action_type, position or object) 
+    actuators_activation = automa.eval_actuators_activation( action )
+
+    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
+        print('Automa.eval_actuators_activation( action ) translate Failed!!', actuators_activation[0], actuators_activation[1])
+        result = False 
+
+    automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "object_catcher", typ = "clamp", power = 100,  resilience = 100, delta_t = 0.01 ) )
+    obj = Object( coord = Coordinate( 10, 10, 10 ) )
+    action = [ 'catch', obj ] #(action_type, position or object) 
+    actuators_activation = automa.eval_actuators_activation( action )
+
+    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
+        print('Automa.eval_actuators_activation( action ) translate Failed!!', actuators_activation[0], actuators_activation[1])
+        result = False 
+
+    automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "object_assimilator", typ = "jaw", power = 100,  resilience = 100, delta_t = 0.01 ) )
+    obj = Object( coord = Coordinate( 10, 10, 10 ) )
+    action = [ 'translate', obj ] #(action_type, position or object) 
+    actuators_activation = automa.eval_actuators_activation( action )
+
+    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
+        print('Automa.eval_actuators_activation( action ) translate Failed!!', actuators_activation[0], actuators_activation[1])
+        result = False 
+
+    automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "plasma_launcher", typ = "laser", power = 100,  resilience = 100, delta_t = 0.01 ) )
+    obj = Object( coord = Coordinate( 10, 10, 10 ) )
+    action = [ 'shot', obj ] #(action_type, position or object) 
+    actuators_activation = automa.eval_actuators_activation( action )
+
+    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
+        print('Automa.eval_actuators_activation( action ) translate Failed!!', actuators_activation[0], actuators_activation[1])
+        result = False 
+    
+
+    automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "projectile_launcher", typ = "heavy_cannon", power = 100,  resilience = 100, delta_t = 0.01 ) )
+    obj = Object( coord = Coordinate( 10, 10, 10 ) )
+    action = [ 'shot', obj ] #(action_type, position or object) 
+    actuators_activation = automa.eval_actuators_activation( action )
+
+    if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
+        print('Automa.eval_actuators_activation( action ) translate Failed!!', actuators_activation[0], actuators_activation[1])
         result = False 
     
 

@@ -113,9 +113,7 @@ class Actuator:
     def object_manipolating( self, mySelf, posManager, param ):
         pass
         
-    def object_catching( self, mySelf, posManager, param ):
-        pass
-    
+ 
     def object_assimilating( self, mySelf, posManager, param ):
         pass
     
@@ -124,7 +122,7 @@ class Actuator:
     
     # TEST: OK
     def moving( self, automa, posManager, param ):
-        """Exec move action and return action_info"""
+        """Execute move action and return action_info"""
         # action_type: move
         # param: [target_position, speed_perc], position è la posizione verso cui muovere[ action_type, position or obj, ..other params ]
         # direction: 
@@ -169,6 +167,23 @@ class Actuator:
                 return True, energy_actuator, position_reached
             
         return True, energy_actuator, position_reached
+
+
+    def object_catching( self, automa, posManager, param ):
+        """Execute catching action and return action_info"""
+        # action_type: catch
+        # param: [target_position, speed_perc], position è la posizione verso cui muovere[ action_type, position or obj, ..other params ]
+        # direction: 
+        # foward, foward_left. foward_right, foward_up_left, foward_up_right, foward_down_left, foward_down_right, foward_up, foward_down
+        # backward, backward_left. backward_right, backward_up_left, backward_up_right, backward_down_left, backward_down_right, bacward_up, backward_down       
+        # _left, _up_left, _down_left
+        # _right, _up_right, _down_right
+        # _up, _down
+        obj = param[0]
+        automa.catchObject( obj )
+        posManager.removeObject( obj )
+        return True
+
 
 
 
