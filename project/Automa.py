@@ -169,7 +169,7 @@ class Automa(Object):
         return True
 
     # TEST: OK (indirect from action method)
-    def insertAction(self, action ):
+    def insertAction( self, action ):
 
         if not action or not isinstance( action, Action ):
             return False
@@ -178,7 +178,7 @@ class Automa(Object):
         return True
 
     # TEST: OK (indirect from action method)
-    def removeAction(self, action):
+    def removeAction( self, action ):
         """remove action in eventsQueue"""
         if not isinstance(action._id, int) :
             return False
@@ -187,8 +187,12 @@ class Automa(Object):
         logger.logger.debug("Automa: {0} removed action in queue, action id: {1}, actions in queue: {2}".format( self._id, action._id, len( self._actionsQueue ) ))
         return True
 
+    def resetActionQueue( self ):
+        """Reset the Action Queue"""
+        self._actionsQueue.clear()
+
     # TEST: OK (indirect from action method)
-    def getActionActive(self):
+    def getActionActive( self ):
         """Return a list with activable actions for a single task. Update the event Queue"""
         active = [] # list of active actions
         
@@ -296,7 +300,7 @@ class Automa(Object):
     
     # TEST: OK
     def eval_actuators_activation( self, act ):
-        """Choice the actuators for activation in relation with act"""
+        """Choice the actuators for activation in relation with act and define parameter for execute action"""
         # act: (action_type, position or object)
         # return: # actuators_activation: [ actuators,  [ position or obj, ..other params, self ] ]
         
@@ -325,9 +329,10 @@ class Automa(Object):
             
         elif action_type == 'translate':
             actuator = self.getActuator( actuator_class = 'object_manipulator' )
-            obj = act[ 1 ]            
+            obj = act[ 1 ]    
+            destination = act[ 2 ]        
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
-            return [ actuator, [ obj ] ]
+            return [ actuator, [ obj, destination ] ]
 
         elif action_type == 'catch':
             actuator = self.getActuator( actuator_class = 'object_catcher' )
@@ -383,7 +388,8 @@ class Automa(Object):
             if hitter_actuators:
                 actuators.append( hitter_actuators )
             
-            actuator = self.eval_best_actuators( actuators ) # Qui logica per decidere quale attuatore è meglio utilizzare
+            actuator = actuators[ 0 ] #self.eval_best_actuators( actuators ) # Qui logica per decidere quale attuatore è meglio utilizzare
+
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
             return [ actuator, [ obj ] ]

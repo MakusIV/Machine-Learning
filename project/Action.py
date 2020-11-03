@@ -10,7 +10,7 @@ logger = Logger(module_name = __name__, class_name = 'Action')
 
 class Action:
     
-    def __init__(self, typ, time2go = 1, duration = 1, position = None, obj = None, param = None  ):
+    def __init__( self, typ, time2go = 1, duration = 1, position = None, obj = None, param = None  ):
 
         if not self.checkParam(typ,  time2go, duration ):
             raise Exception("Invalid parameters! Action not istantiate.")        
@@ -49,7 +49,7 @@ class Action:
         
         elif self._position == None and self._object != None:
             return [ self._type, self._object, self._param ]
-        
+
         else:
             raise Exception("position or object should to be None")
 
