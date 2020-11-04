@@ -9,6 +9,8 @@ from LoggerClass import Logger
 from Automa import Automa
 from Position_manager import Position_manager
 from Sensor import Sensor
+from Object import Object
+from Coordinate import Coordinate
 
 
 # LOGGING --
@@ -170,6 +172,40 @@ def testClassActuator():
         print('Actuator.exc_command() - move - Failed!! ', moved, energy_actuator, actuator._state.getEnergy(), automa.getPosition(), target_position )
         result = False     
 
+
+
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 10, 10, 10 ), class_ = 'object_manipulator', typ = 'hand', delta_t = 0.1)
+    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    automa = Automa( actuators = [ actuator ], sensors = sensors )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )    
+    obj = Object( coord = Coordinate( 5, 5, 5 ) )
+    posMng.insertObject( ( 5, 5, 5 ), obj )
+
+    action_info = actuator.exec_command( automa, posMng, [ obj, (9, 9, 9) ] )
+    moved = action_info[ 0 ]
+    energy_actuator = action_info[ 1 ]
+
+    if not moved or energy_actuator != actuator._state.getEnergy() or obj.getPosition() != (9, 9, 9): 
+        print('Actuator.exc_command() - move - Failed!! ', moved, energy_actuator, actuator._state.getEnergy(), obj.getPosition(), target_position )
+        result = False 
+
+
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 10, 10, 10 ), class_ = 'object_manipulator', typ = 'hand', delta_t = 0.1)
+    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    automa = Automa( actuators = [ actuator ], sensors = sensors )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )    
+    obj = Object( coord = Coordinate( 5, 5, 5 ) )
+    posMng.insertObject( ( 5, 5, 5 ), obj )
+
+    action_info = actuator.exec_command( automa, posMng, [ obj, (11, 11, 11) ] )
+    moved = action_info[ 0 ]
+    energy_actuator = action_info[ 1 ]
+
+    if moved: 
+        print('Actuator.exc_command() - move - Failed!! ', moved, energy_actuator, actuator._state.getEnergy(), obj.getPosition(), target_position )
+        result = False 
 
 
     return result

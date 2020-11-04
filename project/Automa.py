@@ -298,7 +298,7 @@ class Automa(Object):
         pass
 
     
-    # TEST: OK
+    # TEST: OK parziale
     def eval_actuators_activation( self, act ):
         """Choice the actuators for activation in relation with act and define parameter for execute action"""
         # act: (action_type, position or object)
@@ -313,7 +313,7 @@ class Automa(Object):
         if action_type == 'move' or action_type == 'run':
             actuator = self.getActuator( actuator_class = 'mover' )            
 
-            if action_type == 'move':                
+            if action_type == 'move': # OK                
                 speed_perc = act[2] #0.7 # % della speed max. Il consumo di energia è calcolato applicando questa % al dt*power
             
             else:
@@ -321,29 +321,29 @@ class Automa(Object):
                         
 
             target_position = act[ 1 ]            
-            logger.logger.debug("Automa: {0}, created actuators_activation  actuator, action_type: {1}, target_position: {2} and speed_perc: {3}".format( self._id, action_type, target_position, speed_perc ))
+            logger.logger.debug("Automa: {0}, created actuators_activation, action_type: {1}, target_position: {2} and speed_perc: {3}".format( self._id, action_type, target_position, speed_perc ))
             # NOTA!!!: L'esecuzione dell'azione move da parte di un attuatore, comporta lo spostamento effettivo dell'automa, quindi n attutori effettueranno complessivamente n move -> SBAGLIATO
             # Ciò significa che per l'esecuzione della action_type move deve essere azionato un solo attuatore che rappresenta l'insieme dei dispositivi dedicati a questo tipo di azione
             # nella actuators lista sarà quindi composta da un solo attuatore
             return [ actuator,  [ target_position, speed_perc ] ]            
             
-        elif action_type == 'translate':
+        elif action_type == 'translate': # OK
             actuator = self.getActuator( actuator_class = 'object_manipulator' )
             obj = act[ 1 ]    
             destination = act[ 2 ]        
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
+            logger.logger.debug("Automa: {0}, created actuators_activation with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuator, [ obj, destination ] ]
 
         elif action_type == 'catch':
             actuator = self.getActuator( actuator_class = 'object_catcher' )
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
+            logger.logger.debug("Automa: {0}, created actuators_activation with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuator, [ obj ] ]
         
         elif action_type == 'eat':
             actuator = self.getActuator( actuator_class = 'object_assimilator' )
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
+            logger.logger.debug("Automa: {0}, created actuators_activation with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuator, [ obj ] ]
 
         elif action_type == 'shot':
@@ -360,13 +360,13 @@ class Automa(Object):
             actuator = actuators[ 0 ] #self.eval_best_actuators( actuators ) # Qui logica per decidere quale attuatore è meglio utilizzare
 
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
+            logger.logger.debug("Automa: {0}, created actuators_activation with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuator, [ obj ] ]
 
         elif action_type == 'hit':
             actuator = self.getActuator( actuator_class = 'object_hitter' )
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included:  action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
+            logger.logger.debug("Automa: {0}, created actuators_activation with included:  action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuator, [ obj ] ]
         
         elif action_type == 'attack':
@@ -391,7 +391,7 @@ class Automa(Object):
             actuator = actuators[ 0 ] #self.eval_best_actuators( actuators ) # Qui logica per decidere quale attuatore è meglio utilizzare
 
             obj = act[ 1 ]
-            logger.logger.debug("Automa: {0}, created actuators_activation list with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
+            logger.logger.debug("Automa: {0}, created actuators_activation with included: list of {1} acutators, action_type: {2}, object: {3}".format( self._id, len( actuators ), action_type, obj._id ))
             return [ actuator, [ obj ] ]
         
         else:

@@ -144,18 +144,18 @@ def testClassAutoma():
     
      # test: automa.action( request_action )
     #   action_info: result of action, actuator's energy state
-    #typ, time2go = 1, duration = 1, position = None, obj = None, param = None 
-    automa.resetActionQueue()
-    action = Action( typ = 'translate', time2go = 0, duration = 1, obj = obj, param = (7, 7, 7) ) #(action_type, position or object) 
-    automa.insertAction( action )
+    #typ, time2go = 1, duration = 1, position = None, obj = None, param = None     
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )
     obj = Object( coord = Coordinate( 5, 5, 5 ) )
     posMng.insertObject( ( 5, 5, 5 ), obj )
+    automa.resetActionQueue()
+    action = Action( typ = 'translate', time2go = 0, duration = 1, obj = obj, param = (7, 7, 7) ) #(action_type, position or object) 
+    automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 83:
-        print('Automa.action(posMng) Failed!!',action_info[0][0], action_info[0][1])
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getPosition() != (7, 7, 7):
+        print('Automa.action(posMng) Failed!!',action_info[0][0], action_info[0][1], obj.getPosition())
         result = False 
     
 

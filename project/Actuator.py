@@ -82,11 +82,14 @@ class Actuator:
         # ogni attuatore. Forse è meglio utilizzare l'ereditarietà. No definisco qui le diverse funzioni da utilizzare per ogni attuatore       
 
         if self._class == "object_manipulator":            
-            return self.object_manipolating( automa, posManager, param )
+            #param: [object, destination]
+            manipulated, energy_actuator, manipulate_terminated =  self.object_manipulating( automa, posManager, param )
+            return [ manipulated, energy_actuator, manipulate_terminated] # [True or False, energy_consume]
 
-        elif self._class == 'mover':                   
-            moved, energy_actuator, position_reached = self.moving( automa, posManager, param )
-            return [ moved, energy_actuator, position_reached ] # [True or False, energy_consume, True or False]
+        elif self._class == 'mover':                 
+            #param: destination
+            moved, energy_actuator, move_terminated = self.moving( automa, posManager, param )
+            return [ moved, energy_actuator, move_terminated ] # [True or False, energy_consume, True or False]
 
         elif self._class == "plasma_launcher":
             return self.plasma_launching( automa, posManager, param )
@@ -95,7 +98,9 @@ class Actuator:
             return self.projectile_launching( automa, posManager, param ) 
 
         elif self._class == "object_catcher":
-            return self.object_catching( automa, posManager, param )
+            #param[object]        
+            catched, energy_actuator, catch_terminated =  self.object_catching( automa, posManager, param )
+            return [ catched, energy_actuator ] # [True or False, energy_consume]
 
         elif self._class == "object_assimilator":
             return self.object_assimilating( automa, posManager, param )
@@ -109,9 +114,24 @@ class Actuator:
 
         return
 
-    
-    def object_manipolating( self, mySelf, posManager, param ):
-        pass
+
+    # TEST: OK
+    def object_manipulating( self, mySelf, posManager, param ):
+        #param[0] = object, param[1]= destination
+        obj = param[ 0 ]
+        destination = param[ 1 ]
+        manipulation_terminated = True# serve per implementare la gestione di manipolazioni che richiedono più task per essere completate
+
+        energy_actuator = self._state.updateEnergy( self._power, self._delta_t )
+        # verifica se param[1] destinazione dello spostamento, range attuatore e posizione dell'automa sono idonei per l'esecuzione della attuaione
+        if not self.isInRange( destination ):
+            logger.logger.debug("Actuator: {0} not executed manipulate action because destination is out of range. destination: {1}, range: {2}, energy_actuator: {3}".format( self._id, destination, self._range, energy_actuator ))
+            return [ False, energy_actuator, False ]
+
+        result = posManager.moveObject( destination, obj )
+        logger.logger.debug("Actuator: {0}result manipulate = {1}. destination: {2}, range: {3}, energy_actuator: {4}".format( self._id, result, destination, self._range, energy_actuator ))        
+        return result, energy_actuator, manipulation_terminated 
+
         
  
     def object_assimilating( self, mySelf, posManager, param ):
@@ -172,18 +192,28 @@ class Actuator:
     def object_catching( self, automa, posManager, param ):
         """Execute catching action and return action_info"""
         # action_type: catch
-        # param: [target_position, speed_perc], position è la posizione verso cui muovere[ action_type, position or obj, ..other params ]
-        # direction: 
-        # foward, foward_left. foward_right, foward_up_left, foward_up_right, foward_down_left, foward_down_right, foward_up, foward_down
-        # backward, backward_left. backward_right, backward_up_left, backward_up_right, backward_down_left, backward_down_right, bacward_up, backward_down       
-        # _left, _up_left, _down_left
-        # _right, _up_right, _down_right
-        # _up, _down
-        obj = param[0]
-        automa.catchObject( obj )
-        posManager.removeObject( obj )
-        return True
+        #param[0] = object, param[1]= destination
+        obj = param[ 0 ]       
+        energy_actuator = self._state.updateEnergy( self._power, self._delta_t )
+        # verifica se param[1] destinazione dello spostamento, range attuatore e posizione dell'automa sono idonei per l'esecuzione della attuaione
+        if not isInRange( obj.getPosition() ):
+            logger.logger.debug("Actuator: {0} not executed catch action because object not in range. object position: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getPosition(), self._range, energy_actuator ) )
+            return [ False, energy_actuator ]
+       
 
+        if posManager.removeObject( obj ):
+            
+            if mySelf.catchObject( obj ):
+                logger.logger.debug("Actuator: {0} executed catch action. object position: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getPosition(), self._range, energy_actuator ))
+                return [ True, energy_actuator ]
+        
+            else:                
+                raise Exception("object_manipulating not executed but object was removed form position manager")
+
+        logger.logger.debug("Actuator: {0} not executed catch action because remove object not carried out. object position: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getPosition(), self._range, energy_actuator ))
+        return [ False, energy_actuator ]
+
+        
 
 
 
@@ -255,3 +285,8 @@ class Actuator:
             return self._state.decrementHealth( damage )
         
         return self._state.getHealth()
+
+
+    def isInRange(self, destination):
+         return ( abs( destination[ 0 ] - self._position[ 0 ] ) <= self._range[ 0 ] ) and ( abs( destination[ 1 ] - self._position[ 1 ] ) <= self._range[ 1 ] ) and ( abs( destination[ 0 ] - self._position[ 2 ] ) <= self._range[ 2 ] ) 
+
