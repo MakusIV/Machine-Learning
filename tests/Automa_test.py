@@ -112,7 +112,7 @@ def testClassAutoma():
         result = False 
     
 
-    # test: automa.action( request_action )
+    # test: automa.action( request_action = move )
     #   action_info: result of action, actuator's energy state
     #typ, time2go = 1, duration = 1, position = None, obj = None, param = None 
     action = Action( typ = 'move', time2go = 0, duration = 1, position = (10, 10, 10), param = 0.7 ) #(action_type, position or object) 
@@ -122,11 +122,11 @@ def testClassAutoma():
     action_info = automa.action(posMng)
 
     if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 93:
-        print('Automa.action(posMng) Failed!!',action_info[0][0], action_info[0][1])
+        print('Automa.action(posMng) move Failed!!',action_info[0][0], action_info[0][1])
         result = False 
     
 
-    # test: automa.action( request_action )
+    # test: automa.action( request_action = run )
     #   action_info: result of action, actuator's energy state
     #typ, time2go = 1, duration = 1, position = None, obj = None, param = None 
     automa.resetActionQueue()
@@ -137,12 +137,12 @@ def testClassAutoma():
     action_info = automa.action(posMng)
 
     if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 83:
-        print('Automa.action(posMng) Failed!!',action_info[0][0], action_info[0][1])
+        print('Automa.action(posMng) run Failed!!',action_info[0][0], action_info[0][1])
         result = False 
 
 
     
-     # test: automa.action( request_action )
+    # test: automa.action( request_action = translate )
     #   action_info: result of action, actuator's energy state
     #typ, time2go = 1, duration = 1, position = None, obj = None, param = None     
     posMng = Position_manager()
@@ -155,15 +155,33 @@ def testClassAutoma():
     action_info = automa.action(posMng)
 
     if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getPosition() != (7, 7, 7):
-        print('Automa.action(posMng) Failed!!',action_info[0][0], action_info[0][1], obj.getPosition())
+        print('Automa.action(posMng) translate Failed!!',action_info[0][0], action_info[0][1], obj.getPosition())
         result = False 
     
+    # test: automa.action( request_action = catch )
+    #   action_info: result of action, actuator's energy state
+    #typ, time2go = 1, duration = 1, position = None, obj = None, param = None     
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )
+    obj = Object( coord = Coordinate( 5, 5, 5 ) )
+    posMng.insertObject( ( 5, 5, 5 ), obj )
+    automa.resetActionQueue()
+    action = Action( typ = 'catch', time2go = 0, duration = 1, obj = obj, param = None ) #(action_type, position or object) 
+    automa.insertAction( action )
+    action_info = automa.action(posMng)
+
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getCaught_from() != automa.getId():
+        print('Automa.action(posMng) catch Failed!!',action_info[0][0], action_info[0][1], automa.getId(), obj.getCaught_from())
+        result = False 
 
 
+    print("------------------------------------------------------------------------------------------------------------")
+    print("------------------------------------------------------------------------------------------------------------")
     print("------------------------------------------------------------------------------------------------------------")
     print( action_info )
     print("------------------------------------------------------------------------------------------------------------")
-
+    print("------------------------------------------------------------------------------------------------------------")
+    print("------------------------------------------------------------------------------------------------------------")
 
 
     # test: automa.percept( pm )

@@ -47,7 +47,7 @@ class Object:
 
     def setCaught_from( self, automa_id ):
 
-        if not automa_id or not isinstance(automa_id, Automa):
+        if not automa_id or not isinstance(automa_id, str):
             return False
         
         self._caught_from = automa_id

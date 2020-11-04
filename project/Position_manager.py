@@ -63,7 +63,7 @@ class Position_manager:
         res, _, _, _, _ = self.volumeInLimits( volume )
 
         if res:
-            obj._coord.setPosition( position ) # aggiorna la coord dell'obj con la posizione d'inserimento 
+            obj._coord = Coordinate( position[ 0 ], position[ 1 ], position[ 2 ] ) # crea la coord dell'obj con la posizione d'inserimento 
 
             if self.objMapping(obj.getDimension(), obj):# mappa il volume dell'obj in map. Se in map esiste un'altro obj non inserisce l'oggetto.restituisce False                     
                 self.pos[ position ] = obj
@@ -115,6 +115,7 @@ class Position_manager:
         # rimuove gli id dell'obj dalla map dict
             if self.cleanObjectMapping( obj_data[1] ):
                 self.pos.pop( obj_data[0] ) # rimuove l'obj dal position dict
+                obj_data[1]._coord = None
                 logger.logger.debug( "Removed obj: {0} @: {1}".format( obj_data[1].getId(), obj_data[0] ) )
                 return obj_data[0] # Restituisce la posizione dell'oggetto rimosso
                 
@@ -144,6 +145,7 @@ class Position_manager:
             # rimuove gli id dell'obj dalla map dict
             if self.cleanObjectMapping( obj_data[1] ):
                 self.pos.pop( obj_data[0] ) # rimuove dal pos dict l'obj
+                obj_data[1]._coord = None
                 logger.logger.debug( "Removed obj: {0} @: {1}".format( obj_data[1].getId(), index ) )
                 return obj_data[1]
             

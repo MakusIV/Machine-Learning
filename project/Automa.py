@@ -31,7 +31,7 @@ class Automa(Object):
         self.action_executed = None
         self._eventsQueue = {} #  {key: event id, value = event}
         self._actionsQueue = {} #  {key: event id, value = action}
-        self._objectToke = []
+        self._objectCatched = []
 
         if not self.checkParamAutoma( power, sensors, actuators ):
             raise Exception( "Invalid properties! Automata not istantiate." )
@@ -428,3 +428,10 @@ class Automa(Object):
         self._objectCatched.append( obj )
 
         return True
+
+    def checkCaught( self, obj):
+        """Return True if obj exist in object catched list, otherwise False"""
+        for obj_ in self._objectCatched:
+            if obj == obj_:
+                return True
+        return False

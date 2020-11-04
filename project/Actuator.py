@@ -100,7 +100,7 @@ class Actuator:
         elif self._class == "object_catcher":
             #param[object]        
             catched, energy_actuator, catch_terminated =  self.object_catching( automa, posManager, param )
-            return [ catched, energy_actuator ] # [True or False, energy_consume]
+            return [ catched, energy_actuator, catch_terminated ] # [True or False, energy_consume]
 
         elif self._class == "object_assimilator":
             return self.object_assimilating( automa, posManager, param )
@@ -193,25 +193,26 @@ class Actuator:
         """Execute catching action and return action_info"""
         # action_type: catch
         #param[0] = object, param[1]= destination
+        catch_terminated = True# serve per implementare la gestione di catture che richiedono più task per essere completate
         obj = param[ 0 ]       
         energy_actuator = self._state.updateEnergy( self._power, self._delta_t )
         # verifica se param[1] destinazione dello spostamento, range attuatore e posizione dell'automa sono idonei per l'esecuzione della attuaione
-        if not isInRange( obj.getPosition() ):
-            logger.logger.debug("Actuator: {0} not executed catch action because object not in range. object position: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getPosition(), self._range, energy_actuator ) )
-            return [ False, energy_actuator ]
+        if not self.isInRange( obj.getPosition() ):
+            logger.logger.debug("Actuator: {0} not executed catch action because object not in range. automa catcher: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, obj.getCaught_from(), obj.getPosition(), self._range, energy_actuator ) )
+            return [ False, energy_actuator, catch_terminated ]
        
 
         if posManager.removeObject( obj ):
             
-            if mySelf.catchObject( obj ):
-                logger.logger.debug("Actuator: {0} executed catch action. object position: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getPosition(), self._range, energy_actuator ))
-                return [ True, energy_actuator ]
+            if automa.catchObject( obj ):
+                logger.logger.debug("Actuator: {0} executed catch action. automa catcher: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getCaught_from(), self._range, energy_actuator ) )
+                return [ True, energy_actuator, catch_terminated ]
         
             else:                
                 raise Exception("object_manipulating not executed but object was removed form position manager")
 
-        logger.logger.debug("Actuator: {0} not executed catch action because remove object not carried out. object position: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getPosition(), self._range, energy_actuator ))
-        return [ False, energy_actuator ]
+        logger.logger.debug("Actuator: {0} not executed catch action because remove object not carried out. automa catcher: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, obj.getCaught_from(), obj.getPosition(), self._range, energy_actuator ) )
+        return [ False, energy_actuator, catch_terminated ]
 
         
 
