@@ -19,9 +19,9 @@ class Automa(Object):
     """Automa derived from Object. """
 
     # TEST: OK
-    def __init__( self, name = 'Automa', dimension = [1, 1, 1], resilience = 100, power = 100, emissivity = {"radio": 50, "thermal": 50, "optical": 100, "nuclear": 0, "electric": 50, "acoustics": 100, "chemist": 0}, coord = None, sensors= None, actuators = None ):
+    def __init__( self, name = 'Automa', dimension = [1, 1, 1], mass = 100, maxLoad = 500, resilience = 100, power = 100, emissivity = {"radio": 50, "thermal": 50, "optical": 100, "nuclear": 0, "electric": 50, "acoustics": 100, "chemist": 0}, coord = None, sensors= None, actuators = None ):
 
-        Object.__init__( self, name = name, dimension = dimension, resilience = resilience, emissivity = emissivity, coord = coord )
+        Object.__init__( self, name = name, dimension = dimension, mass = mass, resilience = resilience, emissivity = emissivity, coord = coord )
 
         self._ai = AI() #AI Engine
         self._power = power # nota l'energia è gestita nello stato in quanto è variabile        
@@ -32,8 +32,9 @@ class Automa(Object):
         self._eventsQueue = {} #  {key: event id, value = event}
         self._actionsQueue = {} #  {key: event id, value = action}
         self._objectCatched = []
+        self._maxLoad = maxLoad
 
-        if not self.checkParamAutoma( power, sensors, actuators ):
+        if not self.checkParamAutoma( power, sensors, actuators, maxLoad ):
             raise Exception( "Invalid properties! Automata not istantiate." )
 
         logger.logger.info( "Automa {0} created".format( self._id ) )
@@ -139,10 +140,10 @@ class Automa(Object):
 
     
     # vedi il libro
-    def checkParamAutoma(self, power, sensors, actuators):            
+    def checkParamAutoma( self, power, sensors, actuators, maxLoad ):            
         """Return True if conformity of the parameters is verified"""
         
-        if not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not sensors or not isinstance(sensors[0], Sensor) or not Sensor.checkSensorList(sensors[0], sensors) or not actuators or not isinstance(actuators[0], Actuator) or not Actuator.checkActuatorList(actuators[0], actuators):
+        if not maxLoad or not isinstance(maxLoad, int) or maxLoad < 0 or not power or not isinstance(power, int) or not( power <= 100 and power >= 0 ) or not sensors or not isinstance(sensors[0], Sensor) or not Sensor.checkSensorList(sensors[0], sensors) or not actuators or not isinstance(actuators[0], Actuator) or not Actuator.checkActuatorList(actuators[0], actuators):
             return False
         return True
 
@@ -418,10 +419,19 @@ class Automa(Object):
         return True
 
 
+    def checkLoadObject( self, obj):
+        """ Check if obj can load in object catched list. Return True if possible, otherwise False"""
+        loaded = 0
+        
+        for obj_ in self._objectCatched:
+            loaded = loaded + obj_.getMass()
+
+        return ( self._maxLoad - loaded ) >= obj.getMass()
+
 
     def catchObject( self, obj):
         """Inserted obj in object catched list and set id automa in object take_from property"""
-        if not obj:
+        if not obj or not self.checkLoadObject( obj ):
             return False
 
         obj.setCaught_from( self._id )

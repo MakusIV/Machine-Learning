@@ -170,7 +170,7 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getCaught_from() != automa.getId():
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getCaught_from() != automa.getId() or not automa.checkCaught( obj ):
         print('Automa.action(posMng) catch Failed!!',action_info[0][0], action_info[0][1], automa.getId(), obj.getCaught_from())
         result = False 
 

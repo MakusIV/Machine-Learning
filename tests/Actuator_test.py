@@ -229,6 +229,60 @@ def testClassActuator():
         result = False 
 
 
+
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 70, 70, 70 ), class_ = 'projectile_launcher', typ = 'heavy_cannon', delta_t = 0.1, power = 100)
+    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    automa = Automa( actuators = [ actuator ], sensors = sensors )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )    
+    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    posMng.insertObject( ( 46, 45, 44 ), obj )
+
+    action_info = actuator.exec_command( automa, posMng, [ obj ] )
+    fire = action_info[ 0 ]
+    energy_actuator = action_info[ 1 ]
+    actuation_terminated = action_info[ 2 ]
+
+    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90: 
+        print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
+        result = False 
+
+
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 41, 42, 43 ), class_ = 'projectile_launcher', typ = 'light_cannon', delta_t = 0.1, power = 100)
+    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    automa = Automa( actuators = [ actuator ], sensors = sensors )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )    
+    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    posMng.insertObject( ( 46, 45, 44 ), obj )
+
+    action_info = actuator.exec_command( automa, posMng, [ obj ] )
+    fire = action_info[ 0 ]
+    energy_actuator = action_info[ 1 ]
+    actuation_terminated = action_info[ 2 ]
+
+    if fire or obj.getResilience() == 80 or obj.getHealth() == 90: 
+        print('Actuator.exc_command() - projectile_launching light cannon - Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
+        result = False 
+
+
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 70, 70, 70 ), class_ = 'projectile_launcher', typ = 'heavy_cannon', delta_t = 0.1, power = 100)
+    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    automa = Automa( actuators = [ actuator ], sensors = sensors )
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )    
+    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    posMng.insertObject( ( -46, -45, -44 ), obj )
+
+    action_info = actuator.exec_command( automa, posMng, [ obj ] )
+    fire = action_info[ 0 ]
+    energy_actuator = action_info[ 1 ]
+    actuation_terminated = action_info[ 2 ]
+
+    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90: 
+        print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
+        result = False 
+
     return result
 
 print("Actuator class test result:", testClassActuator())

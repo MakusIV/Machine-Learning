@@ -135,10 +135,32 @@ class Actuator:
         
  
     def object_assimilating( self, mySelf, posManager, param ):
-        pass
+        """Execute catching action and return action_info"""
+        # action_type: catch
+        #param[0] = object, param[1]= destination
+        assimilating_terminated = True# serve per implementare la gestione di catture che richiedono più task per essere completate
+        obj = param[ 0 ]       
+        energy_actuator = self._state.updateEnergy( self._power, self._delta_t )
+        # verifica se param[1] destinazione dello spostamento, range attuatore e posizione dell'automa sono idonei per l'esecuzione della attuaione
+        if not self.isInRange( obj.getPosition() ):
+            logger.logger.debug("Actuator: {0} not executed assimilate action because object not in range. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, obj.getCaught_from(), obj.getPosition(), self._range, energy_actuator ) )
+            return [ False, energy_actuator, assimilating_terminated ]
+       
+
+        if posManager.removeObject( obj ):
+            assimilato = True
+            if assimilato: #verifica se la potenza, le dimensioni dell'oggetto sono congruenti per assimilare l'obj
+                # calcola l'energia guadagnata (la sua energia + la sua massa + tipo obj ?? )
+                logger.logger.debug("Actuator: {0} executed assimilate action. automa: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getCaught_from(), self._range, energy_actuator ) )
+                return [ True, energy_actuator, assimilating_terminated ]
+            
+            else:                
+                raise Exception("object_assimilating not executed but object was removed form position manager")
+
+        logger.logger.debug("Actuator: {0} not executed assimilate action because remove object not carried out. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, obj.getCaught_from(), obj.getPosition(), self._range, energy_actuator ) )
+        return [ False, energy_actuator, assimilating_terminated ]
+
     
-    def object_hitting( self, mySelf, posManager, param ):
-        pass
     
     # TEST: OK
     def moving( self, automa, posManager, param ):
@@ -188,7 +210,7 @@ class Actuator:
             
         return True, energy_actuator, position_reached
 
-
+    # TEST: OK
     def object_catching( self, automa, posManager, param ):
         """Execute catching action and return action_info"""
         # action_type: catch
@@ -209,7 +231,7 @@ class Actuator:
                 return [ True, energy_actuator, catch_terminated ]
         
             else:                
-                raise Exception("object_manipulating not executed but object was removed form position manager")
+                raise Exception("object_catching not executed but object was removed form position manager")
 
         logger.logger.debug("Actuator: {0} not executed catch action because remove object not carried out. automa catcher: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, obj.getCaught_from(), obj.getPosition(), self._range, energy_actuator ) )
         return [ False, energy_actuator, catch_terminated ]
@@ -217,14 +239,49 @@ class Actuator:
         
 
 
+    # TEST: OK
+    def projectile_launching( self, automa, posManager, param):
+        """Execute projectile launching action and return action_info"""
+        # action_type: shot
+        #param[0] = object, param[1]= destination
+        firing_terminated = True# serve per implementare la gestione di catture che richiedono più task per essere completate
+        obj = param[ 0 ]       
+        energy_actuator = self._state.updateEnergy( self._power, self._delta_t )
+        # verifica se param[1] destinazione del proiettile, range attuatore e posizione dell'automa sono idonei per l'esecuzione della attuaione
+        if not self.isInRange( obj.getPosition() ):
+            logger.logger.debug("Actuator: {0} not executed projectile launch action because object not in range. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator ) )
+            return [ False, energy_actuator, firing_terminated ]
+       
+        if obj.getHealth() != obj.evalutateDamage( self._power ):
+            obj_resilience = obj.getResilience()            
+            obj_health = obj._state.getHealth()
+            obj_active = obj._state.isActive()
+            obj_critical = obj._state.isCritical()
+            obj_anomaly = obj._state.isAnomaly()
+            obj_destroyed = obj._state.isDestroyed()
+            obj_remove = obj._state.isRemoved()
+            logger.logger.debug("Actuator: {0} executed projectile launch action with object damage. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}, object  resilience: {5}, object  health: {6}, object  active: {7}, object  critical: {8}, object anomaly: {9}, object destroyed: {10}, object removed: {11}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator, obj_resilience, obj_health, obj_active, obj_critical, obj_anomaly, obj_destroyed, obj_remove ) )
 
-    def projectile_launching( self, mySelf, posManager, param):
-        pass
+            if obj_destroyed:
+
+                if posManager.removeObject( obj ):                                
+                    logger.logger.debug("Actuator: {0} executed projectile launch action with object destruction and removal from position manager. automa: {1}, object destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
+                    return [ True, energy_actuator, firing_terminated ]
+        
+                else:                
+                    raise Exception("projectile_launching executed but object wasn't removed from position manager")
+                            
+            logger.logger.debug("Actuator: {0} executed projectile launch action but object wasn't destroyed. automa: {1}, object destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
+            return [ True, energy_actuator, firing_terminated ]
+
     
-    def plasma_launching( self, mySelf, posManager, param):
-        pass
+    def plasma_launching( self, automa, posManager, param):# verificare se eliminare: è uguale al projectile_launching che cambierebbe nome in shooting()
+        return self.projectile_launching(automa, posManager, param)
 
 
+    def object_hitting( self, automa, posManager, param ):# verificare se eliminare: è uguale al projectile_launching che cambierebbe nome in shooting()
+        return self.projectile_launching(automa, posManager, param)
+    
 
     def setId( self, id = None ):
 
@@ -289,5 +346,5 @@ class Actuator:
 
 
     def isInRange(self, destination):
-         return ( abs( destination[ 0 ] - self._position[ 0 ] ) <= self._range[ 0 ] ) and ( abs( destination[ 1 ] - self._position[ 1 ] ) <= self._range[ 1 ] ) and ( abs( destination[ 0 ] - self._position[ 2 ] ) <= self._range[ 2 ] ) 
+         return ( abs( destination[ 0 ] - self._position[ 0 ] ) <= self._range[ 0 ] ) and ( abs( destination[ 1 ] - self._position[ 1 ] ) <= self._range[ 1 ] ) and ( abs( destination[ 2 ] - self._position[ 2 ] ) <= self._range[ 2 ] ) 
 

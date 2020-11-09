@@ -11,19 +11,20 @@ logger = Logger(module_name = __name__, class_name = 'Object')
 class Object:
     
 
-    def __init__(self, dimension = (1, 1, 1), resilience = 100, emissivity = {"radio": 0, "thermal": 0, "optical": 0, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0}, coord = None, name = None, state = None ):
+    def __init__(self, dimension = (1, 1, 1), mass = 0,  resilience = 100, emissivity = {"radio": 0, "thermal": 0, "optical": 0, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0}, coord = None, name = None, state = None ):
 
             self._name = name
             self._id = None
             self._dimension = dimension
-            self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)            
+            self._mass = mass
+            self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno all'oggetto)            
             self._coord = coord
             self._state = state
             self.setState(state)
             self._emissivity = emissivity
             self._caught_from = None #l'id dell'oggetto che ha preso (catturato) questo oggetto
             
-            if not self.checkParam( dimension, resilience, state, coord ):
+            if not self.checkParam( dimension, mass, resilience, state, coord ):
                 raise Exception("Invalid parameters! Object not istantiate.")
 
 
@@ -76,6 +77,8 @@ class Object:
         except ValueError:
             return False
         
+    def getResilience( self ):
+        return self._resilience
 
     def getEmissivity(self):
         return self._emissivity
@@ -91,13 +94,17 @@ class Object:
         
         return emissivity
 
-    def evalutateDamage(self, energy, power):
+    def evalutateDamage(self, power):
         """Evalutate the damage on sensor and update state"""
+        # questo metodo dovrebbe essere rivisto per una valutazione più corretta della diminuzione della health e della resilence
+        # utilizzando in prospettiva l'eventuale influennza dell'energia coinvolta
         if power > self._resilience:
             damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
-            return self._state.decrementHealth( damage )
+            self._resilience = self._resilience - damage #da rivedere
+            return self._state.decrementHealth( damage )# non dovrebbe decrementare anche la resilinza?
         
         return self._state.getHealth()
+
 
 
     def getVertex(self):
@@ -228,6 +235,9 @@ class Object:
         return self._coord.distance(coord)
         
 
+    def getHealth( self ):
+        return self._state.getHealth()
+
     def getId(self):
         return self._id
 
@@ -235,6 +245,15 @@ class Object:
     def getName(self):
         return self._name
 
+    def getMass( self ):
+        return self._mass
+
+    def setMass( self, mass):
+        
+        if not mass or not isinstance(mass, int) or mass < 0:
+            return False
+        self._mass = mass
+        return True
     
     def getPosition(self):
         return self._coord.getPosition()
@@ -267,10 +286,10 @@ class Object:
 
 
      # vedi il libro
-    def checkParam(self, dimension, resilience, state, coord ):
+    def checkParam(self, dimension, mass, resilience, state, coord ):
         """Return True if conformity of the parameters is verified"""   
     
-        if state != None and not isinstance( state, State ) or coord != None and not isinstance( coord, Coordinate ) or resilience != None and ( not isinstance( resilience, int )  or not( resilience <= 100 and resilience >= 0 ) ) or not General.checkDimension( dimension ):
+        if state != None and not isinstance( state, State ) or coord != None and not isinstance( coord, Coordinate ) or resilience != None and ( not isinstance( resilience, int )  or not( resilience <= 100 and resilience >= 0 ) ) or not( mass >= 0 ) or not General.checkDimension( dimension ):
             return False
                 
         return True
