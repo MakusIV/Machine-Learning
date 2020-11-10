@@ -49,7 +49,7 @@ class State:
             self._energy = 0
             self.stop()
          
-        self.evalutateEfficiency()        
+        self.updateEfficiency()        
 
         return self._energy
 
@@ -68,7 +68,7 @@ class State:
             self.destroy()
 
         self.evalutateCritical()         
-        self.evalutateEfficiency()        
+        self.updateEfficiency()        
 
         return self._health
 
@@ -79,22 +79,29 @@ class State:
 
         if not self._active or not energy_consumption or not isinstance(energy_consumption, int):
             return False
-
         self._energy = self._energy - energy_consumption
 
         if self._energy < 0:
             self._energy = 0
-            self.stop()
-         
-        self.evalutateEfficiency()        
+            self.stop()         
+        self.updateEfficiency()        
+        return self._energy
 
+    
+    def incrementEnergy( self, energy ):
+        """ increment energy proprerty with energy """
+
+        if not self._active or not energy or not isinstance(energy, int):
+            return False
+        self._energy = self._energy + energy         
+        self.updateEfficiency()        
         return self._energy
 
 
     
 
 
-    def evalutateEfficiency(self):
+    def updateEfficiency(self):
         """Update efficiency from energy and health levels ad return efficiency level"""
         # unit test: ok
 

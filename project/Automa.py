@@ -445,3 +445,5 @@ class Automa(Object):
             if obj == obj_:
                 return True
         return False
+
+    

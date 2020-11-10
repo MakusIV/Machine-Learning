@@ -101,7 +101,7 @@ class Object:
         if power > self._resilience:
             damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
             self._resilience = self._resilience - damage #da rivedere
-            return self._state.decrementHealth( damage )# non dovrebbe decrementare anche la resilinza?
+            return self._state.decrementHealth( damage )
         
         return self._state.getHealth()
 
