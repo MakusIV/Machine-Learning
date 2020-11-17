@@ -46,6 +46,8 @@ class Object:
                 self._coord = Coordinate(0, 0, 0)
 
 
+
+    #TEST: OK (indiretto)
     def setCaught_from( self, automa_id ):
 
         if not automa_id or not isinstance(automa_id, str):
@@ -54,11 +56,12 @@ class Object:
         self._caught_from = automa_id
         return True
 
-
+    #TEST: OK (indiretto)
     def getCaught_from( self ):
 
         return self._caught_from
         
+    #TEST: OK (indiretto)
     def checkEmissivityParam( self, emissivity ):
         """Return True if conformity of the emissivity is verified"""
         if not emissivity or not isinstance(emissivity, dict) or len(emissivity) != len( General.SENSOR_TYPE ):
@@ -69,6 +72,7 @@ class Object:
         
         return all( [  [ True for typ in emissivity if typ == ele ]  for ele in General.SENSOR_TYPE ] )
     
+    #TEST: OK (indiretto)
     def getEmissivityForType( self, emissivity_type ):
         """Return emissivity level for that emissivity_type. If emissivity_type not presents in General.SENSOR_TYPE return False"""
         try:
@@ -76,10 +80,11 @@ class Object:
 
         except ValueError:
             return False
-        
+    #TEST: OK (indiretto)
     def getResilience( self ):
         return self._resilience
 
+    #TEST: OK (indiretto)
     def getEmissivity(self):
         return self._emissivity
 
@@ -94,6 +99,7 @@ class Object:
         
         return emissivity
 
+    #TEST: OK (indiretto)
     def evalutateDamage(self, power):
         """Evalutate the damage on sensor and update state"""
         # questo metodo dovrebbe essere rivisto per una valutazione più corretta della diminuzione della health e della resilence
@@ -132,7 +138,7 @@ class Object:
                     'rlf': [llr[0] + dim_x, llr[1] + dim_y, llr[2]]  }
         return vertex
 
-
+    #TEST: OK (indiretto)    
     def setState(self, state):
 
         if not state or not isinstance(state, State):
@@ -142,6 +148,7 @@ class Object:
 
         return True
 
+    #TEST: OK (indiretto)
     def getState(self):
         return self._state
 
@@ -187,6 +194,7 @@ class Object:
         return True
 
 
+    #TEST: OK (indiretto)
     def setCoord(self, coord):
             
         if not coord or not isinstance(coord, Coordinate):
@@ -197,6 +205,7 @@ class Object:
         return True
 
 
+    #TEST: OK (indiretto)
     def isCollision(self, volume):
         """Return True if object's volume collide with volume"""
         # xd = dimension[0], yd = dimension[1], zd =dimension[2]
@@ -225,7 +234,7 @@ class Object:
         return True
 
 
-
+    #TEST: OK (indiretto)
     def getDistance(self, coord):
         """Return distance (d, xd, yd, zd) from object.coordinate to pos:[x, y, z]""" 
 
@@ -235,9 +244,11 @@ class Object:
         return self._coord.distance(coord)
         
 
+    #TEST: OK (indiretto)
     def getHealth( self ):
         return self._state.getHealth()
 
+    #TEST: OK (indiretto)
     def getId(self):
         return self._id
 
@@ -245,9 +256,11 @@ class Object:
     def getName(self):
         return self._name
 
+    #TEST: OK (indiretto)
     def getMass( self ):
         return self._mass
 
+    #TEST: OK (indiretto)
     def setMass( self, mass):
         
         if not mass or not isinstance(mass, int) or mass < 0:
@@ -255,13 +268,15 @@ class Object:
         self._mass = mass
         return True
     
+    #TEST: OK (indiretto)
     def getPosition(self):
         return self._coord.getPosition()
 
+    #TEST: OK (indiretto)
     def setPosition(self, position):
         self._coord.setPosition( position )
 
-
+    #TEST: OK (indiretto)
     def getDimension(self):
         return self._dimension
 
@@ -308,6 +323,7 @@ class Object:
                   volume_position[ ( x, y, z ) ] = True
 
         return volume_position
+
 
     def getVolume( self, position = None, dimension = None ):
         """Return [ [ position ], [ position + dimensione ] ] """

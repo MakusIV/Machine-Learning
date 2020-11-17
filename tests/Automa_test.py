@@ -35,7 +35,7 @@ def testClassAutoma():
     automa = Automa(coord = coord, sensors = sensors, actuators = actuators, mass = 30)
     
     
-    if automa._name != 'Automa' or automa._dimension != [1, 1, 1] or automa._resilience != 100 or automa._power != 100 or not automa._state or not isinstance(automa._state, State) or not automa._state.isRunning():
+    if automa.checkClass( automa ) == False or automa._name != 'Automa' or automa._dimension != [1, 1, 1] or automa._resilience != 100 or automa._power != 100 or not automa._state or not isinstance(automa._state, State) or not automa._state.isRunning():
         print('Automa Failed!! ', automa._name, automa._dimension, automa._resilience, automa._state)
         result = False 
     
@@ -156,7 +156,24 @@ def testClassAutoma():
     action_info = automa.action(posMng)
 
     if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getPosition() != (7, 7, 7):
-        print('Automa.action(posMng) translate Failed!!',action_info[0][0], action_info[0][1], obj.getPosition())
+        print('Automa.action(posMng) translate Object Failed!!',action_info[0][0], action_info[0][1], obj.getPosition())
+        result = False 
+
+
+    # test: automa.action( request_action = translate )
+    #   action_info: result of action, actuator's energy state
+    #typ, time2go = 1, duration = 1, position = None, obj = None, param = None     
+    posMng = Position_manager()
+    posMng.insertObject( ( 0, 0, 0 ), automa )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = actuators, mass = 300 )
+    posMng.insertObject( ( 5, 5, 5 ), obj )
+    automa.resetActionQueue()
+    action = Action( typ = 'translate', time2go = 0, duration = 1, obj = obj, param = (7, 7, 7) ) #(action_type, position or object) 
+    automa.insertAction( action )
+    action_info = automa.action(posMng)
+
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 98 or obj.getPosition() != (7, 7, 7) or len( obj._eventsQueue ) != 1:
+        print('Automa.action(posMng) translate Automa Failed!!',action_info[0][0], action_info[0][1], obj.getPosition(), len( obj._eventsQueue ) )
         result = False 
     
     # test: automa.action( request_action = catch )
@@ -273,6 +290,7 @@ def testClassAutoma():
         result = False 
 
 
+    
 
     print("------------------------------------------------------------------------------------------------------------")
     print("------------------------------------------------------------------------------------------------------------")

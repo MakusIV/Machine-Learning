@@ -10,23 +10,24 @@ logger = Logger(module_name = __name__, class_name = 'Event')
 
 class Event:
     
-    def __init__(self, typ, volume,  time2go = 1, duration = 1, energy = None, power = None, mass = None  ):
+    def __init__(self, typ, volume, time2go = 1, duration = 1, energy = None, power = None, mass = None  ):
 
         if not self.checkParam(typ, volume,  time2go, duration, energy, power, mass):
             raise Exception("Invalid parameters! Event not istantiate.")        
 
         self._type = None # type: HIT, PUSH, POP, ASSIMILATE, MOVE
         self._id = General.setId(self._type, None) # l'id viene generato automaticamente nel runtime per ogni istanza creata
-        self._volume = volume
-        self._time2go = time2go
-        self._duration = duration
+        self._volume = volume # volume coinvolto dall'evento
+        self._time2go = time2go # il tempo di attesa (in task o cicli) per considerare gli effetti dell'evento. time2go = 0 -> valutazione effetti evento
+        self._duration = duration # la durata (in task o cicli) dell'evento. duration = 0 -> evento concluso 
         self._energy = energy
         self._power = power
         self._mass = mass
+
    
 
     def decrTime2Go(self):
-        self._time2go = self._time2go -1
+        self._time2go = self._time2go - 1
         return self._time2go
 
     def decrDuration(self):
@@ -54,7 +55,6 @@ class Event:
     def isMove(self):
         return self._type == 'MOVE'
 
-    
     
 
     def checkParam(self, typ, volume,  time2go, duration, energy, power, mass):

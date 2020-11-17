@@ -914,3 +914,299 @@
 2020-11-17 11:11:40,560 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
 2020-11-17 11:11:40,572 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
 2020-11-17 11:11:40,573 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:02:48,735 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:02:48,736 - Sensor - DEBUG - perception - prob:0.29, volume_prob:100.0, scanning volume:True
+2020-11-17 16:02:48,741 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:02:48,750 - Sensor - DEBUG - perception - detected object: New_42_ID_#347528  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,752 - Sensor - DEBUG - perception - detected object: New_43_ID_#87234  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,752 - Sensor - DEBUG - perception - detected object: New_46_ID_#193432  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,754 - Sensor - DEBUG - perception - detected object: New_47_ID_#610396  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,768 - Sensor - DEBUG - perception - detected object: New_58_ID_#802359  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,768 - Sensor - DEBUG - perception - detected object: New_59_ID_#731006  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,769 - Sensor - DEBUG - perception - detected object: New_62_ID_#365310  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,786 - Sensor - DEBUG - perception - detected object: New_63_ID_#802848  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,803 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:02:48,825 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:02:48,833 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:02:48,833 - Sensor - DEBUG - perception - prob:0.13, volume_prob:100.0, scanning volume:True
+2020-11-17 16:02:48,838 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:02:48,851 - Sensor - DEBUG - perception - detected object: New_42_ID_#347528  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,852 - Sensor - DEBUG - perception - detected object: New_43_ID_#87234  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,853 - Sensor - DEBUG - perception - detected object: New_46_ID_#193432  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,866 - Sensor - DEBUG - perception - detected object: New_47_ID_#610396  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,867 - Sensor - DEBUG - perception - detected object: New_58_ID_#802359  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,868 - Sensor - DEBUG - perception - detected object: New_59_ID_#731006  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,868 - Sensor - DEBUG - perception - detected object: New_62_ID_#365310  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,869 - Sensor - DEBUG - perception - detected object: New_63_ID_#802848  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:02:48,870 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:02:48,888 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:02:48,911 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:02:48,912 - Sensor - DEBUG - perception - prob:0.31, volume_prob:100.0, scanning volume:True
+2020-11-17 16:02:48,916 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:02:48,917 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 16:02:48,917 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:20:51,989 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:20:51,990 - Sensor - DEBUG - perception - prob:0.23, volume_prob:100.0, scanning volume:True
+2020-11-17 16:20:52,006 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:20:52,007 - Sensor - DEBUG - perception - detected object: New_42_ID_#400044  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,018 - Sensor - DEBUG - perception - detected object: New_43_ID_#86432  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,019 - Sensor - DEBUG - perception - detected object: New_46_ID_#812981  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,019 - Sensor - DEBUG - perception - detected object: New_47_ID_#875340  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,020 - Sensor - DEBUG - perception - detected object: New_58_ID_#37682  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,021 - Sensor - DEBUG - perception - detected object: New_59_ID_#743547  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,021 - Sensor - DEBUG - perception - detected object: New_62_ID_#774118  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,022 - Sensor - DEBUG - perception - detected object: New_63_ID_#185721  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,022 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:20:52,022 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:20:52,044 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:20:52,044 - Sensor - DEBUG - perception - prob:0.11, volume_prob:100.0, scanning volume:True
+2020-11-17 16:20:52,048 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:20:52,049 - Sensor - DEBUG - perception - detected object: New_42_ID_#400044  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,049 - Sensor - DEBUG - perception - detected object: New_43_ID_#86432  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,050 - Sensor - DEBUG - perception - detected object: New_46_ID_#812981  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,050 - Sensor - DEBUG - perception - detected object: New_47_ID_#875340  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,051 - Sensor - DEBUG - perception - detected object: New_58_ID_#37682  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,051 - Sensor - DEBUG - perception - detected object: New_59_ID_#743547  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,052 - Sensor - DEBUG - perception - detected object: New_62_ID_#774118  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,052 - Sensor - DEBUG - perception - detected object: New_63_ID_#185721  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:20:52,052 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:20:52,053 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:20:52,055 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:20:52,055 - Sensor - DEBUG - perception - prob:0.95, volume_prob:100.0, scanning volume:True
+2020-11-17 16:20:52,060 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:20:52,069 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 16:20:52,070 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:21:28,739 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:21:28,739 - Sensor - DEBUG - perception - prob:0.95, volume_prob:100.0, scanning volume:True
+2020-11-17 16:21:28,772 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:21:28,772 - Sensor - DEBUG - perception - detected object: New_42_ID_#816367  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,800 - Sensor - DEBUG - perception - detected object: New_43_ID_#878078  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,800 - Sensor - DEBUG - perception - detected object: New_46_ID_#189094  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,801 - Sensor - DEBUG - perception - detected object: New_47_ID_#552174  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,802 - Sensor - DEBUG - perception - detected object: New_58_ID_#51544  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,802 - Sensor - DEBUG - perception - detected object: New_59_ID_#69802  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,803 - Sensor - DEBUG - perception - detected object: New_62_ID_#168633  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,803 - Sensor - DEBUG - perception - detected object: New_63_ID_#987980  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,803 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:21:28,804 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:21:28,861 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:21:28,863 - Sensor - DEBUG - perception - prob:0.79, volume_prob:100.0, scanning volume:True
+2020-11-17 16:21:28,867 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:21:28,867 - Sensor - DEBUG - perception - detected object: New_42_ID_#816367  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,868 - Sensor - DEBUG - perception - detected object: New_43_ID_#878078  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,869 - Sensor - DEBUG - perception - detected object: New_46_ID_#189094  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,869 - Sensor - DEBUG - perception - detected object: New_47_ID_#552174  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,870 - Sensor - DEBUG - perception - detected object: New_58_ID_#51544  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,870 - Sensor - DEBUG - perception - detected object: New_59_ID_#69802  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,871 - Sensor - DEBUG - perception - detected object: New_62_ID_#168633  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,871 - Sensor - DEBUG - perception - detected object: New_63_ID_#987980  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:21:28,872 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:21:28,875 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:21:28,965 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:21:28,969 - Sensor - DEBUG - perception - prob:0.66, volume_prob:100.0, scanning volume:True
+2020-11-17 16:21:28,975 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:21:29,000 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 16:21:29,002 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:34:58,478 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:34:58,478 - Sensor - DEBUG - perception - prob:0.47, volume_prob:100.0, scanning volume:True
+2020-11-17 16:34:58,484 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:34:58,493 - Sensor - DEBUG - perception - detected object: New_42_ID_#286030  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,494 - Sensor - DEBUG - perception - detected object: New_43_ID_#915722  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,495 - Sensor - DEBUG - perception - detected object: New_46_ID_#515599  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,496 - Sensor - DEBUG - perception - detected object: New_47_ID_#373347  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,496 - Sensor - DEBUG - perception - detected object: New_58_ID_#203044  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,496 - Sensor - DEBUG - perception - detected object: New_59_ID_#519241  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,516 - Sensor - DEBUG - perception - detected object: New_62_ID_#800978  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,532 - Sensor - DEBUG - perception - detected object: New_63_ID_#590083  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,533 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:34:58,534 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:34:58,538 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:34:58,538 - Sensor - DEBUG - perception - prob:0.38, volume_prob:100.0, scanning volume:True
+2020-11-17 16:34:58,541 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:34:58,542 - Sensor - DEBUG - perception - detected object: New_42_ID_#286030  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,543 - Sensor - DEBUG - perception - detected object: New_43_ID_#915722  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,543 - Sensor - DEBUG - perception - detected object: New_46_ID_#515599  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,543 - Sensor - DEBUG - perception - detected object: New_47_ID_#373347  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,544 - Sensor - DEBUG - perception - detected object: New_58_ID_#203044  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,544 - Sensor - DEBUG - perception - detected object: New_59_ID_#519241  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,544 - Sensor - DEBUG - perception - detected object: New_62_ID_#800978  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,545 - Sensor - DEBUG - perception - detected object: New_63_ID_#590083  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:34:58,545 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:34:58,546 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:34:58,570 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:34:58,570 - Sensor - DEBUG - perception - prob:0.46, volume_prob:100.0, scanning volume:True
+2020-11-17 16:34:58,574 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:34:58,575 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 16:34:58,575 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:36:51,758 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:36:51,759 - Sensor - DEBUG - perception - prob:0.02, volume_prob:100.0, scanning volume:True
+2020-11-17 16:36:51,765 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:36:51,774 - Sensor - DEBUG - perception - detected object: New_42_ID_#942954  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,775 - Sensor - DEBUG - perception - detected object: New_43_ID_#697783  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,776 - Sensor - DEBUG - perception - detected object: New_46_ID_#372751  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,777 - Sensor - DEBUG - perception - detected object: New_47_ID_#375257  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,777 - Sensor - DEBUG - perception - detected object: New_58_ID_#661995  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,778 - Sensor - DEBUG - perception - detected object: New_59_ID_#61073  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,778 - Sensor - DEBUG - perception - detected object: New_62_ID_#465297  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,793 - Sensor - DEBUG - perception - detected object: New_63_ID_#113996  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,794 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:36:51,797 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:36:51,818 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:36:51,818 - Sensor - DEBUG - perception - prob:0.66, volume_prob:100.0, scanning volume:True
+2020-11-17 16:36:51,822 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:36:51,823 - Sensor - DEBUG - perception - detected object: New_42_ID_#942954  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,823 - Sensor - DEBUG - perception - detected object: New_43_ID_#697783  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,824 - Sensor - DEBUG - perception - detected object: New_46_ID_#372751  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,824 - Sensor - DEBUG - perception - detected object: New_47_ID_#375257  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,825 - Sensor - DEBUG - perception - detected object: New_58_ID_#661995  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,825 - Sensor - DEBUG - perception - detected object: New_59_ID_#61073  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,826 - Sensor - DEBUG - perception - detected object: New_62_ID_#465297  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,826 - Sensor - DEBUG - perception - detected object: New_63_ID_#113996  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:36:51,826 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:36:51,827 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:36:51,876 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:36:51,877 - Sensor - DEBUG - perception - prob:0.78, volume_prob:100.0, scanning volume:True
+2020-11-17 16:36:51,882 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:36:51,893 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 16:36:51,893 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:55:53,713 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:55:53,714 - Sensor - DEBUG - perception - prob:0.29, volume_prob:100.0, scanning volume:True
+2020-11-17 16:55:53,719 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:55:53,728 - Sensor - DEBUG - perception - detected object: New_42_ID_#986077  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,729 - Sensor - DEBUG - perception - detected object: New_43_ID_#773602  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,730 - Sensor - DEBUG - perception - detected object: New_46_ID_#247913  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,731 - Sensor - DEBUG - perception - detected object: New_47_ID_#493044  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,731 - Sensor - DEBUG - perception - detected object: New_58_ID_#129032  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,745 - Sensor - DEBUG - perception - detected object: New_59_ID_#961096  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,746 - Sensor - DEBUG - perception - detected object: New_62_ID_#907839  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,747 - Sensor - DEBUG - perception - detected object: New_63_ID_#93861  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,747 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:55:53,748 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:55:53,772 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:55:53,772 - Sensor - DEBUG - perception - prob:0.73, volume_prob:100.0, scanning volume:True
+2020-11-17 16:55:53,776 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:55:53,777 - Sensor - DEBUG - perception - detected object: New_42_ID_#986077  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,777 - Sensor - DEBUG - perception - detected object: New_43_ID_#773602  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,778 - Sensor - DEBUG - perception - detected object: New_46_ID_#247913  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,778 - Sensor - DEBUG - perception - detected object: New_47_ID_#493044  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,779 - Sensor - DEBUG - perception - detected object: New_58_ID_#129032  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,779 - Sensor - DEBUG - perception - detected object: New_59_ID_#961096  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,780 - Sensor - DEBUG - perception - detected object: New_62_ID_#907839  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,780 - Sensor - DEBUG - perception - detected object: New_63_ID_#93861  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 16:55:53,781 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 16:55:53,781 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 16:55:53,823 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 16:55:53,823 - Sensor - DEBUG - perception - prob:0.88, volume_prob:100.0, scanning volume:True
+2020-11-17 16:55:53,827 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 16:55:53,827 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 16:55:53,828 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 17:33:09,669 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:09,669 - Sensor - DEBUG - perception - prob:0.56, volume_prob:90.0, scanning volume:True
+2020-11-17 17:33:09,670 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-11-17 17:33:09,671 - Sensor - DEBUG - perception - detected object: New_42_ID_#54006  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:09,685 - Sensor - DEBUG - perception - detected 1 objects and inserted in detected object list
+2020-11-17 17:33:09,685 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-11-17 17:33:09,686 - Sensor - DEBUG - perception - prob:0.9, volume_prob:77.14285714285715, scanning volume:True
+2020-11-17 17:33:09,688 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-11-17 17:33:09,700 - Sensor - DEBUG - perception - detected object: New_63_ID_#440575  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:09,700 - Sensor - DEBUG - perception - detected 1 objects and inserted in detected object list
+2020-11-17 17:33:09,701 - Sensor - DEBUG - perception - scanning volume 2 to detect object
+2020-11-17 17:33:09,702 - Sensor - DEBUG - perception - prob:0.1, volume_prob:64.28571428571429, scanning volume:True
+2020-11-17 17:33:09,703 - Sensor - DEBUG - perception - detected 2 objects and consumed 0.5 energy. Sensor energy avalaible: 100
+2020-11-17 17:33:10,735 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:10,736 - Sensor - DEBUG - perception - prob:0.69, volume_prob:90.0, scanning volume:True
+2020-11-17 17:33:10,736 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-11-17 17:33:10,737 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 17:33:10,751 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-11-17 17:33:10,752 - Sensor - DEBUG - perception - prob:0.09, volume_prob:77.14285714285715, scanning volume:True
+2020-11-17 17:33:10,753 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-11-17 17:33:10,767 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 17:33:10,767 - Sensor - DEBUG - perception - scanning volume 2 to detect object
+2020-11-17 17:33:10,768 - Sensor - DEBUG - perception - prob:0.44, volume_prob:64.28571428571429, scanning volume:True
+2020-11-17 17:33:10,769 - Sensor - DEBUG - perception - detected 0 objects and consumed 0.5 energy. Sensor energy avalaible: 100
+2020-11-17 17:33:12,350 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:12,351 - Sensor - DEBUG - perception - prob:0.13, volume_prob:100.0, scanning volume:True
+2020-11-17 17:33:12,356 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 17:33:12,366 - Sensor - DEBUG - perception - detected object: New_42_ID_#343004  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,367 - Sensor - DEBUG - perception - detected object: New_43_ID_#286828  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,367 - Sensor - DEBUG - perception - detected object: New_46_ID_#82485  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,368 - Sensor - DEBUG - perception - detected object: New_47_ID_#946122  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,369 - Sensor - DEBUG - perception - detected object: New_58_ID_#734496  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,369 - Sensor - DEBUG - perception - detected object: New_59_ID_#699681  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,370 - Sensor - DEBUG - perception - detected object: New_62_ID_#185181  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,370 - Sensor - DEBUG - perception - detected object: New_63_ID_#276965  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,386 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 17:33:12,387 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 17:33:12,409 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:12,410 - Sensor - DEBUG - perception - prob:0.27, volume_prob:100.0, scanning volume:True
+2020-11-17 17:33:12,414 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 17:33:12,415 - Sensor - DEBUG - perception - detected object: New_42_ID_#343004  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,416 - Sensor - DEBUG - perception - detected object: New_43_ID_#286828  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,417 - Sensor - DEBUG - perception - detected object: New_46_ID_#82485  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,417 - Sensor - DEBUG - perception - detected object: New_47_ID_#946122  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,417 - Sensor - DEBUG - perception - detected object: New_58_ID_#734496  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,418 - Sensor - DEBUG - perception - detected object: New_59_ID_#699681  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,418 - Sensor - DEBUG - perception - detected object: New_62_ID_#185181  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,419 - Sensor - DEBUG - perception - detected object: New_63_ID_#276965  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:12,419 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 17:33:12,420 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 17:33:12,458 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:12,459 - Sensor - DEBUG - perception - prob:0.9, volume_prob:100.0, scanning volume:True
+2020-11-17 17:33:12,463 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 17:33:12,463 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 17:33:12,464 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 17:33:15,879 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:15,879 - Sensor - DEBUG - perception - prob:0.39, volume_prob:90.0, scanning volume:True
+2020-11-17 17:33:15,880 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-11-17 17:33:15,880 - Sensor - DEBUG - perception - detected object: New_42_ID_#210779  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:15,881 - Sensor - DEBUG - perception - detected 1 objects and inserted in detected object list
+2020-11-17 17:33:15,881 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-11-17 17:33:15,882 - Sensor - DEBUG - perception - prob:0.2, volume_prob:77.14285714285715, scanning volume:True
+2020-11-17 17:33:15,882 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-11-17 17:33:15,883 - Sensor - DEBUG - perception - detected object: New_63_ID_#756861  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:15,883 - Sensor - DEBUG - perception - detected 1 objects and inserted in detected object list
+2020-11-17 17:33:15,883 - Sensor - DEBUG - perception - scanning volume 2 to detect object
+2020-11-17 17:33:15,884 - Sensor - DEBUG - perception - prob:0.04, volume_prob:64.28571428571429, scanning volume:True
+2020-11-17 17:33:15,884 - Sensor - DEBUG - perception - detected 2 objects and consumed 0.5 energy. Sensor energy avalaible: 100
+2020-11-17 17:33:16,786 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:16,786 - Sensor - DEBUG - perception - prob:0.01, volume_prob:90.0, scanning volume:True
+2020-11-17 17:33:16,788 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-11-17 17:33:16,800 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 17:33:16,801 - Sensor - DEBUG - perception - scanning volume 1 to detect object
+2020-11-17 17:33:16,802 - Sensor - DEBUG - perception - prob:0.55, volume_prob:77.14285714285715, scanning volume:True
+2020-11-17 17:33:16,803 - Sensor - DEBUG - perception - exists 1 objects in sub-volume
+2020-11-17 17:33:16,805 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 17:33:16,816 - Sensor - DEBUG - perception - scanning volume 2 to detect object
+2020-11-17 17:33:16,817 - Sensor - DEBUG - perception - prob:0.82, volume_prob:64.28571428571429, scanning volume:True
+2020-11-17 17:33:16,818 - Sensor - DEBUG - perception - detected 0 objects and consumed 0.5 energy. Sensor energy avalaible: 100
+2020-11-17 17:33:18,967 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:18,968 - Sensor - DEBUG - perception - prob:0.22, volume_prob:100.0, scanning volume:True
+2020-11-17 17:33:18,974 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 17:33:18,984 - Sensor - DEBUG - perception - detected object: New_42_ID_#179194  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:18,985 - Sensor - DEBUG - perception - detected object: New_43_ID_#100927  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:18,986 - Sensor - DEBUG - perception - detected object: New_46_ID_#270945  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:18,986 - Sensor - DEBUG - perception - detected object: New_47_ID_#719876  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:18,987 - Sensor - DEBUG - perception - detected object: New_58_ID_#17786  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,001 - Sensor - DEBUG - perception - detected object: New_59_ID_#728858  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,002 - Sensor - DEBUG - perception - detected object: New_62_ID_#568133  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,003 - Sensor - DEBUG - perception - detected object: New_63_ID_#801402  with emissivity type, level: radio, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,005 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 17:33:19,022 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 17:33:19,027 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:19,027 - Sensor - DEBUG - perception - prob:0.46, volume_prob:100.0, scanning volume:True
+2020-11-17 17:33:19,031 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 17:33:19,031 - Sensor - DEBUG - perception - detected object: New_42_ID_#179194  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,031 - Sensor - DEBUG - perception - detected object: New_43_ID_#100927  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,032 - Sensor - DEBUG - perception - detected object: New_46_ID_#270945  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,032 - Sensor - DEBUG - perception - detected object: New_47_ID_#719876  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,032 - Sensor - DEBUG - perception - detected object: New_58_ID_#17786  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,033 - Sensor - DEBUG - perception - detected object: New_59_ID_#728858  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,033 - Sensor - DEBUG - perception - detected object: New_62_ID_#568133  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,033 - Sensor - DEBUG - perception - detected object: New_63_ID_#801402  with emissivity type, level: optical, 5 using intensity sensor: 1, and inserted in detected object list
+2020-11-17 17:33:19,034 - Sensor - DEBUG - perception - detected 8 objects and inserted in detected object list
+2020-11-17 17:33:19,034 - Sensor - DEBUG - perception - detected 8 objects and consumed 1.0 energy. Sensor energy avalaible: 99
+2020-11-17 17:33:19,052 - Sensor - DEBUG - perception - scanning volume 0 to detect object
+2020-11-17 17:33:19,052 - Sensor - DEBUG - perception - prob:0.08, volume_prob:100.0, scanning volume:True
+2020-11-17 17:33:19,057 - Sensor - DEBUG - perception - exists 8 objects in sub-volume
+2020-11-17 17:33:19,067 - Sensor - DEBUG - perception - detected 0 objects and inserted in detected object list
+2020-11-17 17:33:19,068 - Sensor - DEBUG - perception - detected 0 objects and consumed 1.0 energy. Sensor energy avalaible: 99

@@ -2,6 +2,7 @@ import random
 from Coordinate import Coordinate
 import General
 from State import State
+from Event import Event
 from LoggerClass import Logger
 
 # LOGGING --
@@ -116,7 +117,7 @@ class Actuator:
 
 
     # TEST: OK
-    def object_manipulating( self, mySelf, posManager, param ):
+    def object_manipulating( self, automa, posManager, param ):
         #param[0] = object, param[1]= destination
         obj = param[ 0 ]
         destination = param[ 1 ]
@@ -129,7 +130,10 @@ class Actuator:
             return [ False, energy_actuator, False ]
 
         result = posManager.moveObject( destination, obj )# lo spostamento dell'oggetto nella posizione di destinazione avviene sempre in quanto rientra nel range dell'attuatore. Quindi l'eventuale richiesta di più task per la conclusione dell'attuazione non può essere imputata al raggiungimento della destinazione come nella move action ma, eventualmente, ad un tempo e quindi gestita nellla classe Automa
-        logger.logger.debug("Actuator: {0}result manipulate = {1}. destination: {2}, range: {3}, energy_actuator: {4}".format( self._id, result, destination, self._range, energy_actuator ))        
+
+        # Creazione evento e inserimento nella event queue qualora l'object è un automa
+        self.setEvent( automa = automa, result = True, obj = obj, typ = 'PUSH', duration = 0 ) # duration = 0 -> effetti evento già applicati su object        
+        logger.logger.debug("Actuator: {0} result manipulate = {1}. destination: {2}, range: {3}, energy_actuator: {4}".format( self._id, result, destination, self._range, energy_actuator ))        
         return result, energy_actuator, manipulation_terminated 
 
         
@@ -165,23 +169,25 @@ class Actuator:
                     energy_increment = int( obj_energy * obj._mass / automa._mass )
                     automa._state.incrementEnergy( energy_increment ) #energy assimilate                                               
                     logger.logger.debug("Actuator: {0} executed assimilate action with complete assimilation and energy gain: {1}. Object was removed from position manager. automa: {2}, range: {3}, energy_actuator: {4}".format( self._id, energy_increment, automa.getId(), self._range, energy_actuator ) )
+                    # Creazione evento e inserimento nella event queue qualora l'object è un automa
+                    self.setEvent( automa = automa, result = True, obj = obj, typ = 'ASSIMILATE', duration = 1, time2go = 0) # duration = 0 -> effetti evento già applicati su object
                     return [ True, energy_actuator, assimilating_terminated ]
         
                 else:                
                     raise Exception("object_assimilating not executed but object was removed form position manager")
 
             else:
-                logger.logger.debug("Actuator: {0} executed assimilate action. Object wasn't removed from position manager. automa: {1}, range: {2}, energy_actuator: {3}".format( self._id, automa.getId(), self._range, energy_actuator ) )
+                logger.logger.debug("Actuator: {0} executed assimilate action. Action not complete, Object wasn't removed from position manager. automa: {1}, range: {2}, energy_actuator: {3}".format( self._id, automa.getId(), self._range, energy_actuator ) )
+
+                # Creazione evento e inserimento nella event queue qualora l'object è un automa
+                self.setEvent( automa = automa, result = True, obj = obj, typ = 'ASSIMILATE', duration = 0) # duration = 0 -> effetti evento già applicati su object
                 return [ True, energy_actuator, assimilating_terminated ]
 
-        logger.logger.debug("Actuator: {0} not executed assimilate action Automa power < Object. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator ) )
+        logger.logger.debug("Actuator: {0} not executed assimilate action Automa power < Object resilience. Automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator ) )        
         return [ False, energy_actuator, assimilating_terminated ]
 
 
                 
-
-        
-    
     
     # TEST: OK
     def moving( self, automa, posManager, param ):
@@ -365,5 +371,17 @@ class Actuator:
 
 
     def isInRange(self, destination):
-         return ( abs( destination[ 0 ] - self._position[ 0 ] ) <= self._range[ 0 ] ) and ( abs( destination[ 1 ] - self._position[ 1 ] ) <= self._range[ 1 ] ) and ( abs( destination[ 2 ] - self._position[ 2 ] ) <= self._range[ 2 ] ) 
+        """Return True if abs( destination - position) <= range"""
+        return ( abs( destination[ 0 ] - self._position[ 0 ] ) <= self._range[ 0 ] ) and ( abs( destination[ 1 ] - self._position[ 1 ] ) <= self._range[ 1 ] ) and ( abs( destination[ 2 ] - self._position[ 2 ] ) <= self._range[ 2 ] ) 
 
+
+    def setEvent( self, automa,  result, obj, typ, duration = 1, time2go = 0):
+        """Set event in Object's Event Queue if object is an istance of Automa"""
+
+        if automa.checkClass( obj ):
+            #(self, typ, volume,  time2go = 1, duration = 1, energy = None, power = None, mass = None  
+            event = Event( typ = typ, volume = obj.getVolume(), duration = duration, time2go = time2go ) # duration = 0 -> effetti evento già applicati su object
+            obj.insertEvent( event ) 
+            logger.logger.debug("Actuator: {0} result action = {1}. Inserted assimilate event in object's event queue: event._id: {2}, event._typ: {3}, event._volume: {4}, event._time2go: {5}, event._duration: {6}, event._energy: {7}, event._power: {8}, event._mass: {9}".format( self._id, result, event._id, event._type, event._volume, event._time2go, event._duration, event._energy, event._power, event._mass ))        
+
+        return True

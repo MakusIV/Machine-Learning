@@ -73,13 +73,16 @@ class Automa(Object):
         """Update state, Sensor, Actuator states for check of eventsQueue"""        
         events = self.getEventActive()
         # l'evento riguarda una posizione indipendentemente dall'eventuale target impostato, quindi in base 
-        # alle caratteristiche dell'evento che bissogna valutare quali elementi sono coinvolti e come sono
+        # alle caratteristiche dell'evento che bisogna valutare quali elementi sono coinvolti e come sono
         # coinvolti
         
         for _, ev in events: # scorre gli eventi da eseguire della lista eventi attivi
             logger.logger.debug("Automa: {0} active event {1}".format( self._id, ev._type ))
 
             if ev.isHit(): # solo per l'evento SHOT viene valutato l'eventuale danno
+                # NOTA: tu lo fai risolvere direttamente nell'azione (valuta il danno e se l'obj è distrutto lo rimuove), qui invece è previsto
+                # che l'azione registra un evento nella lista eventi dell'automa (ma se non è un automa quindi non ha event queue anzi ogni oggetto in questo caaso dovrebbe avere una queue event e un methodo di update) e successivamente gli effetti dell'evento vengono valutati
+                # posso lasciare che alcune azioni vengano immediatamente valutati gli effetti e effettuati gli aggiornamenti mentre per altre vengano create eventi da gestire tramite coda queue
                 self.evalutateHit( ev )
 
             if ev.isPop(): # viene valutato se l'automa può essere preso (sollevato). Si potrebbe considerare come nuovo componente dell'oggetto che ha generato l'evento.
@@ -218,7 +221,7 @@ class Automa(Object):
 
     def insertEvent(self, event):
         """insert event in eventsQueue"""
-        if not General.checkEvent(event):
+        if not event or not isinstance( event, Event ):
             return False
 
         self._eventsQueue[ event._id ] = event
@@ -428,6 +431,13 @@ class Automa(Object):
         for obj_ in self._objectCatched:
             if obj == obj_:
                 return True
+        return False
+
+    def checkClass( self, automa):
+
+        if automa and isinstance(automa, Automa):
+            return True
+
         return False
 
     
