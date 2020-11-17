@@ -162,8 +162,9 @@ class Actuator:
                 assimilating_terminated = True
 
                 if posManager.removeObject( obj ):
-                    automa._state.incrementEnergy( obj_energy * obj._mass / automa._mass) #energy assimilate                                               
-                    logger.logger.debug("Actuator: {0} executed assimilate action with complete assimilation and energy gain. Object was removed from position manager. automa: {1}, range: {2}, energy_actuator: {3}".format( self._id, automa.getId(), self._range, energy_actuator ) )
+                    energy_increment = int( obj_energy * obj._mass / automa._mass )
+                    automa._state.incrementEnergy( energy_increment ) #energy assimilate                                               
+                    logger.logger.debug("Actuator: {0} executed assimilate action with complete assimilation and energy gain: {1}. Object was removed from position manager. automa: {2}, range: {3}, energy_actuator: {4}".format( self._id, energy_increment, automa.getId(), self._range, energy_actuator ) )
                     return [ True, energy_actuator, assimilating_terminated ]
         
                 else:                

@@ -99,7 +99,7 @@ class Object:
         # questo metodo dovrebbe essere rivisto per una valutazione più corretta della diminuzione della health e della resilence
         # utilizzando in prospettiva l'eventuale influennza dell'energia coinvolta
         if power > self._resilience:
-            damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
+            damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia: No alla potenza e' ok in quanto è il danno istantaneo (per task)
             self._resilience = self._resilience - damage #da rivedere
             return self._state.decrementHealth( damage )
         

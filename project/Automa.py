@@ -79,8 +79,8 @@ class Automa(Object):
         for _, ev in events: # scorre gli eventi da eseguire della lista eventi attivi
             logger.logger.debug("Automa: {0} active event {1}".format( self._id, ev._type ))
 
-            if ev.isShot(): # solo per l'evento SHOT viene valutato l'eventuale danno
-                self.evalutateShot( ev )
+            if ev.isHit(): # solo per l'evento SHOT viene valutato l'eventuale danno
+                self.evalutateHit( ev )
 
             if ev.isPop(): # viene valutato se l'automa può essere preso (sollevato). Si potrebbe considerare come nuovo componente dell'oggetto che ha generato l'evento.
                 self.evalutatePop( ev )
@@ -130,7 +130,7 @@ class Automa(Object):
 
         for action in active_actions:           
             # actuators_activation: [ actuator,  [ position or obj, ..other params ] ]
-            actuator_activation = self.eval_actuators_activation( action.getActionParam() ) # questa funzione deve anche valutare gli attuatori attivi e se questi sono sufficienti per compiere l'atto altrimenti deve restituire false o un atto ridotto            
+            actuator_activation = self.select_actuators( action.getActionParam() ) # questa funzione deve anche valutare gli attuatori attivi e se questi sono sufficienti per compiere l'atto altrimenti deve restituire false o un atto ridotto            
             action_info = actuator_activation[0].exec_command( self, posManager, actuator_activation[ 1 ] )
             actions_info.append( action_info )            
             self.updateStateForAction( action, actuator_activation[0], action_info )
@@ -164,7 +164,7 @@ class Automa(Object):
             logger.logger.debug("Automa: {0}. Actuator: {1}, execute action: {2}, action not complete".format( self._id, actuator.getId(), action_info[2] ))
             
         else:# l'azione è stata completata nell'iterazione
-            action.setDuration(1)# imposta ad 1 la durata della action affinchè venga eliminata nella successiva scansione della queue
+            action.setDuration( 0 )# imposta ad 0 la durata della action affinchè venga eliminata nella successiva scansione della queue
             logger.logger.debug("Automa: {0}. Actuator: {1}, execute action: {2}, action complete: removed from queue".format( self._id, actuator.getId(), action_info[2] ))           
     
         return True
@@ -188,6 +188,7 @@ class Automa(Object):
         logger.logger.debug("Automa: {0} removed action in queue, action id: {1}, actions in queue: {2}".format( self._id, action._id, len( self._actionsQueue ) ))
         return True
 
+    # TEST: OK (indirect from action method)
     def resetActionQueue( self ):
         """Reset the Action Queue"""
         self._actionsQueue.clear()
@@ -253,10 +254,12 @@ class Automa(Object):
 
         return active
 
-    def evalutateShot( self, ev ):
-        """" evalutate event shot effect """
+    def evalutateHit( self, ev ):
+        """" evalutate event hit effect """
         #la action da eseguire e l'inserimento di questa nella action queue.Eliminare l'automa aggiornando lo stato
-        
+        if not ev.isHit():
+            return False
+
         for sensor in self._sensors:
             if sensor.evalutateDamage(ev._energy, ev._power) == 0: # valutazione del danno per il sensore. Se restituisce 0 il sensore è dsitrutto
                 self._sensors.pop( sensor ) # elimina il sensore dalla lista sensori dell'automa
@@ -271,36 +274,17 @@ class Automa(Object):
             self._state.destroy()
             logger.logger.debug("Automa: {0} destroyed for damage".format( self._id ))
 
-        if self._state.isActive():
+        # ELIMINARE IN QUANTO LA DETERMINAZIONE DELLA ACTION SPETTA ALLA AI IN QUESTO CASO NELLA COMPONENTE "PRIMITIVA" CIOE' QUELLA LEGATA AL RIFLESSO CONDIZIONATO
+        #if self._state.isActive():
             # determinare la action da eseguire e l'inserimento di questa nella action queue.Eliminare l'automa aggiornando lo stato
-            pass
+         #   if self._state.isCritical() or self._state.isCritical():
+                # action = scappa
 
         return True
 
-
-    def evalutatePop( self, ev ):
-        """" evalutate event pop effect """
-        # viene valutato se l'automa può essere preso (sollevato). Si potrebbe considerare come nuovo componente dell'oggetto che ha generato l'evento. la action da eseguire e l'inserimento di questa nella action queue.Eliminare l'automa aggiornando lo stato
-        pass
-
-    def evalutatePush( self, ev ):
-        """" evalutate event push effect """
-        # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa la action da eseguire e l'inserimento di questa nella action queue.Eliminare l'automa aggiornando lo stato
-        pass
-
-    def evalutateAssimilate( self, ev ):
-        """" evalutate event eat effect """
-        # viene valutato se l'automa può essere assorbito, la action da eseguire e l'inserimento di questa nella action queue.Eliminare l'automa aggiornando lo stato
-
-
-    def evalutateMove( self, ev ):
-        """" evalutate event move effect """
-        # viene valutata l'esecuzione del movimento dell'automa, la action da eseguire e l'inserimento di questa nella action queue.
-        pass
-
     
     # TEST: OK parziale
-    def eval_actuators_activation( self, act ):
+    def select_actuators( self, act ):
         """Choice the actuators for activation in relation with act and define parameter for execute action"""
         # act: (action_type, position or object)
         # return: # actuators_activation: [ actuators,  [ position or obj, ..other params, self ] ]
@@ -311,7 +295,7 @@ class Automa(Object):
         action_type = act[0]
 
         # actuators:  { key: actuator_type, value: actuator }
-        if action_type == 'move' or action_type == 'run':
+        if action_type == 'move' or action_type == 'run': # OK
             actuator = self.getActuator( actuator_class = 'mover' )            
 
             if action_type == 'move': # OK                
@@ -335,7 +319,7 @@ class Automa(Object):
             logger.logger.debug("Automa: {0}, created actuators_activation with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
             return [ actuator, [ obj, destination ] ]
 
-        elif action_type == 'catch':
+        elif action_type == 'catch': # OK
             actuator = self.getActuator( actuator_class = 'object_catcher' )
             obj = act[ 1 ]
             logger.logger.debug("Automa: {0}, created actuators_activation with included: action_type: {1}, object: {2}".format( self._id, action_type, obj._id ))
