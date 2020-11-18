@@ -10,7 +10,7 @@ logger = Logger(module_name = __name__, class_name = 'Event')
 
 class Event:
     
-    def __init__(self, typ, volume, time2go = 1, duration = 1, energy = None, power = None, mass = None  ):
+    def __init__(self, typ, time2go = 1, duration = 1, volume = None, energy = None, power = None, mass = None  ):
 
         if not self.checkParam(typ, volume,  time2go, duration, energy, power, mass):
             raise Exception("Invalid parameters! Event not istantiate.")        
@@ -62,7 +62,10 @@ class Event:
         if not General.checkEventType( typ ):
             return False
 
-        if not General.checkVolume(volume) or not isinstance(time2go, int) or not isinstance(duration, int):
+        if volume and not General.checkVolume(volume):
+            return False
+
+        if not isinstance(time2go, int) or not isinstance(duration, int):
             return False
 
         if energy and not isinstance(energy, int):

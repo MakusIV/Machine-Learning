@@ -174,13 +174,14 @@ def testClassActuator():
         result = False     
 
 
-
+# or len( obj._eventsQueue ) != 1
+#obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = actuators, mass = 300 )
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 10, 10, 10 ), class_ = 'object_manipulator', typ = 'hand', delta_t = 0.1)
     sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ) )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300 )#obj = Object( coord = Coordinate( 5, 5, 5 ) )
     posMng.insertObject( ( 5, 5, 5 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj, (9, 9, 9) ] )
@@ -188,7 +189,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not manipulate or energy_actuator != actuator._state.getEnergy() or obj.getPosition() != (9, 9, 9) or posMng.getObject( obj ) != obj: 
+    if not manipulate or energy_actuator != actuator._state.getEnergy() or obj.getPosition() != (9, 9, 9) or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1: 
         print('Actuator.exc_command() - translate - Failed!! ', moved, energy_actuator, actuator._state.getEnergy(), obj.getPosition(), target_position )
         result = False 
 
@@ -216,7 +217,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ) )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300 )
     posMng.insertObject( ( 5, 5, 5 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -224,7 +225,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not catch or energy_actuator != actuator._state.getEnergy() or obj.getCaught_from() != automa.getId() or not automa.checkCaught( obj ) or posMng.getObject( obj ): 
+    if not catch or energy_actuator != actuator._state.getEnergy() or obj.getCaught_from() != automa.getId() or not automa.checkCaught( obj ) or posMng.getObject( obj ) or len( obj._eventsQueue ) != 1:  
         print('Actuator.exc_command() - object_catching - Failed!! ', catch, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -235,7 +236,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     posMng.insertObject( ( 5, 5, 5 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -243,7 +244,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not assimilate or actuation_terminated or energy_actuator != actuator._state.getEnergy() or posMng.getObject( obj ) != obj: 
+    if not assimilate or actuation_terminated or energy_actuator != actuator._state.getEnergy() or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1:  
         print('Actuator.exc_command() - object_assimilate - Failed!! ', catch, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -253,7 +254,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     posMng.insertObject( ( 15, 15, 15 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -261,7 +262,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if assimilate or not actuation_terminated or energy_actuator != actuator._state.getEnergy() or posMng.getObject( obj ) != obj: 
+    if assimilate or not actuation_terminated or energy_actuator != actuator._state.getEnergy() or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) == 1: 
         print('Actuator.exc_command() - object_assimilate - Failed!! ', catch, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
     
@@ -271,7 +272,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     obj._state._health = 10
     posMng.insertObject( ( 5, 5, 5 ), obj )
 
@@ -280,7 +281,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not assimilate or not actuation_terminated or energy_actuator != actuator._state.getEnergy() or posMng.getObject( obj ) == obj: 
+    if not assimilate or not actuation_terminated or energy_actuator != actuator._state.getEnergy() or posMng.getObject( obj ) == obj or len( obj._eventsQueue ) != 1: 
         print('Actuator.exc_command() - object_assimilate - Failed!! ', catch, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -290,7 +291,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     posMng.insertObject( ( 46, 45, 44 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -298,7 +299,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj: 
+    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1:  
         print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -308,7 +309,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     posMng.insertObject( ( 46, 45, 44 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -316,7 +317,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if fire or obj.getResilience() == 80 or obj.getHealth() == 90 or posMng.getObject( obj ) != obj: 
+    if fire or obj.getResilience() == 80 or obj.getHealth() == 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) == 1:
         print('Actuator.exc_command() - projectile_launching light cannon - Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -326,7 +327,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     posMng.insertObject( ( -46, -45, -44 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -334,7 +335,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj: 
+    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1:  
         print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -344,7 +345,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     obj._state._health = 10
     posMng.insertObject( ( -46, -45, -44 ), obj )
 
@@ -353,7 +354,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or not actuation_terminated or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 0 or posMng.getObject( obj ) == obj: 
+    if not fire or not actuation_terminated or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 0 or posMng.getObject( obj ) == obj or len( obj._eventsQueue ) != 1: 
         print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -364,7 +365,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     posMng.insertObject( ( -46, -45, -44 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -372,7 +373,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if fire or actuation_terminated or obj.getResilience() == 80 or obj.getHealth() == 90: 
+    if fire or actuation_terminated or obj.getResilience() == 80 or obj.getHealth() == 90 or len( obj._eventsQueue ) == 1:  
         print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -383,7 +384,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     posMng.insertObject( ( 46, 45, 44 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -391,7 +392,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj: 
+    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1: 
         print('Actuator.exc_command() - plasma_launching laser- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -401,7 +402,7 @@ def testClassActuator():
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
-    obj = Object( coord = Coordinate( 5, 5, 5 ), resilience = 90 )
+    obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = [actuator], mass = 300, resilience = 90 )
     posMng.insertObject( ( 46, 45, 44 ), obj )
 
     action_info = actuator.exec_command( automa, posMng, [ obj ] )
@@ -409,7 +410,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj: 
+    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1: 
         print('Actuator.exc_command() - object_hitter drill- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 

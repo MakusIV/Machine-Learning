@@ -170,7 +170,7 @@ class Actuator:
                     automa._state.incrementEnergy( energy_increment ) #energy assimilate                                               
                     logger.logger.debug("Actuator: {0} executed assimilate action with complete assimilation and energy gain: {1}. Object was removed from position manager. automa: {2}, range: {3}, energy_actuator: {4}".format( self._id, energy_increment, automa.getId(), self._range, energy_actuator ) )
                     # Creazione evento e inserimento nella event queue qualora l'object è un automa
-                    self.setEvent( automa = automa, result = True, obj = obj, typ = 'ASSIMILATE', duration = 1, time2go = 0) # duration = 0 -> effetti evento già applicati su object
+                    self.setEvent( automa = automa, result = True, obj = obj, typ = 'ASSIMILATE', duration = 0, time2go = 0) # duration = 0 -> effetti evento già applicati su object
                     return [ True, energy_actuator, assimilating_terminated ]
         
                 else:                
@@ -180,7 +180,7 @@ class Actuator:
                 logger.logger.debug("Actuator: {0} executed assimilate action. Action not complete, Object wasn't removed from position manager. automa: {1}, range: {2}, energy_actuator: {3}".format( self._id, automa.getId(), self._range, energy_actuator ) )
 
                 # Creazione evento e inserimento nella event queue qualora l'object è un automa
-                self.setEvent( automa = automa, result = True, obj = obj, typ = 'ASSIMILATE', duration = 0) # duration = 0 -> effetti evento già applicati su object
+                self.setEvent( automa = automa, result = True, obj = obj, typ = 'ASSIMILATE', duration = 1, time2go = 0) # duration = 0 -> effetti evento già applicati su object
                 return [ True, energy_actuator, assimilating_terminated ]
 
         logger.logger.debug("Actuator: {0} not executed assimilate action Automa power < Object resilience. Automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator ) )        
@@ -232,9 +232,9 @@ class Actuator:
             logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2} position_reached {3}".format( self._id, i, energy_actuator, position_reached ))
         
             if automa_position[ 0 ] == next_position[ 0 ] and automa_position[ 1 ] == next_position[ 1 ] and automa_position[ 2 ] == next_position[ 2 ]:
-                logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2}  position_reached {3}".format( self._id, i, energy_actuator, position_reached ))
+                logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2}  position_reached {3}".format( self._id, i, energy_actuator, position_reached ))            
                 return True, energy_actuator, position_reached
-            
+                    
         return True, energy_actuator, position_reached
 
     # TEST: OK
@@ -245,6 +245,7 @@ class Actuator:
         catch_terminated = True# serve per implementare la gestione di catture che richiedono più task per essere completate
         obj = param[ 0 ]       
         energy_actuator = self._state.updateEnergy( self._power, self._delta_t )
+
         # verifica se param[1] destinazione dello spostamento, range attuatore e posizione dell'automa sono idonei per l'esecuzione della attuaione
         if not self.isInRange( obj.getPosition() ):
             logger.logger.debug("Actuator: {0} not executed catch action because object not in range. automa catcher: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, obj.getCaught_from(), obj.getPosition(), self._range, energy_actuator ) )
@@ -255,11 +256,14 @@ class Actuator:
             
             if automa.catchObject( obj ):
                 logger.logger.debug("Actuator: {0} executed catch action. automa catcher: {1}, range: {2}, energy_actuator: {3}".format( self._id, obj.getCaught_from(), self._range, energy_actuator ) )
+                # Creazione evento e inserimento nella event queue qualora l'object è un automa
+                self.setEvent( automa = automa, result = True, obj = obj, typ = 'POP', duration = 0, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
                 return [ True, energy_actuator, catch_terminated ]
         
             else:                
                 raise Exception("object_catching not executed but object was removed form position manager")
-
+        
+        self.setEvent( automa = automa, result = False, obj = obj, typ = 'POP', duration = 0, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
         logger.logger.debug("Actuator: {0} not executed catch action because remove object not carried out. automa catcher: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, obj.getCaught_from(), obj.getPosition(), self._range, energy_actuator ) )
         return [ False, energy_actuator, catch_terminated ]
 
@@ -294,12 +298,14 @@ class Actuator:
 
                 if posManager.removeObject( obj ):                                
                     logger.logger.debug("Actuator: {0} executed projectile launch action with object destruction and removal from position manager. automa: {1}, object_destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
+                    self.setEvent( automa = automa, result = True, obj = obj, typ = 'POP', duration = 0, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
                     return [ True, energy_actuator, firing_terminated ]
         
                 else:                
                     raise Exception("shooting executed but object wasn't removed from position manager")
                             
             logger.logger.debug("Actuator: {0} executed projectile launch action but object wasn't destroyed. automa: {1}, object destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
+            self.setEvent( automa = automa, result = True, obj = obj, typ = 'POP', duration = 1, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
             return [ True, energy_actuator, firing_terminated ]
 
         logger.logger.debug("Actuator: {0} Not executed projectile launch action Automa power < object resilience. automa: {1}, object destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
@@ -375,12 +381,12 @@ class Actuator:
         return ( abs( destination[ 0 ] - self._position[ 0 ] ) <= self._range[ 0 ] ) and ( abs( destination[ 1 ] - self._position[ 1 ] ) <= self._range[ 1 ] ) and ( abs( destination[ 2 ] - self._position[ 2 ] ) <= self._range[ 2 ] ) 
 
 
-    def setEvent( self, automa,  result, obj, typ, duration = 1, time2go = 0):
+    def setEvent( self, automa,  result, obj, typ, duration = 1, time2go = 0, volume = None):
         """Set event in Object's Event Queue if object is an istance of Automa"""
 
         if automa.checkClass( obj ):
             #(self, typ, volume,  time2go = 1, duration = 1, energy = None, power = None, mass = None  
-            event = Event( typ = typ, volume = obj.getVolume(), duration = duration, time2go = time2go ) # duration = 0 -> effetti evento già applicati su object
+            event = Event( typ = typ, volume = volume, duration = duration, time2go = time2go ) # duration = 0 -> effetti evento già applicati su object
             obj.insertEvent( event ) 
             logger.logger.debug("Actuator: {0} result action = {1}. Inserted assimilate event in object's event queue: event._id: {2}, event._typ: {3}, event._volume: {4}, event._time2go: {5}, event._duration: {6}, event._energy: {7}, event._power: {8}, event._mass: {9}".format( self._id, result, event._id, event._type, event._volume, event._time2go, event._duration, event._energy, event._power, event._mass ))        
 
