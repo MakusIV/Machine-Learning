@@ -92,7 +92,7 @@ def testClassActuator():
     # test Actuator.evalutateDamage( energy, power )
 
     actuator = Actuator( position = (0, 0, 0), range_max = (50, 50, 50), class_ = 'mover', typ = '2-legs', power = 50, resilience = 50 )
-    actuator.evalutateSelfDamage(energy = 100, power = 60)
+    actuator.evalutateSelfDamage(power = 60)
 
     if actuator._state._health != 90:
         print('Actuator.evalutatSelfDamage(energy = 100, power = 60) Failed!! ', actuator._power, actuator._resilience, actuator._name, actuator._state, actuator._state._health)

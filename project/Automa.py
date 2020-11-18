@@ -8,7 +8,7 @@ import General
 from Event import Event
 from Action import Action
 from LoggerClass import Logger
-
+import random
 
 # LOGGING --
  
@@ -79,23 +79,48 @@ class Automa(Object):
         for _, ev in events: # scorre gli eventi da eseguire della lista eventi attivi
             logger.logger.debug("Automa: {0} active event {1}".format( self._id, ev._type ))
 
+            if ev._duration <= 0: # effetti dell'evento applicati durante la action dell'oggetto che ha generato l'evento
+                    logger.logger.debug("Automa: {0} event._duration <= 0, maybe damage already evalutated in action execution".format( self._id ) )
+                
+
             if ev.isHit(): # solo per l'evento SHOT viene valutato l'eventuale danno
                 # NOTA: tu lo fai risolvere direttamente nell'azione (valuta il danno e se l'obj è distrutto lo rimuove), qui invece è previsto
                 # che l'azione registra un evento nella lista eventi dell'automa (ma se non è un automa quindi non ha event queue anzi ogni oggetto in questo caaso dovrebbe avere una queue event e un methodo di update) e successivamente gli effetti dell'evento vengono valutati
                 # posso lasciare che alcune azioni vengano immediatamente valutati gli effetti e effettuati gli aggiornamenti mentre per altre vengano create eventi da gestire tramite coda queue
-                self.evalutateHit( ev )
+                self.evalutateHit( ev._power, random_hit = True )
+                # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale eliminazione dell'oggetto
 
-            if ev.isPop(): # viene valutato se l'automa può essere preso (sollevato). Si potrebbe considerare come nuovo componente dell'oggetto che ha generato l'evento.
-                self.evalutatePop( ev )
+
+            if ev.isPop(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
+                self.evalutatePop( ev._power, ev._mass )
+                # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
 
             if ev.isPush(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
                 self.evalutatePush( ev )
+                # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
 
             if ev.isAssimilate(): # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
                 self.evalutateEat( ev )
+                # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale eliminazione dell'oggetto
 
         logger.logger.debug("Automa: {0} executed update internal state".format( self._id ))
         return True
+
+    
+            
+    
+    def evalutatePop( self, power, mass ):
+        
+        ratio = self._power * self._mass / ( mass * power )
+        logger.logger.debug("Automa: {0} Evalutate POP with power: {1}. ratio: {2}".format( self._id, power, ratio ) )
+
+        if ratio <= 1:
+            logger.logger.debug("Automa: {0} Confirmed POP effect: {1}. ratio: {2}".format( self._id, power, ratio ) )
+            return True
+        
+        logger.logger.debug("Automa: {0} Ininfluence POP effect: {1}. ratio: {2}".format( self._id, power, ratio ) )
+        return False
+
         
     # TEST: OK
     def percept(self, posMng):
@@ -257,32 +282,65 @@ class Automa(Object):
 
         return active
 
-    def evalutateHit( self, ev ):
+    def evalutateHit( self, power, random_hit = True ):
         """" evalutate event hit effect """
-        #la action da eseguire e l'inserimento di questa nella action queue.Eliminare l'automa aggiornando lo stato
-        if not ev.isHit():
-            return False
+        
+        if random_hit:
+            automa_energy_hit_power = int( power * random.uniform(0, 1) )
+            sensor_energy_hit_power = int( ( power - automa_energy_hit_power ) * random.uniform(0, 1) )
+            actuator_energy_hit_power = int( ( power - sensor_energy_hit_power ) * random.uniform(0, 1) )
+
+        else:
+            automa_energy_hit_power = power
+            sensor_energy_hit_power = int( power * 0.3 )
+            actuator_energy_hit_power = int( power * 0.7 )
+
+        logger.logger.debug("Automa: {0} - automa_energy_hit_power: {1}, sensor_energy_hit_power: {2}, actuator_energy_hit_power: {3}".format( self._id, automa_energy_hit_power, sensor_energy_hit_power, actuator_energy_hit_power ))
 
         for sensor in self._sensors:
-            if sensor.evalutateDamage(ev._energy, ev._power) == 0: # valutazione del danno per il sensore. Se restituisce 0 il sensore è dsitrutto
+            health = sensor.evalutateSelfDamage( sensor_energy_hit_power )
+            
+            if health == 0: # valutazione del danno per il sensore. Se restituisce 0 il sensore è dsitrutto
                 self._sensors.pop( sensor ) # elimina il sensore dalla lista sensori dell'automa
-                logger.logger.debug("Automa: {0} deleted sensor: {1} for damage".format( self._id, sensor._id ))
+                logger.logger.debug("Automa: {0} deleted sensor: {1} for damage".format( self._id, sensor._name ))
+            
+            resilience = sensor._resilience                    
+            active = sensor._state.isActive()
+            critical = sensor._state.isCritical()
+            anomaly = sensor._state.isAnomaly()
+            destroyed = sensor._state.isDestroyed()                                                
+            remove = sensor._state.isRemoved()
+            logger.logger.debug("Automa: {0} Evalutate Sensor ( name: {1} ) Hit damage with power: {2}. resilience: {3}, health: {4}, active: {5}, critical: {6}, anomaly: {7}, destroyed: {8}, removed: {9}".format( self._id, sensor._name, power, resilience, health, active, critical, anomaly, destroyed, remove ) )
+        
 
         for actuator in self._actuators:
-            if actuator.evalutateDamage(ev._energy, ev._power)  == 0: # valutazione del danno per l'attuatore. Se restituisce 0 l'attuatore è dsitrutto
+            health = actuator.evalutateSelfDamage( actuator_energy_hit_power )
+            
+            if health  == 0: # valutazione del danno per l'attuatore. Se restituisce 0 l'attuatore è dsitrutto
                 self._actuators.pop( actuator ) # elimina il attuatore dalla lista attuatori dell'automa
-                logger.logger.debug("Automa: {0} deleted actuator: {1} for damage".format( self._id, actuator._id ))
-
-        if self.evalutateDamage(ev._energy, ev._power) == 0: # valutazione del danno per l'automa. Se restituisce 0 l'automa è dsitrutto
+                logger.logger.debug("Automa: {0} deleted actuator: {1} for damage".format( self._id, actuator._name ))
+            
+            resilience = actuator._resilience                    
+            active = actuator._state.isActive()
+            critical = actuator._state.isCritical()
+            anomaly = actuator._state.isAnomaly()
+            destroyed = actuator._state.isDestroyed()                                                
+            remove = actuator._state.isRemoved()
+            logger.logger.debug("Automa: {0} Evalutate Actuator ( name: {1} ) Hit damage with power: {2}. resilience: {3}, health: {4}, active: {5}, critical: {6}, anomaly: {7}, destroyed: {8}, removed: {9}".format( self._id, actuator._name, power, resilience, health, active, critical, anomaly, destroyed, remove ) )
+        
+        health = self.evalutateDamage( automa_energy_hit_power )
+        if health == 0: # valutazione del danno per l'automa. Se restituisce 0 l'automa è dsitrutto
             self._state.destroy()
             logger.logger.debug("Automa: {0} destroyed for damage".format( self._id ))
-
-        # ELIMINARE IN QUANTO LA DETERMINAZIONE DELLA ACTION SPETTA ALLA AI IN QUESTO CASO NELLA COMPONENTE "PRIMITIVA" CIOE' QUELLA LEGATA AL RIFLESSO CONDIZIONATO
-        #if self._state.isActive():
-            # determinare la action da eseguire e l'inserimento di questa nella action queue.Eliminare l'automa aggiornando lo stato
-         #   if self._state.isCritical() or self._state.isCritical():
-                # action = scappa
-
+        
+            resilience = self._resilience                    
+            active = self._state.isActive()
+            critical = self._state.isCritical()
+            anomaly = self._state.isAnomaly()
+            destroyed = self._state.isDestroyed()                                                
+            remove = self._state.isRemoved()
+            logger.logger.debug("Automa: {0} Evalutate Hit damage with power: {1}. resilience: {2}, health: {3}, active: {4}, critical: {5}, anomaly: {6}, destroyed: {7}, removed: {8}".format( self._id, power, resilience, health, active, critical, anomaly, destroyed, remove ) )
+        
         return True
 
     

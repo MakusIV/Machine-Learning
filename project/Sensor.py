@@ -51,7 +51,7 @@ class Sensor:
         return True
 
     # Unit test: 0k
-    def evalutateSelfDamage(self, energy, power):
+    def evalutateSelfDamage(self, power):
         """Evalutate the damage on sensor and update state"""
         if power > self._resilience:
             damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia

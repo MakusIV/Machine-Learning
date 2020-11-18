@@ -2695,3 +2695,960 @@
 2020-11-18 13:26:08,526 - Automa - DEBUG - action - Automa: Automa_ID_#37882 executed action: created action_info with 1 items
 2020-11-18 13:26:10,738 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#37882 update state for energy consume: total_sensor_consume: 297, self._state._energy: 0
 2020-11-18 13:26:10,766 - Automa - DEBUG - percept - Automa: Automa_ID_#37882 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99, 99, 99]
+2020-11-18 14:56:40,121 - Automa - INFO - __init__ - Automa Automa_ID_#494045 created
+2020-11-18 14:56:40,282 - Automa - INFO - __init__ - Automa Automa_ID_#826600 created
+2020-11-18 14:56:40,419 - Automa - INFO - __init__ - Automa Automa_ID_#938960 created
+2020-11-18 14:56:40,557 - Automa - INFO - __init__ - Automa Automa_ID_#775764 created
+2020-11-18 14:56:40,584 - Automa - INFO - __init__ - Automa Automa_ID_#355648 created
+2020-11-18 14:56:40,658 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#355648 inserted new event in queue, event id: None_#880726, events in queue: 1
+2020-11-18 14:56:40,715 - Automa - INFO - __init__ - Automa Automa_ID_#893290 created
+2020-11-18 14:56:40,826 - Automa - INFO - __init__ - Automa Automa_ID_#862857 created
+2020-11-18 14:56:40,862 - Automa - INFO - __init__ - Automa Automa_ID_#342563 created
+2020-11-18 14:56:40,867 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#342563 inserted new event in queue, event id: None_#996505, events in queue: 1
+2020-11-18 14:56:40,900 - Automa - INFO - __init__ - Automa Automa_ID_#242446 created
+2020-11-18 14:56:40,965 - Automa - INFO - __init__ - Automa Automa_ID_#544686 created
+2020-11-18 14:56:41,001 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#544686 inserted new event in queue, event id: None_#782010, events in queue: 1
+2020-11-18 14:56:41,081 - Automa - INFO - __init__ - Automa Automa_ID_#286711 created
+2020-11-18 14:56:41,161 - Automa - INFO - __init__ - Automa Automa_ID_#829220 created
+2020-11-18 14:56:41,174 - Automa - INFO - __init__ - Automa Automa_ID_#960447 created
+2020-11-18 14:56:41,236 - Automa - INFO - __init__ - Automa Automa_ID_#955761 created
+2020-11-18 14:56:41,305 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#955761 inserted new event in queue, event id: None_#575127, events in queue: 1
+2020-11-18 14:56:41,373 - Automa - INFO - __init__ - Automa Automa_ID_#21248 created
+2020-11-18 14:56:41,500 - Automa - INFO - __init__ - Automa Automa_ID_#532269 created
+2020-11-18 14:56:41,568 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#532269 inserted new event in queue, event id: None_#329569, events in queue: 1
+2020-11-18 14:56:41,693 - Automa - INFO - __init__ - Automa Automa_ID_#472514 created
+2020-11-18 14:56:41,700 - Automa - INFO - __init__ - Automa Automa_ID_#281524 created
+2020-11-18 14:56:41,736 - Automa - INFO - __init__ - Automa Automa_ID_#862631 created
+2020-11-18 14:56:41,828 - Automa - INFO - __init__ - Automa Automa_ID_#660426 created
+2020-11-18 14:56:41,851 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#660426 inserted new event in queue, event id: None_#864716, events in queue: 1
+2020-11-18 14:56:41,965 - Automa - INFO - __init__ - Automa Automa_ID_#188251 created
+2020-11-18 14:56:42,079 - Automa - INFO - __init__ - Automa Automa_ID_#253768 created
+2020-11-18 14:56:42,147 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#253768 inserted new event in queue, event id: None_#177364, events in queue: 1
+2020-11-18 14:56:42,212 - Automa - INFO - __init__ - Automa Automa_ID_#729990 created
+2020-11-18 14:56:42,248 - Automa - INFO - __init__ - Automa Automa_ID_#19940 created
+2020-11-18 14:56:42,283 - Automa - INFO - __init__ - Automa Automa_ID_#385366 created
+2020-11-18 14:56:42,343 - Automa - INFO - __init__ - Automa Automa_ID_#479254 created
+2020-11-18 14:56:42,362 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#479254 inserted new event in queue, event id: None_#138148, events in queue: 1
+2020-11-18 14:56:42,397 - Automa - INFO - __init__ - Automa Automa_ID_#483364 created
+2020-11-18 14:56:42,431 - Automa - INFO - __init__ - Automa Automa_ID_#203217 created
+2020-11-18 14:56:42,506 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#203217 inserted new event in queue, event id: None_#836794, events in queue: 1
+2020-11-18 15:28:47,419 - Automa - INFO - __init__ - Automa Automa_ID_#873317 created
+2020-11-18 15:28:47,428 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 15:28:47,461 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 15:28:47,468 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: translate, object: Object_ID_#785608
+2020-11-18 15:28:47,520 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: catch, object: Object_ID_#381536
+2020-11-18 15:28:47,555 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: eat, object: Object_ID_#542070
+2020-11-18 15:28:47,558 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: shot, object: Object_ID_#895800
+2020-11-18 15:28:47,560 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included:  action_type: hit, object: Object_ID_#400706
+2020-11-18 15:28:47,562 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#583343
+2020-11-18 15:28:47,657 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: move_#151760, actions in queue: 1
+2020-11-18 15:28:47,729 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 15:28:48,462 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#334988, execute action: False, action not complete
+2020-11-18 15:28:48,489 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:48,493 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: run_#736018, actions in queue: 1
+2020-11-18 15:28:48,706 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 15:28:49,728 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#334988, execute action: True, action complete: removed from queue
+2020-11-18 15:28:49,729 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:49,792 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: translate_#756754, actions in queue: 1
+2020-11-18 15:28:49,794 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: translate, object: Object_ID_#891823
+2020-11-18 15:28:49,905 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#893631, execute action: True, action complete: removed from queue
+2020-11-18 15:28:49,927 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:50,004 - Automa - INFO - __init__ - Automa Automa_ID_#901402 created
+2020-11-18 15:28:50,042 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: translate_#373621, actions in queue: 1
+2020-11-18 15:28:50,044 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: translate, object: Automa_ID_#901402
+2020-11-18 15:28:50,112 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#901402 inserted new event in queue, event id: None_#861015, events in queue: 1
+2020-11-18 15:28:50,182 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#893631, execute action: True, action complete: removed from queue
+2020-11-18 15:28:50,220 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:50,370 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: catch_#789932, actions in queue: 1
+2020-11-18 15:28:50,372 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: catch, object: Object_ID_#487792
+2020-11-18 15:28:50,456 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#678284, execute action: True, action complete: removed from queue
+2020-11-18 15:28:50,502 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:50,559 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: shot_#543977, actions in queue: 1
+2020-11-18 15:28:50,566 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: shot, object: Object_ID_#594337
+2020-11-18 15:28:50,671 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#807656, execute action: False, action not complete
+2020-11-18 15:28:50,672 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:50,743 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: shot_#572338, actions in queue: 1
+2020-11-18 15:28:50,745 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: shot, object: Object_ID_#506406
+2020-11-18 15:28:50,824 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#807656, execute action: False, action not complete
+2020-11-18 15:28:50,826 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:50,936 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: hit_#581161, actions in queue: 1
+2020-11-18 15:28:50,937 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included:  action_type: hit, object: Object_ID_#789512
+2020-11-18 15:28:50,954 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#866786, execute action: False, action not complete
+2020-11-18 15:28:50,994 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:51,044 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: eat_#52772, actions in queue: 1
+2020-11-18 15:28:51,045 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: action_type: eat, object: Object_ID_#260125
+2020-11-18 15:28:51,095 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#380808, execute action: True, action complete: removed from queue
+2020-11-18 15:28:51,169 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:51,222 - Automa - DEBUG - insertAction - Automa: Automa_ID_#873317 inserted new action in queue, action id: attack_#194133, actions in queue: 1
+2020-11-18 15:28:51,278 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#873317, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#415039
+2020-11-18 15:28:51,395 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#873317. Actuator: Actuator_ID_#807656, execute action: True, action complete: removed from queue
+2020-11-18 15:28:51,422 - Automa - DEBUG - action - Automa: Automa_ID_#873317 executed action: created action_info with 1 items
+2020-11-18 15:28:56,288 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#873317 update state for energy consume: total_sensor_consume: 297, self._state._energy: 0
+2020-11-18 15:28:56,290 - Automa - DEBUG - percept - Automa: Automa_ID_#873317 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99, 99, 99]
+2020-11-18 15:48:51,944 - Automa - INFO - __init__ - Automa Automa_ID_#48166 created
+2020-11-18 15:48:52,412 - Automa - INFO - __init__ - Automa Automa_ID_#289407 created
+2020-11-18 15:48:52,597 - Automa - INFO - __init__ - Automa Automa_ID_#673212 created
+2020-11-18 15:48:52,728 - Automa - INFO - __init__ - Automa Automa_ID_#342360 created
+2020-11-18 15:48:52,762 - Automa - INFO - __init__ - Automa Automa_ID_#178623 created
+2020-11-18 15:48:52,798 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#178623 inserted new event in queue, event id: None_#990466, events in queue: 1
+2020-11-18 15:48:52,826 - Automa - INFO - __init__ - Automa Automa_ID_#164118 created
+2020-11-18 15:48:52,896 - Automa - INFO - __init__ - Automa Automa_ID_#213585 created
+2020-11-18 15:48:52,965 - Automa - INFO - __init__ - Automa Automa_ID_#613814 created
+2020-11-18 15:48:52,996 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#613814 inserted new event in queue, event id: None_#375595, events in queue: 1
+2020-11-18 15:48:53,026 - Automa - INFO - __init__ - Automa Automa_ID_#363875 created
+2020-11-18 15:48:53,126 - Automa - INFO - __init__ - Automa Automa_ID_#272467 created
+2020-11-18 15:48:53,313 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#272467 inserted new event in queue, event id: None_#326043, events in queue: 1
+2020-11-18 15:48:53,410 - Automa - INFO - __init__ - Automa Automa_ID_#117799 created
+2020-11-18 15:48:53,531 - Automa - INFO - __init__ - Automa Automa_ID_#945358 created
+2020-11-18 15:48:53,721 - Automa - INFO - __init__ - Automa Automa_ID_#693945 created
+2020-11-18 15:48:53,811 - Automa - INFO - __init__ - Automa Automa_ID_#656664 created
+2020-11-18 15:48:53,919 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#656664 inserted new event in queue, event id: None_#361962, events in queue: 1
+2020-11-18 15:48:54,046 - Automa - INFO - __init__ - Automa Automa_ID_#301448 created
+2020-11-18 15:48:54,146 - Automa - INFO - __init__ - Automa Automa_ID_#967513 created
+2020-11-18 15:49:33,918 - Automa - INFO - __init__ - Automa Automa_ID_#450513 created
+2020-11-18 15:49:34,080 - Automa - INFO - __init__ - Automa Automa_ID_#859274 created
+2020-11-18 15:49:34,177 - Automa - INFO - __init__ - Automa Automa_ID_#166622 created
+2020-11-18 15:49:34,252 - Automa - INFO - __init__ - Automa Automa_ID_#169035 created
+2020-11-18 15:49:34,314 - Automa - INFO - __init__ - Automa Automa_ID_#123002 created
+2020-11-18 15:49:34,371 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#123002 inserted new event in queue, event id: None_#790627, events in queue: 1
+2020-11-18 15:49:34,380 - Automa - INFO - __init__ - Automa Automa_ID_#331000 created
+2020-11-18 15:49:34,512 - Automa - INFO - __init__ - Automa Automa_ID_#978964 created
+2020-11-18 15:49:34,546 - Automa - INFO - __init__ - Automa Automa_ID_#652248 created
+2020-11-18 15:49:34,572 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#652248 inserted new event in queue, event id: None_#326853, events in queue: 1
+2020-11-18 15:49:34,578 - Automa - INFO - __init__ - Automa Automa_ID_#37960 created
+2020-11-18 15:49:34,642 - Automa - INFO - __init__ - Automa Automa_ID_#777027 created
+2020-11-18 15:49:34,680 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#777027 inserted new event in queue, event id: None_#583489, events in queue: 1
+2020-11-18 15:49:34,785 - Automa - INFO - __init__ - Automa Automa_ID_#223806 created
+2020-11-18 15:49:34,794 - Automa - INFO - __init__ - Automa Automa_ID_#534718 created
+2020-11-18 15:49:34,833 - Automa - INFO - __init__ - Automa Automa_ID_#569474 created
+2020-11-18 15:49:34,896 - Automa - INFO - __init__ - Automa Automa_ID_#226141 created
+2020-11-18 15:49:34,961 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#226141 inserted new event in queue, event id: None_#480720, events in queue: 1
+2020-11-18 15:49:35,049 - Automa - INFO - __init__ - Automa Automa_ID_#708370 created
+2020-11-18 15:49:35,273 - Automa - INFO - __init__ - Automa Automa_ID_#520582 created
+2020-11-18 15:49:35,424 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#520582 - automa_energy_hit_power: 90, sensor_energy_hit_power: 1, actuator_energy_hit_power: 18
+2020-11-18 15:50:54,079 - Automa - INFO - __init__ - Automa Automa_ID_#198774 created
+2020-11-18 15:50:54,459 - Automa - INFO - __init__ - Automa Automa_ID_#17008 created
+2020-11-18 15:50:54,565 - Automa - INFO - __init__ - Automa Automa_ID_#610209 created
+2020-11-18 15:50:54,695 - Automa - INFO - __init__ - Automa Automa_ID_#377177 created
+2020-11-18 15:50:54,757 - Automa - INFO - __init__ - Automa Automa_ID_#839860 created
+2020-11-18 15:50:54,790 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#839860 inserted new event in queue, event id: None_#247573, events in queue: 1
+2020-11-18 15:50:54,834 - Automa - INFO - __init__ - Automa Automa_ID_#952654 created
+2020-11-18 15:50:54,862 - Automa - INFO - __init__ - Automa Automa_ID_#720890 created
+2020-11-18 15:50:54,938 - Automa - INFO - __init__ - Automa Automa_ID_#460861 created
+2020-11-18 15:50:54,945 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#460861 inserted new event in queue, event id: None_#554180, events in queue: 1
+2020-11-18 15:50:54,976 - Automa - INFO - __init__ - Automa Automa_ID_#431047 created
+2020-11-18 15:50:55,012 - Automa - INFO - __init__ - Automa Automa_ID_#37972 created
+2020-11-18 15:50:55,122 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#37972 inserted new event in queue, event id: None_#812725, events in queue: 1
+2020-11-18 15:50:55,135 - Automa - INFO - __init__ - Automa Automa_ID_#736989 created
+2020-11-18 15:50:55,174 - Automa - INFO - __init__ - Automa Automa_ID_#363720 created
+2020-11-18 15:50:55,215 - Automa - INFO - __init__ - Automa Automa_ID_#765259 created
+2020-11-18 15:50:55,305 - Automa - INFO - __init__ - Automa Automa_ID_#964054 created
+2020-11-18 15:50:55,385 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#964054 inserted new event in queue, event id: None_#572668, events in queue: 1
+2020-11-18 15:50:55,416 - Automa - INFO - __init__ - Automa Automa_ID_#897596 created
+2020-11-18 15:50:55,462 - Automa - INFO - __init__ - Automa Automa_ID_#454555 created
+2020-11-18 15:50:55,494 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#454555 - automa_energy_hit_power: 61, sensor_energy_hit_power: 50, actuator_energy_hit_power: 58
+2020-11-18 15:52:31,767 - Automa - INFO - __init__ - Automa Automa_ID_#881114 created
+2020-11-18 15:52:32,022 - Automa - INFO - __init__ - Automa Automa_ID_#791299 created
+2020-11-18 15:52:32,226 - Automa - INFO - __init__ - Automa Automa_ID_#506633 created
+2020-11-18 15:52:32,336 - Automa - INFO - __init__ - Automa Automa_ID_#620358 created
+2020-11-18 15:52:32,388 - Automa - INFO - __init__ - Automa Automa_ID_#850622 created
+2020-11-18 15:52:32,423 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#850622 inserted new event in queue, event id: None_#331388, events in queue: 1
+2020-11-18 15:52:32,449 - Automa - INFO - __init__ - Automa Automa_ID_#530434 created
+2020-11-18 15:52:32,549 - Automa - INFO - __init__ - Automa Automa_ID_#89861 created
+2020-11-18 15:52:32,644 - Automa - INFO - __init__ - Automa Automa_ID_#69025 created
+2020-11-18 15:52:32,677 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#69025 inserted new event in queue, event id: None_#487323, events in queue: 1
+2020-11-18 15:52:32,761 - Automa - INFO - __init__ - Automa Automa_ID_#769942 created
+2020-11-18 15:52:32,839 - Automa - INFO - __init__ - Automa Automa_ID_#781014 created
+2020-11-18 15:52:32,916 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#781014 inserted new event in queue, event id: None_#738000, events in queue: 1
+2020-11-18 15:52:32,972 - Automa - INFO - __init__ - Automa Automa_ID_#866706 created
+2020-11-18 15:52:33,023 - Automa - INFO - __init__ - Automa Automa_ID_#504521 created
+2020-11-18 15:52:33,172 - Automa - INFO - __init__ - Automa Automa_ID_#869598 created
+2020-11-18 15:52:33,262 - Automa - INFO - __init__ - Automa Automa_ID_#353134 created
+2020-11-18 15:52:33,418 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#353134 inserted new event in queue, event id: None_#220403, events in queue: 1
+2020-11-18 15:52:33,445 - Automa - INFO - __init__ - Automa Automa_ID_#756471 created
+2020-11-18 15:52:33,539 - Automa - INFO - __init__ - Automa Automa_ID_#258377 created
+2020-11-18 15:52:33,545 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#258377 - automa_energy_hit_power: 64, sensor_energy_hit_power: 10, actuator_energy_hit_power: 45
+2020-11-18 15:53:18,288 - Automa - INFO - __init__ - Automa Automa_ID_#481312 created
+2020-11-18 15:53:18,589 - Automa - INFO - __init__ - Automa Automa_ID_#163524 created
+2020-11-18 15:53:18,725 - Automa - INFO - __init__ - Automa Automa_ID_#448881 created
+2020-11-18 15:53:18,859 - Automa - INFO - __init__ - Automa Automa_ID_#951366 created
+2020-11-18 15:53:18,898 - Automa - INFO - __init__ - Automa Automa_ID_#887676 created
+2020-11-18 15:53:18,988 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#887676 inserted new event in queue, event id: None_#603279, events in queue: 1
+2020-11-18 15:53:19,028 - Automa - INFO - __init__ - Automa Automa_ID_#645092 created
+2020-11-18 15:53:19,204 - Automa - INFO - __init__ - Automa Automa_ID_#43156 created
+2020-11-18 15:53:19,307 - Automa - INFO - __init__ - Automa Automa_ID_#417558 created
+2020-11-18 15:53:19,374 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#417558 inserted new event in queue, event id: None_#784837, events in queue: 1
+2020-11-18 15:53:19,401 - Automa - INFO - __init__ - Automa Automa_ID_#176750 created
+2020-11-18 15:53:19,491 - Automa - INFO - __init__ - Automa Automa_ID_#546861 created
+2020-11-18 15:53:19,529 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#546861 inserted new event in queue, event id: None_#506069, events in queue: 1
+2020-11-18 15:53:19,605 - Automa - INFO - __init__ - Automa Automa_ID_#882268 created
+2020-11-18 15:53:19,645 - Automa - INFO - __init__ - Automa Automa_ID_#582295 created
+2020-11-18 15:53:19,711 - Automa - INFO - __init__ - Automa Automa_ID_#539877 created
+2020-11-18 15:53:19,771 - Automa - INFO - __init__ - Automa Automa_ID_#373552 created
+2020-11-18 15:53:19,811 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#373552 inserted new event in queue, event id: None_#871868, events in queue: 1
+2020-11-18 15:53:19,883 - Automa - INFO - __init__ - Automa Automa_ID_#305011 created
+2020-11-18 15:53:19,892 - Automa - INFO - __init__ - Automa Automa_ID_#251185 created
+2020-11-18 15:53:19,914 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#251185 - automa_energy_hit_power: 30, sensor_energy_hit_power: 12, actuator_energy_hit_power: 20
+2020-11-18 15:53:19,925 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#251185 Evalutate Sensor ( name: Sensor_Name_#7341 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:19,930 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#251185 Evalutate Actuator ( name: Actuator_Name_#2201 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:20,041 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#251185 inserted new event in queue, event id: None_#292331, events in queue: 1
+2020-11-18 15:53:20,128 - Automa - INFO - __init__ - Automa Automa_ID_#367029 created
+2020-11-18 15:53:20,307 - Automa - INFO - __init__ - Automa Automa_ID_#99040 created
+2020-11-18 15:53:20,419 - Automa - INFO - __init__ - Automa Automa_ID_#562196 created
+2020-11-18 15:53:20,488 - Automa - INFO - __init__ - Automa Automa_ID_#654352 created
+2020-11-18 15:53:20,517 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#654352 - automa_energy_hit_power: 46, sensor_energy_hit_power: 37, actuator_energy_hit_power: 36
+2020-11-18 15:53:20,520 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#654352 Evalutate Sensor ( name: Sensor_Name_#8491 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:20,522 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#654352 Evalutate Actuator ( name: Actuator_Name_#4028 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:20,588 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#654352 inserted new event in queue, event id: None_#197272, events in queue: 1
+2020-11-18 15:53:20,641 - Automa - INFO - __init__ - Automa Automa_ID_#559881 created
+2020-11-18 15:53:20,743 - Automa - INFO - __init__ - Automa Automa_ID_#460217 created
+2020-11-18 15:53:20,777 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#460217 - automa_energy_hit_power: 80, sensor_energy_hit_power: 15, actuator_energy_hit_power: 4
+2020-11-18 15:53:20,781 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#460217 Evalutate Sensor ( name: Sensor_Name_#1303 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:20,822 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#460217 Evalutate Actuator ( name: Actuator_Name_#4610 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:20,943 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#460217 inserted new event in queue, event id: None_#585032, events in queue: 1
+2020-11-18 15:53:20,990 - Automa - INFO - __init__ - Automa Automa_ID_#680764 created
+2020-11-18 15:53:21,004 - Automa - INFO - __init__ - Automa Automa_ID_#480628 created
+2020-11-18 15:53:21,161 - Automa - INFO - __init__ - Automa Automa_ID_#911148 created
+2020-11-18 15:53:21,192 - Automa - INFO - __init__ - Automa Automa_ID_#145844 created
+2020-11-18 15:53:21,202 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#145844 - automa_energy_hit_power: 11, sensor_energy_hit_power: 4, actuator_energy_hit_power: 6
+2020-11-18 15:53:21,218 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#145844 Evalutate Sensor ( name: Sensor_Name_#9195 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:21,220 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#145844 Evalutate Actuator ( name: Actuator_Name_#6434 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:21,304 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#145844 inserted new event in queue, event id: None_#744093, events in queue: 1
+2020-11-18 15:53:21,357 - Automa - INFO - __init__ - Automa Automa_ID_#753557 created
+2020-11-18 15:53:21,433 - Automa - INFO - __init__ - Automa Automa_ID_#455860 created
+2020-11-18 15:53:21,440 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#455860 - automa_energy_hit_power: 10, sensor_energy_hit_power: 7, actuator_energy_hit_power: 1
+2020-11-18 15:53:21,442 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#455860 Evalutate Sensor ( name: Sensor_Name_#4106 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:21,443 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#455860 Evalutate Actuator ( name: Actuator_Name_#7657 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:21,540 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#455860 inserted new event in queue, event id: None_#191960, events in queue: 1
+2020-11-18 15:53:44,961 - Automa - INFO - __init__ - Automa Automa_ID_#343885 created
+2020-11-18 15:53:45,126 - Automa - INFO - __init__ - Automa Automa_ID_#919092 created
+2020-11-18 15:53:45,358 - Automa - INFO - __init__ - Automa Automa_ID_#908858 created
+2020-11-18 15:53:45,623 - Automa - INFO - __init__ - Automa Automa_ID_#117638 created
+2020-11-18 15:53:45,627 - Automa - INFO - __init__ - Automa Automa_ID_#731980 created
+2020-11-18 15:53:45,710 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#731980 inserted new event in queue, event id: None_#343477, events in queue: 1
+2020-11-18 15:53:45,920 - Automa - INFO - __init__ - Automa Automa_ID_#537955 created
+2020-11-18 15:53:46,336 - Automa - INFO - __init__ - Automa Automa_ID_#308766 created
+2020-11-18 15:53:46,422 - Automa - INFO - __init__ - Automa Automa_ID_#7631 created
+2020-11-18 15:53:46,432 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#7631 inserted new event in queue, event id: None_#24050, events in queue: 1
+2020-11-18 15:53:46,505 - Automa - INFO - __init__ - Automa Automa_ID_#298330 created
+2020-11-18 15:53:46,508 - Automa - INFO - __init__ - Automa Automa_ID_#488290 created
+2020-11-18 15:53:46,551 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#488290 inserted new event in queue, event id: None_#308809, events in queue: 1
+2020-11-18 15:53:46,556 - Automa - INFO - __init__ - Automa Automa_ID_#787326 created
+2020-11-18 15:53:46,607 - Automa - INFO - __init__ - Automa Automa_ID_#164102 created
+2020-11-18 15:53:46,699 - Automa - INFO - __init__ - Automa Automa_ID_#88757 created
+2020-11-18 15:53:46,705 - Automa - INFO - __init__ - Automa Automa_ID_#849226 created
+2020-11-18 15:53:46,754 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#849226 inserted new event in queue, event id: None_#116989, events in queue: 1
+2020-11-18 15:53:46,761 - Automa - INFO - __init__ - Automa Automa_ID_#714762 created
+2020-11-18 15:53:46,810 - Automa - INFO - __init__ - Automa Automa_ID_#706819 created
+2020-11-18 15:53:46,852 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#706819 - automa_energy_hit_power: 12, sensor_energy_hit_power: 7, actuator_energy_hit_power: 10
+2020-11-18 15:53:46,855 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#706819 Evalutate Sensor ( name: Sensor_Name_#2187 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:46,856 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#706819 Evalutate Actuator ( name: Actuator_Name_#7611 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:46,861 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#706819 inserted new event in queue, event id: None_#289831, events in queue: 1
+2020-11-18 15:53:46,943 - Automa - INFO - __init__ - Automa Automa_ID_#796567 created
+2020-11-18 15:53:46,992 - Automa - INFO - __init__ - Automa Automa_ID_#814267 created
+2020-11-18 15:53:47,038 - Automa - INFO - __init__ - Automa Automa_ID_#182065 created
+2020-11-18 15:53:47,042 - Automa - INFO - __init__ - Automa Automa_ID_#670788 created
+2020-11-18 15:53:47,044 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#670788 - automa_energy_hit_power: 1, sensor_energy_hit_power: 0, actuator_energy_hit_power: 0
+2020-11-18 15:53:47,116 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#670788 Evalutate Sensor ( name: Sensor_Name_#7564 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:47,119 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#670788 Evalutate Actuator ( name: Actuator_Name_#2240 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:47,122 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#670788 inserted new event in queue, event id: None_#678934, events in queue: 1
+2020-11-18 15:53:47,126 - Automa - INFO - __init__ - Automa Automa_ID_#533712 created
+2020-11-18 15:53:47,207 - Automa - INFO - __init__ - Automa Automa_ID_#563971 created
+2020-11-18 15:53:47,210 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#563971 - automa_energy_hit_power: 44, sensor_energy_hit_power: 9, actuator_energy_hit_power: 0
+2020-11-18 15:53:47,211 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#563971 Evalutate Sensor ( name: Sensor_Name_#9677 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:47,252 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#563971 Evalutate Actuator ( name: Actuator_Name_#8279 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:47,258 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#563971 inserted new event in queue, event id: None_#986121, events in queue: 1
+2020-11-18 15:53:47,443 - Automa - INFO - __init__ - Automa Automa_ID_#602587 created
+2020-11-18 15:53:47,543 - Automa - INFO - __init__ - Automa Automa_ID_#99860 created
+2020-11-18 15:53:47,592 - Automa - INFO - __init__ - Automa Automa_ID_#462049 created
+2020-11-18 15:53:47,657 - Automa - INFO - __init__ - Automa Automa_ID_#218906 created
+2020-11-18 15:53:47,740 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#218906 - automa_energy_hit_power: 99, sensor_energy_hit_power: 10, actuator_energy_hit_power: 94
+2020-11-18 15:53:47,741 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#218906 Evalutate Sensor ( name: Sensor_Name_#5390 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:47,743 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#218906 Evalutate Actuator ( name: Actuator_Name_#2517 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:47,926 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#218906 inserted new event in queue, event id: None_#836960, events in queue: 1
+2020-11-18 15:53:47,982 - Automa - INFO - __init__ - Automa Automa_ID_#713842 created
+2020-11-18 15:53:48,109 - Automa - INFO - __init__ - Automa Automa_ID_#736773 created
+2020-11-18 15:53:48,157 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#736773 - automa_energy_hit_power: 0, sensor_energy_hit_power: 0, actuator_energy_hit_power: 0
+2020-11-18 15:53:48,159 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#736773 Evalutate Sensor ( name: Sensor_Name_#4837 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:48,166 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#736773 Evalutate Actuator ( name: Actuator_Name_#4309 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 15:53:48,209 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#736773 inserted new event in queue, event id: None_#442846, events in queue: 1
+2020-11-18 15:58:14,427 - Automa - INFO - __init__ - Automa Automa_ID_#341876 created
+2020-11-18 15:58:14,834 - Automa - INFO - __init__ - Automa Automa_ID_#894320 created
+2020-11-18 15:58:14,984 - Automa - INFO - __init__ - Automa Automa_ID_#917169 created
+2020-11-18 15:58:15,386 - Automa - INFO - __init__ - Automa Automa_ID_#976651 created
+2020-11-18 15:58:15,464 - Automa - INFO - __init__ - Automa Automa_ID_#288019 created
+2020-11-18 15:58:15,555 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#288019 inserted new event in queue, event id: None_#597438, events in queue: 1
+2020-11-18 15:58:15,699 - Automa - INFO - __init__ - Automa Automa_ID_#457005 created
+2020-11-18 15:58:16,246 - Automa - INFO - __init__ - Automa Automa_ID_#309602 created
+2020-11-18 15:58:16,488 - Automa - INFO - __init__ - Automa Automa_ID_#519460 created
+2020-11-18 15:58:16,539 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#519460 inserted new event in queue, event id: None_#395726, events in queue: 1
+2020-11-18 15:58:16,624 - Automa - INFO - __init__ - Automa Automa_ID_#487247 created
+2020-11-18 15:58:16,757 - Automa - INFO - __init__ - Automa Automa_ID_#569396 created
+2020-11-18 15:58:16,851 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#569396 inserted new event in queue, event id: None_#478055, events in queue: 1
+2020-11-18 15:58:16,914 - Automa - INFO - __init__ - Automa Automa_ID_#761401 created
+2020-11-18 15:58:16,921 - Automa - INFO - __init__ - Automa Automa_ID_#149804 created
+2020-11-18 15:58:16,973 - Automa - INFO - __init__ - Automa Automa_ID_#337745 created
+2020-11-18 15:58:17,135 - Automa - INFO - __init__ - Automa Automa_ID_#426603 created
+2020-11-18 15:58:17,338 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#426603 inserted new event in queue, event id: None_#266555, events in queue: 1
+2020-11-18 15:58:29,764 - Automa - INFO - __init__ - Automa Automa_ID_#376283 created
+2020-11-18 15:58:33,176 - Automa - INFO - __init__ - Automa Automa_ID_#395108 created
+2020-11-18 15:59:21,077 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#395108 - automa_energy_hit_power: 81, sensor_energy_hit_power: 4, actuator_energy_hit_power: 21
+2020-11-18 16:00:18,488 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#395108 Evalutate Sensor ( name: Sensor_Name_#3734 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:01:13,637 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#395108 Evalutate Actuator ( name: Actuator_Name_#3941 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:52,577 - Automa - INFO - __init__ - Automa Automa_ID_#442162 created
+2020-11-18 16:12:53,253 - Automa - INFO - __init__ - Automa Automa_ID_#742428 created
+2020-11-18 16:12:53,995 - Automa - INFO - __init__ - Automa Automa_ID_#505903 created
+2020-11-18 16:12:55,242 - Automa - INFO - __init__ - Automa Automa_ID_#543478 created
+2020-11-18 16:12:55,435 - Automa - INFO - __init__ - Automa Automa_ID_#71062 created
+2020-11-18 16:12:55,918 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#71062 inserted new event in queue, event id: None_#489563, events in queue: 1
+2020-11-18 16:12:56,208 - Automa - INFO - __init__ - Automa Automa_ID_#104601 created
+2020-11-18 16:12:56,543 - Automa - INFO - __init__ - Automa Automa_ID_#66869 created
+2020-11-18 16:12:56,662 - Automa - INFO - __init__ - Automa Automa_ID_#884056 created
+2020-11-18 16:12:56,714 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#884056 inserted new event in queue, event id: None_#888041, events in queue: 1
+2020-11-18 16:12:56,844 - Automa - INFO - __init__ - Automa Automa_ID_#413670 created
+2020-11-18 16:12:56,952 - Automa - INFO - __init__ - Automa Automa_ID_#167725 created
+2020-11-18 16:12:57,130 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#167725 inserted new event in queue, event id: None_#306102, events in queue: 1
+2020-11-18 16:12:57,260 - Automa - INFO - __init__ - Automa Automa_ID_#62722 created
+2020-11-18 16:12:57,311 - Automa - INFO - __init__ - Automa Automa_ID_#998518 created
+2020-11-18 16:12:57,404 - Automa - INFO - __init__ - Automa Automa_ID_#4226 created
+2020-11-18 16:12:57,457 - Automa - INFO - __init__ - Automa Automa_ID_#181434 created
+2020-11-18 16:12:57,619 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#181434 inserted new event in queue, event id: None_#82487, events in queue: 1
+2020-11-18 16:12:57,762 - Automa - INFO - __init__ - Automa Automa_ID_#560469 created
+2020-11-18 16:12:57,914 - Automa - INFO - __init__ - Automa Automa_ID_#667774 created
+2020-11-18 16:12:58,046 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#667774 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:12:58,047 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#667774 Evalutate Sensor ( name: Sensor_Name_#9271 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:58,096 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#667774 Evalutate Actuator ( name: Actuator_Name_#2314 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:58,207 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#667774 inserted new event in queue, event id: None_#867484, events in queue: 1
+2020-11-18 16:12:58,212 - Automa - INFO - __init__ - Automa Automa_ID_#779186 created
+2020-11-18 16:12:58,260 - Automa - INFO - __init__ - Automa Automa_ID_#691726 created
+2020-11-18 16:12:58,314 - Automa - INFO - __init__ - Automa Automa_ID_#422511 created
+2020-11-18 16:12:58,362 - Automa - INFO - __init__ - Automa Automa_ID_#929331 created
+2020-11-18 16:12:58,364 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#929331 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:12:58,402 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#929331 Evalutate Sensor ( name: Sensor_Name_#8971 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:58,406 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#929331 Evalutate Actuator ( name: Actuator_Name_#9506 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:58,413 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#929331 inserted new event in queue, event id: None_#268578, events in queue: 1
+2020-11-18 16:12:58,457 - Automa - INFO - __init__ - Automa Automa_ID_#466194 created
+2020-11-18 16:12:58,464 - Automa - INFO - __init__ - Automa Automa_ID_#779109 created
+2020-11-18 16:12:58,509 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#779109 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:12:58,511 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#779109 Evalutate Sensor ( name: Sensor_Name_#6642 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:58,513 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#779109 Evalutate Actuator ( name: Actuator_Name_#5293 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:58,557 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#779109 destroyed for damage
+2020-11-18 16:12:58,558 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#779109 Evalutate Hit damage with power: 100. resilience: 80, health: 0, active: True, critical: False, anomaly: False, destroyed: True, removed: False
+2020-11-18 16:12:58,611 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#779109 inserted new event in queue, event id: None_#9676, events in queue: 1
+2020-11-18 16:12:58,711 - Automa - INFO - __init__ - Automa Automa_ID_#761022 created
+2020-11-18 16:12:58,817 - Automa - INFO - __init__ - Automa Automa_ID_#974211 created
+2020-11-18 16:12:58,963 - Automa - INFO - __init__ - Automa Automa_ID_#128037 created
+2020-11-18 16:12:59,068 - Automa - INFO - __init__ - Automa Automa_ID_#772836 created
+2020-11-18 16:12:59,157 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#772836 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:12:59,160 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#772836 Evalutate Sensor ( name: Sensor_Name_#4334 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:59,164 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#772836 Evalutate Actuator ( name: Actuator_Name_#6610 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:59,227 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#772836 inserted new event in queue, event id: None_#195985, events in queue: 1
+2020-11-18 16:12:59,243 - Automa - INFO - __init__ - Automa Automa_ID_#667499 created
+2020-11-18 16:12:59,340 - Automa - INFO - __init__ - Automa Automa_ID_#973755 created
+2020-11-18 16:12:59,380 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#973755 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:12:59,383 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#973755 Evalutate Sensor ( name: Sensor_Name_#3914 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:59,426 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#973755 Evalutate Actuator ( name: Actuator_Name_#3502 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:12:59,472 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#973755 inserted new event in queue, event id: None_#370348, events in queue: 1
+2020-11-18 16:15:34,755 - Automa - INFO - __init__ - Automa Automa_ID_#16336 created
+2020-11-18 16:15:35,202 - Automa - INFO - __init__ - Automa Automa_ID_#755437 created
+2020-11-18 16:15:35,505 - Automa - INFO - __init__ - Automa Automa_ID_#548413 created
+2020-11-18 16:15:35,643 - Automa - INFO - __init__ - Automa Automa_ID_#34024 created
+2020-11-18 16:15:35,740 - Automa - INFO - __init__ - Automa Automa_ID_#675364 created
+2020-11-18 16:15:36,477 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#675364 inserted new event in queue, event id: None_#449998, events in queue: 1
+2020-11-18 16:15:36,655 - Automa - INFO - __init__ - Automa Automa_ID_#704218 created
+2020-11-18 16:15:37,021 - Automa - INFO - __init__ - Automa Automa_ID_#648789 created
+2020-11-18 16:15:37,122 - Automa - INFO - __init__ - Automa Automa_ID_#765310 created
+2020-11-18 16:15:37,325 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#765310 inserted new event in queue, event id: None_#467217, events in queue: 1
+2020-11-18 16:15:37,505 - Automa - INFO - __init__ - Automa Automa_ID_#871555 created
+2020-11-18 16:15:37,690 - Automa - INFO - __init__ - Automa Automa_ID_#216546 created
+2020-11-18 16:15:38,018 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#216546 inserted new event in queue, event id: None_#293295, events in queue: 1
+2020-11-18 16:15:38,026 - Automa - INFO - __init__ - Automa Automa_ID_#874546 created
+2020-11-18 16:15:38,126 - Automa - INFO - __init__ - Automa Automa_ID_#894711 created
+2020-11-18 16:15:38,256 - Automa - INFO - __init__ - Automa Automa_ID_#105589 created
+2020-11-18 16:15:38,356 - Automa - INFO - __init__ - Automa Automa_ID_#935658 created
+2020-11-18 16:15:38,491 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#935658 inserted new event in queue, event id: None_#889610, events in queue: 1
+2020-11-18 16:15:38,603 - Automa - INFO - __init__ - Automa Automa_ID_#371439 created
+2020-11-18 16:15:38,609 - Automa - INFO - __init__ - Automa Automa_ID_#859657 created
+2020-11-18 16:15:38,687 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#859657 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:15:38,690 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#859657 Evalutate Sensor ( name: Sensor_Name_#5311 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:38,693 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#859657 Evalutate Actuator ( name: Actuator_Name_#4480 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:38,833 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#859657 inserted new event in queue, event id: None_#548169, events in queue: 1
+2020-11-18 16:15:38,840 - Automa - INFO - __init__ - Automa Automa_ID_#351921 created
+2020-11-18 16:15:38,901 - Automa - INFO - __init__ - Automa Automa_ID_#94119 created
+2020-11-18 16:15:38,908 - Automa - INFO - __init__ - Automa Automa_ID_#888715 created
+2020-11-18 16:15:38,912 - Automa - INFO - __init__ - Automa Automa_ID_#768521 created
+2020-11-18 16:15:38,990 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#768521 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:15:38,992 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#768521 Evalutate Sensor ( name: Sensor_Name_#9506 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:38,993 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#768521 Evalutate Actuator ( name: Actuator_Name_#5553 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:39,070 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#768521 inserted new event in queue, event id: None_#683957, events in queue: 1
+2020-11-18 16:15:39,075 - Automa - INFO - __init__ - Automa Automa_ID_#649207 created
+2020-11-18 16:15:39,123 - Automa - INFO - __init__ - Automa Automa_ID_#531241 created
+2020-11-18 16:15:39,127 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#531241 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:15:39,128 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#531241 Evalutate Sensor ( name: Sensor_Name_#8773 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:39,173 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#531241 Evalutate Actuator ( name: Actuator_Name_#4523 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:39,176 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#531241 destroyed for damage
+2020-11-18 16:15:39,184 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#531241 Evalutate Hit damage with power: 100. resilience: 80, health: 0, active: True, critical: False, anomaly: False, destroyed: True, removed: False
+2020-11-18 16:15:39,344 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#531241 inserted new event in queue, event id: None_#548672, events in queue: 1
+2020-11-18 16:15:39,406 - Automa - INFO - __init__ - Automa Automa_ID_#570046 created
+2020-11-18 16:15:39,509 - Automa - INFO - __init__ - Automa Automa_ID_#650165 created
+2020-11-18 16:15:39,853 - Automa - INFO - __init__ - Automa Automa_ID_#134911 created
+2020-11-18 16:15:40,273 - Automa - INFO - __init__ - Automa Automa_ID_#605080 created
+2020-11-18 16:15:40,352 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#605080 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:15:40,356 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#605080 Evalutate Sensor ( name: Sensor_Name_#7520 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:40,358 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#605080 Evalutate Actuator ( name: Actuator_Name_#7947 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:40,406 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#605080 inserted new event in queue, event id: None_#359018, events in queue: 1
+2020-11-18 16:15:40,514 - Automa - INFO - __init__ - Automa Automa_ID_#673415 created
+2020-11-18 16:15:40,621 - Automa - INFO - __init__ - Automa Automa_ID_#896133 created
+2020-11-18 16:15:40,624 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#896133 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:15:40,625 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#896133 Evalutate Sensor ( name: Sensor_Name_#9436 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:40,626 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#896133 Evalutate Actuator ( name: Actuator_Name_#6626 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:15:40,811 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#896133 inserted new event in queue, event id: None_#440041, events in queue: 1
+2020-11-18 16:38:41,808 - Automa - INFO - __init__ - Automa Automa_ID_#722593 created
+2020-11-18 16:38:41,990 - Automa - INFO - __init__ - Automa Automa_ID_#212306 created
+2020-11-18 16:38:42,095 - Automa - INFO - __init__ - Automa Automa_ID_#583397 created
+2020-11-18 16:38:42,194 - Automa - INFO - __init__ - Automa Automa_ID_#61341 created
+2020-11-18 16:38:42,226 - Automa - INFO - __init__ - Automa Automa_ID_#169922 created
+2020-11-18 16:38:42,261 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#169922 inserted new event in queue, event id: None_#702338, events in queue: 1
+2020-11-18 16:38:42,293 - Automa - INFO - __init__ - Automa Automa_ID_#831881 created
+2020-11-18 16:38:42,370 - Automa - INFO - __init__ - Automa Automa_ID_#903758 created
+2020-11-18 16:38:42,407 - Automa - INFO - __init__ - Automa Automa_ID_#449563 created
+2020-11-18 16:38:42,411 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#449563 inserted new event in queue, event id: None_#811883, events in queue: 1
+2020-11-18 16:38:42,442 - Automa - INFO - __init__ - Automa Automa_ID_#710540 created
+2020-11-18 16:38:42,474 - Automa - INFO - __init__ - Automa Automa_ID_#759036 created
+2020-11-18 16:38:42,543 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#759036 inserted new event in queue, event id: None_#359284, events in queue: 1
+2020-11-18 16:38:42,618 - Automa - INFO - __init__ - Automa Automa_ID_#927275 created
+2020-11-18 16:38:42,624 - Automa - INFO - __init__ - Automa Automa_ID_#408217 created
+2020-11-18 16:38:42,660 - Automa - INFO - __init__ - Automa Automa_ID_#850843 created
+2020-11-18 16:38:42,720 - Automa - INFO - __init__ - Automa Automa_ID_#983123 created
+2020-11-18 16:38:42,760 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#983123 inserted new event in queue, event id: None_#728525, events in queue: 1
+2020-11-18 16:38:42,866 - Automa - INFO - __init__ - Automa Automa_ID_#948811 created
+2020-11-18 16:38:42,873 - Automa - INFO - __init__ - Automa Automa_ID_#976022 created
+2020-11-18 16:38:42,876 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#976022 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:38:42,878 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#976022 Evalutate Sensor ( name: Sensor_Name_#5273 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:42,906 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#976022 Evalutate Actuator ( name: Actuator_Name_#5061 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:43,023 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#976022 inserted new event in queue, event id: None_#425608, events in queue: 1
+2020-11-18 16:38:43,100 - Automa - INFO - __init__ - Automa Automa_ID_#31180 created
+2020-11-18 16:38:43,281 - Automa - INFO - __init__ - Automa Automa_ID_#35552 created
+2020-11-18 16:38:43,476 - Automa - INFO - __init__ - Automa Automa_ID_#437380 created
+2020-11-18 16:38:43,666 - Automa - INFO - __init__ - Automa Automa_ID_#72975 created
+2020-11-18 16:38:43,726 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#72975 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:38:43,739 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#72975 Evalutate Sensor ( name: Sensor_Name_#9736 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:43,785 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#72975 Evalutate Actuator ( name: Actuator_Name_#470 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:43,939 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#72975 inserted new event in queue, event id: None_#273068, events in queue: 1
+2020-11-18 16:38:44,101 - Automa - INFO - __init__ - Automa Automa_ID_#145166 created
+2020-11-18 16:38:44,251 - Automa - INFO - __init__ - Automa Automa_ID_#149737 created
+2020-11-18 16:38:44,399 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#149737 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:38:44,433 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#149737 Evalutate Sensor ( name: Sensor_Name_#1278 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:44,490 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#149737 Evalutate Actuator ( name: Actuator_Name_#3803 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:44,516 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#149737 destroyed for damage
+2020-11-18 16:38:44,569 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#149737 Evalutate Hit damage with power: 100. resilience: 80, health: 0, active: True, critical: False, anomaly: False, destroyed: True, removed: False
+2020-11-18 16:38:44,786 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#149737 inserted new event in queue, event id: None_#933351, events in queue: 1
+2020-11-18 16:38:44,798 - Automa - INFO - __init__ - Automa Automa_ID_#180435 created
+2020-11-18 16:38:44,844 - Automa - INFO - __init__ - Automa Automa_ID_#133668 created
+2020-11-18 16:38:44,881 - Automa - INFO - __init__ - Automa Automa_ID_#312318 created
+2020-11-18 16:38:44,940 - Automa - INFO - __init__ - Automa Automa_ID_#708482 created
+2020-11-18 16:38:44,943 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#708482 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:38:44,944 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#708482 Evalutate Sensor ( name: Sensor_Name_#603 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:44,945 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#708482 Evalutate Actuator ( name: Actuator_Name_#2337 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:45,039 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#708482 inserted new event in queue, event id: None_#907813, events in queue: 1
+2020-11-18 16:38:45,118 - Automa - INFO - __init__ - Automa Automa_ID_#755560 created
+2020-11-18 16:38:45,211 - Automa - INFO - __init__ - Automa Automa_ID_#309036 created
+2020-11-18 16:38:45,243 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#309036 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:38:45,245 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#309036 Evalutate Sensor ( name: Sensor_Name_#5357 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:45,275 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#309036 Evalutate Actuator ( name: Actuator_Name_#3137 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:38:45,370 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#309036 inserted new event in queue, event id: None_#671262, events in queue: 1
+2020-11-18 16:38:52,677 - Automa - INFO - __init__ - Automa Automa_ID_#633185 created
+2020-11-18 16:38:52,684 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:38:52,715 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:38:52,747 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: action_type: translate, object: Object_ID_#664152
+2020-11-18 16:38:52,756 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: action_type: catch, object: Object_ID_#661549
+2020-11-18 16:38:52,758 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: action_type: eat, object: Object_ID_#918571
+2020-11-18 16:38:52,759 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: action_type: shot, object: Object_ID_#259884
+2020-11-18 16:38:52,760 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included:  action_type: hit, object: Object_ID_#747798
+2020-11-18 16:38:52,760 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#316092
+2020-11-18 16:38:52,761 - Automa - DEBUG - insertAction - Automa: Automa_ID_#633185 inserted new action in queue, action id: move_#404232, actions in queue: 1
+2020-11-18 16:38:52,802 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:38:53,041 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#633185. Actuator: Actuator_ID_#363583, execute action: False, action not complete
+2020-11-18 16:38:53,042 - Automa - DEBUG - action - Automa: Automa_ID_#633185 executed action: created action_info with 1 items
+2020-11-18 16:38:53,042 - Automa - DEBUG - insertAction - Automa: Automa_ID_#633185 inserted new action in queue, action id: run_#714565, actions in queue: 1
+2020-11-18 16:38:53,048 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:38:53,514 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#633185. Actuator: Actuator_ID_#363583, execute action: True, action complete: removed from queue
+2020-11-18 16:38:53,537 - Automa - DEBUG - action - Automa: Automa_ID_#633185 executed action: created action_info with 1 items
+2020-11-18 16:38:53,547 - Automa - DEBUG - insertAction - Automa: Automa_ID_#633185 inserted new action in queue, action id: translate_#738981, actions in queue: 1
+2020-11-18 16:38:53,576 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: action_type: translate, object: Object_ID_#687370
+2020-11-18 16:38:53,643 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#633185. Actuator: Actuator_ID_#535689, execute action: True, action complete: removed from queue
+2020-11-18 16:38:53,643 - Automa - DEBUG - action - Automa: Automa_ID_#633185 executed action: created action_info with 1 items
+2020-11-18 16:38:53,677 - Automa - INFO - __init__ - Automa Automa_ID_#638579 created
+2020-11-18 16:38:53,703 - Automa - DEBUG - insertAction - Automa: Automa_ID_#633185 inserted new action in queue, action id: translate_#432963, actions in queue: 1
+2020-11-18 16:38:53,704 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: action_type: translate, object: Automa_ID_#638579
+2020-11-18 16:38:53,709 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#638579 inserted new event in queue, event id: None_#177506, events in queue: 1
+2020-11-18 16:38:53,718 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#633185. Actuator: Actuator_ID_#535689, execute action: True, action complete: removed from queue
+2020-11-18 16:38:53,748 - Automa - DEBUG - action - Automa: Automa_ID_#633185 executed action: created action_info with 1 items
+2020-11-18 16:38:53,757 - Automa - DEBUG - insertAction - Automa: Automa_ID_#633185 inserted new action in queue, action id: catch_#925311, actions in queue: 1
+2020-11-18 16:38:53,758 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: action_type: catch, object: Object_ID_#97121
+2020-11-18 16:38:53,761 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#633185. Actuator: Actuator_ID_#512874, execute action: True, action complete: removed from queue
+2020-11-18 16:38:53,764 - Automa - DEBUG - action - Automa: Automa_ID_#633185 executed action: created action_info with 1 items
+2020-11-18 16:38:53,858 - Automa - DEBUG - insertAction - Automa: Automa_ID_#633185 inserted new action in queue, action id: shot_#694128, actions in queue: 1
+2020-11-18 16:38:53,861 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#633185, created actuators_activation with included: action_type: shot, object: Object_ID_#383856
+2020-11-18 16:41:26,237 - Automa - INFO - __init__ - Automa Automa_ID_#978189 created
+2020-11-18 16:41:26,392 - Automa - INFO - __init__ - Automa Automa_ID_#636795 created
+2020-11-18 16:41:26,553 - Automa - INFO - __init__ - Automa Automa_ID_#80098 created
+2020-11-18 16:41:26,693 - Automa - INFO - __init__ - Automa Automa_ID_#176710 created
+2020-11-18 16:41:26,724 - Automa - INFO - __init__ - Automa Automa_ID_#117642 created
+2020-11-18 16:41:26,759 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#117642 inserted new event in queue, event id: None_#242860, events in queue: 1
+2020-11-18 16:41:26,793 - Automa - INFO - __init__ - Automa Automa_ID_#484443 created
+2020-11-18 16:41:26,897 - Automa - INFO - __init__ - Automa Automa_ID_#866158 created
+2020-11-18 16:41:26,985 - Automa - INFO - __init__ - Automa Automa_ID_#715895 created
+2020-11-18 16:41:26,993 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#715895 inserted new event in queue, event id: None_#872254, events in queue: 1
+2020-11-18 16:41:27,022 - Automa - INFO - __init__ - Automa Automa_ID_#645763 created
+2020-11-18 16:41:27,059 - Automa - INFO - __init__ - Automa Automa_ID_#937253 created
+2020-11-18 16:41:27,133 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#937253 inserted new event in queue, event id: None_#949623, events in queue: 1
+2020-11-18 16:41:27,187 - Automa - INFO - __init__ - Automa Automa_ID_#452657 created
+2020-11-18 16:41:27,315 - Automa - INFO - __init__ - Automa Automa_ID_#857044 created
+2020-11-18 16:41:27,329 - Automa - INFO - __init__ - Automa Automa_ID_#63120 created
+2020-11-18 16:41:27,418 - Automa - INFO - __init__ - Automa Automa_ID_#650353 created
+2020-11-18 16:41:27,458 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#650353 inserted new event in queue, event id: None_#102614, events in queue: 1
+2020-11-18 16:41:27,566 - Automa - INFO - __init__ - Automa Automa_ID_#185375 created
+2020-11-18 16:41:27,573 - Automa - INFO - __init__ - Automa Automa_ID_#131457 created
+2020-11-18 16:41:27,575 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#131457 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:41:27,576 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#131457 Evalutate Sensor ( name: Sensor_Name_#6293 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:27,606 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#131457 Evalutate Actuator ( name: Actuator_Name_#6343 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:27,689 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#131457 inserted new event in queue, event id: None_#34340, events in queue: 1
+2020-11-18 16:41:27,737 - Automa - INFO - __init__ - Automa Automa_ID_#349552 created
+2020-11-18 16:41:27,809 - Automa - INFO - __init__ - Automa Automa_ID_#579063 created
+2020-11-18 16:41:27,881 - Automa - INFO - __init__ - Automa Automa_ID_#55195 created
+2020-11-18 16:41:27,970 - Automa - INFO - __init__ - Automa Automa_ID_#979664 created
+2020-11-18 16:41:27,975 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#979664 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:41:27,975 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#979664 Evalutate Sensor ( name: Sensor_Name_#8131 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:27,976 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#979664 Evalutate Actuator ( name: Actuator_Name_#8078 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:28,072 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#979664 inserted new event in queue, event id: None_#828119, events in queue: 1
+2020-11-18 16:41:28,115 - Automa - INFO - __init__ - Automa Automa_ID_#420375 created
+2020-11-18 16:41:28,123 - Automa - INFO - __init__ - Automa Automa_ID_#34117 created
+2020-11-18 16:41:28,126 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#34117 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:41:28,126 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#34117 Evalutate Sensor ( name: Sensor_Name_#5075 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:28,158 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#34117 Evalutate Actuator ( name: Actuator_Name_#965 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:28,162 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#34117 destroyed for damage
+2020-11-18 16:41:28,228 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#34117 Evalutate Hit damage with power: 100. resilience: 80, health: 0, active: True, critical: False, anomaly: False, destroyed: True, removed: False
+2020-11-18 16:41:28,324 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#34117 inserted new event in queue, event id: None_#606216, events in queue: 1
+2020-11-18 16:41:28,373 - Automa - INFO - __init__ - Automa Automa_ID_#607152 created
+2020-11-18 16:41:28,441 - Automa - INFO - __init__ - Automa Automa_ID_#65531 created
+2020-11-18 16:41:28,477 - Automa - INFO - __init__ - Automa Automa_ID_#991445 created
+2020-11-18 16:41:28,522 - Automa - INFO - __init__ - Automa Automa_ID_#230574 created
+2020-11-18 16:41:28,525 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#230574 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:41:28,526 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#230574 Evalutate Sensor ( name: Sensor_Name_#5093 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:28,530 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#230574 Evalutate Actuator ( name: Actuator_Name_#1410 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:28,595 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#230574 inserted new event in queue, event id: None_#729415, events in queue: 1
+2020-11-18 16:41:28,704 - Automa - INFO - __init__ - Automa Automa_ID_#18771 created
+2020-11-18 16:41:28,709 - Automa - INFO - __init__ - Automa Automa_ID_#413997 created
+2020-11-18 16:41:28,774 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#413997 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:41:28,776 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#413997 Evalutate Sensor ( name: Sensor_Name_#9057 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:28,810 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#413997 Evalutate Actuator ( name: Actuator_Name_#584 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:41:28,910 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#413997 inserted new event in queue, event id: None_#918748, events in queue: 1
+2020-11-18 16:42:04,630 - Automa - INFO - __init__ - Automa Automa_ID_#162714 created
+2020-11-18 16:42:05,492 - Automa - INFO - __init__ - Automa Automa_ID_#953764 created
+2020-11-18 16:42:05,876 - Automa - INFO - __init__ - Automa Automa_ID_#113348 created
+2020-11-18 16:42:06,040 - Automa - INFO - __init__ - Automa Automa_ID_#265182 created
+2020-11-18 16:42:06,124 - Automa - INFO - __init__ - Automa Automa_ID_#231100 created
+2020-11-18 16:42:06,255 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#231100 inserted new event in queue, event id: None_#67488, events in queue: 1
+2020-11-18 16:42:06,304 - Automa - INFO - __init__ - Automa Automa_ID_#989973 created
+2020-11-18 16:42:06,459 - Automa - INFO - __init__ - Automa Automa_ID_#85534 created
+2020-11-18 16:42:06,606 - Automa - INFO - __init__ - Automa Automa_ID_#778658 created
+2020-11-18 16:42:06,751 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#778658 inserted new event in queue, event id: None_#540794, events in queue: 1
+2020-11-18 16:42:06,757 - Automa - INFO - __init__ - Automa Automa_ID_#525404 created
+2020-11-18 16:42:06,840 - Automa - INFO - __init__ - Automa Automa_ID_#704156 created
+2020-11-18 16:42:06,921 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#704156 inserted new event in queue, event id: None_#903139, events in queue: 1
+2020-11-18 16:42:06,926 - Automa - INFO - __init__ - Automa Automa_ID_#942299 created
+2020-11-18 16:42:07,042 - Automa - INFO - __init__ - Automa Automa_ID_#490369 created
+2020-11-18 16:42:07,139 - Automa - INFO - __init__ - Automa Automa_ID_#532687 created
+2020-11-18 16:42:07,142 - Automa - INFO - __init__ - Automa Automa_ID_#292700 created
+2020-11-18 16:42:07,386 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#292700 inserted new event in queue, event id: None_#984880, events in queue: 1
+2020-11-18 16:42:07,392 - Automa - INFO - __init__ - Automa Automa_ID_#641520 created
+2020-11-18 16:42:07,548 - Automa - INFO - __init__ - Automa Automa_ID_#652781 created
+2020-11-18 16:42:07,552 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#652781 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:42:07,552 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#652781 Evalutate Sensor ( name: Sensor_Name_#3041 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:07,554 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#652781 Evalutate Actuator ( name: Actuator_Name_#3976 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:07,560 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#652781 inserted new event in queue, event id: None_#228049, events in queue: 1
+2020-11-18 16:42:07,658 - Automa - INFO - __init__ - Automa Automa_ID_#248715 created
+2020-11-18 16:42:07,810 - Automa - INFO - __init__ - Automa Automa_ID_#170501 created
+2020-11-18 16:42:08,168 - Automa - INFO - __init__ - Automa Automa_ID_#82293 created
+2020-11-18 16:42:08,338 - Automa - INFO - __init__ - Automa Automa_ID_#617137 created
+2020-11-18 16:42:08,341 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#617137 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:42:08,342 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#617137 Evalutate Sensor ( name: Sensor_Name_#179 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:08,372 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#617137 Evalutate Actuator ( name: Actuator_Name_#4802 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:08,451 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#617137 inserted new event in queue, event id: None_#512096, events in queue: 1
+2020-11-18 16:42:08,459 - Automa - INFO - __init__ - Automa Automa_ID_#461468 created
+2020-11-18 16:42:08,505 - Automa - INFO - __init__ - Automa Automa_ID_#21891 created
+2020-11-18 16:42:08,508 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#21891 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:42:08,509 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#21891 Evalutate Sensor ( name: Sensor_Name_#1197 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:08,535 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#21891 Evalutate Actuator ( name: Actuator_Name_#2812 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:08,543 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#21891 destroyed for damage
+2020-11-18 16:42:08,573 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#21891 Evalutate Hit damage with power: 100. resilience: 80, health: 0, active: True, critical: False, anomaly: False, destroyed: True, removed: False
+2020-11-18 16:42:08,684 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#21891 inserted new event in queue, event id: None_#265813, events in queue: 1
+2020-11-18 16:42:08,732 - Automa - INFO - __init__ - Automa Automa_ID_#805195 created
+2020-11-18 16:42:08,740 - Automa - INFO - __init__ - Automa Automa_ID_#138944 created
+2020-11-18 16:42:08,804 - Automa - INFO - __init__ - Automa Automa_ID_#531486 created
+2020-11-18 16:42:08,837 - Automa - INFO - __init__ - Automa Automa_ID_#751834 created
+2020-11-18 16:42:08,840 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#751834 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:42:08,841 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#751834 Evalutate Sensor ( name: Sensor_Name_#5112 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:08,842 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#751834 Evalutate Actuator ( name: Actuator_Name_#3333 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:08,946 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#751834 inserted new event in queue, event id: None_#918690, events in queue: 1
+2020-11-18 16:42:09,060 - Automa - INFO - __init__ - Automa Automa_ID_#488567 created
+2020-11-18 16:42:09,102 - Automa - INFO - __init__ - Automa Automa_ID_#256699 created
+2020-11-18 16:42:09,105 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#256699 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:42:09,107 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#256699 Evalutate Sensor ( name: Sensor_Name_#1297 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:09,108 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#256699 Evalutate Actuator ( name: Actuator_Name_#7493 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:42:09,154 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#256699 inserted new event in queue, event id: None_#235952, events in queue: 1
+2020-11-18 16:42:16,475 - Automa - INFO - __init__ - Automa Automa_ID_#30625 created
+2020-11-18 16:42:16,476 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:42:16,509 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:42:16,547 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: action_type: translate, object: Object_ID_#361811
+2020-11-18 16:42:16,549 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: action_type: catch, object: Object_ID_#707890
+2020-11-18 16:42:16,577 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: action_type: eat, object: Object_ID_#63055
+2020-11-18 16:42:16,585 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: action_type: shot, object: Object_ID_#131461
+2020-11-18 16:42:16,587 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included:  action_type: hit, object: Object_ID_#942668
+2020-11-18 16:42:16,588 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#660816
+2020-11-18 16:42:16,589 - Automa - DEBUG - insertAction - Automa: Automa_ID_#30625 inserted new action in queue, action id: move_#205667, actions in queue: 1
+2020-11-18 16:42:16,592 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:42:17,004 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#30625. Actuator: Actuator_ID_#659755, execute action: False, action not complete
+2020-11-18 16:42:17,006 - Automa - DEBUG - action - Automa: Automa_ID_#30625 executed action: created action_info with 1 items
+2020-11-18 16:42:17,008 - Automa - DEBUG - insertAction - Automa: Automa_ID_#30625 inserted new action in queue, action id: run_#306959, actions in queue: 1
+2020-11-18 16:42:17,039 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:42:17,542 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#30625. Actuator: Actuator_ID_#659755, execute action: True, action complete: removed from queue
+2020-11-18 16:42:17,544 - Automa - DEBUG - action - Automa: Automa_ID_#30625 executed action: created action_info with 1 items
+2020-11-18 16:42:17,575 - Automa - DEBUG - insertAction - Automa: Automa_ID_#30625 inserted new action in queue, action id: translate_#875995, actions in queue: 1
+2020-11-18 16:42:17,575 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: action_type: translate, object: Object_ID_#850589
+2020-11-18 16:42:17,636 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#30625. Actuator: Actuator_ID_#716773, execute action: True, action complete: removed from queue
+2020-11-18 16:42:17,637 - Automa - DEBUG - action - Automa: Automa_ID_#30625 executed action: created action_info with 1 items
+2020-11-18 16:42:17,642 - Automa - INFO - __init__ - Automa Automa_ID_#778397 created
+2020-11-18 16:42:17,674 - Automa - DEBUG - insertAction - Automa: Automa_ID_#30625 inserted new action in queue, action id: translate_#136675, actions in queue: 1
+2020-11-18 16:42:17,675 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: action_type: translate, object: Automa_ID_#778397
+2020-11-18 16:42:17,738 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#778397 inserted new event in queue, event id: None_#236449, events in queue: 1
+2020-11-18 16:42:17,776 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#30625. Actuator: Actuator_ID_#716773, execute action: True, action complete: removed from queue
+2020-11-18 16:42:17,806 - Automa - DEBUG - action - Automa: Automa_ID_#30625 executed action: created action_info with 1 items
+2020-11-18 16:42:17,856 - Automa - DEBUG - insertAction - Automa: Automa_ID_#30625 inserted new action in queue, action id: catch_#691506, actions in queue: 1
+2020-11-18 16:42:17,858 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: action_type: catch, object: Object_ID_#22769
+2020-11-18 16:42:17,959 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#30625. Actuator: Actuator_ID_#229735, execute action: True, action complete: removed from queue
+2020-11-18 16:42:17,995 - Automa - DEBUG - action - Automa: Automa_ID_#30625 executed action: created action_info with 1 items
+2020-11-18 16:42:18,070 - Automa - DEBUG - insertAction - Automa: Automa_ID_#30625 inserted new action in queue, action id: shot_#617971, actions in queue: 1
+2020-11-18 16:42:18,072 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#30625, created actuators_activation with included: action_type: shot, object: Object_ID_#820960
+2020-11-18 16:48:32,083 - Automa - INFO - __init__ - Automa Automa_ID_#801141 created
+2020-11-18 16:48:32,548 - Automa - INFO - __init__ - Automa Automa_ID_#563310 created
+2020-11-18 16:48:32,981 - Automa - INFO - __init__ - Automa Automa_ID_#116945 created
+2020-11-18 16:48:33,337 - Automa - INFO - __init__ - Automa Automa_ID_#825102 created
+2020-11-18 16:48:33,419 - Automa - INFO - __init__ - Automa Automa_ID_#491469 created
+2020-11-18 16:48:33,636 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#491469 inserted new event in queue, event id: None_#934477, events in queue: 1
+2020-11-18 16:48:33,803 - Automa - INFO - __init__ - Automa Automa_ID_#148529 created
+2020-11-18 16:48:34,087 - Automa - INFO - __init__ - Automa Automa_ID_#929955 created
+2020-11-18 16:48:34,237 - Automa - INFO - __init__ - Automa Automa_ID_#606631 created
+2020-11-18 16:48:34,338 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#606631 inserted new event in queue, event id: None_#860398, events in queue: 1
+2020-11-18 16:48:34,418 - Automa - INFO - __init__ - Automa Automa_ID_#361228 created
+2020-11-18 16:48:34,562 - Automa - INFO - __init__ - Automa Automa_ID_#232678 created
+2020-11-18 16:48:34,715 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#232678 inserted new event in queue, event id: None_#786107, events in queue: 1
+2020-11-18 16:48:34,796 - Automa - INFO - __init__ - Automa Automa_ID_#106254 created
+2020-11-18 16:48:34,961 - Automa - INFO - __init__ - Automa Automa_ID_#863879 created
+2020-11-18 16:48:35,179 - Automa - INFO - __init__ - Automa Automa_ID_#852151 created
+2020-11-18 16:48:35,386 - Automa - INFO - __init__ - Automa Automa_ID_#344995 created
+2020-11-18 16:48:35,567 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#344995 inserted new event in queue, event id: None_#184707, events in queue: 1
+2020-11-18 16:48:35,691 - Automa - INFO - __init__ - Automa Automa_ID_#617004 created
+2020-11-18 16:48:35,754 - Automa - INFO - __init__ - Automa Automa_ID_#929569 created
+2020-11-18 16:48:35,848 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#929569 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:48:35,854 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#929569 Evalutate Sensor ( name: Sensor_Name_#9866 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:35,864 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#929569 Evalutate Actuator ( name: Actuator_Name_#9594 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:36,011 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#929569 inserted new event in queue, event id: None_#632010, events in queue: 1
+2020-11-18 16:48:36,021 - Automa - INFO - __init__ - Automa Automa_ID_#859221 created
+2020-11-18 16:48:36,070 - Automa - INFO - __init__ - Automa Automa_ID_#380279 created
+2020-11-18 16:48:36,212 - Automa - INFO - __init__ - Automa Automa_ID_#884779 created
+2020-11-18 16:48:36,220 - Automa - INFO - __init__ - Automa Automa_ID_#971377 created
+2020-11-18 16:48:36,251 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#971377 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:48:36,257 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#971377 Evalutate Sensor ( name: Sensor_Name_#3090 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:36,283 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#971377 Evalutate Actuator ( name: Actuator_Name_#9022 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:36,364 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#971377 inserted new event in queue, event id: None_#142994, events in queue: 1
+2020-11-18 16:48:36,376 - Automa - INFO - __init__ - Automa Automa_ID_#380985 created
+2020-11-18 16:48:36,479 - Automa - INFO - __init__ - Automa Automa_ID_#865563 created
+2020-11-18 16:48:36,513 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#865563 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:48:36,514 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#865563 Evalutate Sensor ( name: Sensor_Name_#3077 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:36,518 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#865563 Evalutate Actuator ( name: Actuator_Name_#3505 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:36,524 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#865563 destroyed for damage
+2020-11-18 16:48:36,564 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#865563 Evalutate Hit damage with power: 100. resilience: 80, health: 0, active: True, critical: False, anomaly: False, destroyed: True, removed: False
+2020-11-18 16:48:36,612 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#865563 inserted new event in queue, event id: None_#336738, events in queue: 1
+2020-11-18 16:48:36,697 - Automa - INFO - __init__ - Automa Automa_ID_#401267 created
+2020-11-18 16:48:36,703 - Automa - INFO - __init__ - Automa Automa_ID_#443521 created
+2020-11-18 16:48:36,737 - Automa - INFO - __init__ - Automa Automa_ID_#567327 created
+2020-11-18 16:48:36,770 - Automa - INFO - __init__ - Automa Automa_ID_#775270 created
+2020-11-18 16:48:36,793 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#775270 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:48:36,795 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#775270 Evalutate Sensor ( name: Sensor_Name_#3299 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:36,798 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#775270 Evalutate Actuator ( name: Actuator_Name_#245 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:36,843 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#775270 inserted new event in queue, event id: None_#951574, events in queue: 1
+2020-11-18 16:48:36,887 - Automa - INFO - __init__ - Automa Automa_ID_#817057 created
+2020-11-18 16:48:36,930 - Automa - INFO - __init__ - Automa Automa_ID_#875395 created
+2020-11-18 16:48:36,932 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#875395 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:48:36,933 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#875395 Evalutate Sensor ( name: Sensor_Name_#9171 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:36,934 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#875395 Evalutate Actuator ( name: Actuator_Name_#4743 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:48:37,012 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#875395 inserted new event in queue, event id: None_#888834, events in queue: 1
+2020-11-18 16:48:44,473 - Automa - INFO - __init__ - Automa Automa_ID_#171984 created
+2020-11-18 16:48:44,474 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:48:44,513 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:48:44,517 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: translate, object: Object_ID_#797351
+2020-11-18 16:48:44,519 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: catch, object: Object_ID_#391428
+2020-11-18 16:48:44,520 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: eat, object: Object_ID_#375159
+2020-11-18 16:48:44,523 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: shot, object: Object_ID_#376172
+2020-11-18 16:48:44,562 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included:  action_type: hit, object: Object_ID_#782453
+2020-11-18 16:48:44,564 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#943946
+2020-11-18 16:48:44,565 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: move_#171793, actions in queue: 1
+2020-11-18 16:48:44,568 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:48:44,986 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#532322, execute action: False, action not complete
+2020-11-18 16:48:44,987 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:44,990 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: run_#738953, actions in queue: 1
+2020-11-18 16:48:45,019 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:48:45,470 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#532322, execute action: True, action complete: removed from queue
+2020-11-18 16:48:45,471 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:45,536 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: translate_#716342, actions in queue: 1
+2020-11-18 16:48:45,537 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: translate, object: Object_ID_#102988
+2020-11-18 16:48:45,634 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#235074, execute action: True, action complete: removed from queue
+2020-11-18 16:48:45,636 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:45,701 - Automa - INFO - __init__ - Automa Automa_ID_#74692 created
+2020-11-18 16:48:45,731 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: translate_#391404, actions in queue: 1
+2020-11-18 16:48:45,733 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: translate, object: Automa_ID_#74692
+2020-11-18 16:48:45,771 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#74692 inserted new event in queue, event id: None_#881630, events in queue: 1
+2020-11-18 16:48:45,803 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#235074, execute action: True, action complete: removed from queue
+2020-11-18 16:48:45,804 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:45,850 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: catch_#68140, actions in queue: 1
+2020-11-18 16:48:45,854 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: catch, object: Object_ID_#502116
+2020-11-18 16:48:45,955 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#246329, execute action: True, action complete: removed from queue
+2020-11-18 16:48:45,990 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:46,107 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: shot_#737734, actions in queue: 1
+2020-11-18 16:48:46,138 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: shot, object: Object_ID_#372666
+2020-11-18 16:48:46,221 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#654423, execute action: False, action not complete
+2020-11-18 16:48:46,224 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:46,367 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: shot_#132287, actions in queue: 1
+2020-11-18 16:48:46,369 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: shot, object: Object_ID_#475634
+2020-11-18 16:48:46,444 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#654423, execute action: False, action not complete
+2020-11-18 16:48:46,446 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:46,487 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: hit_#331601, actions in queue: 1
+2020-11-18 16:48:46,490 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included:  action_type: hit, object: Object_ID_#593412
+2020-11-18 16:48:46,591 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#838861, execute action: False, action not complete
+2020-11-18 16:48:46,593 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:46,598 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: eat_#618542, actions in queue: 1
+2020-11-18 16:48:46,599 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: action_type: eat, object: Object_ID_#188844
+2020-11-18 16:48:46,646 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#99529, execute action: True, action complete: removed from queue
+2020-11-18 16:48:46,650 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:46,696 - Automa - DEBUG - insertAction - Automa: Automa_ID_#171984 inserted new action in queue, action id: attack_#259666, actions in queue: 1
+2020-11-18 16:48:46,697 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#171984, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#603150
+2020-11-18 16:48:46,749 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#171984. Actuator: Actuator_ID_#654423, execute action: True, action complete: removed from queue
+2020-11-18 16:48:46,752 - Automa - DEBUG - action - Automa: Automa_ID_#171984 executed action: created action_info with 1 items
+2020-11-18 16:48:50,276 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#171984 update state for energy consume: total_sensor_consume: 297, self._state._energy: 0
+2020-11-18 16:48:50,304 - Automa - DEBUG - percept - Automa: Automa_ID_#171984 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99, 99, 99]
+2020-11-18 16:49:15,214 - Automa - INFO - __init__ - Automa Automa_ID_#382105 created
+2020-11-18 16:49:15,614 - Automa - INFO - __init__ - Automa Automa_ID_#53882 created
+2020-11-18 16:49:15,980 - Automa - INFO - __init__ - Automa Automa_ID_#558951 created
+2020-11-18 16:49:16,318 - Automa - INFO - __init__ - Automa Automa_ID_#234533 created
+2020-11-18 16:49:16,481 - Automa - INFO - __init__ - Automa Automa_ID_#245583 created
+2020-11-18 16:49:16,608 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#245583 inserted new event in queue, event id: None_#840460, events in queue: 1
+2020-11-18 16:49:16,770 - Automa - INFO - __init__ - Automa Automa_ID_#877956 created
+2020-11-18 16:49:17,001 - Automa - INFO - __init__ - Automa Automa_ID_#949552 created
+2020-11-18 16:49:17,095 - Automa - INFO - __init__ - Automa Automa_ID_#827684 created
+2020-11-18 16:49:17,140 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#827684 inserted new event in queue, event id: None_#398286, events in queue: 1
+2020-11-18 16:49:17,312 - Automa - INFO - __init__ - Automa Automa_ID_#932641 created
+2020-11-18 16:49:17,320 - Automa - INFO - __init__ - Automa Automa_ID_#544152 created
+2020-11-18 16:49:17,404 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#544152 inserted new event in queue, event id: None_#619661, events in queue: 1
+2020-11-18 16:49:17,448 - Automa - INFO - __init__ - Automa Automa_ID_#247311 created
+2020-11-18 16:49:17,453 - Automa - INFO - __init__ - Automa Automa_ID_#802534 created
+2020-11-18 16:49:17,502 - Automa - INFO - __init__ - Automa Automa_ID_#101390 created
+2020-11-18 16:49:17,549 - Automa - INFO - __init__ - Automa Automa_ID_#183388 created
+2020-11-18 16:49:17,601 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#183388 inserted new event in queue, event id: None_#624983, events in queue: 1
+2020-11-18 16:49:17,653 - Automa - INFO - __init__ - Automa Automa_ID_#424690 created
+2020-11-18 16:49:17,804 - Automa - INFO - __init__ - Automa Automa_ID_#9856 created
+2020-11-18 16:49:17,934 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#9856 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:17,935 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#9856 Evalutate Sensor ( name: Sensor_Name_#8988 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:17,937 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#9856 Evalutate Actuator ( name: Actuator_Name_#6458 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:18,144 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#9856 inserted new event in queue, event id: None_#76357, events in queue: 1
+2020-11-18 16:49:18,152 - Automa - INFO - __init__ - Automa Automa_ID_#275344 created
+2020-11-18 16:49:18,275 - Automa - INFO - __init__ - Automa Automa_ID_#224294 created
+2020-11-18 16:49:18,286 - Automa - INFO - __init__ - Automa Automa_ID_#138428 created
+2020-11-18 16:49:18,354 - Automa - INFO - __init__ - Automa Automa_ID_#412969 created
+2020-11-18 16:49:18,380 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#412969 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:18,382 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#412969 Evalutate Sensor ( name: Sensor_Name_#5235 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:18,384 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#412969 Evalutate Actuator ( name: Actuator_Name_#296 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:18,512 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#412969 inserted new event in queue, event id: None_#920056, events in queue: 1
+2020-11-18 16:49:18,520 - Automa - INFO - __init__ - Automa Automa_ID_#301161 created
+2020-11-18 16:49:18,568 - Automa - INFO - __init__ - Automa Automa_ID_#588539 created
+2020-11-18 16:49:18,571 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#588539 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:18,605 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#588539 Evalutate Sensor ( name: Sensor_Name_#4554 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:18,636 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#588539 Evalutate Actuator ( name: Actuator_Name_#811 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:18,673 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#588539 destroyed for damage
+2020-11-18 16:49:18,690 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#588539 Evalutate Hit damage with power: 100. resilience: 80, health: 0, active: True, critical: False, anomaly: False, destroyed: True, removed: False
+2020-11-18 16:49:18,800 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#588539 inserted new event in queue, event id: None_#563535, events in queue: 1
+2020-11-18 16:49:18,956 - Automa - INFO - __init__ - Automa Automa_ID_#846632 created
+2020-11-18 16:49:19,193 - Automa - INFO - __init__ - Automa Automa_ID_#453336 created
+2020-11-18 16:49:19,376 - Automa - INFO - __init__ - Automa Automa_ID_#498361 created
+2020-11-18 16:49:19,382 - Automa - INFO - __init__ - Automa Automa_ID_#947757 created
+2020-11-18 16:49:19,386 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#947757 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:19,387 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#947757 Evalutate Sensor ( name: Sensor_Name_#5327 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:19,425 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#947757 Evalutate Actuator ( name: Actuator_Name_#2980 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:19,487 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#947757 inserted new event in queue, event id: None_#785841, events in queue: 1
+2020-11-18 16:49:19,532 - Automa - INFO - __init__ - Automa Automa_ID_#371380 created
+2020-11-18 16:49:19,538 - Automa - INFO - __init__ - Automa Automa_ID_#115233 created
+2020-11-18 16:49:19,603 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#115233 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:19,604 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#115233 Evalutate Sensor ( name: Sensor_Name_#6080 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:19,631 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#115233 Evalutate Actuator ( name: Actuator_Name_#9146 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:19,737 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#115233 inserted new event in queue, event id: None_#79936, events in queue: 1
+2020-11-18 16:49:25,299 - Automa - INFO - __init__ - Automa Automa_ID_#450655 created
+2020-11-18 16:49:25,301 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:49:25,301 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:49:25,302 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: translate, object: Object_ID_#419714
+2020-11-18 16:49:25,303 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: catch, object: Object_ID_#428592
+2020-11-18 16:49:25,305 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: eat, object: Object_ID_#663820
+2020-11-18 16:49:25,347 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: shot, object: Object_ID_#390556
+2020-11-18 16:49:25,348 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included:  action_type: hit, object: Object_ID_#81816
+2020-11-18 16:49:25,350 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#699283
+2020-11-18 16:49:25,350 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: move_#343635, actions in queue: 1
+2020-11-18 16:49:25,353 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:49:25,633 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#669350, execute action: False, action not complete
+2020-11-18 16:49:25,634 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:25,636 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: run_#227738, actions in queue: 1
+2020-11-18 16:49:25,666 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:49:26,164 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#669350, execute action: True, action complete: removed from queue
+2020-11-18 16:49:26,164 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:26,169 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: translate_#812334, actions in queue: 1
+2020-11-18 16:49:26,170 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: translate, object: Object_ID_#706065
+2020-11-18 16:49:26,296 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#103080, execute action: True, action complete: removed from queue
+2020-11-18 16:49:26,299 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:26,340 - Automa - INFO - __init__ - Automa Automa_ID_#111220 created
+2020-11-18 16:49:26,404 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: translate_#852677, actions in queue: 1
+2020-11-18 16:49:26,433 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: translate, object: Automa_ID_#111220
+2020-11-18 16:49:26,473 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#111220 inserted new event in queue, event id: None_#345652, events in queue: 1
+2020-11-18 16:49:26,503 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#103080, execute action: True, action complete: removed from queue
+2020-11-18 16:49:26,504 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:26,550 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: catch_#830245, actions in queue: 1
+2020-11-18 16:49:26,552 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: catch, object: Object_ID_#604956
+2020-11-18 16:49:26,622 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#385902, execute action: True, action complete: removed from queue
+2020-11-18 16:49:26,657 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:26,752 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: shot_#135948, actions in queue: 1
+2020-11-18 16:49:26,754 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: shot, object: Object_ID_#524269
+2020-11-18 16:49:26,853 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#227155, execute action: False, action not complete
+2020-11-18 16:49:26,856 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:26,951 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: shot_#87369, actions in queue: 1
+2020-11-18 16:49:26,952 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: shot, object: Object_ID_#861750
+2020-11-18 16:49:27,109 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#227155, execute action: False, action not complete
+2020-11-18 16:49:27,129 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:27,170 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: hit_#75760, actions in queue: 1
+2020-11-18 16:49:27,174 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included:  action_type: hit, object: Object_ID_#812321
+2020-11-18 16:49:27,284 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#158892, execute action: False, action not complete
+2020-11-18 16:49:27,286 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:27,365 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: eat_#345441, actions in queue: 1
+2020-11-18 16:49:27,366 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: action_type: eat, object: Object_ID_#952753
+2020-11-18 16:49:27,418 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#696185, execute action: True, action complete: removed from queue
+2020-11-18 16:49:27,424 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:27,466 - Automa - DEBUG - insertAction - Automa: Automa_ID_#450655 inserted new action in queue, action id: attack_#278272, actions in queue: 1
+2020-11-18 16:49:27,467 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#450655, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#90537
+2020-11-18 16:49:27,514 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#450655. Actuator: Actuator_ID_#227155, execute action: True, action complete: removed from queue
+2020-11-18 16:49:27,518 - Automa - DEBUG - action - Automa: Automa_ID_#450655 executed action: created action_info with 1 items
+2020-11-18 16:49:30,780 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#450655 update state for energy consume: total_sensor_consume: 297, self._state._energy: 0
+2020-11-18 16:49:30,781 - Automa - DEBUG - percept - Automa: Automa_ID_#450655 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99, 99, 99]
+2020-11-18 16:49:40,497 - Automa - INFO - __init__ - Automa Automa_ID_#671828 created
+2020-11-18 16:49:40,600 - Automa - INFO - __init__ - Automa Automa_ID_#929089 created
+2020-11-18 16:49:40,732 - Automa - INFO - __init__ - Automa Automa_ID_#146732 created
+2020-11-18 16:49:40,803 - Automa - INFO - __init__ - Automa Automa_ID_#969493 created
+2020-11-18 16:49:40,835 - Automa - INFO - __init__ - Automa Automa_ID_#64664 created
+2020-11-18 16:49:40,867 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#64664 inserted new event in queue, event id: None_#657683, events in queue: 1
+2020-11-18 16:49:40,904 - Automa - INFO - __init__ - Automa Automa_ID_#517651 created
+2020-11-18 16:49:41,042 - Automa - INFO - __init__ - Automa Automa_ID_#993526 created
+2020-11-18 16:49:41,115 - Automa - INFO - __init__ - Automa Automa_ID_#712158 created
+2020-11-18 16:49:41,134 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#712158 inserted new event in queue, event id: None_#160603, events in queue: 1
+2020-11-18 16:49:41,142 - Automa - INFO - __init__ - Automa Automa_ID_#874170 created
+2020-11-18 16:49:41,182 - Automa - INFO - __init__ - Automa Automa_ID_#260111 created
+2020-11-18 16:49:41,226 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#260111 inserted new event in queue, event id: None_#275808, events in queue: 1
+2020-11-18 16:49:41,267 - Automa - INFO - __init__ - Automa Automa_ID_#583066 created
+2020-11-18 16:49:41,304 - Automa - INFO - __init__ - Automa Automa_ID_#451626 created
+2020-11-18 16:49:41,381 - Automa - INFO - __init__ - Automa Automa_ID_#652311 created
+2020-11-18 16:49:41,451 - Automa - INFO - __init__ - Automa Automa_ID_#566113 created
+2020-11-18 16:49:41,522 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#566113 inserted new event in queue, event id: None_#603808, events in queue: 1
+2020-11-18 16:49:41,593 - Automa - INFO - __init__ - Automa Automa_ID_#392637 created
+2020-11-18 16:49:41,601 - Automa - INFO - __init__ - Automa Automa_ID_#877498 created
+2020-11-18 16:49:41,603 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#877498 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:41,603 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#877498 Evalutate Sensor ( name: Sensor_Name_#2658 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:41,639 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#877498 Evalutate Actuator ( name: Actuator_Name_#2425 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:41,736 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#877498 inserted new event in queue, event id: None_#125610, events in queue: 1
+2020-11-18 16:49:41,775 - Automa - INFO - __init__ - Automa Automa_ID_#661389 created
+2020-11-18 16:49:41,815 - Automa - INFO - __init__ - Automa Automa_ID_#173439 created
+2020-11-18 16:49:41,820 - Automa - INFO - __init__ - Automa Automa_ID_#647830 created
+2020-11-18 16:49:41,880 - Automa - INFO - __init__ - Automa Automa_ID_#470384 created
+2020-11-18 16:49:41,882 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#470384 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:41,882 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#470384 Evalutate Sensor ( name: Sensor_Name_#1142 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:41,884 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#470384 Evalutate Actuator ( name: Actuator_Name_#9152 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:41,929 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#470384 inserted new event in queue, event id: None_#434982, events in queue: 1
+2020-11-18 16:49:41,965 - Automa - INFO - __init__ - Automa Automa_ID_#124111 created
+2020-11-18 16:49:42,008 - Automa - INFO - __init__ - Automa Automa_ID_#417710 created
+2020-11-18 16:49:42,065 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#417710 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:42,068 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#417710 Evalutate Sensor ( name: Sensor_Name_#398 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:42,069 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#417710 Evalutate Actuator ( name: Actuator_Name_#5438 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:42,111 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#417710 destroyed for damage
+2020-11-18 16:49:42,117 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#417710 Evalutate Hit damage with power: 100. resilience: 80, health: 0, active: True, critical: False, anomaly: False, destroyed: True, removed: False
+2020-11-18 16:49:42,166 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#417710 inserted new event in queue, event id: None_#190602, events in queue: 1
+2020-11-18 16:49:42,245 - Automa - INFO - __init__ - Automa Automa_ID_#556117 created
+2020-11-18 16:49:42,286 - Automa - INFO - __init__ - Automa Automa_ID_#595528 created
+2020-11-18 16:49:42,319 - Automa - INFO - __init__ - Automa Automa_ID_#654854 created
+2020-11-18 16:49:42,377 - Automa - INFO - __init__ - Automa Automa_ID_#868689 created
+2020-11-18 16:49:42,381 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#868689 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:42,382 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#868689 Evalutate Sensor ( name: Sensor_Name_#6831 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:42,383 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#868689 Evalutate Actuator ( name: Actuator_Name_#3129 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:42,459 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#868689 inserted new event in queue, event id: None_#612853, events in queue: 1
+2020-11-18 16:49:42,563 - Automa - INFO - __init__ - Automa Automa_ID_#766586 created
+2020-11-18 16:49:42,570 - Automa - INFO - __init__ - Automa Automa_ID_#247283 created
+2020-11-18 16:49:42,597 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#247283 - automa_energy_hit_power: 100, sensor_energy_hit_power: 30, actuator_energy_hit_power: 70
+2020-11-18 16:49:42,598 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#247283 Evalutate Sensor ( name: Sensor_Name_#6850 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:42,601 - Automa - DEBUG - evalutateHit - Automa: Automa_ID_#247283 Evalutate Actuator ( name: Actuator_Name_#1300 ) Hit damage with power: 100. resilience: 100, health: 100, active: True, critical: False, anomaly: False, destroyed: False, removed: False
+2020-11-18 16:49:42,705 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#247283 inserted new event in queue, event id: None_#105627, events in queue: 1
+2020-11-18 16:49:43,073 - Automa - INFO - __init__ - Automa Automa_ID_#923645 created
+2020-11-18 16:49:43,106 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:49:43,108 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:49:43,109 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: translate, object: Object_ID_#902088
+2020-11-18 16:49:43,110 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: catch, object: Object_ID_#890090
+2020-11-18 16:49:43,110 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: eat, object: Object_ID_#227016
+2020-11-18 16:49:43,111 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: shot, object: Object_ID_#95308
+2020-11-18 16:49:43,112 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included:  action_type: hit, object: Object_ID_#641213
+2020-11-18 16:49:43,114 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#662951
+2020-11-18 16:49:43,115 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: move_#342111, actions in queue: 1
+2020-11-18 16:49:43,119 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2020-11-18 16:49:43,403 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#821096, execute action: False, action not complete
+2020-11-18 16:49:43,403 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:43,407 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: run_#571241, actions in queue: 1
+2020-11-18 16:49:43,463 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2020-11-18 16:49:43,973 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#821096, execute action: True, action complete: removed from queue
+2020-11-18 16:49:43,996 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:44,003 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: translate_#276558, actions in queue: 1
+2020-11-18 16:49:44,004 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: translate, object: Object_ID_#931292
+2020-11-18 16:49:44,037 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#593476, execute action: True, action complete: removed from queue
+2020-11-18 16:49:44,066 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:44,137 - Automa - INFO - __init__ - Automa Automa_ID_#604304 created
+2020-11-18 16:49:44,169 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: translate_#990690, actions in queue: 1
+2020-11-18 16:49:44,170 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: translate, object: Automa_ID_#604304
+2020-11-18 16:49:44,229 - Automa - DEBUG - insertEvent - Automa: Automa_ID_#604304 inserted new event in queue, event id: None_#319467, events in queue: 1
+2020-11-18 16:49:44,234 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#593476, execute action: True, action complete: removed from queue
+2020-11-18 16:49:44,277 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:44,319 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: catch_#657586, actions in queue: 1
+2020-11-18 16:49:44,320 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: catch, object: Object_ID_#182533
+2020-11-18 16:49:44,353 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#897412, execute action: True, action complete: removed from queue
+2020-11-18 16:49:44,357 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:44,497 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: shot_#416586, actions in queue: 1
+2020-11-18 16:49:44,499 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: shot, object: Object_ID_#321414
+2020-11-18 16:49:44,506 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#783390, execute action: False, action not complete
+2020-11-18 16:49:44,545 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:44,619 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: shot_#19848, actions in queue: 1
+2020-11-18 16:49:44,621 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: shot, object: Object_ID_#325432
+2020-11-18 16:49:44,655 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#783390, execute action: False, action not complete
+2020-11-18 16:49:44,691 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:44,697 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: hit_#678114, actions in queue: 1
+2020-11-18 16:49:44,697 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included:  action_type: hit, object: Object_ID_#288825
+2020-11-18 16:49:44,702 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#120193, execute action: False, action not complete
+2020-11-18 16:49:44,702 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:44,802 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: eat_#673336, actions in queue: 1
+2020-11-18 16:49:44,805 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: action_type: eat, object: Object_ID_#590835
+2020-11-18 16:49:44,915 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#844512, execute action: True, action complete: removed from queue
+2020-11-18 16:49:44,915 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:44,969 - Automa - DEBUG - insertAction - Automa: Automa_ID_#923645 inserted new action in queue, action id: attack_#785266, actions in queue: 1
+2020-11-18 16:49:44,970 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#923645, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#873503
+2020-11-18 16:49:45,077 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#923645. Actuator: Actuator_ID_#783390, execute action: True, action complete: removed from queue
+2020-11-18 16:49:45,080 - Automa - DEBUG - action - Automa: Automa_ID_#923645 executed action: created action_info with 1 items
+2020-11-18 16:49:47,977 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#923645 update state for energy consume: total_sensor_consume: 297, self._state._energy: 0
+2020-11-18 16:49:47,978 - Automa - DEBUG - percept - Automa: Automa_ID_#923645 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99, 99, 99]

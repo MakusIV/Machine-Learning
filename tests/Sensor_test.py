@@ -58,7 +58,7 @@ def testClassSensor():
     
     # test Sensor.evalutateDamage( energy, power )
     sensor = Sensor( typ = "radio", position = (0, 0, 0), range_max=(50, 50, 50), power=50, resilience=50, accuracy=7)
-    sensor.evalutateSelfDamage(energy = 100, power = 60)
+    sensor.evalutateSelfDamage(power = 60)
 
     if sensor._state._health != 90:
         print('Sensor.evalutatSelfDamage(energy = 100, power = 60) Failed!! ', sensor._sensibility, sensor._power, sensor._resilience, sensor._name, sensor._state, sensor._state._health)

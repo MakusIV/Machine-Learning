@@ -58,11 +58,6 @@ class Actuator:
         return self._class == actuator_class
     
 
-    def isOperative(self):
-        """Return true if sensor state is running"""
-        return self._state.isRunning()
-        
-
     #TEST: OK
     def isClassAndType( self, actuator_class, actuator_type ):
         """Return True if actuator have self._class == actuator_class and self._type == actuator_type """   
@@ -132,7 +127,7 @@ class Actuator:
         result = posManager.moveObject( destination, obj )# lo spostamento dell'oggetto nella posizione di destinazione avviene sempre in quanto rientra nel range dell'attuatore. Quindi l'eventuale richiesta di più task per la conclusione dell'attuazione non può essere imputata al raggiungimento della destinazione come nella move action ma, eventualmente, ad un tempo e quindi gestita nellla classe Automa
 
         # Creazione evento e inserimento nella event queue qualora l'object è un automa
-        self.setEvent( automa = automa, result = True, obj = obj, typ = 'PUSH', duration = 0 ) # duration = 0 -> effetti evento già applicati su object        
+        self.setEvent( automa = automa, result = True, obj = obj, typ = 'PUSH', duration = 0, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
         logger.logger.debug("Actuator: {0} result manipulate = {1}. destination: {2}, range: {3}, energy_actuator: {4}".format( self._id, result, destination, self._range, energy_actuator ))        
         return result, energy_actuator, manipulation_terminated 
 
@@ -283,29 +278,31 @@ class Actuator:
             logger.logger.debug("Actuator: {0} not executed projectile launch action because object not in range. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator ) )
             return [ False, energy_actuator, firing_terminated ]
        
-        if obj.getHealth() != obj.evalutateDamage( self._power ):
-            obj_resilience = obj.getResilience()            
-            obj_health = obj._state.getHealth()
-            obj_active = obj._state.isActive()
-            obj_critical = obj._state.isCritical()
-            obj_anomaly = obj._state.isAnomaly()
+
+        if automa.checkClass( obj ):
+            result = obj.evalutateHit( self._power, random_hit = False ) # random_hit = False solo per i test in quanto sono impostati per valutare un HIT a piena POWER
+
+        else:
+            result = obj.getHealth() != obj.evalutateDamage( self._power )
+
+        #if obj.getHealth() != obj.evalutateDamage( self._power ):        
+        if result:
             obj_destroyed = obj._state.isDestroyed()
-            obj_remove = obj._state.isRemoved()
-            logger.logger.debug("Actuator: {0} executed projectile launch action with object damage. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}, object_resilience: {5}, object_health: {6}, object_active: {7}, object_critical: {8}, object_anomaly: {9}, object_destroyed: {10}, object_removed: {11}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator, obj_resilience, obj_health, obj_active, obj_critical, obj_anomaly, obj_destroyed, obj_remove ) )
+            logger.logger.debug("Actuator: {0} executed projectile launch action with object damage. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}, object_destroyed: {5}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator, obj_destroyed ) )
 
             if obj_destroyed:
                 firing_terminated = True
 
                 if posManager.removeObject( obj ):                                
                     logger.logger.debug("Actuator: {0} executed projectile launch action with object destruction and removal from position manager. automa: {1}, object_destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
-                    self.setEvent( automa = automa, result = True, obj = obj, typ = 'POP', duration = 0, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
+                    self.setEvent( automa = automa, result = True, obj = obj, typ = 'HIT', duration = 0, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
                     return [ True, energy_actuator, firing_terminated ]
         
                 else:                
                     raise Exception("shooting executed but object wasn't removed from position manager")
                             
             logger.logger.debug("Actuator: {0} executed projectile launch action but object wasn't destroyed. automa: {1}, object destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
-            self.setEvent( automa = automa, result = True, obj = obj, typ = 'POP', duration = 1, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
+            self.setEvent( automa = automa, result = True, obj = obj, typ = 'HIT', duration = 1, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
             return [ True, energy_actuator, firing_terminated ]
 
         logger.logger.debug("Actuator: {0} Not executed projectile launch action Automa power < object resilience. automa: {1}, object destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
@@ -367,7 +364,7 @@ class Actuator:
 
 
     # TEST: OK
-    def evalutateSelfDamage(self, energy, power):
+    def evalutateSelfDamage(self, power):
         """Evalutate the damage on actuator and update state"""
         if power > self._resilience:
             damage = power - self._resilience# in realtà il danno dovrebbe essere proporzionale all'energia
