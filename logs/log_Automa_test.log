@@ -42,3 +42,6 @@
 2020-11-18 16:48:46,919 - __main__ - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
 2020-11-18 16:49:27,626 - Automa_test - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
 2020-11-18 16:49:45,087 - Automa_test - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
+2020-11-19 11:10:39,525 - __main__ - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
+2020-11-19 11:41:27,140 - __main__ - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
+2020-11-19 12:01:16,137 - __main__ - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)

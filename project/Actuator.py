@@ -12,7 +12,7 @@ logger = Logger(module_name = __name__, class_name = 'Actuator')
 
 class Actuator:
     #position, range_max, typ, emissivity_perception = 1, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None 
-    def __init__(self, position, range_max, class_, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None  ):
+    def __init__(self, position, range_max, class_, typ, power = 100,  resilience = 100, delta_t = 0.01, mass = 10, name = None  ):
 
         if not self.checkParam( position, class_, typ, range_max, power, resilience, delta_t ):
             raise Exception("Invalid parameters! Actuator not istantiate.")
@@ -27,6 +27,7 @@ class Actuator:
         self._type = typ # il tipo di attuazione (vedi General.ACTUATOR_TYPE)
         self._class = class_ # la classe dell'attuatore (vedi General.ACTUATOR_TYPE)
         self._position = position
+        self._mass = mass
       
 
         if not name:
@@ -277,45 +278,29 @@ class Actuator:
         # eventualmente un eventuale danno può aumentatare l'impronta infrarossa o radio o altro ....
         # Nota: deve essere quantificato il tempo (in task -cicli) necessario affinchè l'HIT colpisca il target e inserito nell'evento come time2go (la duration è 1). Questo tempo deve essere differenziato in base al tipo di shooting
         
-        firing_terminated = False # Se l'oggetto è distrutto non è più necessario sparare
-        obj = param[ 0 ]       
+        firing_terminated = True
+        obj = param[ 0 ]# cambiare param[0] dovrebbe riportare solo la posizione dell'oggetto       
         energy_actuator = self._state.updateEnergy( self._power, self._delta_t )
         # verifica se param[1] destinazione del proiettile, range attuatore e posizione dell'automa sono idonei per l'esecuzione della attuaione
         if not self.isInRange( obj.getPosition() ):
             logger.logger.debug("Actuator: {0} not executed projectile launch action because object not in range. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator ) )
             return [ False, energy_actuator, firing_terminated ]
        
+        # creazione evento e inserimento nella lista degli eventi dell'oggetto: quinndi anche un semplice object deve avere una lista degli eventi
+        # oppure è il position manager che deve gestire l'applicazione degli effetti dell'evento ed come viene fatto qui cioè nl mommento di creazione dell'evento da parte dell'auttuatore
+        # ma in questo caso non viene considerato il tempo necessario per l'esecuzione dell'attuazione
+        # si 
+        # può fre in questo modo: se il taret è un automa si crea l'evento e lo si inserisce nella event queue, se invece è un object si applicano direttamente gli effetti (trascurando il tempo di attuazione)
+        # no deve essere realizzata una event queue anche per l'object
 
-        if automa.checkClass( obj ): #l'Automa ha una valutazione più complessa degli effetti di un HIT rispetto ad un semplice oggetto
-            result = obj.evalutateHit( self._power, random_hit = False ) # random_hit = False solo per i test in quanto sono impostati per valutare un HIT a piena POWER
+        duration = 1 # qui valutare la durata in base al tipo di Hit (es. un plasma può avere una durata di piiiù cicli
+        time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)
 
-        else:
-            result = obj.getHealth() != obj.evalutateDamage( self._power )
-
-        if result:
-            obj_destroyed = obj._state.isDestroyed()
-            logger.logger.debug("Actuator: {0} executed projectile launch action with object damage. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}, object_destroyed: {5}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator, obj_destroyed ) )
-
-            if obj_destroyed:
-                firing_terminated = True
-
-                if posManager.removeObject( obj ):                                
-                    logger.logger.debug("Actuator: {0} executed projectile launch action with object destruction and removal from position manager. automa: {1}, object_destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
-                    self.setEvent( automa = automa, result = True, obj = obj, typ = 'HIT', duration = 0, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
-                    return [ True, energy_actuator, firing_terminated ]
-        
-                else:                
-                    raise Exception("shooting executed but object wasn't removed from position manager")
-                            
-            logger.logger.debug("Actuator: {0} executed projectile launch action but object wasn't destroyed. automa: {1}, object destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
-            self.setEvent( automa = automa, result = True, obj = obj, typ = 'HIT', duration = 1, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
-            return [ True, energy_actuator, firing_terminated ]
-
-        logger.logger.debug("Actuator: {0} Not executed projectile launch action Automa power < object resilience. automa: {1}, object destroyed: {2}".format( self._id, automa.getId(), obj.getId() ) )
+        event = Event( typ = "HIT", volume = None, duration = duration, time2go = time2go, energy = None, power = self._power, mass = self._mass ) # duration = 0 -> effetti evento già applicati su object
+        obj.insertEvent( event ) 
+        logger.logger.debug("Actuator: {0} Executed projectile launch action from Automa: {1}, Created event: {2} and insert in Event Queue of the target Object: {3}".format( self._id, automa.getId(), event._id, obj.getId() ) )        
         return [ False, energy_actuator, firing_terminated ]
 
-
-    
 
     def setId( self, id = None ):
 
@@ -394,3 +379,5 @@ class Actuator:
             logger.logger.debug("Actuator: {0} result action = {1}. Inserted assimilate event in object's event queue: event._id: {2}, event._typ: {3}, event._volume: {4}, event._time2go: {5}, event._duration: {6}, event._energy: {7}, event._power: {8}, event._mass: {9}".format( self._id, result, event._id, event._type, event._volume, event._time2go, event._duration, event._energy, event._power, event._mass ))        
 
         return True
+
+  

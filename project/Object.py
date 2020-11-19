@@ -3,6 +3,7 @@ from Coordinate import Coordinate
 import General
 from State import State
 from LoggerClass import Logger
+from Event import Event
 
 # LOGGING --
  
@@ -23,6 +24,7 @@ class Object:
             self.setState(state)
             self._emissivity = emissivity
             self._caught_from = None #l'id dell'oggetto che ha preso (catturato) questo oggetto
+            self._eventsQueue = {} #  {key: event id, value = event}
             
             if not self.checkParam( dimension, mass, resilience, state, coord ):
                 raise Exception("Invalid parameters! Object not istantiate.")
@@ -45,6 +47,147 @@ class Object:
             if not coord:
                 self._coord = Coordinate(0, 0, 0)
 
+
+    def runTask( self, posManager ):
+        
+        self.update() #check the eventsQueue and update state
+        logger.logger.info( "Object: {0} running task: update".format( self._name ))
+        return True
+
+
+    def update(self, posManager ):
+        """Update state for check of eventsQueue"""        
+
+        events = self.getEventActive()
+        # l'evento riguarda una posizione indipendentemente dall'eventuale target impostato, quindi in base 
+        # alle caratteristiche dell'evento che bisogna valutare quali elementi sono coinvolti e come sono
+        # coinvolti
+        
+        for _, ev in events: # scorre gli eventi da eseguire della lista eventi attivi
+            logger.logger.debug("Object: {0} active event {1}".format( self._name, ev._type ))
+
+            if ev._duration <= 0: # effetti dell'evento applicati durante la action dell'oggetto che ha generato l'evento
+                    logger.logger.debug("Object: {0} event._duration <= 0, maybe damage already evalutated in action execution".format( self._name ) )
+                
+
+            if ev.isHit(): # solo per l'evento SHOT viene valutato l'eventuale danno
+                # NOTA: tu lo fai risolvere direttamente nell'azione (valuta il danno e se l'obj è distrutto lo rimuove), qui invece è previsto
+                # che l'azione registra un evento nella lista eventi dell'automa (ma se non è un automa quindi non ha event queue anzi ogni oggetto in questo caaso dovrebbe avere una queue event e un methodo di update) e successivamente gli effetti dell'evento vengono valutati
+                # posso lasciare che alcune azioni vengano immediatamente valutati gli effetti e effettuati gli aggiornamenti mentre per altre vengano create eventi da gestire tramite coda queue
+                self.evalutateHit( ev._power, random_hit = True, posManager = posManager )
+                # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale eliminazione dell'oggetto
+
+
+            if ev.isPop(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
+                self.evalutatePop( ev._power, ev._mass, posManager )
+                # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
+
+            if ev.isPush(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
+                self.evalutatePush( ev._power, ev._mass, posManager )
+                # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
+
+            if ev.isAssimilate(): # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
+                self.evalutateEat( ev._power, ev._mass, posManager )
+                # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale eliminazione dell'oggetto
+
+        logger.logger.debug("Object: {0} executed update internal state".format( self._name ))
+        return True
+
+    
+    
+
+    def evalutateHit( self, power, posManager, random_hit = True ):
+        """" evalutate event hit effect """
+        
+        if random_hit:
+            energy_hit_power = int( power * random.uniform(0, 1) )
+            
+        else:
+            energy_hit_power = power
+            
+        logger.logger.debug("Object: {0} - energy_hit_power: {1}".format( self._id, energy_hit_power ))
+                
+        health = self.evalutateDamage( energy_hit_power )
+        resilience = self._resilience                    
+        active = self._state.isActive()
+        critical = self._state.isCritical()
+        anomaly = self._state.isAnomaly()
+
+        if health == 0: # valutazione del danno per l'automa. Se restituisce 0 l'automa è dsitrutto
+            self._state.destroy()
+            logger.logger.debug("Object: {0} object's health = 0, object destroyed".format( self._id ))
+        
+            
+            destroyed = self._state.isDestroyed()                                                
+            remove = self._state.isRemoved()
+            logger.logger.debug("Object: {0} Evalutate Hit damage with power: {1}. resilience: {2}, health: {3}, active: {4}, critical: {5}, anomaly: {6}, destroyed: {7}, removed: {8}".format( self._id, power, resilience, health, active, critical, anomaly, destroyed, remove ) )
+        
+            if destroyed:
+        
+                if posManager.removeObject( self ):                                
+                    logger.logger.debug("Object: {0} object removed from position manager".format( self._id ) )
+                    # valutare se è opportuno inviare un evento da inviare ... a chi? (l'eventuale esecutore del HIT non è conosciuto da object)
+                    return True
+        
+                else:                
+                    raise Exception("Object: {0} was destructed but not removed from position manager".format( self._id ) )
+                            
+        logger.logger.debug("Object: {0} object was hit but not destructed. Health = {0}, resilience: {1}, active: {2}, critical: {3}, anomaly: {4}".format( self._id, health, resilience, active, critical, anomaly ) )            
+        return True
+
+    
+
+
+    def evalutatePop( self, power, mass, posManager ):
+        
+        ratio = self._power * self._mass / ( mass * power )
+        logger.logger.debug("Automa: {0} Evalutate POP with power: {1}. ratio: {2}".format( self._id, power, ratio ) )
+
+        if ratio <= 1:
+            logger.logger.debug("Automa: {0} Confirmed POP effect: {1}. ratio: {2}".format( self._id, power, ratio ) )
+            return True
+        
+        logger.logger.debug("Automa: {0} Ininfluence POP effect: {1}. ratio: {2}".format( self._id, power, ratio ) )
+        return False
+
+
+    def insertEvent(self, event):
+        """insert event in eventsQueue"""
+        if not event or not isinstance( event, Event ):
+            return False
+
+        self._eventsQueue[ event._id ] = event
+        logger.logger.debug("Object: {0} inserted new event in queue, event id: {1}, events in queue: {2}".format( self._name, event._id, len( self._eventsQueue ) ))
+        return True
+
+    def removeEvent(self, event):
+        """remove event in eventsQueue"""
+        if not isinstance(event._id, int) :
+            return False
+
+        self._eventsQueue.pop( event._id )        
+        logger.logger.debug("Object: {0} removed event in queue, event id: {1}, events in queue: {2}".format( self._name, event._id, len( self._eventsQueue ) ))
+        return True
+
+    def getEventActive(self):
+        """Return a list with activable events for a single task. Update the event Queue"""
+        active = [] # list of active events
+        
+        for ev in list( self._eventsQueue.values() ):
+
+            if ev.isAwaiting(): # event not activable in this task
+                ev.decrTime2Go() # decrement time to go
+                self._eventsQueue[ ev.getId() ] = ev # update events queue
+
+            elif ev.isActivable(): # event activable
+                ev.decrDuration() # decrement duration
+                self._eventsQueue[ ev.getId() ] = ev # update events queue
+                active.append( ev ) # insert the event in active events list
+
+            else: # expired event
+                self._eventsQueue.pop( ev.getId() ) #remove element from events queue 
+
+        return active
 
 
     #TEST: OK (indiretto)
