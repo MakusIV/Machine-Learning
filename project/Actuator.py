@@ -270,6 +270,13 @@ class Actuator:
         """Execute projectile launching action and return action_info"""
         # action_type: shot
         #param[0] = object, param[1]= destination
+
+        #NOTA: lo shooting è imèplementato iin modo da applicare immediatamente gli effetti dell'HIT utilizzando il Position_manager per gestire l'eventuale eliminazione
+        # del target. Nello sviluppo successivo posso considerare la valutazione degli effetti dell'HIT nel Task (ciclo) del target mediante l'evento. In questo modo gli elementi da 
+        # considerare sono: cosa deve sapere l'automa degli effetti del HIT subiti dal target e come (se l'oggetto viene distrutto viene eliminato e quindi non sarà più visibile dall'Automa nella fase Perception del suo successivo task)
+        # eventualmente un eventuale danno può aumentatare l'impronta infrarossa o radio o altro ....
+        # Nota: deve essere quantificato il tempo (in task -cicli) necessario affinchè l'HIT colpisca il target e inserito nell'evento come time2go (la duration è 1). Questo tempo deve essere differenziato in base al tipo di shooting
+        
         firing_terminated = False # Se l'oggetto è distrutto non è più necessario sparare
         obj = param[ 0 ]       
         energy_actuator = self._state.updateEnergy( self._power, self._delta_t )
@@ -279,13 +286,12 @@ class Actuator:
             return [ False, energy_actuator, firing_terminated ]
        
 
-        if automa.checkClass( obj ):
+        if automa.checkClass( obj ): #l'Automa ha una valutazione più complessa degli effetti di un HIT rispetto ad un semplice oggetto
             result = obj.evalutateHit( self._power, random_hit = False ) # random_hit = False solo per i test in quanto sono impostati per valutare un HIT a piena POWER
 
         else:
             result = obj.getHealth() != obj.evalutateDamage( self._power )
 
-        #if obj.getHealth() != obj.evalutateDamage( self._power ):        
         if result:
             obj_destroyed = obj._state.isDestroyed()
             logger.logger.debug("Actuator: {0} executed projectile launch action with object damage. automa: {1}, object position: {2}, range: {3}, energy_actuator: {4}, object_destroyed: {5}".format( self._id, automa.getId(), obj.getPosition(), self._range, energy_actuator, obj_destroyed ) )
