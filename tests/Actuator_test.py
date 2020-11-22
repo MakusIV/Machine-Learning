@@ -20,13 +20,15 @@ logger = Logger(module_name = __name__, class_name = 'Actuator_test')
 def testClassActuator():
 
     result = True 
+    message = 'MESSAGE: '
 
     #position, range_max, class_, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None   
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' )
 
 
     if actuator._position != ( 0, 0, 0 ) or not actuator._name or actuator._power != 100 or actuator._resilience != 100 or not actuator._state or actuator._delta_t != 0.01 :
-        print('Actuator Failed!! ', actuator._position, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
+        message = message +'\n' + 'Actuator Failed!! '
+        print( message ,actuator._position, actuator._name, actuator._power, actuator._resilience, actuator._delta_t ) 
         result = False 
     
     
@@ -38,8 +40,9 @@ def testClassActuator():
     except Exception:
         pass
 
-    else:
-        print('Actuator Failed!! Not launch exception for not valid range_max parameter 1', actuator._range, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
+    else:        
+        message = message +'\n' + 'Actuator Failed!! Not launch exception for not valid range_max parameter 1 '
+        print( message ,actuator._position, actuator._name, actuator._power, actuator._resilience, actuator._delta_t ) 
         result = False
 
 
@@ -50,7 +53,8 @@ def testClassActuator():
         pass
 
     else:
-        print('Actuator Failed!! Not launch exception for not valid range_max parameter (1, 1, -1)', actuator._range, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
+        message = message +'\n' + 'Actuator Failed!!  Not launch exception for not valid range_max parameter (1, 1, -1) '
+        print( message , actuator._range, actuator._name, actuator._power, actuator._resilience, actuator._delta_t )         
         result = False
 
 
@@ -61,7 +65,8 @@ def testClassActuator():
         pass
 
     else:
-        print('Actuator Failed!! Not launch exception  for not valid typ parameter', actuator._class, actuator._type, actuator._name, actuator._power, actuator._resilience, actuator._delta_t)
+        message = message +'\n' + 'Actuator Failed!!   Not launch exception  for not valid typ parameter '
+        print( message , actuator._class, actuator._type, actuator._name, actuator._power, actuator._resilience, actuator._delta_t )         
         result = False
 
 
@@ -225,8 +230,8 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not catch or energy_actuator != actuator._state.getEnergy() or obj.getCaught_from() != automa.getId() or not automa.checkCaught( obj ) or posMng.getObject( obj ) or len( obj._eventsQueue ) != 1:  
-        print('Actuator.exc_command() - object_catching - Failed!! ', catch, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
+    if not catch or energy_actuator != actuator._state.getEnergy() or len( obj._eventsQueue ) != 1 or not list( obj._eventsQueue.values() )[0].isPop():  
+        print('Actuator.exc_command() - object_catching - Failed!!', catch, energy_actuator, actuator._state.getEnergy() )
         result = False 
 
 
@@ -299,7 +304,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1:  
+    if not fire or energy_actuator != actuator._state.getEnergy() or len( obj._eventsQueue ) != 1 or not list( obj._eventsQueue.values() )[0].isHit():  
         print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -317,7 +322,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if fire or obj.getResilience() == 80 or obj.getHealth() == 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) == 1:
+    if fire or len( obj._eventsQueue ) == 1:
         print('Actuator.exc_command() - projectile_launching light cannon - Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -335,7 +340,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1:  
+    if not fire or energy_actuator != actuator._state.getEnergy() or len( obj._eventsQueue ) != 1 or not list( obj._eventsQueue.values() )[0].isHit():  
         print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -354,7 +359,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or not actuation_terminated or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 0 or posMng.getObject( obj ) == obj or len( obj._eventsQueue ) != 1: 
+    if not fire or not actuation_terminated or energy_actuator != actuator._state.getEnergy() or len( obj._eventsQueue ) != 1 or not list( obj._eventsQueue.values() )[0].isHit(): 
         print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -373,7 +378,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if fire or actuation_terminated or obj.getResilience() == 80 or obj.getHealth() == 90 or len( obj._eventsQueue ) == 1:  
+    if fire or len( obj._eventsQueue ) == 1:  
         print('Actuator.exc_command() - projectile_launching heavy cannon- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -392,7 +397,7 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1: 
+    if not fire or energy_actuator != actuator._state.getEnergy() or len( obj._eventsQueue ) != 1 or not list( obj._eventsQueue.values() )[0].isHit(): 
         print('Actuator.exc_command() - plasma_launching laser- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
@@ -410,13 +415,13 @@ def testClassActuator():
     energy_actuator = action_info[ 1 ]
     actuation_terminated = action_info[ 2 ]
 
-    if not fire or energy_actuator != actuator._state.getEnergy() or obj.getResilience() != 80 or obj.getHealth() != 90 or posMng.getObject( obj ) != obj or len( obj._eventsQueue ) != 1: 
+    if not fire or energy_actuator != actuator._state.getEnergy() or len( obj._eventsQueue ) != 1 or not list( obj._eventsQueue.values() )[0].isHit(): 
         print('Actuator.exc_command() - object_hitter drill- Failed!! ', fire, energy_actuator, actuator._state.getEnergy(), obj.getCaught_from() )
         result = False 
 
 
 
-
+    print( message )
     return result
 
 print("Actuator class test result:", testClassActuator())

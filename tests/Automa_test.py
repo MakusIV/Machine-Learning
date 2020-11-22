@@ -36,24 +36,39 @@ def testClassAutoma():
     
     
     if automa.checkClass( automa ) == False or automa._name != 'Automa' or automa._dimension != [1, 1, 1] or automa._resilience != 100 or automa._power != 100 or not automa._state or not isinstance(automa._state, State) or not automa._state.isRunning():
-        print('Automa Failed!! ', automa._name, automa._dimension, automa._resilience, automa._state)
+        message = message +'\n' + 'Automa Failed!!'
+        print( message ,automa._name, automa._dimension, automa._resilience, automa._state )                         
         result = False 
     
 
+    
+    state = automa._state    
+    automa.destroy()
+
+    if not state.isDestroyed() or not automa._state.isDestroyed():
+        message = message +'\n' + 'Automa.destroy() Failed!!! '
+        print( message , state, obj )
+        return False
+
+
+
     # test: automa.select_actuators( action )
     #
+    automa = Automa(coord = coord, sensors = sensors, actuators = actuators, mass = 30)    
     action = [ 'move', (10, 10, 10), 0.7 ] #(action_type, position or object) 
     actuators_activation = automa.select_actuators( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != ( 10, 10, 10 ) or actuators_activation[1][1] != 0.7:
-        print('Automa.select_actuators( action ) move  Failed!!', actuators_activation[0], actuators_activation[1])
+        message = message +'\n' + 'Automa.select_actuators( action ) move Failed!!'
+        print( message ,actuators_activation[0], actuators_activation[1] )                         
         result = False 
 
     action = [ 'run', (10, 10, 10) ] #(action_type, position or object) 
     actuators_activation = automa.select_actuators( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != ( 10, 10, 10 ) or actuators_activation[1][1] != 1:
-        print('Automa.select_actuators( action ) run Failed!!', actuators_activation[0], actuators_activation[1])
+        message = message +'\n' + 'Automa.select_actuators( action ) run Failed!!'
+        print( message ,actuators_activation[0], actuators_activation[1] )                         
         result = False 
 
     automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "object_manipulator", typ = "clamp", power = 100,  resilience = 100, delta_t = 0.01 ) )
@@ -62,7 +77,8 @@ def testClassAutoma():
     actuators_activation = automa.select_actuators( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj or actuators_activation[1][1] != (8, 8, 8):
-        print('Automa.select_actuators( action ) translate Failed!!', actuators_activation[0], actuators_activation[1])
+        message = message +'\n' + 'Automa.select_actuators( action ) translate Failed!!'
+        print( message ,actuators_activation[0], actuators_activation[1] )                         
         result = False 
 
     automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "object_catcher", typ = "clamp", power = 100,  resilience = 100, delta_t = 0.01 ) )
@@ -71,7 +87,8 @@ def testClassAutoma():
     actuators_activation = automa.select_actuators( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
-        print('Automa.select_actuators( action ) catch Failed!!', actuators_activation[0], actuators_activation[1])
+        message = message +'\n' + 'Automa.select_actuators( action ) catch Failed!!'
+        print( message ,actuators_activation[0], actuators_activation[1] )                         
         result = False 
 
     automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "object_assimilator", typ = "jaw", power = 100,  resilience = 100, delta_t = 0.1 ) )
@@ -80,7 +97,8 @@ def testClassAutoma():
     actuators_activation = automa.select_actuators( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
-        print('Automa.select_actuators( action ) eat Failed!!', actuators_activation[0], actuators_activation[1])
+        message = message +'\n' + 'Automa.select_actuators( action ) eat Failed!!'
+        print( message ,actuators_activation[0], actuators_activation[1] )                         
         result = False 
 
     automa.setActuator( Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "plasma_launcher", typ = "laser", power = 100,  resilience = 100, delta_t = 0.01 ) )
@@ -89,7 +107,8 @@ def testClassAutoma():
     actuators_activation = automa.select_actuators( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
-        print('Automa.select_actuators( action ) shot Failed!!', actuators_activation[0], actuators_activation[1])
+        message = message +'\n' + 'Automa.select_actuators( action ) shot Failed!!'
+        print( message ,actuators_activation[0], actuators_activation[1] )                         
         result = False 
     
 
@@ -99,7 +118,8 @@ def testClassAutoma():
     actuators_activation = automa.select_actuators( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
-        print('Automa.select_actuators( action ) hit Failed!!', actuators_activation[0], actuators_activation[1])
+        message = message +'\n' + 'Automa.select_actuators( action ) hit Failed!!'
+        print( message ,actuators_activation[0], actuators_activation[1] )                         
         result = False 
 
     
@@ -109,7 +129,8 @@ def testClassAutoma():
     actuators_activation = automa.select_actuators( action )
 
     if not actuators_activation or not isinstance(actuators_activation, list) or not isinstance(actuators_activation[0], Actuator) or actuators_activation[1][0] != obj:
-        print('Automa.select_actuators( action ) attack Failed!!', actuators_activation[0], actuators_activation[1])
+        message = message +'\n' + 'Automa.select_actuators( action ) attack Failed!!'
+        print( message ,actuators_activation[0], actuators_activation[1] )                         
         result = False 
     
 
@@ -123,7 +144,8 @@ def testClassAutoma():
     action_info = automa.action(posMng)
 
     if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 93:
-        print('Automa.action(posMng) move Failed!!',action_info[0][0], action_info[0][1])
+        message = message +'\n' + 'Automa.action(posMng) move Failed!!'
+        print( message ,action_info[0][0], action_info[0][1], automa.getId() )                         
         result = False 
     
 
@@ -138,7 +160,8 @@ def testClassAutoma():
     action_info = automa.action(posMng)
 
     if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 83:
-        print('Automa.action(posMng) run Failed!!',action_info[0][0], action_info[0][1])
+        message = message +'\n' + 'Automa.action(posMng) run Failed!!'
+        print( message ,action_info[0][0], action_info[0][1], automa.getId() )                         
         result = False 
 
 
@@ -156,7 +179,8 @@ def testClassAutoma():
     action_info = automa.action(posMng)
 
     if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getPosition() != (7, 7, 7):
-        print('Automa.action(posMng) translate Object Failed!!',action_info[0][0], action_info[0][1], obj.getPosition())
+        message = message +'\n' + 'Automa.action(posMng) translate Automa Failed!!'
+        print( message ,action_info[0][0], action_info[0][1], automa.getId() )                         
         result = False 
 
 
@@ -173,7 +197,8 @@ def testClassAutoma():
     action_info = automa.action(posMng)
 
     if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 98 or obj.getPosition() != (7, 7, 7) or len( obj._eventsQueue ) != 1:
-        print('Automa.action(posMng) translate Automa Failed!!',action_info[0][0], action_info[0][1], obj.getPosition(), len( obj._eventsQueue ) )
+        message = message +'\n' + 'Automa.action(posMng) translate Automa Failed!!'
+        print( message ,action_info[0][0], action_info[0][1], automa.getId() )                         
         result = False 
     
     # test: automa.action( request_action = catch )
@@ -188,8 +213,9 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getCaught_from() != automa.getId() or not automa.checkCaught( obj ):
-        print('Automa.action(posMng) catch Failed!!',action_info[0][0], action_info[0][1], automa.getId(), obj.getCaught_from())
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99:
+        message = message +'\n' + 'Automa.action(posMng) catch Failed!! ' + str( action_info[0][0] ) +" " + str( action_info[0][1] ) + " "  + str( automa.getId() )
+        print( message )                 
         result = False 
 
 
@@ -206,7 +232,7 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getHealth() != 70:
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99:
         message = message +'\n' + 'Automa.action(posMng) shot Failed!!'
         print( message ,action_info[0][0], action_info[0][1], automa.getId() )         
         result = False 
@@ -225,7 +251,7 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 98 or obj.getHealth() != 70:
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 98:
         message = message +'\n' + 'Automa.action(posMng) shot Failed!!'
         print( message ,action_info[0][0], action_info[0][1], automa.getId() )         
         result = False 
@@ -245,7 +271,7 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getHealth() != 70:
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99:
         message = message +'\n' + 'Automa.action(posMng) hit Failed!!'
         print( message ,action_info[0][0], action_info[0][1], automa.getId() )         
         result = False 
@@ -284,7 +310,7 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 97 or obj.getHealth() != 0:
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 97:
         message = message +'\n' + 'Automa.action(posMng) attack Failed!!'
         print( message ,action_info[0][0], action_info[0][1], automa.getId() )         
         result = False 
@@ -332,6 +358,8 @@ def testClassAutoma():
         result = False 
     
 
+
+    
 
 
 

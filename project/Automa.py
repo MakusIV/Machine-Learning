@@ -247,7 +247,7 @@ class Automa(Object):
         anomaly = self._state.isAnomaly()
 
         if health == 0: # valutazione del danno per l'automa. Se restituisce 0 l'automa è dsitrutto
-            self._state.destroy()
+            self.destroy()
             logger.logger.debug("Automa: {0} health = 0, Automa destroyed".format( self._id ))           
             destroyed = self._state.isDestroyed()                                                
             remove = self._state.isRemoved()
@@ -269,7 +269,7 @@ class Automa(Object):
     
     # TEST: OK parziale
     def select_actuators( self, act ):
-        """Choice the actuators for activation in relation with act and define parameter for execute action"""
+        """Select the actuators for activation with act parameter and define parameter for execute action"""
         # act: (action_type, position or object)
         # return: # actuators_activation: [ actuators,  [ position or obj, ..other params, self ] ]
         
@@ -415,10 +415,23 @@ class Automa(Object):
         return False
 
     def checkClass( self, automa):
-
+        """Check if Class automa is Automa"""
         if automa and isinstance(automa, Automa):
             return True
 
         return False
 
-    
+    def destroy( self ):
+        """Destroy this automa"""
+        self._ai = None
+        self._sensors = None
+        self._actuators = None
+        self._actionsQueue = None
+        self._objectCatched = None        
+        self._coord = None
+        self._eventsQueue = None 
+        self._state.destroy()
+        return True
+
+        
+

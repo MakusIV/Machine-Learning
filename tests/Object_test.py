@@ -12,6 +12,7 @@ from Coordinate import Coordinate
 def testClassObject():
 
     result = True
+    message = 'MESSAGE: '
 
     coord = Coordinate (3, 4, 7)
 
@@ -214,6 +215,16 @@ def testClassObject():
         result = False 
 
 
+    state = obj._state    
+    obj.destroy()
+
+    if not state.isDestroyed() or not obj._state.isDestroyed():
+        message = message +'\n' + 'Object.destroy() Failed!!! '
+        print( message , state, obj )
+        return False
+
+
+    print( message )
     return result
 
 

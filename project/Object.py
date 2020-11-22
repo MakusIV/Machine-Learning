@@ -9,8 +9,7 @@ from Event import Event
  
 logger = Logger(module_name = __name__, class_name = 'Object')
 
-class Object:
-    
+class Object:    
 
     def __init__(self, dimension = (1, 1, 1), mass = 0,  resilience = 100, emissivity = {"radio": 0, "thermal": 0, "optical": 0, "nuclear": 0, "electric": 0, "acoustics": 0, "chemist": 0}, coord = None, name = None, state = None ):
 
@@ -74,20 +73,20 @@ class Object:
                 # NOTA: tu lo fai risolvere direttamente nell'azione (valuta il danno e se l'obj è distrutto lo rimuove), qui invece è previsto
                 # che l'azione registra un evento nella lista eventi dell'automa (ma se non è un automa quindi non ha event queue anzi ogni oggetto in questo caaso dovrebbe avere una queue event e un methodo di update) e successivamente gli effetti dell'evento vengono valutati
                 # posso lasciare che alcune azioni vengano immediatamente valutati gli effetti e effettuati gli aggiornamenti mentre per altre vengano create eventi da gestire tramite coda queue
-                self.evalutateHit( ev._power, random_hit = True, posManager = posManager )
+                self.evalutateHit( ev._power, random_hit = True, posManager = posManager, shooter = ev._obj )
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale eliminazione dell'oggetto
 
 
             if ev.isPop(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
-                self.evalutatePop( ev._power, ev._mass, posManager )
+                self.evalutatePop( power = ev._power, mass = ev._mass, posManager = posManager, catcher = ev._obj, duration = ev._duration  )
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
 
             if ev.isPush(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
-                self.evalutatePush( ev._power, ev._mass, posManager )
+                self.evalutatePush( ev._power, ev._mass, posManager, pusher = ev._obj )
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
 
             if ev.isAssimilate(): # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
-                self.evalutateEat( ev._power, ev._mass, posManager )
+                self.evalutateEat( ev._power, ev._mass, posManager, assimilator = ev._obj )
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale eliminazione dell'oggetto
 
         logger.logger.debug("Object: {0} executed update internal state".format( self._name ))
@@ -96,8 +95,8 @@ class Object:
     
     
 
-    def evalutateHit( self, power, posManager, random_hit = True ):
-        """" evalutate event hit effect """
+    def evalutateHit( self, power, posManager, shooter, random_hit = True ):
+        """" Evalutate event hit effect """
         
         if random_hit:
             energy_hit_power = int( power * random.uniform(0, 1) )
@@ -105,7 +104,7 @@ class Object:
         else:
             energy_hit_power = power
             
-        logger.logger.debug("Object: {0} - energy_hit_power: {1}".format( self._id, energy_hit_power ))
+        logger.logger.debug("Object: {0} - energy_hit_power: {1}, shooter: {2}".format( self._id, energy_hit_power, shooter._id ))
                 
         health = self.evalutateDamage( energy_hit_power )
         resilience = self._resilience                    
@@ -113,7 +112,7 @@ class Object:
         critical = self._state.isCritical()
         anomaly = self._state.isAnomaly()
 
-        if health == 0: # valutazione del danno per l'automa. Se restituisce 0 l'automa è dsitrutto
+        if health == 0: # valutazione del danno per l'automa. Se restituisce 0 l'automa è distrutto
             self._state.destroy()
             logger.logger.debug("Object: {0} object's health = 0, object destroyed".format( self._id ))
         
@@ -138,16 +137,44 @@ class Object:
     
 
 
-    def evalutatePop( self, power, mass, posManager ):
+    def evalutatePop( self, power, mass, posManager, catcher ):
         
-        ratio = self._power * self._mass / ( mass * power )
-        logger.logger.debug("Automa: {0} Evalutate POP with power: {1}. ratio: {2}".format( self._id, power, ratio ) )
+        ratio = self._resilience * self._mass / ( mass * power ) 
+        logger.logger.debug("Object: {0} Evalutate POP with power: {1}, ratio: {2}, catcher: {3}".format( self._id, power, ratio, catcher._id ) )
 
-        if ratio <= 1:
-            logger.logger.debug("Automa: {0} Confirmed POP effect: {1}. ratio: {2}".format( self._id, power, ratio ) )
-            return True
+        if not self._caught_from and ratio <= 1:
+            
+            if posManager.searchObjext( self ):
+
+                if posManager.removeObject( self ):
+                    logger.logger.debug("Confirmed POP effect. ratio: {0} Object: {1}, catcher: {2}. Object removed from Position Manager".format( ratio, self._id, catcher._id ) )
+                    self.setCaught_from( catcher._id )
+                    return True
+                
+                else:
+                    raise Exception("Object: {0}, catcher: {1}. Not removed from Position Manager".format( self._id, catcher._id ) )
+            
+            else:#l'evento di catch è ancora presente (duration > 0) e self non è più gestito dal posManager -> è già stato preso quindi si continua l'azione di POP
+                logger.logger.debug("Confirmed POP effect. ratio: {0} Object: {1} , catcher: {2}. Continue action".format( ratio, self._id, catcher._id ) )
+
+        if self.getCaught_from() == catcher._id:
         
-        logger.logger.debug("Automa: {0} Ininfluence POP effect: {1}. ratio: {2}".format( self._id, power, ratio ) )
+            if duration == 1:# ultimo valutazione dell'evento prima della sua eliminazione
+
+                if not catcher.checkCaught( self ):
+                    
+                    if catcher.catchOject( self ):
+                        logger.logger.debug("Object inserted in Catcher catched list. Object: {0}, catcher: {1}.".format( self._id, catcher._id ) )
+                        return True
+                    
+                    else:
+                        raise Exception("Object inserted in Catcher catched list. Object: {0}, catcher: {1}.".format( self._id, catcher._id ) )
+
+            else:
+                logger.logger.debug("POP action in progress. Object await to insert in Catcher catched list. Object: {0}, catcher: {1}.".format( self._id, catcher._id ) )
+            
+        
+        logger.logger.debug("Object: {0} POP not executed 1}. ratio: {1}, catcher: {2}".format( self._id, power, ratio, catcher._id ) )
         return False
 
 
@@ -177,17 +204,21 @@ class Object:
 
             if ev.isAwaiting(): # event not activable in this task
                 ev.decrTime2Go() # decrement time to go
-                self._eventsQueue[ ev.getId() ] = ev # update events queue
+                self._eventsQueue[ ev._id ] = ev # update events queue
+                logger.logger.debug("Object: {0} event id: {1}, events is awaiting, decrease time2go at: {2}".format( self._name, ev._id, ev._time2go ) )
 
             elif ev.isActivable(): # event activable
                 ev.decrDuration() # decrement duration
-                self._eventsQueue[ ev.getId() ] = ev # update events queue
+                self._eventsQueue[ ev._id ] = ev # update events queue
                 active.append( ev ) # insert the event in active events list
+                logger.logger.debug("Object: {0} event id: {1}, events is activable, decrease duration at: {2}".format( self._name, ev._id, ev._duration ) )
 
             else: # expired event
-                self._eventsQueue.pop( ev.getId() ) #remove element from events queue 
+                self._eventsQueue.pop( ev._id ) #remove element from events queue 
+                logger.logger.debug("Object: {0} event id: {1}, events is expired, deleting from Event Queue. Lenght Event Queue: {2}".format( self._name, ev._id, len( self._eventsQueue ) ) )
 
         return active
+
 
 
     #TEST: OK (indiretto)
@@ -478,3 +509,14 @@ class Object:
             dimension = self.getDimension()
 
         return [ position, [ position[ 0 ] + dimension[ 0 ], position[ 1 ] + dimension[ 1 ], position[ 2 ] + dimension[ 2 ] ] ] 
+
+
+    def destroy( self ):
+        """Destroy this object"""
+        self._state.destroy()
+        self._coord = None
+        self._eventsQueue = None        
+        logger.logger.debug("Object: {0} destroyed".format( self._name ) )
+        return True
+
+        
