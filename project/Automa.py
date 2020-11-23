@@ -423,14 +423,15 @@ class Automa(Object):
 
     def destroy( self ):
         """Destroy this automa"""
+
+        for obj in self._objectCatched:
+            obj.destroy()
         self._ai = None
         self._sensors = None
         self._actuators = None
         self._actionsQueue = None
-        self._objectCatched = None        
-        self._coord = None
-        self._eventsQueue = None 
-        self._state.destroy()
+        self._objectCatched = None   
+        Object.destroy( self )     
         return True
 
         

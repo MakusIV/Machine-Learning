@@ -26,6 +26,11 @@ class Event:
         self._obj = obj
 
    
+    def destroy( self ):
+       self._typ = None
+       self._id = "destroyed"
+       self._obj = None
+
 
     def decrTime2Go(self):
         self._time2go = self._time2go - 1

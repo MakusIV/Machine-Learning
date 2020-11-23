@@ -47,7 +47,7 @@ def testClassAutoma():
 
     if not state.isDestroyed() or not automa._state.isDestroyed():
         message = message +'\n' + 'Automa.destroy() Failed!!! '
-        print( message , state, obj )
+        print( message , state, automa )
         return False
 
 

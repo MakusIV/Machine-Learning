@@ -312,39 +312,9 @@ def testClassState():
         result = False
 
     
-    state._active = False
-    state._run = False
-    state._remove = False
-    state._destroy = False
-    state._anomaly = True
-    state._critical = False
+    
 
-    try:
-        state.checkState()
-        
-    except Exception:
-        pass
 
-    else:
-        print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
-        result = False
-
-    state._active = False
-    state._run = False
-    state._remove = False    
-    state._destroy = False
-    state._anomaly = False
-    state._critical = True
-
-    try:
-        state.checkState()
-        
-    except Exception:
-        pass
-
-    else:
-        print( 'State.checkState() Failed!!  Not launch Exception', state.toString() )
-        result = False
 
 
     state._active = True

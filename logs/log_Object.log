@@ -229,3 +229,16 @@
 2020-11-22 16:01:27,932 - Object - DEBUG - insertEvent - Object: Object_Name_#1195 inserted new event in queue, event id: HIT_#408798, events in queue: 1
 2020-11-22 16:01:27,980 - Object - DEBUG - insertEvent - Object: Object_Name_#7689 inserted new event in queue, event id: HIT_#239757, events in queue: 1
 2020-11-22 16:01:28,202 - Object - DEBUG - insertEvent - Object: Object_Name_#5109 inserted new event in queue, event id: HIT_#128913, events in queue: 1
+2020-11-23 14:59:17,694 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#243978, events in queue: 1
+2020-11-23 14:59:17,746 - Object - DEBUG - insertEvent - Object: Object_Name_#8443 inserted new event in queue, event id: POP_#13315, events in queue: 1
+2020-11-23 14:59:17,799 - Object - DEBUG - insertEvent - Object: Object_Name_#168 inserted new event in queue, event id: HIT_#150356, events in queue: 1
+2020-11-23 14:59:17,883 - Object - DEBUG - insertEvent - Object: Object_Name_#6857 inserted new event in queue, event id: HIT_#71787, events in queue: 1
+2020-11-23 14:59:18,081 - Object - DEBUG - insertEvent - Object: Object_Name_#6723 inserted new event in queue, event id: HIT_#858461, events in queue: 1
+2020-11-23 14:59:18,179 - Object - DEBUG - insertEvent - Object: Object_Name_#6209 inserted new event in queue, event id: HIT_#742517, events in queue: 1
+2020-11-23 15:09:00,357 - Object - DEBUG - destroy - Object: Automa destroyed
+2020-11-23 15:09:01,939 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#585468, events in queue: 1
+2020-11-23 15:09:02,118 - Object - DEBUG - insertEvent - Object: Object_Name_#1401 inserted new event in queue, event id: POP_#91412, events in queue: 1
+2020-11-23 15:09:02,274 - Object - DEBUG - insertEvent - Object: Object_Name_#4082 inserted new event in queue, event id: HIT_#679489, events in queue: 1
+2020-11-23 15:09:02,527 - Object - DEBUG - insertEvent - Object: Object_Name_#1268 inserted new event in queue, event id: HIT_#469545, events in queue: 1
+2020-11-23 15:09:02,710 - Object - DEBUG - insertEvent - Object: Object_Name_#124 inserted new event in queue, event id: HIT_#693744, events in queue: 1
+2020-11-23 15:09:02,923 - Object - DEBUG - insertEvent - Object: Object_Name_#1149 inserted new event in queue, event id: HIT_#799029, events in queue: 1

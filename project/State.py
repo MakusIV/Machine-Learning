@@ -181,7 +181,7 @@ class State:
         """Check state and return true if correct state is verificated or raise Exception for state anomaly"""
         # unit test: ok
 
-        wrongState = ( self._active and self._remove ) or ( self._run and ( not self._active or self._destroy or self._remove) or ( self._anomaly or self._critical ) and not self._active )
+        wrongState = ( self._active and self._remove ) or ( self._run and ( not self._active or self._destroy or self._remove) ) 
 
         if wrongState:
             raise Exception("Anomaly state!")
@@ -234,7 +234,9 @@ class State:
             return False 
 
         self._remove = True
+        self._destroy = True
         self._active = False
+        self._run = False
         self.checkState()
         
         return True
@@ -244,15 +246,19 @@ class State:
     def destroy(self):
         """Check state, set destroy state and return true. Raise Exception for state anomaly or return false for not correct conditions"""        
         
+        #( self._active and self._remove ) or ( self._run and ( not self._active or self._destroy or self._remove)
 
         if self._remove or not self._active:
             return False 
 
         self._destroy = True
         self._run = False
+        self._remove = True
+        self._active = False
         self.checkState()
 
         return True
+
 
     def checkStateClass(self, state):
 

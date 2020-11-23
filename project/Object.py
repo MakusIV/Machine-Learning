@@ -513,6 +513,10 @@ class Object:
 
     def destroy( self ):
         """Destroy this object"""
+
+        for ev in self._eventsQueue:
+            ev.destroy()
+
         self._state.destroy()
         self._coord = None
         self._eventsQueue = None        
