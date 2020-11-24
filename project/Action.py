@@ -70,3 +70,8 @@ class Action:
 
     def getId( self ):
         return self._id
+
+    def destroy( self ):
+        self._typ = None
+        self._id = "destroyed"
+        self._obj = None
