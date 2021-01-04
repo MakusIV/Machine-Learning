@@ -4586,3 +4586,752 @@
 2020-11-23 15:09:02,779 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#634300 executed assimilate action with object damage. automa: Automa_ID_#874066, object position: (-8, -8, -8), range: (10, 10, 10), energy_actuator: 90, object_resilience: 0, object_health: 0, object_active: False, object_critical: False, object_anomaly: False, object_destroyed: True, object_removed: True, object_energy: 100
 2020-11-23 15:09:02,843 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#634300 executed assimilate action with complete assimilation and energy gain: 100. Object was removed from position manager. automa: Automa_ID_#874066, range: (10, 10, 10), energy_actuator: 90
 2020-11-23 15:09:02,924 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#334264 Executed projectile launch action from Automa: Automa_ID_#874066, Created event: HIT_#799029 and insert in Event Queue of the target Object: Object_ID_#838232
+2020-11-28 14:22:11,484 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-28 14:22:11,486 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2020-11-28 14:22:11,491 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2020-11-28 14:22:11,527 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2020-11-28 14:22:11,541 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2020-11-28 14:22:11,609 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2020-11-28 14:22:11,645 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2020-11-28 14:22:11,710 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2020-11-28 14:22:11,746 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2020-11-28 14:22:11,811 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-28 14:22:11,843 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2020-11-28 14:22:11,922 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2020-11-28 14:22:11,927 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2020-11-28 14:22:12,027 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2020-11-28 14:22:12,093 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2020-11-28 14:22:12,159 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2020-11-28 14:22:12,193 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2020-11-28 14:22:12,226 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2020-11-28 14:22:12,260 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2020-11-28 14:22:12,427 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2020-11-28 14:22:12,568 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2020-11-28 14:22:12,569 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#911334 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2020-11-28 14:22:12,649 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#226855 result manipulate = True. destination: (7, 7, 7), range: (10, 10, 10), energy_actuator: 99
+2020-11-28 14:22:12,842 - Actuator - DEBUG - setEvent - Actuator: Actuator_ID_#226855 result action = True. Inserted assimilate event in object's event queue: event._id: PUSH_#80902, event._typ: PUSH, event._volume: None, event._time2go: 0, event._duration: 0, event._energy: None, event._power: None, event._mass: None
+2020-11-28 14:22:12,843 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#226855 result manipulate = True. destination: (7, 7, 7), range: (10, 10, 10), energy_actuator: 98
+2020-11-28 14:22:12,893 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#866739 Executed Catch action from Automa: Automa_ID_#859419, Created event: POP_#771878 and insert in Event Queue of the target Object: Object_ID_#256754
+2020-11-28 14:22:13,211 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#425342 Executed projectile launch action from Automa: Automa_ID_#859419, Created event: HIT_#75333 and insert in Event Queue of the target Object: Object_ID_#512107
+2020-11-28 14:22:13,441 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#425342 Executed projectile launch action from Automa: Automa_ID_#859419, Created event: HIT_#968268 and insert in Event Queue of the target Object: Object_ID_#821470
+2020-11-28 14:22:13,577 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#591017 Executed projectile launch action from Automa: Automa_ID_#859419, Created event: HIT_#119023 and insert in Event Queue of the target Object: Object_ID_#524099
+2020-11-28 14:22:13,659 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#410493 executed assimilate action with object damage. automa: Automa_ID_#859419, object position: (-8, -8, -8), range: (10, 10, 10), energy_actuator: 90, object_resilience: 0, object_health: 0, object_active: False, object_critical: False, object_anomaly: False, object_destroyed: True, object_removed: True, object_energy: 100
+2020-11-28 14:22:13,664 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#410493 executed assimilate action with complete assimilation and energy gain: 100. Object was removed from position manager. automa: Automa_ID_#859419, range: (10, 10, 10), energy_actuator: 90
+2020-11-28 14:22:13,809 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#425342 Executed projectile launch action from Automa: Automa_ID_#859419, Created event: HIT_#884335 and insert in Event Queue of the target Object: Object_ID_#441900
+2020-11-28 14:23:52,507 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#861064 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-28 14:23:52,509 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#861064 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-28 14:23:52,559 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#861064 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-28 14:23:52,608 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#861064 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-28 14:23:52,688 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#861064 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-28 14:23:52,692 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#501519 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-28 14:23:52,698 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#501519 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-28 14:23:52,852 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#501519 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-28 14:23:52,856 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#501519 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-28 14:23:52,899 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#997503 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-28 14:23:52,962 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#997503 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-28 14:23:52,974 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#997503 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-28 14:23:53,043 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#997503 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-28 14:23:53,239 - Actuator - DEBUG - setEvent - Actuator: Actuator_ID_#327549 result action = True. Inserted assimilate event in object's event queue: event._id: PUSH_#6447, event._typ: PUSH, event._volume: None, event._time2go: 0, event._duration: 0, event._energy: None, event._power: None, event._mass: None
+2020-11-28 14:23:53,241 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#327549 result manipulate = True. destination: (9, 9, 9), range: (10, 10, 10), energy_actuator: 90
+2020-11-28 14:23:53,339 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#673001 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-28 14:23:53,441 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#123311 Executed Catch action from Automa: Automa_ID_#825727, Created event: POP_#574212 and insert in Event Queue of the target Object: Automa_ID_#138216
+2020-11-28 14:23:53,505 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#54551 executed assimilate action with object damage. automa: Automa_ID_#892640, object position: (5, 5, 5), range: (10, 10, 10), energy_actuator: 90, object_resilience: 80, object_health: 90, object_active: True, object_critical: False, object_anomaly: False, object_destroyed: False, object_removed: False, object_energy: 100
+2020-11-28 14:23:53,507 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#54551 executed assimilate action. Action not complete, Object wasn't removed from position manager. automa: Automa_ID_#892640, range: (10, 10, 10), energy_actuator: 90
+2020-11-28 14:23:53,550 - Actuator - DEBUG - setEvent - Actuator: Actuator_ID_#54551 result action = True. Inserted assimilate event in object's event queue: event._id: ASSIMILATE_#732671, event._typ: ASSIMILATE, event._volume: None, event._time2go: 0, event._duration: 1, event._energy: None, event._power: None, event._mass: None
+2020-11-28 14:23:53,636 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#926515 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-28 14:23:53,734 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#97077 executed assimilate action with object damage. automa: Automa_ID_#689321, object position: (5, 5, 5), range: (10, 10, 10), energy_actuator: 90, object_resilience: 80, object_health: 0, object_active: False, object_critical: False, object_anomaly: False, object_destroyed: True, object_removed: True, object_energy: 100
+2020-11-28 14:23:53,738 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#97077 executed assimilate action with complete assimilation and energy gain: 300. Object was removed from position manager. automa: Automa_ID_#689321, range: (10, 10, 10), energy_actuator: 90
+2020-11-28 14:23:53,741 - Actuator - DEBUG - setEvent - Actuator: Actuator_ID_#97077 result action = True. Inserted assimilate event in object's event queue: event._id: ASSIMILATE_#165894, event._typ: ASSIMILATE, event._volume: None, event._time2go: 0, event._duration: 0, event._energy: None, event._power: None, event._mass: None
+2020-11-28 14:23:53,913 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#42176 Executed projectile launch action from Automa: Automa_ID_#97965, Created event: HIT_#685076 and insert in Event Queue of the target Object: Automa_ID_#922639
+2020-11-28 14:23:53,923 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#60929 not executed projectile launch action because object not in range. automa: Automa_ID_#913578, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-28 14:23:54,003 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#180188 Executed projectile launch action from Automa: Automa_ID_#749437, Created event: HIT_#939922 and insert in Event Queue of the target Object: Automa_ID_#11216
+2020-11-28 14:23:54,101 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#716857 Executed projectile launch action from Automa: Automa_ID_#792584, Created event: HIT_#451911 and insert in Event Queue of the target Object: Automa_ID_#642500
+2020-11-28 14:23:54,175 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#125175 not executed projectile launch action because object not in range. automa: Automa_ID_#908264, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-28 14:23:54,301 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#467674 Executed projectile launch action from Automa: Automa_ID_#456029, Created event: HIT_#934533 and insert in Event Queue of the target Object: Automa_ID_#607890
+2020-11-28 14:23:54,355 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#477892 Executed projectile launch action from Automa: Automa_ID_#774790, Created event: HIT_#249424 and insert in Event Queue of the target Object: Automa_ID_#930472
+2020-11-28 14:23:59,354 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-28 14:23:59,355 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2020-11-28 14:23:59,360 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2020-11-28 14:23:59,389 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2020-11-28 14:23:59,393 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2020-11-28 14:23:59,420 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2020-11-28 14:23:59,424 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2020-11-28 14:23:59,448 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2020-11-28 14:23:59,454 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2020-11-28 14:23:59,459 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-28 14:23:59,459 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2020-11-28 14:23:59,488 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2020-11-28 14:23:59,518 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2020-11-28 14:23:59,525 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2020-11-28 14:23:59,551 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2020-11-28 14:23:59,557 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2020-11-28 14:23:59,581 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2020-11-28 14:23:59,587 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2020-11-28 14:23:59,590 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2020-11-28 14:23:59,614 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2020-11-28 14:23:59,620 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2020-11-28 14:23:59,621 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#529946 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2020-11-28 14:23:59,654 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#385126 result manipulate = True. destination: (7, 7, 7), range: (10, 10, 10), energy_actuator: 99
+2020-11-28 14:23:59,685 - Actuator - DEBUG - setEvent - Actuator: Actuator_ID_#385126 result action = True. Inserted assimilate event in object's event queue: event._id: PUSH_#407519, event._typ: PUSH, event._volume: None, event._time2go: 0, event._duration: 0, event._energy: None, event._power: None, event._mass: None
+2020-11-28 14:23:59,686 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#385126 result manipulate = True. destination: (7, 7, 7), range: (10, 10, 10), energy_actuator: 98
+2020-11-28 14:23:59,756 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#262671 Executed Catch action from Automa: Automa_ID_#568678, Created event: POP_#492656 and insert in Event Queue of the target Object: Object_ID_#356625
+2020-11-28 14:23:59,807 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#347683 Executed projectile launch action from Automa: Automa_ID_#568678, Created event: HIT_#686345 and insert in Event Queue of the target Object: Object_ID_#827791
+2020-11-28 14:23:59,875 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#347683 Executed projectile launch action from Automa: Automa_ID_#568678, Created event: HIT_#306378 and insert in Event Queue of the target Object: Object_ID_#534687
+2020-11-28 14:23:59,920 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#171427 Executed projectile launch action from Automa: Automa_ID_#568678, Created event: HIT_#575027 and insert in Event Queue of the target Object: Object_ID_#665110
+2020-11-28 14:23:59,989 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#669667 executed assimilate action with object damage. automa: Automa_ID_#568678, object position: (-8, -8, -8), range: (10, 10, 10), energy_actuator: 90, object_resilience: 0, object_health: 0, object_active: False, object_critical: False, object_anomaly: False, object_destroyed: True, object_removed: True, object_energy: 100
+2020-11-28 14:24:00,069 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#669667 executed assimilate action with complete assimilation and energy gain: 100. Object was removed from position manager. automa: Automa_ID_#568678, range: (10, 10, 10), energy_actuator: 90
+2020-11-28 14:24:00,137 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#347683 Executed projectile launch action from Automa: Automa_ID_#568678, Created event: HIT_#620366 and insert in Event Queue of the target Object: Object_ID_#959658
+2020-11-29 00:39:44,624 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#396238 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:39:44,625 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#396238 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 00:39:44,644 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#396238 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 00:39:44,659 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#396238 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 00:39:44,676 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#396238 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 00:39:44,691 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#463664 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:39:44,692 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#463664 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 00:39:44,705 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#463664 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 00:39:44,710 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#463664 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 00:39:44,724 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#295341 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:39:44,724 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#295341 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 00:39:44,727 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#295341 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 00:39:44,741 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#295341 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 00:39:44,757 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#717399 Executed Manipulate action from Automa: Automa_ID_#202055, Created event: PUSH_#206396 and insert in Event Queue of the target Object: Automa_ID_#577854
+2020-11-29 00:39:44,792 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#90121 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 00:39:44,826 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#92324 Executed Catch action from Automa: Automa_ID_#630709, Created event: POP_#444115 and insert in Event Queue of the target Object: Automa_ID_#25602
+2020-11-29 00:39:44,858 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#198883 Executed Manipulate action from Automa: Automa_ID_#59383, Created event: ASSIMILATE_#752892 and insert in Event Queue of the target Object: Automa_ID_#135376
+2020-11-29 00:41:04,088 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#806030 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:41:04,089 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#806030 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 00:41:04,107 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#806030 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 00:41:04,121 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#806030 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 00:41:04,126 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#806030 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 00:41:04,141 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#205877 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:41:04,142 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#205877 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 00:41:04,156 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#205877 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 00:41:04,159 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#205877 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 00:41:04,173 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#720769 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:41:04,174 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#720769 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 00:41:04,177 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#720769 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 00:41:04,191 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#720769 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 00:41:04,210 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#365317 Executed Manipulate action from Automa: Automa_ID_#641062, Created event: PUSH_#112901 and insert in Event Queue of the target Object: Automa_ID_#569882
+2020-11-29 00:41:04,242 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#643079 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 00:41:04,276 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#207044 Executed Catch action from Automa: Automa_ID_#543954, Created event: POP_#238798 and insert in Event Queue of the target Object: Automa_ID_#33103
+2020-11-29 00:41:04,323 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#922124 Executed Manipulate action from Automa: Automa_ID_#382478, Created event: ASSIMILATE_#658314 and insert in Event Queue of the target Object: Automa_ID_#18437
+2020-11-29 00:41:04,355 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#632081 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 00:41:04,377 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#587910 Executed Manipulate action from Automa: Automa_ID_#371704, Created event: ASSIMILATE_#860799 and insert in Event Queue of the target Object: Automa_ID_#327866
+2020-11-29 00:41:04,406 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#949999 Executed projectile launch action from Automa: Automa_ID_#630460, Created event: HIT_#332142 and insert in Event Queue of the target Object: Automa_ID_#285029
+2020-11-29 00:41:04,437 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#371840 not executed projectile launch action because object not in range. automa: Automa_ID_#280076, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-29 00:41:04,461 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#542665 Executed projectile launch action from Automa: Automa_ID_#346160, Created event: HIT_#729346 and insert in Event Queue of the target Object: Automa_ID_#706517
+2020-11-29 00:41:04,492 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#555952 Executed projectile launch action from Automa: Automa_ID_#937528, Created event: HIT_#497603 and insert in Event Queue of the target Object: Automa_ID_#549779
+2020-11-29 00:41:04,516 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#845868 not executed projectile launch action because object not in range. automa: Automa_ID_#546749, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-29 00:41:04,526 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#420344 Executed projectile launch action from Automa: Automa_ID_#439579, Created event: HIT_#807710 and insert in Event Queue of the target Object: Automa_ID_#117620
+2020-11-29 00:41:04,568 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#923658 Executed projectile launch action from Automa: Automa_ID_#98379, Created event: HIT_#246573 and insert in Event Queue of the target Object: Automa_ID_#225050
+2020-11-29 00:44:38,700 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#813397 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:44:38,700 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#813397 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 00:44:38,704 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#813397 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 00:44:38,707 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#813397 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 00:44:38,723 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#813397 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 00:44:38,739 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#436107 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:44:38,740 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#436107 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 00:44:38,755 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#436107 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 00:44:38,771 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#436107 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 00:44:38,785 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#185884 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 00:44:38,785 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#185884 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 00:44:38,789 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#185884 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 00:44:38,803 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#185884 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 00:44:38,816 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#77917 Executed Manipulate action from Automa: Automa_ID_#120255, Created event: PUSH_#285429 and insert in Event Queue of the target Object: Automa_ID_#531284
+2020-11-29 00:44:38,838 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#127002 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 00:44:38,868 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#194724 Executed Catch action from Automa: Automa_ID_#28138, Created event: POP_#820384 and insert in Event Queue of the target Object: Automa_ID_#461934
+2020-11-29 00:44:38,902 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#1421 Executed Manipulate action from Automa: Automa_ID_#837064, Created event: ASSIMILATE_#238193 and insert in Event Queue of the target Object: Automa_ID_#472001
+2020-11-29 00:44:38,936 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#513934 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 00:44:38,969 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#307876 Executed Manipulate action from Automa: Automa_ID_#363559, Created event: ASSIMILATE_#621901 and insert in Event Queue of the target Object: Automa_ID_#264042
+2020-11-29 00:44:39,003 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#957444 Executed projectile launch action from Automa: Automa_ID_#299293, Created event: HIT_#264297 and insert in Event Queue of the target Object: Automa_ID_#183437
+2020-11-29 00:44:39,035 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#372516 not executed projectile launch action because object not in range. automa: Automa_ID_#634400, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-29 00:44:39,066 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#168387 Executed projectile launch action from Automa: Automa_ID_#131535, Created event: HIT_#400570 and insert in Event Queue of the target Object: Automa_ID_#692022
+2020-11-29 00:44:39,090 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#946733 Executed projectile launch action from Automa: Automa_ID_#964622, Created event: HIT_#704406 and insert in Event Queue of the target Object: Automa_ID_#109998
+2020-11-29 00:44:39,118 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#34413 not executed projectile launch action because object not in range. automa: Automa_ID_#524044, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-29 00:44:39,149 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#611034 Executed projectile launch action from Automa: Automa_ID_#863953, Created event: HIT_#217519 and insert in Event Queue of the target Object: Automa_ID_#325546
+2020-11-29 00:44:39,182 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#925247 Executed projectile launch action from Automa: Automa_ID_#666394, Created event: HIT_#278977 and insert in Event Queue of the target Object: Automa_ID_#706148
+2020-11-29 11:23:36,879 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#770471 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:23:36,909 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#770471 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 11:23:37,528 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#770471 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 11:23:37,901 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#770471 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 11:23:38,302 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#770471 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 11:23:38,509 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#836963 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:23:38,522 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#836963 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:23:38,590 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#836963 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:23:38,688 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#836963 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:23:38,782 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#946196 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:23:38,784 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#946196 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:23:38,862 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#946196 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:23:38,984 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#946196 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:23:39,071 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#924577 Executed Manipulate action from Automa: Automa_ID_#651966, Created event: PUSH_#957901 and insert in Event Queue of the target Object: Automa_ID_#550297
+2020-11-29 11:23:39,221 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#896342 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:23:39,454 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#533620 Executed Catch action from Automa: Automa_ID_#18632, Created event: POP_#710592 and insert in Event Queue of the target Object: Automa_ID_#824173
+2020-11-29 11:23:39,554 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#735115 Executed Manipulate action from Automa: Automa_ID_#119823, Created event: ASSIMILATE_#403280 and insert in Event Queue of the target Object: Automa_ID_#41997
+2020-11-29 11:30:03,147 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#898868 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:30:03,148 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#898868 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 11:30:03,167 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#898868 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 11:30:03,219 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#898868 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 11:30:03,250 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#898868 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 11:30:03,280 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#597049 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:30:03,281 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#597049 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:30:03,316 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#597049 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:30:03,350 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#597049 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:30:03,400 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#720589 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:30:03,414 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#720589 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:30:03,443 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#720589 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:30:03,448 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#720589 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:30:03,478 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#867156 Executed Manipulate action from Automa: Automa_ID_#310176, Created event: PUSH_#814462 and insert in Event Queue of the target Object: Automa_ID_#307158
+2020-11-29 11:30:03,510 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#159375 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:30:03,578 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#966977 Executed Catch action from Automa: Automa_ID_#891984, Created event: POP_#330511 and insert in Event Queue of the target Object: Automa_ID_#763184
+2020-11-29 11:30:03,610 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#427751 Executed Manipulate action from Automa: Automa_ID_#268426, Created event: ASSIMILATE_#396597 and insert in Event Queue of the target Object: Automa_ID_#44551
+2020-11-29 11:30:03,642 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#860504 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:30:03,696 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#425691 Executed Manipulate action from Automa: Automa_ID_#180171, Created event: ASSIMILATE_#79570 and insert in Event Queue of the target Object: Automa_ID_#270650
+2020-11-29 11:30:03,730 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#432853 Executed projectile launch action from Automa: Automa_ID_#528954, Created event: HIT_#423436 and insert in Event Queue of the target Object: Automa_ID_#121248
+2020-11-29 11:30:03,760 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#433751 not executed projectile launch action because object not in range. automa: Automa_ID_#349408, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-29 11:30:03,800 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#911496 Executed projectile launch action from Automa: Automa_ID_#778796, Created event: HIT_#941290 and insert in Event Queue of the target Object: Automa_ID_#549181
+2020-11-29 11:30:03,848 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#170620 Executed projectile launch action from Automa: Automa_ID_#111485, Created event: HIT_#33898 and insert in Event Queue of the target Object: Automa_ID_#184457
+2020-11-29 11:30:03,879 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#680331 not executed projectile launch action because object not in range. automa: Automa_ID_#71052, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-29 11:30:03,945 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#125644 Executed projectile launch action from Automa: Automa_ID_#947489, Created event: HIT_#771324 and insert in Event Queue of the target Object: Automa_ID_#936739
+2020-11-29 11:30:03,980 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#133848 Executed projectile launch action from Automa: Automa_ID_#736528, Created event: HIT_#321351 and insert in Event Queue of the target Object: Automa_ID_#760349
+2020-11-29 11:30:16,928 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#657233 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:30:16,933 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#657233 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 11:30:17,000 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#657233 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 11:30:17,032 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#657233 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 11:30:17,083 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#657233 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 11:30:17,115 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#632772 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:30:17,116 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#632772 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:30:17,164 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#632772 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:30:17,215 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#632772 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:30:17,248 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#729452 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:30:17,249 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#729452 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:30:17,280 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#729452 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:30:17,329 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#729452 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:30:17,427 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#815152 Executed Manipulate action from Automa: Automa_ID_#135996, Created event: PUSH_#370771 and insert in Event Queue of the target Object: Automa_ID_#274971
+2020-11-29 11:30:17,461 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#844735 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:30:17,526 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#21622 Executed Catch action from Automa: Automa_ID_#280425, Created event: POP_#429901 and insert in Event Queue of the target Object: Automa_ID_#967114
+2020-11-29 11:30:17,562 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#237171 Executed Manipulate action from Automa: Automa_ID_#736841, Created event: ASSIMILATE_#601445 and insert in Event Queue of the target Object: Automa_ID_#277776
+2020-11-29 11:32:16,580 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#120114 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:38:06,093 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#343489 Executed Manipulate action from Automa: Automa_ID_#327589, Created event: ASSIMILATE_#154084 and insert in Event Queue of the target Object: Automa_ID_#406862
+2020-11-29 11:38:47,281 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#78316 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:38:47,282 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#78316 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 11:38:47,286 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#78316 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 11:38:47,306 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#78316 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 11:38:47,339 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#78316 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 11:38:47,355 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#51081 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:38:47,356 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#51081 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:38:47,393 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#51081 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:38:47,427 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#51081 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:38:47,470 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#767770 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:38:47,471 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#767770 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:38:47,490 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#767770 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:38:47,521 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#767770 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:38:47,558 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#346479 Executed Manipulate action from Automa: Automa_ID_#709215, Created event: PUSH_#188143 and insert in Event Queue of the target Object: Automa_ID_#362247
+2020-11-29 11:38:47,605 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#30873 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:38:47,673 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#286863 Executed Catch action from Automa: Automa_ID_#357014, Created event: POP_#442328 and insert in Event Queue of the target Object: Automa_ID_#289287
+2020-11-29 11:38:47,704 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#27476 Executed Manipulate action from Automa: Automa_ID_#635959, Created event: ASSIMILATE_#707052 and insert in Event Queue of the target Object: Automa_ID_#500771
+2020-11-29 11:38:47,754 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#580373 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:38:47,786 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#168855 Executed projectile launch action from Automa: Automa_ID_#351595, Created event: HIT_#249043 and insert in Event Queue of the target Object: Automa_ID_#732126
+2020-11-29 11:38:47,817 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#661520 not executed projectile launch action because object not in range. automa: Automa_ID_#247374, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-29 11:38:47,858 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#530172 Executed projectile launch action from Automa: Automa_ID_#378444, Created event: HIT_#334169 and insert in Event Queue of the target Object: Automa_ID_#237407
+2020-11-29 11:38:47,937 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#98321 Executed projectile launch action from Automa: Automa_ID_#470128, Created event: HIT_#481570 and insert in Event Queue of the target Object: Automa_ID_#685717
+2020-11-29 11:38:47,968 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#546008 not executed projectile launch action because object not in range. automa: Automa_ID_#365747, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-29 11:38:48,021 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#86405 Executed projectile launch action from Automa: Automa_ID_#283580, Created event: HIT_#980050 and insert in Event Queue of the target Object: Automa_ID_#60422
+2020-11-29 11:38:48,054 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#998140 Executed projectile launch action from Automa: Automa_ID_#806821, Created event: HIT_#213445 and insert in Event Queue of the target Object: Automa_ID_#496823
+2020-11-29 11:39:12,657 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#192299 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:39:12,659 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#192299 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 11:39:12,749 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#192299 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 11:39:12,824 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#192299 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 11:39:12,890 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#192299 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 11:39:12,953 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#1638 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:39:12,955 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#1638 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:39:13,071 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#1638 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:39:13,107 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#1638 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:39:13,141 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#214152 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 11:39:13,183 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#214152 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 11:39:13,190 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#214152 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 11:39:13,221 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#214152 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 11:39:13,282 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#69973 Executed Manipulate action from Automa: Automa_ID_#175629, Created event: PUSH_#506039 and insert in Event Queue of the target Object: Automa_ID_#806065
+2020-11-29 11:39:13,318 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#945581 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:39:13,358 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#242798 Executed Catch action from Automa: Automa_ID_#294460, Created event: POP_#598036 and insert in Event Queue of the target Object: Automa_ID_#431531
+2020-11-29 11:39:13,441 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#643645 Executed Manipulate action from Automa: Automa_ID_#738000, Created event: ASSIMILATE_#786100 and insert in Event Queue of the target Object: Automa_ID_#51675
+2020-11-29 11:39:21,467 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#316942 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 11:39:30,059 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#534818 Executed projectile launch action from Automa: Automa_ID_#396471, Created event: HIT_#440937 and insert in Event Queue of the target Object: Automa_ID_#28011
+2020-11-29 11:39:37,938 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#253324 not executed projectile launch action because object not in range. automa: Automa_ID_#206699, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-29 11:39:47,195 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#66019 Executed projectile launch action from Automa: Automa_ID_#290594, Created event: HIT_#954499 and insert in Event Queue of the target Object: Automa_ID_#67985
+2020-11-29 11:39:55,291 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#289323 Executed projectile launch action from Automa: Automa_ID_#104983, Created event: HIT_#113031 and insert in Event Queue of the target Object: Automa_ID_#495605
+2020-11-29 11:40:02,705 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#223768 not executed projectile launch action because object not in range. automa: Automa_ID_#773571, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-29 11:40:08,856 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#596287 Executed projectile launch action from Automa: Automa_ID_#184025, Created event: HIT_#74662 and insert in Event Queue of the target Object: Automa_ID_#279642
+2020-11-29 12:00:19,180 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#952961 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:00:19,182 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#952961 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 12:00:19,185 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#952961 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 12:00:19,237 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#952961 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 12:00:19,252 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#952961 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 12:00:19,273 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#108040 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:00:19,284 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#108040 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 12:00:19,301 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#108040 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 12:00:19,317 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#108040 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 12:00:19,334 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#351967 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:00:19,334 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#351967 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 12:00:19,351 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#351967 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 12:00:19,368 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#351967 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 12:00:19,399 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#903918 Executed Manipulate action from Automa: Automa_ID_#708800, Created event: PUSH_#87602 and insert in Event Queue of the target Object: Automa_ID_#320828
+2020-11-29 12:00:19,427 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#922582 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 12:00:19,468 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#860960 Executed Catch action from Automa: Automa_ID_#305620, Created event: POP_#149450 and insert in Event Queue of the target Object: Automa_ID_#882585
+2020-11-29 12:00:19,529 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#980989 Executed Manipulate action from Automa: Automa_ID_#325812, Created event: ASSIMILATE_#12422 and insert in Event Queue of the target Object: Automa_ID_#163590
+2020-11-29 12:00:19,569 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#848324 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 12:00:19,618 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#174754 Executed projectile launch action from Automa: Automa_ID_#38948, Created event: HIT_#925618 and insert in Event Queue of the target Object: Automa_ID_#493935
+2020-11-29 12:00:19,645 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#12623 not executed projectile launch action because object not in range. automa: Automa_ID_#771288, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-29 12:00:19,680 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#36397 Executed projectile launch action from Automa: Automa_ID_#129204, Created event: HIT_#549393 and insert in Event Queue of the target Object: Automa_ID_#77251
+2020-11-29 12:00:19,732 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#546474 Executed projectile launch action from Automa: Automa_ID_#374893, Created event: HIT_#681746 and insert in Event Queue of the target Object: Automa_ID_#62758
+2020-11-29 12:00:19,761 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#525511 not executed projectile launch action because object not in range. automa: Automa_ID_#21277, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-29 12:00:19,798 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#821477 Executed projectile launch action from Automa: Automa_ID_#184343, Created event: HIT_#531713 and insert in Event Queue of the target Object: Automa_ID_#193325
+2020-11-29 12:00:19,830 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#110166 Executed projectile launch action from Automa: Automa_ID_#961570, Created event: HIT_#274086 and insert in Event Queue of the target Object: Automa_ID_#748852
+2020-11-29 12:01:10,647 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#837971 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:01:10,650 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#837971 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 12:01:10,718 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#837971 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 12:01:10,779 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#837971 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 12:01:10,811 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#837971 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 12:01:10,839 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#485259 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:01:10,845 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#485259 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 12:01:10,880 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#485259 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 12:01:10,915 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#485259 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 12:01:10,997 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#545792 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:01:10,998 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#545792 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 12:01:11,034 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#545792 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 12:01:11,099 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#545792 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 12:01:11,161 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#956156 Executed Manipulate action from Automa: Automa_ID_#561066, Created event: PUSH_#576717 and insert in Event Queue of the target Object: Automa_ID_#193878
+2020-11-29 12:13:29,282 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341749 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:13:29,285 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341749 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 12:13:29,354 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341749 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 12:13:29,414 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341749 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 12:13:29,451 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341749 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 12:13:29,486 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#38415 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:13:29,487 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#38415 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 12:13:29,524 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#38415 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 12:13:29,587 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#38415 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 12:13:29,670 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#889786 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:13:29,672 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#889786 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 12:13:29,735 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#889786 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 12:13:29,788 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#889786 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 12:13:29,855 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#410704 Executed Manipulate action from Automa: Automa_ID_#944265, Created event: PUSH_#467186 and insert in Event Queue of the target Object: Automa_ID_#468510
+2020-11-29 12:13:56,531 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#325975 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 12:14:05,188 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#959045 Executed Catch action from Automa: Automa_ID_#243911, Created event: POP_#209969 and insert in Event Queue of the target Object: Automa_ID_#533696
+2020-11-29 12:14:05,352 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#344952 Executed Manipulate action from Automa: Automa_ID_#381972, Created event: ASSIMILATE_#471600 and insert in Event Queue of the target Object: Automa_ID_#844974
+2020-11-29 12:14:09,020 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#413864 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 12:14:09,158 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#36034 Executed projectile launch action from Automa: Automa_ID_#57178, Created event: HIT_#29079 and insert in Event Queue of the target Object: Automa_ID_#3760
+2020-11-29 12:14:09,254 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#837574 not executed projectile launch action because object not in range. automa: Automa_ID_#389929, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-29 12:14:09,351 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#3732 Executed projectile launch action from Automa: Automa_ID_#812316, Created event: HIT_#194585 and insert in Event Queue of the target Object: Automa_ID_#720387
+2020-11-29 12:14:09,412 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#270931 Executed projectile launch action from Automa: Automa_ID_#91842, Created event: HIT_#954534 and insert in Event Queue of the target Object: Automa_ID_#444292
+2020-11-29 12:14:09,453 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#976174 not executed projectile launch action because object not in range. automa: Automa_ID_#268845, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-29 12:14:09,531 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#469652 Executed projectile launch action from Automa: Automa_ID_#56567, Created event: HIT_#735009 and insert in Event Queue of the target Object: Automa_ID_#469215
+2020-11-29 12:14:09,599 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#639017 Executed projectile launch action from Automa: Automa_ID_#275411, Created event: HIT_#813184 and insert in Event Queue of the target Object: Automa_ID_#562006
+2020-11-29 12:18:53,843 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:18:53,844 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2020-11-29 12:18:53,848 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2020-11-29 12:18:53,865 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2020-11-29 12:18:53,898 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2020-11-29 12:18:53,930 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2020-11-29 12:18:53,950 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2020-11-29 12:18:53,980 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2020-11-29 12:18:54,013 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2020-11-29 12:18:54,032 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:18:54,033 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2020-11-29 12:18:54,083 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2020-11-29 12:18:54,129 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2020-11-29 12:18:54,148 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2020-11-29 12:18:54,181 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2020-11-29 12:18:54,199 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2020-11-29 12:18:54,218 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2020-11-29 12:18:54,250 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2020-11-29 12:18:54,268 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2020-11-29 12:18:54,297 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2020-11-29 12:18:54,313 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2020-11-29 12:18:54,314 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#121668 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2020-11-29 12:18:54,349 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#368657 Executed Manipulate action from Automa: Automa_ID_#859209, Created event: PUSH_#709932 and insert in Event Queue of the target Object: Object_ID_#117377
+2020-11-29 12:18:54,382 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#368657 Executed Manipulate action from Automa: Automa_ID_#859209, Created event: PUSH_#778851 and insert in Event Queue of the target Object: Automa_ID_#55014
+2020-11-29 12:18:54,416 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#582569 Executed Catch action from Automa: Automa_ID_#859209, Created event: POP_#363301 and insert in Event Queue of the target Object: Object_ID_#125161
+2020-11-29 12:18:54,450 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#995183 Executed projectile launch action from Automa: Automa_ID_#859209, Created event: HIT_#552939 and insert in Event Queue of the target Object: Object_ID_#240056
+2020-11-29 12:18:54,497 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#995183 Executed projectile launch action from Automa: Automa_ID_#859209, Created event: HIT_#853356 and insert in Event Queue of the target Object: Object_ID_#502560
+2020-11-29 12:18:54,527 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#839552 Executed projectile launch action from Automa: Automa_ID_#859209, Created event: HIT_#172157 and insert in Event Queue of the target Object: Object_ID_#404982
+2020-11-29 12:18:54,558 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#226365 Executed Manipulate action from Automa: Automa_ID_#859209, Created event: ASSIMILATE_#366971 and insert in Event Queue of the target Object: Object_ID_#339336
+2020-11-29 12:18:54,584 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#995183 Executed projectile launch action from Automa: Automa_ID_#859209, Created event: HIT_#846404 and insert in Event Queue of the target Object: Object_ID_#844329
+2020-11-29 12:26:47,374 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#843519 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:26:47,374 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#843519 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2020-11-29 12:26:47,408 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#843519 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2020-11-29 12:26:47,428 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#843519 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2020-11-29 12:26:47,461 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#843519 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2020-11-29 12:26:47,491 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#565262 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:26:47,491 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#565262 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 12:26:47,511 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#565262 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 12:26:47,541 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#565262 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 12:26:47,571 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#685029 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2020-11-29 12:26:47,572 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#685029 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2020-11-29 12:26:47,575 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#685029 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2020-11-29 12:26:47,606 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#685029 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2020-11-29 12:26:47,637 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#358480 Executed Manipulate action from Automa: Automa_ID_#446350, Created event: PUSH_#861192 and insert in Event Queue of the target Object: Automa_ID_#842703
+2020-11-29 12:26:47,670 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#152909 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 12:26:47,724 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#557418 Executed Catch action from Automa: Automa_ID_#411898, Created event: POP_#947005 and insert in Event Queue of the target Object: Automa_ID_#193554
+2020-11-29 12:26:47,766 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#808275 Executed Manipulate action from Automa: Automa_ID_#105771, Created event: ASSIMILATE_#739389 and insert in Event Queue of the target Object: Automa_ID_#489412
+2020-11-29 12:26:47,802 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#593509 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2020-11-29 12:26:47,842 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#917463 Executed projectile launch action from Automa: Automa_ID_#499289, Created event: HIT_#34558 and insert in Event Queue of the target Object: Automa_ID_#851698
+2020-11-29 12:26:47,883 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#229799 not executed projectile launch action because object not in range. automa: Automa_ID_#322347, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2020-11-29 12:26:47,923 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#683235 Executed projectile launch action from Automa: Automa_ID_#356778, Created event: HIT_#721726 and insert in Event Queue of the target Object: Automa_ID_#579999
+2020-11-29 12:26:47,952 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#985630 Executed projectile launch action from Automa: Automa_ID_#55815, Created event: HIT_#821386 and insert in Event Queue of the target Object: Automa_ID_#346120
+2020-11-29 12:26:47,991 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#895448 not executed projectile launch action because object not in range. automa: Automa_ID_#563768, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2020-11-29 12:26:48,020 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#54915 Executed projectile launch action from Automa: Automa_ID_#858658, Created event: HIT_#787758 and insert in Event Queue of the target Object: Automa_ID_#882610
+2020-11-29 12:26:48,089 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#117383 Executed projectile launch action from Automa: Automa_ID_#511987, Created event: HIT_#815254 and insert in Event Queue of the target Object: Automa_ID_#989447
+2020-11-29 12:29:56,166 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:29:56,182 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2020-11-29 12:29:56,222 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2020-11-29 12:29:56,288 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2020-11-29 12:29:56,370 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2020-11-29 12:29:56,435 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2020-11-29 12:29:56,499 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2020-11-29 12:29:56,535 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2020-11-29 12:29:56,569 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2020-11-29 12:39:30,632 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:39:30,693 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2020-11-29 12:39:30,866 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2020-11-29 12:39:30,920 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2020-11-29 12:39:31,013 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2020-11-29 12:39:31,083 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2020-11-29 12:39:31,145 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2020-11-29 12:39:31,210 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2020-11-29 12:39:31,245 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2020-11-29 12:39:31,279 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2020-11-29 12:39:31,335 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2020-11-29 12:39:31,345 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2020-11-29 12:39:31,346 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#663872 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2020-11-29 12:39:45,503 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#137263 Executed Manipulate action from Automa: Automa_ID_#849167, Created event: PUSH_#564375 and insert in Event Queue of the target Object: Object_ID_#920818
+2020-11-29 12:42:04,320 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:42:04,323 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2020-11-29 12:42:04,422 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2020-11-29 12:42:04,490 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2020-11-29 12:42:04,557 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2020-11-29 12:42:04,593 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2020-11-29 12:42:04,628 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2020-11-29 12:42:04,714 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2020-11-29 12:42:04,723 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2020-11-29 12:42:04,759 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:42:04,761 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2020-11-29 12:42:04,810 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2020-11-29 12:42:04,844 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2020-11-29 12:42:04,878 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2020-11-29 12:42:04,924 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2020-11-29 12:42:04,973 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2020-11-29 12:42:05,009 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2020-11-29 12:42:05,045 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2020-11-29 12:42:05,095 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2020-11-29 12:42:05,140 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2020-11-29 12:42:05,179 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2020-11-29 12:42:05,190 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#810569 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2020-11-29 12:44:40,422 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#711922 Executed Manipulate action from Automa: Automa_ID_#918957, Created event: PUSH_#970058 and insert in Event Queue of the target Object: Object_ID_#673370
+2020-11-29 12:47:01,732 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:47:01,732 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2020-11-29 12:47:01,736 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2020-11-29 12:47:01,756 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2020-11-29 12:47:01,785 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2020-11-29 12:47:01,803 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2020-11-29 12:47:01,823 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2020-11-29 12:47:01,851 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2020-11-29 12:47:01,870 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2020-11-29 12:47:01,903 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:47:01,904 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2020-11-29 12:47:01,953 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2020-11-29 12:47:01,986 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2020-11-29 12:47:02,004 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2020-11-29 12:47:02,021 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2020-11-29 12:47:02,052 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2020-11-29 12:47:02,084 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2020-11-29 12:47:02,104 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2020-11-29 12:47:02,133 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2020-11-29 12:47:02,168 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2020-11-29 12:47:02,187 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2020-11-29 12:47:02,189 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#341065 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2020-11-29 12:47:02,252 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#774586 Executed Manipulate action from Automa: Automa_ID_#812825, Created event: PUSH_#354529 and insert in Event Queue of the target Object: Object_ID_#391660
+2020-11-29 12:47:02,287 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#774586 Executed Manipulate action from Automa: Automa_ID_#812825, Created event: PUSH_#441571 and insert in Event Queue of the target Object: Automa_ID_#631723
+2020-11-29 12:47:02,318 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#227217 Executed Catch action from Automa: Automa_ID_#812825, Created event: POP_#699864 and insert in Event Queue of the target Object: Object_ID_#48473
+2020-11-29 12:47:02,351 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#279310 Executed projectile launch action from Automa: Automa_ID_#812825, Created event: HIT_#320855 and insert in Event Queue of the target Object: Object_ID_#592731
+2020-11-29 12:47:02,385 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#279310 Executed projectile launch action from Automa: Automa_ID_#812825, Created event: HIT_#54095 and insert in Event Queue of the target Object: Object_ID_#436124
+2020-11-29 12:47:02,418 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#623413 Executed projectile launch action from Automa: Automa_ID_#812825, Created event: HIT_#402254 and insert in Event Queue of the target Object: Object_ID_#734310
+2020-11-29 12:47:02,452 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#11178 Executed Manipulate action from Automa: Automa_ID_#812825, Created event: ASSIMILATE_#810941 and insert in Event Queue of the target Object: Object_ID_#61697
+2020-11-29 12:47:02,485 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#279310 Executed projectile launch action from Automa: Automa_ID_#812825, Created event: HIT_#107317 and insert in Event Queue of the target Object: Object_ID_#564046
+2020-11-29 12:47:58,989 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:47:58,992 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2020-11-29 12:47:59,005 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2020-11-29 12:47:59,067 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2020-11-29 12:47:59,105 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2020-11-29 12:47:59,149 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2020-11-29 12:47:59,183 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2020-11-29 12:47:59,218 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2020-11-29 12:47:59,253 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2020-11-29 12:47:59,318 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:47:59,320 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2020-11-29 12:47:59,372 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2020-11-29 12:47:59,419 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2020-11-29 12:47:59,452 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2020-11-29 12:47:59,486 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2020-11-29 12:47:59,522 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2020-11-29 12:47:59,585 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2020-11-29 12:47:59,639 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2020-11-29 12:47:59,690 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2020-11-29 12:47:59,720 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2020-11-29 12:47:59,754 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2020-11-29 12:47:59,767 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#849877 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2020-11-29 12:47:59,849 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#277547 Executed Manipulate action from Automa: Automa_ID_#12869, Created event: PUSH_#835911 and insert in Event Queue of the target Object: Object_ID_#4754
+2020-11-29 12:47:59,916 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#277547 Executed Manipulate action from Automa: Automa_ID_#12869, Created event: PUSH_#270346 and insert in Event Queue of the target Object: Automa_ID_#280624
+2020-11-29 12:47:59,969 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#670833 Executed Catch action from Automa: Automa_ID_#12869, Created event: POP_#137174 and insert in Event Queue of the target Object: Object_ID_#51647
+2020-11-29 12:48:00,033 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#784379 Executed projectile launch action from Automa: Automa_ID_#12869, Created event: HIT_#308326 and insert in Event Queue of the target Object: Object_ID_#217411
+2020-11-29 12:48:00,087 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#784379 Executed projectile launch action from Automa: Automa_ID_#12869, Created event: HIT_#649973 and insert in Event Queue of the target Object: Object_ID_#793414
+2020-11-29 12:48:00,151 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#933035 Executed projectile launch action from Automa: Automa_ID_#12869, Created event: HIT_#220832 and insert in Event Queue of the target Object: Object_ID_#731442
+2020-11-29 12:48:10,209 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#636238 Executed Manipulate action from Automa: Automa_ID_#12869, Created event: ASSIMILATE_#296240 and insert in Event Queue of the target Object: Object_ID_#607588
+2020-11-29 12:49:30,327 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:49:30,328 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2020-11-29 12:49:30,332 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2020-11-29 12:49:30,337 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2020-11-29 12:49:30,367 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2020-11-29 12:49:30,386 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2020-11-29 12:49:30,404 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2020-11-29 12:49:30,434 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2020-11-29 12:49:30,454 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2020-11-29 12:49:30,486 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2020-11-29 12:49:30,500 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2020-11-29 12:49:30,535 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2020-11-29 12:49:30,568 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2020-11-29 12:49:30,599 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2020-11-29 12:49:30,633 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2020-11-29 12:49:30,669 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2020-11-29 12:49:30,700 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2020-11-29 12:49:30,735 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2020-11-29 12:49:30,766 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2020-11-29 12:49:30,785 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2020-11-29 12:49:30,817 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2020-11-29 12:49:30,818 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#16620 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2020-11-29 12:49:30,852 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#861670 Executed Manipulate action from Automa: Automa_ID_#875876, Created event: PUSH_#964385 and insert in Event Queue of the target Object: Object_ID_#258530
+2020-11-29 12:49:30,900 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#861670 Executed Manipulate action from Automa: Automa_ID_#875876, Created event: PUSH_#152571 and insert in Event Queue of the target Object: Automa_ID_#679808
+2020-11-29 12:49:30,932 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#741998 Executed Catch action from Automa: Automa_ID_#875876, Created event: POP_#514707 and insert in Event Queue of the target Object: Object_ID_#397445
+2020-11-29 12:49:30,967 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#235772 Executed projectile launch action from Automa: Automa_ID_#875876, Created event: HIT_#993026 and insert in Event Queue of the target Object: Object_ID_#110864
+2020-11-29 12:49:31,000 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#235772 Executed projectile launch action from Automa: Automa_ID_#875876, Created event: HIT_#27419 and insert in Event Queue of the target Object: Object_ID_#85980
+2020-11-29 12:49:31,036 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#276071 Executed projectile launch action from Automa: Automa_ID_#875876, Created event: HIT_#970057 and insert in Event Queue of the target Object: Object_ID_#63877
+2020-11-29 12:49:31,084 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#29941 Executed Manipulate action from Automa: Automa_ID_#875876, Created event: ASSIMILATE_#806219 and insert in Event Queue of the target Object: Object_ID_#625429
+2020-11-29 12:49:31,114 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#235772 Executed projectile launch action from Automa: Automa_ID_#875876, Created event: HIT_#812409 and insert in Event Queue of the target Object: Object_ID_#465067
+2021-01-04 12:22:38,865 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#370203 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:22:38,882 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#370203 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2021-01-04 12:22:39,108 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#370203 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2021-01-04 12:22:39,232 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#370203 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2021-01-04 12:22:39,331 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#370203 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2021-01-04 12:22:39,521 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#492657 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:22:39,524 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#492657 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2021-01-04 12:22:39,563 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#492657 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2021-01-04 12:22:39,631 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#492657 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2021-01-04 12:22:39,727 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#708785 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:22:39,729 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#708785 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2021-01-04 12:22:39,842 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#708785 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2021-01-04 12:22:39,880 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#708785 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2021-01-04 12:22:39,957 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#345918 Executed Manipulate action from Automa: Automa_ID_#458503, Created event: PUSH_#140562 and insert in Event Queue of the target Object: Automa_ID_#713396
+2021-01-04 12:22:40,062 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#904860 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2021-01-04 12:22:40,322 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#204611 Executed Catch action from Automa: Automa_ID_#617686, Created event: POP_#772153 and insert in Event Queue of the target Object: Automa_ID_#814769
+2021-01-04 12:22:40,732 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#973522 Executed Manipulate action from Automa: Automa_ID_#366786, Created event: ASSIMILATE_#629945 and insert in Event Queue of the target Object: Automa_ID_#57439
+2021-01-04 12:22:41,056 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#682946 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2021-01-04 12:22:41,249 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#704871 Executed projectile launch action from Automa: Automa_ID_#364250, Created event: HIT_#761059 and insert in Event Queue of the target Object: Automa_ID_#262748
+2021-01-04 12:22:41,751 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#678456 not executed projectile launch action because object not in range. automa: Automa_ID_#775892, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2021-01-04 12:22:42,024 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#699314 Executed projectile launch action from Automa: Automa_ID_#477031, Created event: HIT_#892391 and insert in Event Queue of the target Object: Automa_ID_#490936
+2021-01-04 12:22:42,238 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#462515 Executed projectile launch action from Automa: Automa_ID_#650224, Created event: HIT_#555054 and insert in Event Queue of the target Object: Automa_ID_#391796
+2021-01-04 12:22:42,432 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#117898 not executed projectile launch action because object not in range. automa: Automa_ID_#235458, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2021-01-04 12:22:42,713 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#184143 Executed projectile launch action from Automa: Automa_ID_#289235, Created event: HIT_#550765 and insert in Event Queue of the target Object: Automa_ID_#49264
+2021-01-04 12:22:42,881 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#845067 Executed projectile launch action from Automa: Automa_ID_#426548, Created event: HIT_#250450 and insert in Event Queue of the target Object: Automa_ID_#332528
+2021-01-04 12:23:02,658 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2021-01-04 12:23:02,659 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2021-01-04 12:23:02,695 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2021-01-04 12:23:02,806 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2021-01-04 12:23:02,948 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2021-01-04 12:23:02,996 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2021-01-04 12:23:03,081 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2021-01-04 12:23:03,128 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2021-01-04 12:23:03,178 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2021-01-04 12:23:03,226 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2021-01-04 12:23:03,226 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2021-01-04 12:23:03,327 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2021-01-04 12:23:03,388 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2021-01-04 12:23:03,474 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2021-01-04 12:23:03,497 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2021-01-04 12:23:03,535 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2021-01-04 12:23:03,597 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2021-01-04 12:23:03,697 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2021-01-04 12:23:03,840 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2021-01-04 12:23:03,944 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2021-01-04 12:23:04,069 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2021-01-04 12:23:04,097 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#522545 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2021-01-04 12:23:04,163 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#723073 Executed Manipulate action from Automa: Automa_ID_#274905, Created event: PUSH_#967830 and insert in Event Queue of the target Object: Object_ID_#893476
+2021-01-04 12:23:04,356 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#723073 Executed Manipulate action from Automa: Automa_ID_#274905, Created event: PUSH_#941212 and insert in Event Queue of the target Object: Automa_ID_#948081
+2021-01-04 12:23:04,493 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#344360 Executed Catch action from Automa: Automa_ID_#274905, Created event: POP_#509390 and insert in Event Queue of the target Object: Object_ID_#854234
+2021-01-04 12:23:04,620 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#287096 Executed projectile launch action from Automa: Automa_ID_#274905, Created event: HIT_#577916 and insert in Event Queue of the target Object: Object_ID_#613750
+2021-01-04 12:23:04,698 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#287096 Executed projectile launch action from Automa: Automa_ID_#274905, Created event: HIT_#690141 and insert in Event Queue of the target Object: Object_ID_#103302
+2021-01-04 12:23:04,835 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#808364 Executed projectile launch action from Automa: Automa_ID_#274905, Created event: HIT_#196710 and insert in Event Queue of the target Object: Object_ID_#636404
+2021-01-04 12:23:05,106 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#343208 Executed Manipulate action from Automa: Automa_ID_#274905, Created event: ASSIMILATE_#536162 and insert in Event Queue of the target Object: Object_ID_#215214
+2021-01-04 12:23:05,654 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#287096 Executed projectile launch action from Automa: Automa_ID_#274905, Created event: HIT_#467839 and insert in Event Queue of the target Object: Object_ID_#908900
+2021-01-04 12:23:21,466 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#130072 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:23:21,476 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#130072 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2021-01-04 12:23:21,483 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#130072 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2021-01-04 12:23:21,516 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#130072 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2021-01-04 12:23:21,548 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#130072 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2021-01-04 12:23:21,579 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#296963 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:23:21,581 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#296963 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2021-01-04 12:23:21,614 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#296963 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2021-01-04 12:23:21,648 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#296963 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2021-01-04 12:23:21,695 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#279852 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:23:21,696 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#279852 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2021-01-04 12:23:21,732 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#279852 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2021-01-04 12:23:21,778 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#279852 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2021-01-04 12:23:21,813 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#49613 Executed Manipulate action from Automa: Automa_ID_#11642, Created event: PUSH_#800093 and insert in Event Queue of the target Object: Automa_ID_#267073
+2021-01-04 12:23:21,841 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#531313 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2021-01-04 12:23:21,897 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#372599 Executed Catch action from Automa: Automa_ID_#20858, Created event: POP_#845030 and insert in Event Queue of the target Object: Automa_ID_#688313
+2021-01-04 12:23:21,928 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#589855 Executed Manipulate action from Automa: Automa_ID_#209537, Created event: ASSIMILATE_#919082 and insert in Event Queue of the target Object: Automa_ID_#455814
+2021-01-04 12:23:21,960 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#868764 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2021-01-04 12:23:22,016 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#644876 Executed projectile launch action from Automa: Automa_ID_#827417, Created event: HIT_#584578 and insert in Event Queue of the target Object: Automa_ID_#932214
+2021-01-04 12:23:22,060 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#797293 not executed projectile launch action because object not in range. automa: Automa_ID_#121329, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2021-01-04 12:23:22,111 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#242188 Executed projectile launch action from Automa: Automa_ID_#538446, Created event: HIT_#555719 and insert in Event Queue of the target Object: Automa_ID_#620181
+2021-01-04 12:23:22,160 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#628597 Executed projectile launch action from Automa: Automa_ID_#71303, Created event: HIT_#465407 and insert in Event Queue of the target Object: Automa_ID_#113917
+2021-01-04 12:23:22,191 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#151407 not executed projectile launch action because object not in range. automa: Automa_ID_#83148, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2021-01-04 12:23:22,231 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#429496 Executed projectile launch action from Automa: Automa_ID_#721608, Created event: HIT_#726838 and insert in Event Queue of the target Object: Automa_ID_#227175
+2021-01-04 12:23:22,263 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#563836 Executed projectile launch action from Automa: Automa_ID_#403546, Created event: HIT_#450151 and insert in Event Queue of the target Object: Automa_ID_#53847
+2021-01-04 12:23:22,558 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2021-01-04 12:23:22,559 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2021-01-04 12:23:22,564 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2021-01-04 12:23:22,582 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2021-01-04 12:23:22,612 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2021-01-04 12:23:22,631 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2021-01-04 12:23:22,650 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2021-01-04 12:23:22,679 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2021-01-04 12:23:22,698 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2021-01-04 12:23:22,750 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2021-01-04 12:23:22,764 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2021-01-04 12:23:22,800 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2021-01-04 12:23:22,845 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2021-01-04 12:23:22,867 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2021-01-04 12:23:22,898 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2021-01-04 12:23:22,930 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2021-01-04 12:23:22,965 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2021-01-04 12:23:23,013 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2021-01-04 12:23:23,032 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2021-01-04 12:23:23,065 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2021-01-04 12:23:23,099 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2021-01-04 12:23:23,127 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#122577 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2021-01-04 12:23:23,181 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#151442 Executed Manipulate action from Automa: Automa_ID_#960639, Created event: PUSH_#257996 and insert in Event Queue of the target Object: Object_ID_#269775
+2021-01-04 12:23:23,243 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#151442 Executed Manipulate action from Automa: Automa_ID_#960639, Created event: PUSH_#508754 and insert in Event Queue of the target Object: Automa_ID_#460345
+2021-01-04 12:23:23,298 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#869450 Executed Catch action from Automa: Automa_ID_#960639, Created event: POP_#940108 and insert in Event Queue of the target Object: Object_ID_#86015
+2021-01-04 12:23:23,366 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#57158 Executed projectile launch action from Automa: Automa_ID_#960639, Created event: HIT_#423302 and insert in Event Queue of the target Object: Object_ID_#146320
+2021-01-04 12:23:23,414 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#57158 Executed projectile launch action from Automa: Automa_ID_#960639, Created event: HIT_#84058 and insert in Event Queue of the target Object: Object_ID_#293190
+2021-01-04 12:23:23,462 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#711477 Executed projectile launch action from Automa: Automa_ID_#960639, Created event: HIT_#799687 and insert in Event Queue of the target Object: Object_ID_#293112
+2021-01-04 12:23:23,497 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#89849 Executed Manipulate action from Automa: Automa_ID_#960639, Created event: ASSIMILATE_#708926 and insert in Event Queue of the target Object: Object_ID_#917196
+2021-01-04 12:23:23,531 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#57158 Executed projectile launch action from Automa: Automa_ID_#960639, Created event: HIT_#311431 and insert in Event Queue of the target Object: Object_ID_#440344
+2021-01-04 12:30:30,952 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#665746 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:30,954 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#665746 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2021-01-04 12:30:30,985 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#665746 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2021-01-04 12:30:31,022 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#665746 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2021-01-04 12:30:31,054 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#665746 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2021-01-04 12:30:31,057 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#301055 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:31,057 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#301055 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2021-01-04 12:30:31,086 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#301055 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2021-01-04 12:30:31,089 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#301055 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2021-01-04 12:30:31,118 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#117128 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:31,119 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#117128 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2021-01-04 12:30:31,122 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#117128 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2021-01-04 12:30:31,151 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#117128 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2021-01-04 12:30:31,220 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#497096 Executed Manipulate action from Automa: Automa_ID_#334633, Created event: PUSH_#53447 and insert in Event Queue of the target Object: Automa_ID_#100431
+2021-01-04 12:30:31,257 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#109769 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2021-01-04 12:30:31,389 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#979693 Executed Catch action from Automa: Automa_ID_#606537, Created event: POP_#32826 and insert in Event Queue of the target Object: Automa_ID_#103598
+2021-01-04 12:30:31,423 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#655693 Executed Manipulate action from Automa: Automa_ID_#191510, Created event: ASSIMILATE_#148058 and insert in Event Queue of the target Object: Automa_ID_#994324
+2021-01-04 12:30:31,534 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#706 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2021-01-04 12:30:31,603 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#980126 Executed projectile launch action from Automa: Automa_ID_#929363, Created event: HIT_#403806 and insert in Event Queue of the target Object: Automa_ID_#213555
+2021-01-04 12:30:31,611 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#711095 not executed projectile launch action because object not in range. automa: Automa_ID_#937234, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2021-01-04 12:30:31,672 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#200697 Executed projectile launch action from Automa: Automa_ID_#628351, Created event: HIT_#804896 and insert in Event Queue of the target Object: Automa_ID_#23163
+2021-01-04 12:30:31,779 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#484486 Executed projectile launch action from Automa: Automa_ID_#636133, Created event: HIT_#159521 and insert in Event Queue of the target Object: Automa_ID_#125668
+2021-01-04 12:30:31,903 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#122112 not executed projectile launch action because object not in range. automa: Automa_ID_#952834, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2021-01-04 12:30:31,953 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#322144 Executed projectile launch action from Automa: Automa_ID_#137743, Created event: HIT_#608037 and insert in Event Queue of the target Object: Automa_ID_#33087
+2021-01-04 12:30:32,000 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#407028 Executed projectile launch action from Automa: Automa_ID_#144092, Created event: HIT_#39676 and insert in Event Queue of the target Object: Automa_ID_#402191
+2021-01-04 12:30:36,803 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:36,805 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2021-01-04 12:30:36,859 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2021-01-04 12:30:36,867 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2021-01-04 12:30:36,871 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2021-01-04 12:30:36,890 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2021-01-04 12:30:36,937 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2021-01-04 12:30:36,956 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2021-01-04 12:30:36,990 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2021-01-04 12:30:37,040 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:37,055 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2021-01-04 12:30:37,107 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2021-01-04 12:30:37,139 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2021-01-04 12:30:37,157 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2021-01-04 12:30:37,189 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2021-01-04 12:30:37,240 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2021-01-04 12:30:37,289 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2021-01-04 12:30:37,320 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2021-01-04 12:30:37,356 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2021-01-04 12:30:37,390 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2021-01-04 12:30:37,426 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2021-01-04 12:30:37,439 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#307196 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2021-01-04 12:30:37,506 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#284842 Executed Manipulate action from Automa: Automa_ID_#818371, Created event: PUSH_#370105 and insert in Event Queue of the target Object: Object_ID_#370792
+2021-01-04 12:30:37,588 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#284842 Executed Manipulate action from Automa: Automa_ID_#818371, Created event: PUSH_#243035 and insert in Event Queue of the target Object: Automa_ID_#247538
+2021-01-04 12:30:37,654 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#105270 Executed Catch action from Automa: Automa_ID_#818371, Created event: POP_#709060 and insert in Event Queue of the target Object: Object_ID_#355887
+2021-01-04 12:30:37,690 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#398470 Executed projectile launch action from Automa: Automa_ID_#818371, Created event: HIT_#510821 and insert in Event Queue of the target Object: Object_ID_#375884
+2021-01-04 12:30:37,803 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#398470 Executed projectile launch action from Automa: Automa_ID_#818371, Created event: HIT_#522958 and insert in Event Queue of the target Object: Object_ID_#103213
+2021-01-04 12:30:37,873 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#439771 Executed projectile launch action from Automa: Automa_ID_#818371, Created event: HIT_#907865 and insert in Event Queue of the target Object: Object_ID_#203403
+2021-01-04 12:30:37,940 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#806920 Executed Manipulate action from Automa: Automa_ID_#818371, Created event: ASSIMILATE_#48604 and insert in Event Queue of the target Object: Object_ID_#465981
+2021-01-04 12:30:38,036 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#398470 Executed projectile launch action from Automa: Automa_ID_#818371, Created event: HIT_#973106 and insert in Event Queue of the target Object: Object_ID_#477844
+2021-01-04 12:30:46,288 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#350315 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:46,288 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#350315 -  max_dist_for_single_iteration: 6,  min_dist_from_pos_to_dest: 3,  num Iteration: 3 
+2021-01-04 12:30:46,306 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#350315 executed move action. Iteration: 0 Energy_actuator 94 position_reached True
+2021-01-04 12:30:46,351 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#350315 executed move action. Iteration: 1 Energy_actuator 88 position_reached True
+2021-01-04 12:30:46,395 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#350315 executed move action. Iteration: 2 Energy_actuator 82 position_reached True
+2021-01-04 12:30:46,423 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#63516 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:46,423 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#63516 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2021-01-04 12:30:46,499 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#63516 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2021-01-04 12:30:46,529 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#63516 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2021-01-04 12:30:46,553 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#996095 from: (0, 0, 0) to: (5, 5, 3) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:46,555 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#996095 -  max_dist_for_single_iteration: 2,  min_dist_from_pos_to_dest: 3,  num Iteration: 2 
+2021-01-04 12:30:46,590 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#996095 executed move action. Iteration: 0 Energy_actuator 98 position_reached False
+2021-01-04 12:30:46,638 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#996095 executed move action. Iteration: 1 Energy_actuator 96 position_reached False
+2021-01-04 12:30:46,685 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#573129 Executed Manipulate action from Automa: Automa_ID_#755576, Created event: PUSH_#982909 and insert in Event Queue of the target Object: Automa_ID_#519353
+2021-01-04 12:30:46,718 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#426314 not executed manipulate action because destination is out of range. destination: (11, 11, 11), range: (10, 10, 10), energy_actuator: 90
+2021-01-04 12:30:46,786 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#922655 Executed Catch action from Automa: Automa_ID_#387298, Created event: POP_#107475 and insert in Event Queue of the target Object: Automa_ID_#664621
+2021-01-04 12:30:46,824 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#628485 Executed Manipulate action from Automa: Automa_ID_#172775, Created event: ASSIMILATE_#566241 and insert in Event Queue of the target Object: Automa_ID_#67317
+2021-01-04 12:30:46,871 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#488523 not executed assimilate action because object not in range. automa: None, object position: (15, 15, 15), range: (10, 10, 10), energy_actuator: 90
+2021-01-04 12:30:46,900 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#245200 Executed projectile launch action from Automa: Automa_ID_#30673, Created event: HIT_#986074 and insert in Event Queue of the target Object: Automa_ID_#891073
+2021-01-04 12:30:46,950 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#467402 not executed projectile launch action because object not in range. automa: Automa_ID_#96872, object position: (46, 45, 44), range: (41, 42, 43), energy_actuator: 90
+2021-01-04 12:30:46,984 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#952510 Executed projectile launch action from Automa: Automa_ID_#717441, Created event: HIT_#61894 and insert in Event Queue of the target Object: Automa_ID_#857170
+2021-01-04 12:30:47,039 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#409821 Executed projectile launch action from Automa: Automa_ID_#747778, Created event: HIT_#590347 and insert in Event Queue of the target Object: Automa_ID_#729372
+2021-01-04 12:30:47,070 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#278556 not executed projectile launch action because object not in range. automa: Automa_ID_#440693, object position: (-46, -45, -44), range: (44, 44, 44), energy_actuator: 90
+2021-01-04 12:30:47,101 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#390555 Executed projectile launch action from Automa: Automa_ID_#91049, Created event: HIT_#457386 and insert in Event Queue of the target Object: Automa_ID_#286605
+2021-01-04 12:30:47,154 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#583543 Executed projectile launch action from Automa: Automa_ID_#976424, Created event: HIT_#967340 and insert in Event Queue of the target Object: Automa_ID_#536073
+2021-01-04 12:30:47,373 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:47,375 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 -  max_dist_for_single_iteration: 7,  min_dist_from_pos_to_dest: 10,  num Iteration: 7 
+2021-01-04 12:30:47,402 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 0 Energy_actuator 99 position_reached False
+2021-01-04 12:30:47,407 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 1 Energy_actuator 98 position_reached False
+2021-01-04 12:30:47,440 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 2 Energy_actuator 97 position_reached False
+2021-01-04 12:30:47,488 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 3 Energy_actuator 96 position_reached False
+2021-01-04 12:30:47,522 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 4 Energy_actuator 95 position_reached False
+2021-01-04 12:30:47,556 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 5 Energy_actuator 94 position_reached False
+2021-01-04 12:30:47,589 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 6 Energy_actuator 93 position_reached False
+2021-01-04 12:30:47,640 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 from: (0, 0, 0) to: (10, 10, 10) -  Evalutate direction: foward_up_right
+2021-01-04 12:30:47,657 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 -  max_dist_for_single_iteration: 10,  min_dist_from_pos_to_dest: 10,  num Iteration: 10 
+2021-01-04 12:30:47,739 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 0 Energy_actuator 92 position_reached True
+2021-01-04 12:30:47,756 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 1 Energy_actuator 91 position_reached True
+2021-01-04 12:30:47,773 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 2 Energy_actuator 90 position_reached True
+2021-01-04 12:30:47,806 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 3 Energy_actuator 89 position_reached True
+2021-01-04 12:30:47,838 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 4 Energy_actuator 88 position_reached True
+2021-01-04 12:30:47,856 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 5 Energy_actuator 87 position_reached True
+2021-01-04 12:30:47,874 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 6 Energy_actuator 86 position_reached True
+2021-01-04 12:30:47,906 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 7 Energy_actuator 85 position_reached True
+2021-01-04 12:30:47,938 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 8 Energy_actuator 84 position_reached True
+2021-01-04 12:30:47,956 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 9 Energy_actuator 83 position_reached True
+2021-01-04 12:30:47,957 - Actuator - DEBUG - moving - Actuator: Actuator_ID_#763826 executed move action. Iteration: 9 Energy_actuator 83  position_reached True
+2021-01-04 12:30:48,005 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#966804 Executed Manipulate action from Automa: Automa_ID_#607169, Created event: PUSH_#560118 and insert in Event Queue of the target Object: Object_ID_#101384
+2021-01-04 12:30:48,055 - Actuator - DEBUG - object_manipulating - Actuator: Actuator_ID_#966804 Executed Manipulate action from Automa: Automa_ID_#607169, Created event: PUSH_#955047 and insert in Event Queue of the target Object: Automa_ID_#323954
+2021-01-04 12:30:48,122 - Actuator - DEBUG - object_catching - Actuator: Actuator_ID_#701984 Executed Catch action from Automa: Automa_ID_#607169, Created event: POP_#200627 and insert in Event Queue of the target Object: Object_ID_#241059
+2021-01-04 12:30:48,156 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#293684 Executed projectile launch action from Automa: Automa_ID_#607169, Created event: HIT_#956162 and insert in Event Queue of the target Object: Object_ID_#533449
+2021-01-04 12:30:48,246 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#293684 Executed projectile launch action from Automa: Automa_ID_#607169, Created event: HIT_#969705 and insert in Event Queue of the target Object: Object_ID_#200523
+2021-01-04 12:30:48,287 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#579247 Executed projectile launch action from Automa: Automa_ID_#607169, Created event: HIT_#442151 and insert in Event Queue of the target Object: Object_ID_#683493
+2021-01-04 12:30:48,320 - Actuator - DEBUG - object_assimilating - Actuator: Actuator_ID_#426550 Executed Manipulate action from Automa: Automa_ID_#607169, Created event: ASSIMILATE_#214773 and insert in Event Queue of the target Object: Object_ID_#290217
+2021-01-04 12:30:48,352 - Actuator - DEBUG - shooting - Actuator: Actuator_ID_#293684 Executed projectile launch action from Automa: Automa_ID_#607169, Created event: HIT_#958889 and insert in Event Queue of the target Object: Object_ID_#23710

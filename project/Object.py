@@ -78,15 +78,15 @@ class Object:
 
 
             if ev.isPop(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
-                self.evalutatePop( power = ev._power, mass = ev._mass, posManager = posManager, catcher = ev._obj, duration = ev._duration  )
+                self.evalutatePop( duration = ev._duration, power = ev._power, mass = ev._mass, posManager = posManager, catcher = ev._obj  )
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
 
             if ev.isPush(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
-                self.evalutatePush( ev._power, ev._mass, posManager, pusher = ev._obj )
+                self.evalutatePush( destination = ev._destination, duration = ev._duration, power = ev._power, mass = ev._mass, posManager = posManager, pusher = ev._obj )
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
 
             if ev.isAssimilate(): # viene valutato se l'automa può essere mangiato. Eliminare l'automa aggiornando lo stato
-                self.evalutateEat( ev._power, ev._mass, posManager, assimilator = ev._obj )
+                self.evalutateEat( duration = ev._duration, power = ev._power, mass = ev._mass, posManager = posManager, assimilator = ev._obj )
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale eliminazione dell'oggetto
 
         logger.logger.debug("Object: {0} executed update internal state".format( self._name ))
@@ -137,8 +137,8 @@ class Object:
     
 
 
-    def evalutatePop( self, power, mass, posManager, catcher ):
-        
+    def evalutatePop( self, duration, power, mass, posManager, catcher ):
+        """" Evalutate event POP effect """
         ratio = self._resilience * self._mass / ( mass * power ) 
         logger.logger.debug("Object: {0} Evalutate POP with power: {1}, ratio: {2}, catcher: {3}".format( self._id, power, ratio, catcher._id ) )
 
@@ -176,6 +176,84 @@ class Object:
         
         logger.logger.debug("Object: {0} POP not executed 1}. ratio: {1}, catcher: {2}".format( self._id, power, ratio, catcher._id ) )
         return False
+
+
+    def evalutatePush( self, destination, duration, power, mass, posManager, pusher ):
+        """" evalutate event PUSH effect """
+        #result = posManager.moveObject( destination, obj )# lo spostamento dell'oggetto nella posizione di destinazione avviene sempre in quanto rientra nel range dell'attuatore. Quindi l'eventuale richiesta di più task per la conclusione dell'attuazione non può essere imputata al raggiungimento della destinazione come nella move action ma, eventualmente, ad un tempo e quindi gestita nellla classe Automa
+
+        # Creazione evento e inserimento nella event queue qualora l'object è un automa
+        #self.setEvent( automa = automa, result = True, obj = obj, typ = 'PUSH', duration = 0, time2go = 0 ) # duration = 0 -> effetti evento già applicati su object        
+        #logger.logger.debug("Actuator: {0} result manipulate = {1}. destination: {2}, range: {3}, energy_actuator: {4}".format( self._id, result, destination, self._range, energy_actuator ))        
+        #return result, energy_actuator, manipulation_terminated 
+
+        ratio = self._resilience * self._mass / ( mass * power ) 
+        logger.logger.debug("Object: {0} Evalutate PUSH with power: {1}, ratio: {2}, pusher: {3}".format( self._id, power, ratio, pusher._id ) )
+
+        if ratio <= 1:
+        
+            if duration == 1:                                        
+                position = self.getPosition()
+
+                if posManager.moveObject( destination, self ):
+                    logger.logger.debug("Confirmed PUSH effect. ratio: {0} Object: {1}, pusher: {2}. Object moved from position: {3} at position: {4}".format( ratio, self._id, pusher._id, position, destination ) )                    
+                    return True
+                
+                else:
+                    raise Exception("Object: {0}, pusher: {1}. Not moved".format( self._id, pusher._id ) )
+            
+            else:
+                logger.logger.debug("POP action in progress. ratio: {0} Object: {1}, pusher: {2}. Object moved from position: {3} at position: {4}".format( ratio, self._id, pusher._id, position, destination ) )                        
+        
+        logger.logger.debug("Object: {0} PUSH not executed 1}. ratio: {1}, pusher: {2}".format( self._id, power, ratio, pusher._id ) )
+        return False
+
+
+
+    def evalutateEat( self, duration, power, mass, posManager, assimilator ):
+        """" evalutate event EAT effect """
+
+        if duration == 1:
+            
+            if self.getHealth() != self.evalutateDamage( power ):# valuta se la power dell'attuatore è superiore alla resilience dell'obj e pertanto casua una diminuzione della health        
+                obj_resilience = self.getResilience()            
+                obj_health = self._state.getHealth()
+                obj_active = self._state.isActive()
+                obj_critical = self._state.isCritical()
+                obj_anomaly = self._state.isAnomaly()
+                obj_destroyed = self._state.isDestroyed()
+                obj_remove = self._state.isRemoved()
+                obj_energy = self._state.getEnergy()
+                logger.logger.debug("Object: {0} executed assimilate action with object damage. automa: {1}, object position: {2}, object_resilience: {3}, object_health: {4}, object_active: {5}, object_critical: {6}, object_anomaly: {7}, object_destroyed: {8}, object_removed: {9}, object_energy: {10}".format( self._id, assimilator.getId(), self.getPosition(), obj_resilience, obj_health, obj_active, obj_critical, obj_anomaly, obj_destroyed, obj_remove, obj_energy ) )
+
+                if obj_destroyed: # la conclusione dell'azione è condizionata dalla distruzione dell'oggetto.                    
+
+                    if posManager.removeObject( self ):
+                        energy_increment = int( obj_energy * self._mass / assimilator._mass )
+                        assimilator._state.incrementEnergy( energy_increment ) #energy assimilate                                               
+                        logger.logger.debug("Object: {0} executed assimilate action with complete assimilation and energy gain: {1}. Object was removed from position manager. automa: {2}".format( self._id, energy_increment, assimilator.getId() ) )                    
+                        return True
+            
+                    else:                
+                        raise Exception("object_assimilating not executed but object was removed form position manager")
+
+                else:
+                    # ricrea un nuovo evento in quanto il processo di assimilazione non si è concluso
+                    event = Event( typ = "ASSIMILATE", volume = None, duration = 1, time2go = 1, energy = None, power = power, mass = mass, obj = assimilator ) # duration = 0 -> effetti evento già applicati su object
+                    self.insertEvent( event ) 
+                    logger.logger.debug("Object: {0} executed assimilate action. Action not complete, Object wasn't removed from position manager. automa: {1}".format( self._id, assimilator.getId() ) )
+                    return True
+            
+            else:
+                logger.logger.debug("Object: {0} not executed assimilate action Automa power < Object resilience. Automa: {1}, object position: {2}".format( self._id, assimilator.getId(), self.getPosition() ) )        
+                
+        return False
+        
+
+
+
+
+
 
 
     def insertEvent(self, event):

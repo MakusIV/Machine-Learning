@@ -10,7 +10,7 @@ logger = Logger(module_name = __name__, class_name = 'Event')
 
 class Event:
     
-    def __init__(self, typ, time2go = 1, duration = 1, volume = None, energy = None, power = None, mass = None, obj = None  ):
+    def __init__(self, typ, time2go = 1, duration = 1, volume = None, energy = None, power = None, mass = None, obj = None, destination = None  ):
 
         if not self.checkParam(typ, volume,  time2go, duration, energy, power, mass):
             raise Exception("Invalid parameters! Event not istantiate.")        
@@ -24,6 +24,7 @@ class Event:
         self._power = power
         self._mass = mass
         self._obj = obj
+        self._destination = destination
 
    
     def destroy( self ):

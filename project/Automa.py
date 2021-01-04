@@ -93,7 +93,7 @@ class Automa(Object):
     def evalutate(self, percept_info ):
         """Evalutate the info of the enviroments knows (percept info) and return the action to execute"""       
         # determina quali sono le azioni che può svolgere in questo singolo task e le inserisce nella queue action
-        self._actionsQueue = self.ai.evalutate(percept_info, self._state) # noota: la queue si resetta ad ogni task
+        self._actionsQueue = self.ai.evalutate(percept_info, self._state) # nota: la queue si resetta ad ogni task
         logger.logger.debug("Automa: {0} execute evalutate percept_info: created actionQueue with {1} items".format( self._id, len( self._actionsQueue ) ))
         return True
 
@@ -192,7 +192,6 @@ class Automa(Object):
 
 
 
-   
 
     def evalutateHit( self, posManager, power, random_hit = True ):
         """" evalutate event hit effect """
@@ -204,8 +203,8 @@ class Automa(Object):
 
         else:
             automa_energy_hit_power = power
-            sensor_energy_hit_power = int( power * 0.3 )
-            actuator_energy_hit_power = int( power * 0.7 )
+            sensor_energy_hit_power = int( power * 0.5 )
+            actuator_energy_hit_power = int( power * 0.8 )
 
         logger.logger.debug("Automa: {0} - automa_energy_hit_power: {1}, sensor_energy_hit_power: {2}, actuator_energy_hit_power: {3}".format( self._id, automa_energy_hit_power, sensor_energy_hit_power, actuator_energy_hit_power ))
 

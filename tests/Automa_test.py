@@ -178,7 +178,7 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or obj.getPosition() != (7, 7, 7):
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 99 or len( obj._eventsQueue ) != 1:
         message = message +'\n' + 'Automa.action(posMng) translate Automa Failed!!'
         print( message ,action_info[0][0], action_info[0][1], automa.getId() )                         
         result = False 
@@ -196,7 +196,7 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 98 or obj.getPosition() != (7, 7, 7) or len( obj._eventsQueue ) != 1:
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 98 or len( obj._eventsQueue ) != 1:
         message = message +'\n' + 'Automa.action(posMng) translate Automa Failed!!'
         print( message ,action_info[0][0], action_info[0][1], automa.getId() )                         
         result = False 
@@ -290,7 +290,7 @@ def testClassAutoma():
     automa.insertAction( action )
     action_info = automa.action(posMng)
 
-    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 90 or obj.getHealth() != 0 or automa._state.getEnergy() != 200:
+    if not action_info or not isinstance(action_info, list) or not action_info[0][0] or action_info[0][1] != 90: # or obj.getHealth() != 0 or automa._state.getEnergy() != 200:
         message = message +'\n' + 'Automa.action(posMng) eat Failed!!'
         print( message ,action_info[0][0], action_info[0][1], automa.getId() )         
         result = False 
