@@ -55,7 +55,7 @@ class AI:
     def updateInternalState( self, perception_info ):
         """update the internal_state property"""
         # nota: l'internal state serve solo per valutare il livello di efficenza dell'ai nell'esecuzione delle sue funzioni
-        return true
+        return True
 
     def updateEnvState( self, perception_info ):
         """update the env_state object property"""
@@ -76,6 +76,7 @@ class AI:
      
         return action
         
+
     def _ev_threat( self, internal_state, env_state, state ):
         """Evalutate Threats with level of threath and position. Return an istance of Threat.
         Rise an Invalid Parameters Exception"""
@@ -95,7 +96,8 @@ class AI:
         return obstacles
 
     def _ev_action(self, threaths, resources, space_env, state):
-
+        """Evalutate action to execute considering threats, resources, space_env and state.
+        Return an instance of Action. Rise an Invalid Parameters Exception"""
         action = Action()
         return action
 

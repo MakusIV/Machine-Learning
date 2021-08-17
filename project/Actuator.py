@@ -78,23 +78,17 @@ class Actuator:
         # il metodo di esecuzione specifico per quell'attuatore. Quindi qui dovrai definire i varii metodi per 
         # ogni attuatore. Forse è meglio utilizzare l'ereditarietà. No definisco qui le diverse funzioni da utilizzare per ogni attuatore       
 
-        if self._class == "object_manipulator":            
-            #param: [object, destination]
-            manipulated, energy_actuator, manipulate_terminated =  self.object_manipulating( automa, posManager, param )
-            return [ manipulated, energy_actuator, manipulate_terminated] # [True or False, energy_consume]
+        if self._class == "object_manipulator":                        
+            return self.object_manipulating( automa, posManager, param )
 
         elif self._class == 'mover':                 
-            #param: destination
-            moved, energy_actuator, move_terminated = self.moving( automa, posManager, param )
-            return [ moved, energy_actuator, move_terminated ] # [True or False, energy_consume, True or False]
+            return self.moving( automa, posManager, param )
 
         elif self._class == "plasma_launcher" or self._class == "projectile_launcher" or self._class == "object_hitter":
             return self.shooting( automa, posManager, param )
 
         elif self._class == "object_catcher":
-            #param[object]        
-            catched, energy_actuator, catch_terminated =  self.object_catching( automa, posManager, param )
-            return [ catched, energy_actuator, catch_terminated ] # [True or False, energy_consume]
+            return self.object_catching( automa, posManager, param )
 
         elif self._class == "object_assimilator":
             return self.object_assimilating( automa, posManager, param )
@@ -117,15 +111,11 @@ class Actuator:
         if not self.isInRange( destination ):
             logger.logger.debug("Actuator: {0} not executed manipulate action because destination is out of range. destination: {1}, range: {2}, energy_actuator: {3}".format( self._id, destination, self._range, energy_actuator ))
             return [ False, energy_actuator, False ]
-
-        
-        # devi considrare che la prima volta inserisce l'evento: l'evento deve poi essere rigestito includendo la fase finale di catch e isnerimento nell'automa
-        duration = 3 # qui valutare la durata in base a l tipo di Hit (es. un plasma può avere una durata di più cicli
-        time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)
-
-        event = Event( typ = "PUSH", volume = None, duration = duration, time2go = time2go, energy = None, power = self._power, mass = self._mass, obj = automa, destination = destination ) # duration = 0 -> effetti evento già applicati su object
-        obj.insertEvent( event ) 
-        logger.logger.debug("Actuator: {0} Executed Manipulate action from Automa: {1}, Created event: {2} and insert in Event Queue of the target Object: {3}".format( self._id, automa.getId(), event._id, obj.getId() ) )        
+    
+        # devi considerare che la prima volta inserisce l'evento: l'evento deve poi essere rigestito includendo la fase finale di catch e isnerimento nell'automa
+        #duration = 3 # qui valutare la durata in base a l tipo di Hit (es. un plasma può avere una durata di più cicli
+        #time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)        
+        self.setEvent( automa, obj = obj, typ = "PUSH", duration = 3, time2go = 1, energy = None, volume = None, destination = destination) # duration = 0 -> effetti evento già applicati su object
 
         return [ True, energy_actuator, manipulation_terminated ]
 
@@ -144,13 +134,10 @@ class Actuator:
             return [ False, energy_actuator, True ]# imposto assimilating_terminated = True per consentire l'eliminazione della action nella coda delle action
        
         # devi considrare che la prima volta inserisce l'evento: l'evento deve poi essere rigestito includendo la fase finale di catch e isnerimento nell'automa
-        duration = 1 # qui valutare la durata in base a l tipo di Hit (es. un plasma può avere una durata di più cicli
-        time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)
-
-        event = Event( typ = "ASSIMILATE", volume = None, duration = duration, time2go = time2go, energy = None, power = self._power, mass = self._mass, obj = automa ) # duration = 0 -> effetti evento già applicati su object
-        obj.insertEvent( event ) 
-        logger.logger.debug("Actuator: {0} Executed Manipulate action from Automa: {1}, Created event: {2} and insert in Event Queue of the target Object: {3}".format( self._id, automa.getId(), event._id, obj.getId() ) )        
-
+        #duration = 1 # qui valutare la durata in base a l tipo di Hit (es. un plasma può avere una durata di più cicli
+        #time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)
+        self.setEvent( automa, obj = obj, typ = "ASSIMILATE", duration = 1, time2go = 1, energy = None, volume = None, destination = None) # duration = 0 -> effetti evento già applicati su object
+        
         return [ True, energy_actuator, False ]
 
 
@@ -193,15 +180,15 @@ class Actuator:
                 return False, energy_actuator, position_reached
             # l'energia è presente nello stato dell'attuatore, tuttavia è l'automa che fornisce energia all'attuatore quindi ha senso 
             # restituire all'automa la info sul consumo energetico relativo alla perception
-            # In questa prima versione decremento solo l'energia dell'attuatore, quando questa diventa 0 l'automa deve provveedere
-            # a ricaricare l'energia dell'attuatore tramite la propria energia (con un fattore di  moltiplicazione: 1 energia automa = x energia sensore)
+            # In questa prima versione decremento solo l'energia dell'attuatore, quando questa diventa 0 l'automa deve 
+            # ricaricare l'energia dell'attuatore tramite la propria energia (con un fattore di  moltiplicazione: 1 energia automa = x energia sensore)
             energy_actuator = self._state.updateEnergy( self._power * speed_perc, self._delta_t )
             logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2} position_reached {3}".format( self._id, i, energy_actuator, position_reached ))
         
             if automa_position[ 0 ] == next_position[ 0 ] and automa_position[ 1 ] == next_position[ 1 ] and automa_position[ 2 ] == next_position[ 2 ]:
                 logger.logger.debug("Actuator: {0} executed move action. Iteration: {1} Energy_actuator {2}  position_reached {3}".format( self._id, i, energy_actuator, position_reached ))            
                 return True, energy_actuator, position_reached
-                    
+            # nota: non registri l'evento in quanto questa manovra non coinvolge altri oggetti        
         return True, energy_actuator, position_reached
 
     # TEST: OK
@@ -219,15 +206,11 @@ class Actuator:
             logger.logger.debug("Actuator: {0} not executed catch action because object not in range. automa catcher: {1}, object position: {2}, range: {3}, energy_actuator: {4}".format( self._id, obj.getCaught_from(), obj.getPosition(), self._range, energy_actuator ) )
             return [ False, energy_actuator, True ]
        
-
         # devi considrare che la prima volta inserisce l'evento: l'evento deve poi essere rigestito includendo la fase finale di catch e isnerimento nell'automa
-        duration = 3 # qui valutare la durata in base a l tipo di Hit (es. un plasma può avere una durata di più cicli
-        time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)
-
-        event = Event( typ = "POP", volume = None, duration = duration, time2go = time2go, energy = None, power = self._power, mass = self._mass, obj = automa ) # duration = 0 -> effetti evento già applicati su object
-        obj.insertEvent( event ) 
-        logger.logger.debug("Actuator: {0} Executed Catch action from Automa: {1}, Created event: {2} and insert in Event Queue of the target Object: {3}".format( self._id, automa.getId(), event._id, obj.getId() ) )        
-
+        #duration = 3 # qui valutare la durata in base a l tipo di Hit (es. un plasma può avere una durata di più cicli
+        #time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)
+        self.setEvent( automa, obj = obj, typ = "POP", duration = 3, time2go = 1, energy = None, volume = None, destination = None) # duration = 0 -> effetti evento già applicati su object
+    
         return [ True, energy_actuator, catch_terminated ]
 
         
@@ -260,12 +243,10 @@ class Actuator:
         # può fre in questo modo: se il taret è un automa si crea l'evento e lo si inserisce nella event queue, se invece è un object si applicano direttamente gli effetti (trascurando il tempo di attuazione)
         # no deve essere realizzata una event queue anche per l'object
 
-        duration = 1 # qui valutare la durata in base al tipo di Hit (es. un plasma può avere una durata di piiiù cicli
-        time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)
-
-        event = Event( typ = "HIT", volume = None, duration = duration, time2go = time2go, energy = None, power = self._power, mass = self._mass, obj = automa ) # duration = 0 -> effetti evento già applicati su object
-        obj.insertEvent( event ) 
-        logger.logger.debug("Actuator: {0} Executed projectile launch action from Automa: {1}, Created event: {2} and insert in Event Queue of the target Object: {3}".format( self._id, automa.getId(), event._id, obj.getId() ) )        
+        #duration = 1 # qui valutare la durata in base al tipo di Hit (es. un plasma può avere una durata di piiiù cicli
+        #time2go = 1 # valutare il tempo necessario affinchè il colpo e i sui effetti raggiungano il targe (es: time2go = distanza /velocita qui distanza / power o altro)
+        self.setEvent( automa, obj = obj, typ = "HIT", duration = 1, time2go = 1, energy = None, volume = None, destination = None) # duration = 0 -> effetti evento già applicati su object
+    
         return [ True, energy_actuator, firing_terminated ]
 
 
@@ -336,15 +317,17 @@ class Actuator:
         return ( abs( destination[ 0 ] - self._position[ 0 ] ) <= self._range[ 0 ] ) and ( abs( destination[ 1 ] - self._position[ 1 ] ) <= self._range[ 1 ] ) and ( abs( destination[ 2 ] - self._position[ 2 ] ) <= self._range[ 2 ] ) 
 
 
-    def setEvent( self, automa,  result, obj, typ, duration = 1, time2go = 0, volume = None):
+    def setEvent(self, automa, obj, typ, duration = 1, time2go = 0, energy = None, volume = None, destination = None):
         """Set event in Object's Event Queue if object is an istance of Automa"""
+        power = self._power
+        mass = self._mass 
 
-        if automa.checkClass( obj ):
+        if automa.checkObjectClass( obj ):
             #(self, typ, volume,  time2go = 1, duration = 1, energy = None, power = None, mass = None  
-            event = Event( typ = typ, volume = volume, duration = duration, time2go = time2go ) # duration = 0 -> effetti evento già applicati su object
+            event = Event( typ = typ, volume = volume, duration = duration, time2go = time2go, energy = energy, power = power, mass = mass, obj = automa, destination = destination ) # duration = 0 -> effetti evento già applicati su object
             obj.insertEvent( event ) 
-            logger.logger.debug("Actuator: {0} result action = {1}. Inserted assimilate event in object's event queue: event._id: {2}, event._typ: {3}, event._volume: {4}, event._time2go: {5}, event._duration: {6}, event._energy: {7}, event._power: {8}, event._mass: {9}".format( self._id, result, event._id, event._type, event._volume, event._time2go, event._duration, event._energy, event._power, event._mass ))        
+            logger.logger.debug("Actuator: {0} set event = {1}. Inserted event in object's event queue: event._id: {2}, event._typ: {3}, event._volume: {4}, event._time2go: {5}, event._duration: {6}, event._energy: {7}, event._power: {8}, event._mass: {9}".format( self._id, typ, event._id, event._type, event._volume, event._time2go, event._duration, event._energy, event._power, event._mass ))        
 
         return True
 
-  
+     
