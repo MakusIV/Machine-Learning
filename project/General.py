@@ -45,6 +45,7 @@ ACTION_TYPE = ( "move", "run", "translate", "catch", "eat", "attack", "nothing",
 
 EVENT_TYPE = ( "PUSH", "POP", "HIT", "ASSIMILATE", "MOVE" ) # la differenza tra PUSH e HIT è nell'energia-potenza impressa, mentre tra POP e ADSORB è che con EAT l'oggetto "preso" dovrebbe essere eliminato
 
+# inserire mass
 ACTUATOR_TYPE = {  
     
     "mover":                {   "2-legs": { "power": 40, "speed": 70, "accuracy": 100, "resilience":20, "strength": 30, "range": None, "delta_t": 0.01 },
@@ -88,12 +89,12 @@ ACTUATOR_TYPE = {
 # METHODS
 
 
-def getActuatorParam(_class, _type):
+def getActuatorParam(_class, _type, param):
     """Return power, speed, accuracy, resilience, strenght for actuator of that _class and _type, otherwise False"""
     
     #if not checkActuatorTypeAndClass(_type, _class) non serve in quanto il controllo viene effettuato al momento della creazione dell'istanza dell'Actuator
     #    return False
-    return ACTUATOR_TYPE.get( _class ).get( _type ).values()
+    return ACTUATOR_TYPE.get( _class ).get( _type )[param]#values()
 
 def checkActionType(_type):
     """Return True if _type is compliance with standard type defined for ACTION_TYPE in General.py"""
@@ -122,7 +123,7 @@ def checkDimension(dimension):
     """ Return True if dimension is a list normalized as dimension:  dimension: [int dim_x, int dim_y, int dim_z]"""
 
     if not dimension or not ( isinstance(dimension, list) or isinstance(dimension, tuple) ) and not len(dimension) == 3 or not isinstance( dimension[0], int) or not  isinstance( dimension[1], int) or not  isinstance( dimension[2], int):
-            return False
+        return False
     
     return True
 

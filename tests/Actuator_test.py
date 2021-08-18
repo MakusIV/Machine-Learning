@@ -26,7 +26,7 @@ def testClassActuator():
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' )
 
 
-    if actuator._position != ( 0, 0, 0 ) or not actuator._name or actuator._power != 100 or actuator._resilience != 100 or not actuator._state or actuator._delta_t != 0.01 :
+    if actuator._position != ( 0, 0, 0 ) or not actuator._name or actuator._power != 40 or actuator._resilience != 20 or not actuator._state or actuator._delta_t != 0.01 :
         message = message +'\n' + 'Actuator Failed!! '
         print( message ,actuator._position, actuator._name, actuator._power, actuator._resilience, actuator._delta_t ) 
         result = False 
@@ -141,7 +141,7 @@ def testClassActuator():
 
     # test moving()
 
-    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1)
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1, speed = 10)
     sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
@@ -155,7 +155,7 @@ def testClassActuator():
         result = False     
 
 
-    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1)
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1, speed = 10)
     sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
@@ -171,7 +171,7 @@ def testClassActuator():
 
     # test exec_command()
 
-    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1)
+    actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1, speed = 10)
     sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()

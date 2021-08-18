@@ -72,7 +72,7 @@ class Automa(Object):
         
     # TEST: OK
     def percept(self, posMng):
-        """Percepts the enviroments with sensors, update the state and return percept informations."""
+        """Percepts the enviroments with sensors, update the automa state and return percept informations."""
         #percept_info: le informazioni dopo l'attivazione dei sensori: (energy_consumption, list_obj_detected)
         #request_percept: le informazioni riguardo tipo di sensori e modalità di attivazione
         list_obj = list()
@@ -83,11 +83,11 @@ class Automa(Object):
         for item in list_item:
             for obj in item:
                 if obj._id != self._id:
-                    list_obj.append( obj )# lista degli object    
+                    list_obj.append( obj )# lista degli object dictionary (pos, obj) creati dai diversi sensori
         energy_consume = [ percept_info[ 0 ] for percept_info in percept_infos ]
         self.updateStateForEnergyConsume( energy_consume )# aggiorna lo stato dell'automa
         logger.logger.debug("Automa: {0} execute perception: activated {1} sensor, detected {2} object, energy consumed: {3}".format( self._id, len( operative_sensors ), len( list_obj ), energy_consume  ))
-        return list_obj 
+        return list_obj # ( obj1, ob2, ...) 
 
 
     def evalutate(self, percept_info ):

@@ -77,7 +77,7 @@ class Object:
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale eliminazione dell'oggetto
 
 
-            if ev.isPop(): # viene valutato se l'automa può essere "spinto" (spostato). Valutare la nuova posizione dell'automa
+            if ev.isPop(): # viene valutato se l'automa può essere preso (catturato). Valutare la nuova posizione dell'automa
                 self.evalutatePop( duration = ev._duration, power = ev._power, mass = ev._mass, posManager = posManager, catcher = ev._obj  )
                 # è necessario implementare l'utilizzo dei metodi in Position_manager per la gestione dell'eventuale spostamento dell'oggetto
 
@@ -601,4 +601,10 @@ class Object:
         logger.logger.debug("Object: {0} destroyed".format( self._name ) )
         return True
 
-        
+    def getValueVolume( self ):
+        """Return Object volume dimension"""
+        return self._dimension[0] * self._dimension[1] * self._dimension[2]
+
+    def differenceWithValueVolume( self, valueVolume ):        
+        """Return difference of automa volume dimensione and valueVolume:"""
+        return self.getValueVolume() - valueVolume
