@@ -1,3 +1,4 @@
+from math import sqrt
 from LoggerClass import Logger
 import General
 
@@ -345,5 +346,33 @@ class Coordinate:
         self.z = pos[2]
 
         return False
+
+    def getVector( self, position ):
+        """Return a vector from self.position and position"""
+        self_pos = self.getPosition()
+        mod = sqrt( ( position[0] - self_pos[0] )**2 + ( position[1] - self_pos[1] )**2 + ( position[2] - self_pos[2] )**2 )
+        vect = ( ( position[0] - self_pos[0] ), ( position[1] - self_pos[1] ), ( position[2] - self_pos[2] ) )
+        
+        return (vect, mod) 
+
+    def getVectorAspect( self, vect, position ):
+        """Return vector aspect of vect respect position: is the vectorial product of vect """
+        # se perpendicolari: prod_scal = 0, se alfa>0, <=90 prod scal > 0, se alfa>90, <=180 prod scal < 0
+        aspect = None
+        prod_scal = vect[0]*position[0] + vect[1]*position[1] + vect[2]*position[2]
+
+        # ha il modulo proporzionale all'area del parallelogramma formato dai due vettori. Quindi se sono allineati(paralleli) il prod_vect = 0
+        # (y1*z2 - z1*y2), (z1*x2 - x1*z2), (x1*y2 - y1*x2)
+        prod_vect = ( ( vect[1]*position[2] - vect[2]*position[1] ), ( vect[2]*position[0] - vect[0]*position[2] ), ( vect[0]*position[1] - vect[1]*position[0] ) )
+        
+        if prod_scal > 0:
+            aspect = "approach"
+        elif prod_scal == 0:
+            aspect = "radial"
+        else:
+            aspect = "away"
+
+        return (aspect, prod_scal, prod_vect)
+
 
     

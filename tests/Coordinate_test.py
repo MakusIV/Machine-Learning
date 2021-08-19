@@ -1,5 +1,6 @@
 
 # some_file.py
+from math import sqrt
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, 'project')
@@ -420,6 +421,34 @@ def testClassCoordinate():
     if coord1.eval_direction( ( 0, 0, 0 ), ( 0, 0, -1 ) ) != '_down':
         result = False
         print("testClassCoordinate().eval_direction(): _down, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, 1 ) ) ) 
+
+    coord1 = Coordinate(2,2,2)
+    res = coord1.getVector( (4,4,4) )
+
+    if res[0] != (2,2,2) or res[1]!= sqrt(12):
+        result = False
+        print("testClassCoordinate().getVector( (4,4,4) ), A - Failed!", res[0], res[1] ) 
+    
+    
+    res = coord1.getVector( (1,1,1) )
+
+    if res[0] != (-1,-1,-1) or res[1]!= sqrt(3):
+        result = False
+        print("testClassCoordinate().getVector( (4,4,4) ), B - Failed!", res[0], res[1] ) 
+    
+
+    res = coord1.getVectorAspect( (2,2,2), (4,4,4) )
+
+    if res[0] != "approach" or res[1]<=0 or res[2]!=(0, 0, 0):
+        result = False
+        print("testClassCoordinate().getVectorAspect( (2,2,2), (4,4,4) ), Failed!", res[0], res[1], res[2] ) 
+
+    res = coord1.getVectorAspect( (0,0,-3), (0,0,+3) )
+
+    if res[0] != "away" or res[1]>0 or res[2]!=(0, 0, 0):
+        result = False
+        print("testClassCoordinate().getVectorAspect( (2,2,2), (4,4,4) ), Failed!", res[0], res[1], res[2] ) 
+
 
 
     return result

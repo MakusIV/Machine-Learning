@@ -773,3 +773,93 @@
 2021-08-19 00:39:54,233 - Object - DEBUG - insertEvent - Object: Object_Name_#6005 inserted new event in queue, event id: HIT_#25184, events in queue: 1
 2021-08-19 00:39:54,255 - Object - DEBUG - insertEvent - Object: Object_Name_#8868 inserted new event in queue, event id: ASSIMILATE_#117128, events in queue: 1
 2021-08-19 00:39:54,276 - Object - DEBUG - insertEvent - Object: Object_Name_#757 inserted new event in queue, event id: HIT_#321330, events in queue: 1
+2021-08-19 09:30:16,151 - Object - DEBUG - destroy - Object: Marcantony destroyed
+2021-08-19 09:30:16,945 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#726598, events in queue: 1
+2021-08-19 09:30:16,981 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: POP_#28741, events in queue: 1
+2021-08-19 09:30:17,007 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: ASSIMILATE_#867486, events in queue: 1
+2021-08-19 09:30:17,040 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#46335, events in queue: 1
+2021-08-19 09:30:17,074 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#398346, events in queue: 1
+2021-08-19 09:30:17,095 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#919018, events in queue: 1
+2021-08-19 09:30:17,129 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#320839, events in queue: 1
+2021-08-19 09:30:17,144 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#551368, events in queue: 1
+2021-08-19 09:30:19,672 - Object - DEBUG - destroy - Object: Automa destroyed
+2021-08-19 09:30:20,158 - Object - DEBUG - insertEvent - Object: Object_Name_#2427 inserted new event in queue, event id: PUSH_#240726, events in queue: 1
+2021-08-19 09:30:20,182 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#776230, events in queue: 1
+2021-08-19 09:30:20,198 - Object - DEBUG - insertEvent - Object: Object_Name_#9288 inserted new event in queue, event id: POP_#59845, events in queue: 1
+2021-08-19 09:30:20,221 - Object - DEBUG - insertEvent - Object: Object_Name_#5797 inserted new event in queue, event id: HIT_#599392, events in queue: 1
+2021-08-19 09:30:20,237 - Object - DEBUG - insertEvent - Object: Object_Name_#4764 inserted new event in queue, event id: HIT_#52610, events in queue: 1
+2021-08-19 09:30:20,255 - Object - DEBUG - insertEvent - Object: Object_Name_#2086 inserted new event in queue, event id: HIT_#682068, events in queue: 1
+2021-08-19 09:30:20,270 - Object - DEBUG - insertEvent - Object: Object_Name_#2637 inserted new event in queue, event id: ASSIMILATE_#707633, events in queue: 1
+2021-08-19 09:30:20,288 - Object - DEBUG - insertEvent - Object: Object_Name_#5357 inserted new event in queue, event id: HIT_#614774, events in queue: 1
+2021-08-19 09:30:23,940 - Object - DEBUG - destroy - Object: Marcantony destroyed
+2021-08-19 09:30:26,365 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#388154, events in queue: 1
+2021-08-19 09:30:26,396 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: POP_#196514, events in queue: 1
+2021-08-19 09:30:26,416 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: ASSIMILATE_#424832, events in queue: 1
+2021-08-19 09:30:26,450 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#889959, events in queue: 1
+2021-08-19 09:30:26,502 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#522663, events in queue: 1
+2021-08-19 09:30:26,520 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#505152, events in queue: 1
+2021-08-19 09:30:26,556 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#315776, events in queue: 1
+2021-08-19 09:30:26,576 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: HIT_#363620, events in queue: 1
+2021-08-19 09:30:26,639 - Object - DEBUG - destroy - Object: Automa destroyed
+2021-08-19 09:30:26,914 - Object - DEBUG - insertEvent - Object: Object_Name_#911 inserted new event in queue, event id: PUSH_#230076, events in queue: 1
+2021-08-19 09:30:26,938 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#66388, events in queue: 1
+2021-08-19 09:30:26,956 - Object - DEBUG - insertEvent - Object: Object_Name_#5430 inserted new event in queue, event id: POP_#204561, events in queue: 1
+2021-08-19 09:30:26,973 - Object - DEBUG - insertEvent - Object: Object_Name_#4753 inserted new event in queue, event id: HIT_#81093, events in queue: 1
+2021-08-19 09:30:26,994 - Object - DEBUG - insertEvent - Object: Object_Name_#7633 inserted new event in queue, event id: HIT_#278145, events in queue: 1
+2021-08-19 09:30:27,015 - Object - DEBUG - insertEvent - Object: Object_Name_#3287 inserted new event in queue, event id: HIT_#284230, events in queue: 1
+2021-08-19 09:30:27,029 - Object - DEBUG - insertEvent - Object: Object_Name_#2973 inserted new event in queue, event id: ASSIMILATE_#915574, events in queue: 1
+2021-08-19 09:30:27,049 - Object - DEBUG - insertEvent - Object: Object_Name_#7129 inserted new event in queue, event id: HIT_#375699, events in queue: 1
+2021-08-19 11:31:48,865 - Object - DEBUG - destroy - Object: Automa destroyed
+2021-08-19 11:31:49,833 - Object - DEBUG - insertEvent - Object: Object_Name_#4029 inserted new event in queue, event id: PUSH_#947407, events in queue: 1
+2021-08-19 11:31:49,854 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#831388, events in queue: 1
+2021-08-19 11:31:49,876 - Object - DEBUG - insertEvent - Object: Object_Name_#4560 inserted new event in queue, event id: POP_#843180, events in queue: 1
+2021-08-19 11:31:49,893 - Object - DEBUG - insertEvent - Object: Object_Name_#4505 inserted new event in queue, event id: HIT_#648864, events in queue: 1
+2021-08-19 11:31:49,909 - Object - DEBUG - insertEvent - Object: Object_Name_#3301 inserted new event in queue, event id: HIT_#636745, events in queue: 1
+2021-08-19 11:31:49,927 - Object - DEBUG - insertEvent - Object: Object_Name_#2703 inserted new event in queue, event id: HIT_#272546, events in queue: 1
+2021-08-19 11:31:49,942 - Object - DEBUG - insertEvent - Object: Object_Name_#8233 inserted new event in queue, event id: ASSIMILATE_#352938, events in queue: 1
+2021-08-19 11:31:49,960 - Object - DEBUG - insertEvent - Object: Object_Name_#2504 inserted new event in queue, event id: HIT_#37313, events in queue: 1
+2021-08-19 12:45:05,972 - Object - DEBUG - destroy - Object: Automa destroyed
+2021-08-19 12:45:06,248 - Object - DEBUG - insertEvent - Object: Object_Name_#2922 inserted new event in queue, event id: PUSH_#545042, events in queue: 1
+2021-08-19 12:45:06,272 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#840404, events in queue: 1
+2021-08-19 12:45:06,288 - Object - DEBUG - insertEvent - Object: Object_Name_#6473 inserted new event in queue, event id: POP_#930940, events in queue: 1
+2021-08-19 12:45:06,304 - Object - DEBUG - insertEvent - Object: Object_Name_#2323 inserted new event in queue, event id: HIT_#687617, events in queue: 1
+2021-08-19 12:45:06,323 - Object - DEBUG - insertEvent - Object: Object_Name_#8875 inserted new event in queue, event id: HIT_#285965, events in queue: 1
+2021-08-19 12:45:06,345 - Object - DEBUG - insertEvent - Object: Object_Name_#9609 inserted new event in queue, event id: HIT_#895331, events in queue: 1
+2021-08-19 12:45:06,373 - Object - DEBUG - insertEvent - Object: Object_Name_#3036 inserted new event in queue, event id: ASSIMILATE_#161641, events in queue: 1
+2021-08-19 12:45:06,393 - Object - DEBUG - insertEvent - Object: Object_Name_#3005 inserted new event in queue, event id: HIT_#603072, events in queue: 1
+2021-08-19 12:52:05,039 - Object - DEBUG - destroy - Object: Automa destroyed
+2021-08-19 12:52:05,872 - Object - DEBUG - insertEvent - Object: Object_Name_#3893 inserted new event in queue, event id: PUSH_#411142, events in queue: 1
+2021-08-19 12:52:06,075 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#347315, events in queue: 1
+2021-08-19 12:52:06,204 - Object - DEBUG - insertEvent - Object: Object_Name_#7554 inserted new event in queue, event id: POP_#831137, events in queue: 1
+2021-08-19 12:52:06,237 - Object - DEBUG - insertEvent - Object: Object_Name_#5915 inserted new event in queue, event id: HIT_#302053, events in queue: 1
+2021-08-19 12:52:06,256 - Object - DEBUG - insertEvent - Object: Object_Name_#4404 inserted new event in queue, event id: HIT_#790884, events in queue: 1
+2021-08-19 12:52:06,282 - Object - DEBUG - insertEvent - Object: Object_Name_#9257 inserted new event in queue, event id: HIT_#282368, events in queue: 1
+2021-08-19 12:52:06,301 - Object - DEBUG - insertEvent - Object: Object_Name_#784 inserted new event in queue, event id: ASSIMILATE_#564831, events in queue: 1
+2021-08-19 12:52:06,317 - Object - DEBUG - insertEvent - Object: Object_Name_#3939 inserted new event in queue, event id: HIT_#554491, events in queue: 1
+2021-08-19 13:03:34,388 - Object - DEBUG - destroy - Object: Automa destroyed
+2021-08-19 13:03:34,656 - Object - DEBUG - insertEvent - Object: Object_Name_#1848 inserted new event in queue, event id: PUSH_#899528, events in queue: 1
+2021-08-19 13:03:34,678 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#358286, events in queue: 1
+2021-08-19 13:03:34,696 - Object - DEBUG - insertEvent - Object: Object_Name_#1994 inserted new event in queue, event id: POP_#530552, events in queue: 1
+2021-08-19 13:03:34,719 - Object - DEBUG - insertEvent - Object: Object_Name_#836 inserted new event in queue, event id: HIT_#635453, events in queue: 1
+2021-08-19 13:03:34,736 - Object - DEBUG - insertEvent - Object: Object_Name_#965 inserted new event in queue, event id: HIT_#761348, events in queue: 1
+2021-08-19 13:03:34,756 - Object - DEBUG - insertEvent - Object: Object_Name_#8119 inserted new event in queue, event id: HIT_#972877, events in queue: 1
+2021-08-19 13:03:34,772 - Object - DEBUG - insertEvent - Object: Object_Name_#2008 inserted new event in queue, event id: ASSIMILATE_#155834, events in queue: 1
+2021-08-19 13:03:34,788 - Object - DEBUG - insertEvent - Object: Object_Name_#7168 inserted new event in queue, event id: HIT_#314398, events in queue: 1
+2021-08-19 13:05:33,050 - Object - DEBUG - destroy - Object: Automa destroyed
+2021-08-19 13:05:33,313 - Object - DEBUG - insertEvent - Object: Object_Name_#652 inserted new event in queue, event id: PUSH_#51295, events in queue: 1
+2021-08-19 13:05:33,334 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#231088, events in queue: 1
+2021-08-19 13:05:33,354 - Object - DEBUG - insertEvent - Object: Object_Name_#451 inserted new event in queue, event id: POP_#565557, events in queue: 1
+2021-08-19 13:05:33,370 - Object - DEBUG - insertEvent - Object: Object_Name_#8291 inserted new event in queue, event id: HIT_#934757, events in queue: 1
+2021-08-19 13:05:33,385 - Object - DEBUG - insertEvent - Object: Object_Name_#4572 inserted new event in queue, event id: HIT_#449596, events in queue: 1
+2021-08-19 13:05:33,405 - Object - DEBUG - insertEvent - Object: Object_Name_#7763 inserted new event in queue, event id: HIT_#412747, events in queue: 1
+2021-08-19 13:05:33,422 - Object - DEBUG - insertEvent - Object: Object_Name_#633 inserted new event in queue, event id: ASSIMILATE_#2715, events in queue: 1
+2021-08-19 13:05:33,440 - Object - DEBUG - insertEvent - Object: Object_Name_#4924 inserted new event in queue, event id: HIT_#453997, events in queue: 1
+2021-08-19 13:06:56,585 - Object - DEBUG - destroy - Object: Automa destroyed
+2021-08-19 13:06:56,881 - Object - DEBUG - insertEvent - Object: Object_Name_#9214 inserted new event in queue, event id: PUSH_#659176, events in queue: 1
+2021-08-19 13:06:56,903 - Object - DEBUG - insertEvent - Object: Automa inserted new event in queue, event id: PUSH_#478218, events in queue: 1
+2021-08-19 13:06:56,960 - Object - DEBUG - insertEvent - Object: Object_Name_#4712 inserted new event in queue, event id: POP_#913928, events in queue: 1
+2021-08-19 13:06:57,108 - Object - DEBUG - insertEvent - Object: Object_Name_#4636 inserted new event in queue, event id: HIT_#345954, events in queue: 1
+2021-08-19 13:06:57,286 - Object - DEBUG - insertEvent - Object: Object_Name_#7966 inserted new event in queue, event id: HIT_#399518, events in queue: 1
+2021-08-19 13:06:57,410 - Object - DEBUG - insertEvent - Object: Object_Name_#6054 inserted new event in queue, event id: HIT_#477204, events in queue: 1
+2021-08-19 13:06:57,592 - Object - DEBUG - insertEvent - Object: Object_Name_#6958 inserted new event in queue, event id: ASSIMILATE_#523874, events in queue: 1
+2021-08-19 13:06:57,683 - Object - DEBUG - insertEvent - Object: Object_Name_#7416 inserted new event in queue, event id: HIT_#34612, events in queue: 1

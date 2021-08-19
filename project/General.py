@@ -48,38 +48,38 @@ EVENT_TYPE = ( "PUSH", "POP", "HIT", "ASSIMILATE", "MOVE" ) # la differenza tra 
 # inserire mass
 ACTUATOR_TYPE = {  
     
-    "mover":                {   "2-legs": { "power": 40, "speed": 70, "accuracy": 100, "resilience":20, "strength": 30, "range": None, "delta_t": 0.01 },
-                                "4-legs": { "power": 60, "speed": 60, "accuracy": 70, "resilience": 40, "strength": 60, "range": None, "delta_t": 0.01 },
-                                "2-wheels": { "power": 20, "speed": 80, "accuracy": 50, "resilience": 30, "strength": 20, "range": None, "delta_t": 0.01 },
-                                "4-wheels": { "power": 30, "speed": 70, "accuracy": 40, "resilience": 60, "strength": 40, "range": None, "delta_t": 0.01 },
-                                "crawler": { "power": 80, "speed": 40, "accuracy": 30, "resilience": 100, "strength": 100, "range": None, "delta_t": 0.01 },
-                                "hoover": { "power": 100, "speed": 100, "accuracy": 10, "resilience": 30, "strength": 70, "range": None, "delta_t": 0.01 }  },                    
+    "mover":                {   "2-legs": { "power": 40, "speed": 70, "accuracy": 100, "resilience":20, "strength": 30, "range": None, "delta_t": 0.01, "mass": 20 },
+                                "4-legs": { "power": 60, "speed": 60, "accuracy": 70, "resilience": 40, "strength": 60, "range": None, "delta_t": 0.01, "mass": 20 },
+                                "2-wheels": { "power": 20, "speed": 80, "accuracy": 50, "resilience": 30, "strength": 20, "range": None, "delta_t": 0.01, "mass": 20 },
+                                "4-wheels": { "power": 30, "speed": 70, "accuracy": 40, "resilience": 60, "strength": 40, "range": None, "delta_t": 0.01, "mass": 20 },
+                                "crawler": { "power": 80, "speed": 40, "accuracy": 30, "resilience": 100, "strength": 100, "range": None, "delta_t": 0.01, "mass": 20 },
+                                "hoover": { "power": 100, "speed": 100, "accuracy": 10, "resilience": 30, "strength": 70, "range": None, "delta_t": 0.01, "mass": 20 }  },                    
 
-    "object_manipulator":   {   "hand": { "power": 20, "speed": 70, "accuracy": 100, "resilience":20, "strength": 40, "range": (8, 8, 8), "delta_t": 0.01 },
-                                "clamp": { "power": 80, "speed": 50, "accuracy": 60, "resilience": 80, "strength": 100, "range": (10, 10, 10), "delta_t": 0.01 },
-                                "tentacle": { "power": 50, "speed": 80, "accuracy": 40, "resilience": 50, "strength": 80, "range": (15, 15, 15), "delta_t": 0.01 }  },
+    "object_manipulator":   {   "hand": { "power": 20, "speed": 70, "accuracy": 100, "resilience":20, "strength": 40, "range": (8, 8, 8), "delta_t": 0.01, "mass": 20 },
+                                "clamp": { "power": 80, "speed": 50, "accuracy": 60, "resilience": 80, "strength": 100, "range": (10, 10, 10), "delta_t": 0.01, "mass": 20 },
+                                "tentacle": { "power": 50, "speed": 80, "accuracy": 40, "resilience": 50, "strength": 80, "range": (15, 15, 15), "delta_t": 0.01, "mass": 20 }  },
 
-    "projectile_launcher":  {   "heavy_cannon": { "power": 80, "speed": 10, "accuracy": 100, "resilience":100, "strength": 100, "range": (1000, 1000, 1000), "delta_t": 0.01 },
-                                "medium_cannon": { "power": 60, "speed": 30, "accuracy": 85, "resilience": 85, "strength": 85, "range": (700, 700, 700), "delta_t": 0.01 },
-                                "light_cannon": { "power": 40, "speed": 60, "accuracy": 70, "resilience": 70, "strength": 70, "range": (500, 500, 500), "delta_t": 0.01 },
-                                "heavy_machine_gun": { "power": 60, "speed": 70, "accuracy": 60, "resilience":50, "strength": 60, "range": (300, 300, 300), "delta_t": 0.01 },
-                                "medium__machine_gun": { "power": 40, "speed": 85, "accuracy": 50, "resilience": 30, "strength": 50, "range": (150, 150, 150), "delta_t": 0.01 },
-                                "light__machine_gun": { "power": 20, "speed": 100, "accuracy": 30, "resilience": 10, "strength": 30, "range": (100, 100, 100), "delta_t": 0.01 }  },
+    "projectile_launcher":  {   "heavy_cannon": { "power": 80, "speed": 10, "accuracy": 100, "resilience":100, "strength": 100, "range": (1000, 1000, 1000), "delta_t": 0.01, "mass": 20 },
+                                "medium_cannon": { "power": 60, "speed": 30, "accuracy": 85, "resilience": 85, "strength": 85, "range": (700, 700, 700), "delta_t": 0.01, "mass": 20 },
+                                "light_cannon": { "power": 40, "speed": 60, "accuracy": 70, "resilience": 70, "strength": 70, "range": (500, 500, 500), "delta_t": 0.01, "mass": 20 },
+                                "heavy_machine_gun": { "power": 60, "speed": 70, "accuracy": 60, "resilience":50, "strength": 60, "range": (300, 300, 300), "delta_t": 0.01, "mass": 20 },
+                                "medium__machine_gun": { "power": 40, "speed": 85, "accuracy": 50, "resilience": 30, "strength": 50, "range": (150, 150, 150), "delta_t": 0.01, "mass": 20 },
+                                "light__machine_gun": { "power": 20, "speed": 100, "accuracy": 30, "resilience": 10, "strength": 30, "range": (100, 100, 100), "delta_t": 0.01, "mass": 20 }  },
 
-    "plasma_launcher":      {   "flamethrower": { "power": 50, "speed": 50, "accuracy": 20, "resilience":80, "strength": 70, "range": (20, 20, 20), "delta_t": 0.01 },
-                                "laser": { "power": 70, "speed": 100, "accuracy": 100, "resilience": 50, "strength": 80, "range": (300, 300, 300), "delta_t": 0.01 },
-                                "plasma": { "power": 80, "speed": 80, "accuracy": 60, "resilience": 50, "strength": 100, "range": (100, 100, 100), "delta_t": 0.01 }  },
+    "plasma_launcher":      {   "flamethrower": { "power": 50, "speed": 50, "accuracy": 20, "resilience":80, "strength": 70, "range": (20, 20, 20), "delta_t": 0.01, "mass": 20 },
+                                "laser": { "power": 70, "speed": 100, "accuracy": 100, "resilience": 50, "strength": 80, "range": (300, 300, 300), "delta_t": 0.01, "mass": 20 },
+                                "plasma": { "power": 80, "speed": 80, "accuracy": 60, "resilience": 50, "strength": 100, "range": (100, 100, 100), "delta_t": 0.01, "mass": 20 }  },
 
-    "object_catcher":       {   "harpoon": { "power": 40, "speed": 100, "accuracy": 70, "resilience":40, "strength": 80, "range": (100, 100, 100), "delta_t": 0.01 },
-                                "clamp": { "power": 70, "speed": 70, "accuracy": 40, "resilience": 70, "strength": 80, "range": (10, 10, 10), "delta_t": 0.01 },
-                                "hand": { "power": 50, "speed": 50, "accur acy": 90, "resilience": 55, "strength": 50, "range": (8, 8, 8), "delta_t": 0.01 }  },
+    "object_catcher":       {   "harpoon": { "power": 40, "speed": 100, "accuracy": 70, "resilience":40, "strength": 80, "range": (100, 100, 100), "delta_t": 0.01, "mass": 20 },
+                                "clamp": { "power": 70, "speed": 70, "accuracy": 40, "resilience": 70, "strength": 80, "range": (10, 10, 10), "delta_t": 0.01, "mass": 20 },
+                                "hand": { "power": 50, "speed": 50, "accur acy": 90, "resilience": 55, "strength": 50, "range": (8, 8, 8), "delta_t": 0.01, "mass": 20 }  },
 
-    "object_assimilator":      {   "jaw": { "power": 70, "speed": 60, "accuracy": 70, "resilience":80, "strength": 90, "range": (5, 5, 5), "delta_t": 0.01 },                            
-                                "sucker": { "power": 40, "speed": 80, "accuracy": 90, "resilience": 30, "strength": 30, "range": (10, 10, 10), "delta_t": 0.01 }  },
+    "object_assimilator":      {   "jaw": { "power": 70, "speed": 60, "accuracy": 70, "resilience":80, "strength": 90, "range": (5, 5, 5), "delta_t": 0.01, "mass": 20 },                            
+                                "sucker": { "power": 40, "speed": 80, "accuracy": 90, "resilience": 30, "strength": 30, "range": (10, 10, 10), "delta_t": 0.01, "mass": 20 }  },
 
-    "object_hitter":        {   "hammer": { "power": 50, "speed": 100, "accuracy": 60, "resilience":100, "strength": 90, "range": (10, 10, 10), "delta_t": 0.01 },
-                                "chainsaw":  { "power": 80, "speed": 50, "accuracy": 40, "resilience": 70, "strength": 70, "range": (7, 7, 7), "delta_t": 0.01 },
-                                "drill": { "power": 70, "speed": 70, "accuracy": 80, "resilience": 55, "strength": 75, "range": (5, 5, 5), "delta_t": 0.01 }  }
+    "object_hitter":        {   "hammer": { "power": 50, "speed": 100, "accuracy": 60, "resilience":100, "strength": 90, "range": (10, 10, 10), "delta_t": 0.01, "mass": 20 },
+                                "chainsaw":  { "power": 80, "speed": 50, "accuracy": 40, "resilience": 70, "strength": 70, "range": (7, 7, 7), "delta_t": 0.01, "mass": 20 },
+                                "drill": { "power": 70, "speed": 70, "accuracy": 80, "resilience": 55, "strength": 75, "range": (5, 5, 5), "delta_t": 0.01, "mass": 20 }  }
                     
                     }
 

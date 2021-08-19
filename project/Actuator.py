@@ -110,7 +110,7 @@ class Actuator:
         # fatta in automa quindi qui dovresti eseguire l'azione indipendentemente dall'interpretazione del comando
         # l'eventuale movimento, colpo, e conseguenze varie è valutato in automa
         # qui dovresti considerare solo gli effetti sull'attuatore
-        # due possibilità o crei speccializazioni di attuatori con exec_command in override
+        # due possibilità o crei specializzazioni di attuatori con exec_command in override
         # oppure inserisci nei parametri del metodo il tipo di attuatore e il comando e qui selezioni
         # il metodo di esecuzione specifico per quell'attuatore. Quindi qui dovrai definire i varii metodi per 
         # ogni attuatore. Forse è meglio utilizzare l'ereditarietà. No definisco qui le diverse funzioni da utilizzare per ogni attuatore       

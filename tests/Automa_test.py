@@ -28,14 +28,14 @@ def testClassAutoma():
     result = True
     message = 'MESSAGE: '
     # actuator(position, range_max, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None, state = None)
-    #name = 'Automa', dimension = [1, 1, 1], resilience = 10, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None      
+    #name = 'Automa', dimension = [1, 1, 1], resilience = 10, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None       
     coord = Coordinate( 0, 0, 0 )
     sensors = [ Sensor( typ = "radio", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( typ = "optical", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( typ = "thermal", position = coord.getPosition(), range_max = (100, 100, 100) )]
     actuators = [ Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ), Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ) ]
     automa = Automa(coord = coord, sensors = sensors, actuators = actuators, mass = 30)
     
     
-    if automa.checkClass( automa ) == False or automa._name != 'Automa' or automa._dimension != [1, 1, 1] or automa._resilience != 100 or automa._power != 100 or not automa._state or not isinstance(automa._state, State) or not automa._state.isRunning():
+    if automa.checkClass( automa ) == False or automa._name != 'Automa' or automa._dimension != [1, 1, 1] or automa._resilience != 100 or automa._power != 100 or not automa._state or not isinstance(automa._state, State) or not automa._state.isRunning() or automa._ai._automaId != automa._id:
         message = message +'\n' + 'Automa Failed!!<------------------------------------------------------------------------------'
         print( message ,automa._name, automa._dimension, automa._resilience, automa._state )                         
         result = False 

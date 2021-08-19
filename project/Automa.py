@@ -1,4 +1,5 @@
 # Automa
+from logging import raiseExceptions
 from Object import Object
 from Actuator import Actuator
 from Sensor import Sensor
@@ -23,7 +24,7 @@ class Automa(Object):
 
         Object.__init__( self, name = name, dimension = dimension, mass = mass, resilience = resilience, emissivity = emissivity, coord = coord )
 
-        self._ai = AI() #AI Engine
+        self._ai = AI( automaId = self._id ) #AI Engine: 
         self._power = power # nota l'energia è gestita nello stato in quanto è variabile        
         self._state = State( run = True ) #Class State        
         self._sensors = sensors# list of Sensor objects
@@ -435,3 +436,15 @@ class Automa(Object):
 
         
 
+    def setAI( self, ai ):
+        """Set AI association"""                 
+        if ai or not isinstance(ai, AI):
+            raiseExceptions("setAI( ai ): ai not defined or not istance of AI class")      
+        self._ai = ai        
+        ai._automaId = self._id
+        return True
+
+
+    def getAI( self ):
+        """Get AI association"""         
+        return self._ai
