@@ -89,3 +89,5 @@
 2021-08-19 13:03:34,804 - __main__ - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
 2021-08-19 13:05:33,453 - __main__ - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
 2021-08-19 13:06:57,700 - __main__ - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
+2021-08-20 11:59:15,856 - Automa_test - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)
+2021-08-20 11:59:24,811 - Automa_test - INFO - testClassAutoma - num_objects:100,  num_objects_for_linear:4,  object_dimension:(3, 2, 1),  separation_from_objects:7,  incr:(10, 8, 8),  dim_linear:(40, 32, 32),  bound:(20, 16, 16)

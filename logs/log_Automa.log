@@ -8020,3 +8020,161 @@
 2021-08-19 13:06:57,690 - Automa - DEBUG - action - Automa: Automa_ID_#930516 executed action: created action_info with 1 items
 2021-08-19 13:06:58,858 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#930516 update state for energy consume: total_sensor_consume: 297, self._state._energy: 0
 2021-08-19 13:06:58,859 - Automa - DEBUG - percept - Automa: Automa_ID_#930516 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99, 99, 99]
+2021-08-20 11:59:11,783 - Automa - INFO - __init__ - Automa Automa_ID_#456077 created
+2021-08-20 11:59:11,832 - Automa - INFO - __init__ - Automa Automa_ID_#561050 created
+2021-08-20 11:59:11,867 - Automa - INFO - __init__ - Automa Automa_ID_#756316 created
+2021-08-20 11:59:11,908 - Automa - INFO - __init__ - Automa Automa_ID_#693896 created
+2021-08-20 11:59:11,913 - Automa - INFO - __init__ - Automa Automa_ID_#936349 created
+2021-08-20 11:59:11,930 - Automa - INFO - __init__ - Automa Automa_ID_#332888 created
+2021-08-20 11:59:11,944 - Automa - INFO - __init__ - Automa Automa_ID_#186757 created
+2021-08-20 11:59:11,950 - Automa - INFO - __init__ - Automa Automa_ID_#840957 created
+2021-08-20 11:59:11,959 - Automa - INFO - __init__ - Automa Automa_ID_#563215 created
+2021-08-20 11:59:11,968 - Automa - INFO - __init__ - Automa Automa_ID_#808336 created
+2021-08-20 11:59:11,978 - Automa - INFO - __init__ - Automa Automa_ID_#995978 created
+2021-08-20 11:59:11,983 - Automa - INFO - __init__ - Automa Automa_ID_#12537 created
+2021-08-20 11:59:11,993 - Automa - INFO - __init__ - Automa Automa_ID_#289535 created
+2021-08-20 11:59:12,001 - Automa - INFO - __init__ - Automa Automa_ID_#393209 created
+2021-08-20 11:59:12,013 - Automa - INFO - __init__ - Automa Automa_ID_#511459 created
+2021-08-20 11:59:12,019 - Automa - INFO - __init__ - Automa Automa_ID_#911462 created
+2021-08-20 11:59:12,027 - Automa - INFO - __init__ - Automa Automa_ID_#600477 created
+2021-08-20 11:59:12,034 - Automa - INFO - __init__ - Automa Automa_ID_#885193 created
+2021-08-20 11:59:12,045 - Automa - INFO - __init__ - Automa Automa_ID_#179812 created
+2021-08-20 11:59:12,054 - Automa - INFO - __init__ - Automa Automa_ID_#335706 created
+2021-08-20 11:59:12,062 - Automa - INFO - __init__ - Automa Automa_ID_#211506 created
+2021-08-20 11:59:12,069 - Automa - INFO - __init__ - Automa Automa_ID_#542465 created
+2021-08-20 11:59:12,075 - Automa - INFO - __init__ - Automa Automa_ID_#973358 created
+2021-08-20 11:59:12,085 - Automa - INFO - __init__ - Automa Automa_ID_#80643 created
+2021-08-20 11:59:12,094 - Automa - INFO - __init__ - Automa Automa_ID_#587200 created
+2021-08-20 11:59:12,100 - Automa - INFO - __init__ - Automa Automa_ID_#537192 created
+2021-08-20 11:59:15,309 - Automa - INFO - __init__ - Automa Automa_ID_#881543 created
+2021-08-20 11:59:15,312 - Automa - INFO - __init__ - Automa Automa_ID_#682008 created
+2021-08-20 11:59:15,314 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2021-08-20 11:59:15,315 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2021-08-20 11:59:15,317 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: translate, object: Object_ID_#178843
+2021-08-20 11:59:15,318 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: catch, object: Object_ID_#294322
+2021-08-20 11:59:15,320 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: eat, object: Object_ID_#710939
+2021-08-20 11:59:15,321 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: shot, object: Object_ID_#127577
+2021-08-20 11:59:15,323 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included:  action_type: hit, object: Object_ID_#220372
+2021-08-20 11:59:15,326 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#117288
+2021-08-20 11:59:15,329 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: move_#992712, actions in queue: 1
+2021-08-20 11:59:15,334 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2021-08-20 11:59:15,575 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#338394, execute action: False, action not complete
+2021-08-20 11:59:15,577 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,579 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: run_#476595, actions in queue: 1
+2021-08-20 11:59:15,587 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2021-08-20 11:59:15,702 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#338394, execute action: True, action complete: removed from queue
+2021-08-20 11:59:15,703 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,713 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: translate_#608667, actions in queue: 1
+2021-08-20 11:59:15,715 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: translate, object: Object_ID_#162223
+2021-08-20 11:59:15,721 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#171891, execute action: False, action not complete
+2021-08-20 11:59:15,723 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,730 - Automa - INFO - __init__ - Automa Automa_ID_#363324 created
+2021-08-20 11:59:15,735 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: translate_#63718, actions in queue: 1
+2021-08-20 11:59:15,737 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: translate, object: Automa_ID_#363324
+2021-08-20 11:59:15,742 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#171891, execute action: False, action not complete
+2021-08-20 11:59:15,743 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,750 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: catch_#87258, actions in queue: 1
+2021-08-20 11:59:15,756 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: catch, object: Object_ID_#11648
+2021-08-20 11:59:15,761 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#198616, execute action: False, action not complete
+2021-08-20 11:59:15,762 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,773 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: shot_#865601, actions in queue: 1
+2021-08-20 11:59:15,775 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: shot, object: Object_ID_#767898
+2021-08-20 11:59:15,779 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#518350, execute action: True, action complete: removed from queue
+2021-08-20 11:59:15,780 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,788 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: shot_#222305, actions in queue: 1
+2021-08-20 11:59:15,790 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: shot, object: Object_ID_#582995
+2021-08-20 11:59:15,793 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#518350, execute action: True, action complete: removed from queue
+2021-08-20 11:59:15,795 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,804 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: hit_#385330, actions in queue: 1
+2021-08-20 11:59:15,806 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included:  action_type: hit, object: Object_ID_#471921
+2021-08-20 11:59:15,811 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#996470, execute action: True, action complete: removed from queue
+2021-08-20 11:59:15,813 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,821 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: eat_#236705, actions in queue: 1
+2021-08-20 11:59:15,822 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: action_type: eat, object: Object_ID_#706567
+2021-08-20 11:59:15,826 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#85725, execute action: False, action not complete
+2021-08-20 11:59:15,827 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:15,838 - Automa - DEBUG - insertAction - Automa: Automa_ID_#682008 inserted new action in queue, action id: attack_#855949, actions in queue: 1
+2021-08-20 11:59:15,839 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#682008, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#613559
+2021-08-20 11:59:15,844 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#682008. Actuator: Actuator_ID_#518350, execute action: True, action complete: removed from queue
+2021-08-20 11:59:15,845 - Automa - DEBUG - action - Automa: Automa_ID_#682008 executed action: created action_info with 1 items
+2021-08-20 11:59:18,063 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#682008 update state for energy consume: total_sensor_consume: 297, self._state._energy: 0
+2021-08-20 11:59:18,066 - Automa - DEBUG - percept - Automa: Automa_ID_#682008 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99, 99, 99]
+2021-08-20 11:59:23,579 - Automa - INFO - __init__ - Automa Automa_ID_#896843 created
+2021-08-20 11:59:23,682 - Automa - INFO - __init__ - Automa Automa_ID_#261902 created
+2021-08-20 11:59:23,734 - Automa - INFO - __init__ - Automa Automa_ID_#363969 created
+2021-08-20 11:59:23,811 - Automa - INFO - __init__ - Automa Automa_ID_#121003 created
+2021-08-20 11:59:23,823 - Automa - INFO - __init__ - Automa Automa_ID_#408884 created
+2021-08-20 11:59:23,841 - Automa - INFO - __init__ - Automa Automa_ID_#634412 created
+2021-08-20 11:59:23,891 - Automa - INFO - __init__ - Automa Automa_ID_#632726 created
+2021-08-20 11:59:23,934 - Automa - INFO - __init__ - Automa Automa_ID_#889061 created
+2021-08-20 11:59:23,978 - Automa - INFO - __init__ - Automa Automa_ID_#126321 created
+2021-08-20 11:59:23,996 - Automa - INFO - __init__ - Automa Automa_ID_#764288 created
+2021-08-20 11:59:24,029 - Automa - INFO - __init__ - Automa Automa_ID_#970862 created
+2021-08-20 11:59:24,080 - Automa - INFO - __init__ - Automa Automa_ID_#58321 created
+2021-08-20 11:59:24,147 - Automa - INFO - __init__ - Automa Automa_ID_#922020 created
+2021-08-20 11:59:24,160 - Automa - INFO - __init__ - Automa Automa_ID_#676361 created
+2021-08-20 11:59:24,181 - Automa - INFO - __init__ - Automa Automa_ID_#179386 created
+2021-08-20 11:59:24,195 - Automa - INFO - __init__ - Automa Automa_ID_#886976 created
+2021-08-20 11:59:24,213 - Automa - INFO - __init__ - Automa Automa_ID_#831027 created
+2021-08-20 11:59:24,224 - Automa - INFO - __init__ - Automa Automa_ID_#909482 created
+2021-08-20 11:59:24,239 - Automa - INFO - __init__ - Automa Automa_ID_#391634 created
+2021-08-20 11:59:24,248 - Automa - INFO - __init__ - Automa Automa_ID_#774956 created
+2021-08-20 11:59:24,261 - Automa - INFO - __init__ - Automa Automa_ID_#424221 created
+2021-08-20 11:59:24,277 - Automa - INFO - __init__ - Automa Automa_ID_#492794 created
+2021-08-20 11:59:24,294 - Automa - INFO - __init__ - Automa Automa_ID_#101168 created
+2021-08-20 11:59:24,314 - Automa - INFO - __init__ - Automa Automa_ID_#821116 created
+2021-08-20 11:59:24,343 - Automa - INFO - __init__ - Automa Automa_ID_#146478 created
+2021-08-20 11:59:24,356 - Automa - INFO - __init__ - Automa Automa_ID_#632884 created
+2021-08-20 11:59:24,431 - Automa - INFO - __init__ - Automa Automa_ID_#191698 created
+2021-08-20 11:59:24,435 - Automa - INFO - __init__ - Automa Automa_ID_#432101 created
+2021-08-20 11:59:24,438 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2021-08-20 11:59:24,440 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2021-08-20 11:59:24,442 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: translate, object: Object_ID_#171482
+2021-08-20 11:59:24,444 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: catch, object: Object_ID_#756023
+2021-08-20 11:59:24,446 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: eat, object: Object_ID_#162772
+2021-08-20 11:59:24,447 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: shot, object: Object_ID_#432678
+2021-08-20 11:59:24,449 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included:  action_type: hit, object: Object_ID_#695052
+2021-08-20 11:59:24,450 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#396152
+2021-08-20 11:59:24,451 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: move_#424555, actions in queue: 1
+2021-08-20 11:59:24,457 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation, action_type: move, target_position: (10, 10, 10) and speed_perc: 0.7
+2021-08-20 11:59:24,543 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#581071, execute action: False, action not complete
+2021-08-20 11:59:24,544 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,545 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: run_#156531, actions in queue: 1
+2021-08-20 11:59:24,549 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation, action_type: run, target_position: (10, 10, 10) and speed_perc: 1
+2021-08-20 11:59:24,662 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#581071, execute action: True, action complete: removed from queue
+2021-08-20 11:59:24,665 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,675 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: translate_#617139, actions in queue: 1
+2021-08-20 11:59:24,676 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: translate, object: Object_ID_#37434
+2021-08-20 11:59:24,682 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#358884, execute action: False, action not complete
+2021-08-20 11:59:24,683 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,691 - Automa - INFO - __init__ - Automa Automa_ID_#719542 created
+2021-08-20 11:59:24,694 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: translate_#697072, actions in queue: 1
+2021-08-20 11:59:24,696 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: translate, object: Automa_ID_#719542
+2021-08-20 11:59:24,700 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#358884, execute action: False, action not complete
+2021-08-20 11:59:24,701 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,710 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: catch_#389942, actions in queue: 1
+2021-08-20 11:59:24,714 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: catch, object: Object_ID_#898093
+2021-08-20 11:59:24,719 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#294115, execute action: False, action not complete
+2021-08-20 11:59:24,722 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,732 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: shot_#101984, actions in queue: 1
+2021-08-20 11:59:24,733 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: shot, object: Object_ID_#907333
+2021-08-20 11:59:24,738 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#135758, execute action: True, action complete: removed from queue
+2021-08-20 11:59:24,739 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,747 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: shot_#761419, actions in queue: 1
+2021-08-20 11:59:24,748 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: shot, object: Object_ID_#644725
+2021-08-20 11:59:24,752 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#135758, execute action: True, action complete: removed from queue
+2021-08-20 11:59:24,754 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,762 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: hit_#717740, actions in queue: 1
+2021-08-20 11:59:24,765 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included:  action_type: hit, object: Object_ID_#583927
+2021-08-20 11:59:24,772 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#203947, execute action: True, action complete: removed from queue
+2021-08-20 11:59:24,774 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,781 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: eat_#575948, actions in queue: 1
+2021-08-20 11:59:24,783 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: action_type: eat, object: Object_ID_#680000
+2021-08-20 11:59:24,787 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#825443, execute action: False, action not complete
+2021-08-20 11:59:24,788 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:24,796 - Automa - DEBUG - insertAction - Automa: Automa_ID_#432101 inserted new action in queue, action id: attack_#628734, actions in queue: 1
+2021-08-20 11:59:24,797 - Automa - DEBUG - select_actuators - Automa: Automa_ID_#432101, created actuators_activation with included: list of 4 acutators, action_type: attack, object: Object_ID_#422379
+2021-08-20 11:59:24,803 - Automa - DEBUG - updateStateForAction - Automa: Automa_ID_#432101. Actuator: Actuator_ID_#135758, execute action: True, action complete: removed from queue
+2021-08-20 11:59:24,804 - Automa - DEBUG - action - Automa: Automa_ID_#432101 executed action: created action_info with 1 items
+2021-08-20 11:59:26,446 - Automa - DEBUG - updateStateForEnergyConsume - Automa: Automa_ID_#432101 update state for energy consume: total_sensor_consume: 297, self._state._energy: 0
+2021-08-20 11:59:26,448 - Automa - DEBUG - percept - Automa: Automa_ID_#432101 execute perception: activated 3 sensor, detected 16 object, energy consumed: [99, 99, 99]

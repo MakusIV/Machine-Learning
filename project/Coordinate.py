@@ -348,31 +348,29 @@ class Coordinate:
         return False
 
     def getVector( self, position ):
-        """Return a vector from self.position and position"""
-        self_pos = self.getPosition()
-        mod = sqrt( ( position[0] - self_pos[0] )**2 + ( position[1] - self_pos[1] )**2 + ( position[2] - self_pos[2] )**2 )
-        vect = ( ( position[0] - self_pos[0] ), ( position[1] - self_pos[1] ), ( position[2] - self_pos[2] ) )
-        
+        """Return a vector from self.position to position"""
+        self_pos = self.getPosition()        
+        vect = General.calcVectorDiff( self_pos, position )        
+        mod = General.calcVectorModule( vect )
         return (vect, mod) 
 
     def getVectorAspect( self, vect, position ):
-        """Return vector aspect of vect respect position: is the vectorial product of vect """
+        """Return vector aspect, scalar product and vectorial product of vect and vector = origin-position """
         # se perpendicolari: prod_scal = 0, se alfa>0, <=90 prod scal > 0, se alfa>90, <=180 prod scal < 0
         aspect = None
-        prod_scal = vect[0]*position[0] + vect[1]*position[1] + vect[2]*position[2]
-
+        prod_scal = General.calcScalProd( vect, position )
         # ha il modulo proporzionale all'area del parallelogramma formato dai due vettori. Quindi se sono allineati(paralleli) il prod_vect = 0
         # (y1*z2 - z1*y2), (z1*x2 - x1*z2), (x1*y2 - y1*x2)
-        prod_vect = ( ( vect[1]*position[2] - vect[2]*position[1] ), ( vect[2]*position[0] - vect[0]*position[2] ), ( vect[0]*position[1] - vect[1]*position[0] ) )
+        prod_vect = General.calcVectProd( vect, position )
         
         if prod_scal > 0:
             aspect = "approach"
+        
         elif prod_scal == 0:
-            aspect = "radial"
+            aspect = "tangent"
+        
         else:
             aspect = "away"
-
         return (aspect, prod_scal, prod_vect)
-
 
     

@@ -325,10 +325,10 @@ class Object:
         return all( [  [ True for typ in emissivity if typ == ele ]  for ele in General.SENSOR_TYPE ] )
     
     #TEST: OK (indiretto)
-    def getEmissivityForType( self, emissivity_type ):
+    def getEmissivityForClass( self, emissivity_class ):
         """Return emissivity level for that emissivity_type. If emissivity_type not presents in General.SENSOR_TYPE return False"""
         try:
-            return self._emissivity.get( emissivity_type )
+            return self._emissivity.get( emissivity_class )
 
         except ValueError:
             return False

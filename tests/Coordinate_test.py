@@ -434,7 +434,7 @@ def testClassCoordinate():
 
     if res[0] != (-1,-1,-1) or res[1]!= sqrt(3):
         result = False
-        print("testClassCoordinate().getVector( (4,4,4) ), B - Failed!", res[0], res[1] ) 
+        print("testClassCoordinate().getVector( (1,1,1) ), B - Failed!", res[0], res[1] ) 
     
 
     res = coord1.getVectorAspect( (2,2,2), (4,4,4) )
@@ -447,8 +447,25 @@ def testClassCoordinate():
 
     if res[0] != "away" or res[1]>0 or res[2]!=(0, 0, 0):
         result = False
-        print("testClassCoordinate().getVectorAspect( (2,2,2), (4,4,4) ), Failed!", res[0], res[1], res[2] ) 
+        print("testClassCoordinate().getVectorAspect( (0,0,-3), (0,0,+3) ), Failed!", res[0], res[1], res[2] ) 
 
+    res = coord1.getVectorAspect( (1,5,-5), (-1,-5,+5) )
+
+    if res[0] != "away" or res[1]>0 or res[2]!=(0, 0, 0):
+        result = False
+        print("testClassCoordinate().getVectorAspect( (1,5,-5), (-1,-5,+5) ), Failed!", res[0], res[1], res[2] ) 
+
+    res = coord1.getVectorAspect( (1,5,5), (2,7,6) )
+
+    if res[0] != "approach" or res[1]<0 or res[2]==(0, 0, 0):
+        result = False
+        print("testClassCoordinate().getVectorAspect( (1,5,5), (2,7,6) ), Failed!", res[0], res[1], res[2] ) 
+
+    res = coord1.getVectorAspect( (0,0,1), (1,1,0) )
+
+    if res[0] != "tangent" or res[1]!=0 or res[2]==(0, 0, 0):
+        result = False
+        print("testClassCoordinate().getVectorAspect( (0,0,1), (1,1,0) ), Failed!", res[0], res[1], res[2] ) 
 
 
     return result

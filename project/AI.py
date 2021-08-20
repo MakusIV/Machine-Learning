@@ -1,5 +1,4 @@
 from logging import raiseExceptions
-from project.Automa import Automa
 from typing import Dict
 from State import State
 from Threat import Threat
@@ -57,43 +56,54 @@ class AI:
             raiseExceptions("updateEnvState( self, automa, perception_info ): automa._id! = ai._automaId")
 
         # updateInternalState --> updateEnvState --> evalutation --> Action
-        action = self.evalutation(  automa, percept_info, state )
+        # Evalutate the Action to Automa execute. Return an istance of Action"""
+        
+        # eval_threat --> eval_resource --> eval_space --> eval_action
+        
+        #threats = self._ev_threat( self._state, self._env_state, state )
+        #resources = self._ev_resource( self._state, self._env_state, state )
+        #obstacles = self._ev_obstacle( self._state, self._env_state, state )
+        #action = self._ev_action(threats, resources, obstacles, state) #action = Action(...) una classe
+     
+        action = None
 
-        if not self.updateInternalState( percept_info ): 
+        if not self.updateInternalState( automa, percept_info ): 
             raise Exception("evalutate method failed! updateInternalState Failed")
 
-        if not self.updateEnvState( automa, percept_info ): 
+        if not self.incoditionalEvalutationEnviroment( automa, percept_info ): 
             raise Exception("evalutate method failed! updateEnvState Failed")
 
-        return self.evalutation(  automa, state )
+        action = self.evalutateAction( self, automa ) #action = Action(...) una classe
+
+        if not action:
+            raise Exception("evalutate method failed! updateEnvState Failed")
+        return action
 
 
-    def updateInternalState( self, perception_info ):
+    def updateInternalState( self, automa, perception_info ):
         """update the internal_state property"""
         # nota: l'internal state serve solo per valutare il livello di efficenza dell'ai nell'esecuzione delle sue funzioni
         return True
 
-    def updateEnvState( self, automa, perception_info ):
-        """update the env_state object property"""
-        # nota l'env_state è la porzione dell'intero enviroments (contesto) conosciuto dalla AI.
+    def incoditionalEvalutationEnviroment( self, automa, perception_info ):
+        """Compute the inconditional evalutation of Enviroment State. Update Enviroments State and Internal Memory of Object"""
+        # l'env_state è la porzione dell'intero enviroments (contesto) conosciuto dalla AI.
         #        
+        # Questa funzione implementa le funzioni dell'algoritmo di AI che simulano le risposte "incondizionate" anche acquisite
+        # esperenzialmente, che non coinvolgono processi di analisi sofisticati. Utilizza la memoria degli oggetti (_memory_obj)
+        # per eventualmente riconoscere oggetti già visti o inserirne di nuovi.
+        # effettua l'update dell'env_state e della memory_obj
+        #
         # utilizzare lo _env_state per valutare i vettori di spostamento degli obj già presenti utilizzando le nuove posizioni
         # rilevate nella preception_info. 
+        #
         # Utilizzando la memory_obj (memoria degli oggetti conosciuti) classificare i nuovi obj presenti nella perception_info
         # aggiornare quindi l'_env_state.
-        # Questa funzione implementa le funzioni dell'algoritmo di AI che simulano le risposte "incondizionate" anche acquisite
-        # esperenzialmente, che non coinvolgono processi di analisi sofisticati.
-        #        
-        # L'env_state potrebbe essere rappresentato da una tabella in cui c'è l'obj, la stima del typo e il vettore di spostamento 
-        # interpretando la valutazione di questo vettore come un processo incondizionato preesistente.
-        #
-        # quindi env_state = ( 
-        # (obj1, type = unknow, direction = (8, 1, 4), estimated_distance = 7),  
-        # (obj2, type = threath, direction = (2, south), aspect = approaching, estimated_distance = 20),  
-        # (obj3, type = food, direction = None, aspect = stopped, estimated_distance = 9),  
-        # (obj3, type = food, direction = None, aspect = stopped, estimated_distance = 3, estimated_Frontal_dimension = 300)
+        #               
+        # (obj3, position = (x,y,z), class = food, type = boh, direction = (x,y,z), aspect = stopped, distance = 3, dimension = (1,1,1), threat_level = 0, )
         # )
-        # 
+        #
+        # note: 
         # Nell'algoritmo AI basato su condizioni, si potrebbero valutare le azioni da eseguire considerando l'env_state        # L'env_state potrebbe essere rappresentato da una tabella in cui c'è l'obj, il vettore di spostamento (modulo = velocità presunta),
         # e la classificaione: pericolo (con magnitudo), cibo (con magnitudo), ostacolo (con dimensioni). Esempio
         # ( (obj1, "unknow", direction = (8, nord_est_up), aspect = away, best_direction_to_escape = (south_west_up), distance = 7, danger = 3), 
@@ -103,18 +113,27 @@ class AI:
         # la distanza della minaccia e l'aspect. Poi confrontando i valori di danger delle diverse minaccie insieme ai valori di obstacle_magnitudo e di food_magnitudo
         # stabiliere quale direzione prendere.
         
-        if automa._id != self._automaId:
+        if not automa or automa._id != self._automaId:
             raiseExceptions("updateEnvState( self, automa, perception_info ): automa._id! = ai._automaId")
 
-        for obj in perception_info:            
+        if not perception_info:
+            raiseExceptions("updateEnvState( self, automa, perception_info ): perception_info not defined")
+
+        for obj in perception_info:    
+
+            if self._env_state[obj._id]:# object presents in env_state
+
+                self._env_state[obj._id] = { "obj" : obj, "position" : _position, "category" : _category, "type" : _type, "direction" : _direction, "aspect" : _aspect, "distance" : _distance, "uei" : uei }
              
-            if obj.getId() in self._obj_memory: # l'oggetto è già presente nella obj_memory = dict(key = IdObj, _class = threat/obstacle/food, _typ = shooter/catcher, eval_dangerous_range = (x.range, y.range, z.range), danger = 1..100)
+            if obj.getId() in self._obj_memory: # l'oggetto è già presente nella obj_memory
+                
                 #obj_memory = dict(key = IdObj, _class = threat/obstacle/food, _typ = shooter/catcher, eval_dangerous_range = (x.range, y.range, z.range), danger = 1..100)
                 #evalutateAndUpdateObjInEnvState( obj.IdObj ) 
                 # deve valutare/aggiornare l'eventuale danger, direction, e inserirli nell' _env_state .....
                 #
                 # o codice
                 position = obj.getPosition()
+                # obj._coord.
 
             else:
                 #search for similar or identical object, evalute: dimension (more significative of volume), visible sensor and actuators..
@@ -126,41 +145,50 @@ class AI:
                 
                 if obj_found:
                     #read memory_obj property and update env_state
+                    f=1
 
                 else:
-                    automa_volume = automa.getValueVolume()
+                    automa_volume = automa.getValueVolume()                    
                     factor_of_volume = 1.5# ratio volume obj/ volume automa to scare
                     factor_of_escape = 2# ratio speed/distance to scare
                     volume_ratio = obj.differenceWithValueVolume( automa_volume ) / automa_volume# obj_volume - automa_volume
-                    distance = obj.getDistance( automa._coord )# distance of obj from automa
-                    automa_max_speed = automa.getActuator("mover").speed                
-                    escaping_range = automa_max_speed /distance # chance of escape
-                    # uei = unconditionating emotion intensity: level of fear intensity
-                    uei = 1 # fear: >1,  unfear: <=1
-                    visible_sensor_list = obj.getListVisibleSensors( distance )#gli elementi identificativi dell'automa
-                    visible_actuator_list = obj.getListVisibleActuators( distance )#gli elementi identificativi dell'automa                
-                    _category = "unknow"
-                    _type = "unknow"
-                    _direction = None
-                    _aspect = None
+                    distance = obj.getDistance( automa._coord )# distance of obj from automa                                       
+                    uei = 1 # uei = unconditionating emotion intensity: level of fear intensity # fear: >1,  unfear: <=1                    
+                    position = obj.getPosition()                    
+                    dimension = obj.getDimension()
+                    category = "unknow"
+                    type = "unknow"
+                    direction = None
+                    aspect = None
 
                     if isinstance(obj, automa.__class):
-                        uei = volume_ratio * factor_of_escape / ( factor_of_volume * escaping_range )                    
+                        automa_max_speed = automa.getActuator("mover").speed                
+                        escaping_range = automa_max_speed /distance # chance of escape
+                        uei = volume_ratio * factor_of_escape / ( factor_of_volume * escaping_range )# uei = unconditionating emotion intensity: level of fear intensity
+                        detectable_sensor_list_code = obj.getListDetectableSensors( distance )#gli elementi identificativi dell'automa
+                        detectable_actuator_list_code = obj.getListDetectableActuators( distance )#gli elementi identificativi dell'automa                
                         
+                        # detectable_sensor_list_code = è codeice hash che rappresenta univocamente i sensori visibili (opticalDet, radioDet, thermalDet, chemistDet)
+                        # 
+                        # la sensibilità del sensore è già considerata durante il rilevamento dell'oggetto. 
+                        # perciò la visibilità dei suoi componenti: sensori e attuatori, dipende dalla distanza, 
+                        # e dal rapporto tra le dimensioni dell'oggetto e quelle del sensore
+
                         if uei > 1:
-                            _category = "threat"
+                            category = "threat"
                         
                         else:
-                            _category = "food"
+                            category = "food"
 
                     
                     elif isinstance(obj, Obstacle):
-                        _category = "obstacle"
+                        category = "obstacle"
 
                 # self._obj_memory = obj_memory#dict( [ ("dummyObjId", ["OBSTACLE", "SOLID", [10, 10, 10], 0] ) ] )
-                # obj_memory = dict(key = IdObj, _class = threat/obstacle/food, _typ = shooter/catcher/solid/liquid/gas, 
-                self._obj_memory[obj._id] ={ "category": _category, "type": _type, }
-                self._env_state[obj._id] = { "obj" : obj, "category" : _category, "direction" : None, "aspect" : None, "distance" : distance, "uei" : uei }
+                #  = dict(key = IdObj, _class = threat/obstacle/food, _typ = shooter/catcher, eval_dangerous_range = (x.range, y.range, z.range), danger = 1..100)
+                self._obj_memory[obj._id] ={ "category": category, "type": type, "dimension": dimension, "uei": uei}
+                self._env_state[obj._id] = { "obj" : obj, "position" : position, "category" : category, "type" : type, "direction" : direction, "aspect" : aspect, "distance" : distance, "uei" : uei }
+
                 
 
         #new_threats = self._ev_threat( self._env_state, state )
@@ -168,18 +196,6 @@ class AI:
         #new_obstacles = self._ev_obstacle( self._state, self._env_state, state )
         return True
 
-
-    def evalutation( self, state ):
-        """Evalutate the Action to Automa execute. Return an istance of Action"""
-        
-        # eval_threat --> eval_resource --> eval_space --> eval_action
-        
-        threats = self._ev_threat( self._state, self._env_state, state )
-        resources = self._ev_resource( self._state, self._env_state, state )
-        obstacles = self._ev_obstacle( self._state, self._env_state, state )
-        action = self._ev_action(threats, resources, obstacles, state) #action = Action(...) una classe
-     
-        return action
         
 
     def _ev_threat( self, internal_state, env_state, state ):

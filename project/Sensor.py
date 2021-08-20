@@ -14,30 +14,60 @@ class Sensor:
     # Il sensore non è una specializzazione di Object
 
     # Unit test: ok
-    def __init__(self, position, range_max, typ, emissivity_perception = 1, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None ):
-
-        if not self.checkParam( position, emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t ):
-            raise Exception("Invalid parameters! Sensor not istantiate.")
+    def __init__(self, position, typ, _class, emissivity_perception = None, power = None, resilience = None, delta_t = None, accuracy = None, range_max = None,  strength = None, dimension = None, name = None ):
 
         self._name = name
+        self._class = _class# la grandezza che il sensore misura (vedi General.SENSOR_TYPE)
+        self._type = typ# il tipo di sensore
         self._id = General.setId('Sensor_ID', None) # Id generator automaticamente 
         self._state = State( run = True)
         self._position = position
         self._power = power# nota l'energia è gestita nello stato in quanto è variabile
         self._range = range_max# è rappresentato da una tupla di distanze (x_d:int, y_d:int, z_d:int)
-        self._sensibility = Sensibility( range_max, accuracy = accuracy )
-        self._resilience = resilience # resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
-        self._delta_t = delta_t # Il tempo necessario per eseguire la detection serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli
-        self._type = typ # la grandezza che il sensore misura (vedi General.SENSOR_TYPE)
-        self._emissivity_perception = emissivity_perception # il livello minimo di emessivity che il sensore rileva. Da confrontare con l'emmisivity di un oggetto da rilevare. Più piccolo è questo lavoro e più il sensore è capace di rilevare, 0: rileva tutto
+        self._sensibility = None
+        self._resilience = resilience# resistenza ad uno SHOT in termini di power (se shot power > resilence --> danno al sensore)
+        self._delta_t = delta_t# Il tempo necessario per eseguire la detection serve per calcolare il consumo energetico. Puotrà essere utilizzato per gestire eventuali detection che necessitano di più cicli        
+        self._emissivity_perception = emissivity_perception# il livello minimo di emessivity che il sensore rileva. Da confrontare con l'emmisivity di un oggetto da rilevare. Più piccolo è questo lavoro e più il sensore è capace di rilevare, 0: rileva tutto
+        self._strength = strength
+        self._accuracy = accuracy
+        self._dimension = dimension        
 
         if not name or not isinstance(name, str):
             self._name = General.setName('Sensor_Name')
         else:
             self._name = name
 
-    
-    def checkParam(self, position, emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t):
+        if not range_max:
+            self._range = General.getSensorParam(self._class, self._type, "range")
+
+        if not power:
+            self._power = General.getSensorParam(self._class, self._type, "power")
+
+        if not resilience:
+            self._resilience = General.getSensorParam(self._class, self._type, "resilience")
+
+        if not delta_t:
+            self._delta_t = General.getSensorParam(self._class, self._type, "delta_t")
+        
+        if not emissivity_perception:
+            self._emissivity_perception = General.getSensorParam(self._class, self._type, "emissivity_perception")
+
+        if not strength:
+            self._strength = General.getSensorParam(self._class, self._type, "strength")
+
+        if not accuracy:
+            self._accuracy = General.getSensorParam(self._class, self._type, "accuracy")
+
+        if not dimension:
+            self._dimension = General.getSensorParam(self._class, self._type, "dimension")
+
+        self._sensibility = Sensibility( self._range, self._accuracy )
+
+        if not self.checkParam( self._position, self._emissivity_perception, self._type, self._range, self._accuracy,  self._power, self._resilience, self._delta_t, self._class ):
+            raise Exception("Invalid parameters! Sensor not istantiate.")
+
+
+    def checkParam(self, position, emissivity_perception, typ, range_max, accuracy,  power, resilience, delta_t, _class):
         
         if not( range_max and range_max[0] >0 and range_max[1] >0 and range_max[2] >0 and delta_t and delta_t <= 1 and delta_t >= 0 and power and power <= 100 and power >= 0 and  resilience and  resilience <= 100 and resilience >= 0 and  emissivity_perception and  emissivity_perception <= 100 and emissivity_perception > 0):
             return False
@@ -45,10 +75,14 @@ class Sensor:
         if accuracy and accuracy <=0:
             return False
         
-        if not typ or not General.checkSensorType( _type = typ ) and not General.checkPosition( position ):
+        if not typ or not _class or not ( General.checkSensorTypeAndClass( typ, _class ) and General.checkPosition( position ) ):
             return False
 
         return True
+
+    def getSensorFootPrint( self ):
+        return hash( self._class + "-" + self._type + "-" + ''.join( self._dimension ) )
+
 
     # Unit test: 0k
     def evalutateSelfDamage(self, power):
@@ -125,7 +159,7 @@ class Sensor:
 
                     for elem in detected.values():# elem: obj
 
-                        object_emissivity_level = elem.getEmissivityForType( self._type )
+                        object_emissivity_level = elem.getEmissivityForClass( self._class )
                         
                         if object_emissivity_level >= self._emissivity_perception:
                             detected_objs.update( { elem.getPosition(): elem } )

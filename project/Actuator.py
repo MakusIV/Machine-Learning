@@ -12,7 +12,7 @@ logger = Logger(module_name = __name__, class_name = 'Actuator')
 
 class Actuator:
     #position, range_max, typ, emissivity_perception = 1, power = 100, resilience = 100, delta_t = 0.01, accuracy = 5, name = None, state = None 
-    def __init__(self, position, class_, typ, mass = 10, range_max = None, power = None,  resilience = None, delta_t = None, name = None, speed = None, strength = None, accuracy = None  ):
+    def __init__(self, position, class_, typ, mass = 10, range_max = None, power = None,  resilience = None, delta_t = None, name = None, speed = None, strength = None, accuracy = None, dimension = None  ):
 
         
         self._name = name
@@ -28,9 +28,8 @@ class Actuator:
         self._mass = mass
         self._speed = speed
         self._strength = strength               
-        self._accuracy = accuracy               
-        
-        
+        self._accuracy = accuracy
+        self._dimension = dimension                       
 
         if not name:
             self._name = General.setName('Actuator_Name')
@@ -55,6 +54,9 @@ class Actuator:
 
         if not accuracy:
             self._accuracy = General.getActuatorParam(self._class, self._type, "accuracy")
+
+        if not dimension:
+            self._dimension = General.getActuatorParam(self._class, self._type, "dimension")
 
         if not self.checkParam( position, class_, typ, self._power, self._resilience, self._delta_t, self._range ):
             raise Exception("Invalid parameters! Actuator not istantiate.")
@@ -367,4 +369,5 @@ class Actuator:
 
         return True
 
+    
      

@@ -88,7 +88,7 @@ class Automa(Object):
         energy_consume = [ percept_info[ 0 ] for percept_info in percept_infos ]
         self.updateStateForEnergyConsume( energy_consume )# aggiorna lo stato dell'automa
         logger.logger.debug("Automa: {0} execute perception: activated {1} sensor, detected {2} object, energy consumed: {3}".format( self._id, len( operative_sensors ), len( list_obj ), energy_consume  ))
-        return list_obj # ( obj1, ob2, ...) 
+        return list_obj # ( obj1, ob2, ...) NEXT UPDATE: si potrebbe utilizzare un dict = {id_obj: obj} per una ricerca immediata tramite id
 
 
     def evalutate(self, percept_info ):
@@ -448,3 +448,26 @@ class Automa(Object):
     def getAI( self ):
         """Get AI association"""         
         return self._ai
+
+    def getDetectableSensorsFootPrint( self, distance_obj, automa_max_distance_for_optimum_detection ):
+        """Return hash code for detectable sensors"""
+        # detectable_sensor_list_code = è codice hash che rappresenta univocamente i sensori visibili (opticalDet, radioDet, thermalDet, chemistDet)
+        # 
+        # la sensibilità del sensore è già considerata durante il rilevamento dell'oggetto. 
+        # perciò la visibilità dei suoi componenti: sensori e attuatori, dipende dalla distanza, 
+        # e dal rapporto tra le dimensioni dell'oggetto e quelle del sensore
+        operative_sensors = [ sensor for sensor in self._sensors if sensor.isOperative() ]
+        
+        sensorsFootPrint = 0
+        for sensor in operative_sensors:
+            sensor_dimension_module = General.calcVectorModule( sensor._dimension )
+            automa_dimension_module = General.calcVectorModule( self._dimension )
+            detectable_ratio = 3 # ratio of minimum dimension of a detectable sensor at max distance for full object detection (dimension_sensor / dimension_autom ) 
+            detectable = ( sensor_dimension_module * automa_max_distance_for_optimum_detection * detectable_ratio ) / ( automa_dimension_module * distance_obj)
+            detected = General.calcProbability( detectable )
+            sensorsFootPrint = None
+
+            if detected:
+                sensorsFootPrint = hash( sensorsFootPrint) + sensor.getSensorFootPrint() )# sommo i due numeri per evitare che liste con ordine contenenti gli stessi sensori ma in diverso ordine possano generare hash diversi (la somma è sempre uguale proprietà commutativa della somma)
+ 
+        return sensorsFootPrint            
