@@ -186,32 +186,24 @@ def checkVolume(volume):
 
 
 def setId(name, id):
-            
+    """Return string name plus random int 6 digit"""                    
     if not id or not isinstance(id, int):
         id = str( name ) + '_#' + str( random.randint( 1, 999999 ) )  # hashing or radInt
-
     else:
-        id = str( name ) + '_#' + str( id )
-    
+        id = str( name ) + '_#' + str( id )    
     return id
 
-
 def setName(name):
-
-            
-        if not name or not isinstance( name, str ):
-            name = 'unamed_#' + str( random.randint( 1, 9999 ) ) # hashing or radInt
-
-        else:
-            name = name + '_#' + str( random.randint( 1, 9999 ) ) # hashing or radInt
-        
-        return name
-
+    """Return string with name plus random int 4 digit"""            
+    if not name or not isinstance( name, str ):
+        name = 'unamed_#' + str( random.randint( 1, 9999 ) ) # hashing or radInt
+    else:
+        name = name + '_#' + str( random.randint( 1, 9999 ) ) # hashing or radInt        
+    return name
 
 def calcVectorModule( vect ):
     """Return module of vect"""
     return math.sqrt( vect[0]**2 + vect[1]**2 + vect[2]**2 )
-    
 
 def calcVectorDiff( vect1, vect2):
     """Return vector diff"""

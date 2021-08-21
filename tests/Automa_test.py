@@ -30,8 +30,8 @@ def testClassAutoma():
     # actuator(position, range_max, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None, state = None)
     #name = 'Automa', dimension = [1, 1, 1], resilience = 10, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None       
     coord = Coordinate( 0, 0, 0 )
-    sensors = [ Sensor( typ = "radio", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( typ = "optical", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( typ = "thermal", position = coord.getPosition(), range_max = (100, 100, 100) )]
-    actuators = [ Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ), Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( _class = "optical", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( _class = "thermal", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100) )]
+    actuators = [ Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ), Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "2-legs", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ) ]
     automa = Automa(coord = coord, sensors = sensors, actuators = actuators, mass = 30)
     
     
@@ -39,8 +39,7 @@ def testClassAutoma():
         message = message +'\n' + 'Automa Failed!!<------------------------------------------------------------------------------'
         print( message ,automa._name, automa._dimension, automa._resilience, automa._state )                         
         result = False 
-    
-
+        
     
     state = automa._state    
     automa.destroy()
@@ -358,9 +357,58 @@ def testClassAutoma():
         result = False 
     
 
-
+    # test getDetectableSensors getDetectableActuators
+    # actuator(position, range_max, typ, power = 100,  resilience = 100, delta_t = 0.01, name = None, state = None)
+    #name = 'Automa', dimension = [1, 1, 1], resilience = 10, state = State(run = True), ai = AI(), coord = None, sensors= None, actuators = None       
+    coord = Coordinate( 0, 0, 0 )
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100) ), Sensor( _class = "optical", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100), dimension = (1, 2, 2 ) ), Sensor( _class = "thermal", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100), dimension = (1, 1, 2 ) ) ]
+    actuators = [ Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ), Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "2-legs", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ) ]
+    automa = Automa(coord = coord, sensors = sensors, actuators = actuators, mass = 30, dimension = (10, 10, 10))
     
+    sensorsFootPrint = automa.getDetectableSensorsFootPrint( ( 5, 5, 5 ), (100, 100, 100) )
+    actuatorsFootPrint = automa.getDetectableActuatorsFootPrint( ( 5, 5, 5 ), (100, 100, 100) )
+    #print("automa.getDetectableSensorsFootPrint( ( 5, 5, 5 ), (100, 100, 100) ): ", sensorsFootPrint )   
 
+    if not sensorsFootPrint:
+        message = message +'\n' + 'Automa.getDetectableSensorsFootPrint( ( 5, 5, 5 ), (100, 100, 100) ) - Failed!!<------------------------------------------------------------------------------'
+        print( message ,automa._name, sensorsFootPrint )                         
+        result = False 
+
+    if not actuatorsFootPrint:
+        message = message +'\n' + 'Automa.getDetectableActuatorsFootPrint( ( 5, 5, 5 ), (100, 100, 100) ) - Failed!!<------------------------------------------------------------------------------'
+        print( message ,automa._name, actuatorsFootPrint )                         
+        result = False 
+    
+    sensorsFootPrint = automa.getDetectableSensorsFootPrint( ( 10, 10, 10 ), ( 1, 1, 1 ) )
+    actuatorsFootPrint = automa.getDetectableActuatorsFootPrint( ( 10, 10, 10 ), (1, 1, 1) )
+    #print("automa.getDetectableSensorsFootPrint( ( 10, 10, 10 ), ( 1, 1, 1 ) ): ", sensorsFootPrint )  
+
+    if sensorsFootPrint:
+        message = message +'\n' + 'Automa.getDetectableSensorsFootPrint( ( 10, 10, 10 ), ( 1, 1, 1 ) ) - A Failed!!<------------------------------------------------------------------------------'
+        print( message ,automa._name, sensorsFootPrint )                         
+        result = False 
+
+    if actuatorsFootPrint:
+        message = message +'\n' + 'Automa.getDetectableActuatorsFootPrint( ( 10, 10, 10 ), ( 1, 1, 1 ) ) - A Failed!!<------------------------------------------------------------------------------'
+        print( message ,automa._name, actuatorsFootPrint )                         
+        result = False 
+    
+    sensors = [ Sensor( _class = "optical", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100), dimension = (1, 2, 2 ) ), Sensor( _class = "thermal", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100), dimension = (1, 1, 2 ) ), Sensor(  _class = "radio", typ = "simple", position = coord.getPosition(), range_max = (100, 100, 100) ) ]
+    actuators = [ Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "2-legs", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ), Actuator( position = coord.getPosition(), range_max = ( 10, 10, 10 ), class_ = "mover", typ = "crawler", power = 100,  resilience = 100, delta_t = 0.01, speed = 10 ) ]
+    automa = Automa(coord = coord, sensors = sensors, actuators = actuators, mass = 30, dimension = (10, 10, 10))
+    sensorsFootPrint1 = automa.getDetectableSensorsFootPrint( ( 10, 10, 10 ), (1, 1, 1) )
+    actuatorsFootPrint1 = automa.getDetectableActuatorsFootPrint( ( 10, 10, 10 ), (1, 1, 1) )
+
+    if sensorsFootPrint != sensorsFootPrint1:
+        message = message +'\n' + 'Automa.getDetectableSensorsFootPrint( ( 10, 10, 10 ), ( 1, 1, 1 ) ) - B Failed!!<------------------------------------------------------------------------------'
+        print( message ,automa._name, sensorsFootPrint, sensorsFootPrint1 )                         
+        result = False 
+
+    if actuatorsFootPrint != actuatorsFootPrint1:
+        message = message +'\n' + 'Automa.getDetectableActuatorsFootPrint( ( 10, 10, 10 ), ( 1, 1, 1 ) ) - B Failed!!<------------------------------------------------------------------------------'
+        print( message ,automa._name, actuatorsFootPrint )                         
+        result = False 
+        
 
 
     print( message )

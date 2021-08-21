@@ -139,10 +139,31 @@ def testClassActuator():
         result = False  
     
 
+    # test getActuatorFootPrint()
+     
+    actuator_1 = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' )
+    actuator_1b = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs' )    
+    actuator_2 = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '4-legs' )
+    actuator_3 = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-wheels' )
+    actuator_4 = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'object_manipulator', typ = 'hand' )
+    actuator_5 = Actuator( position = ( 0, 1, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', dimension = (0,1,0)  )
+
+    
+    actuatorFootPrint_1 = actuator_1.getActuatorFootPrint()
+    actuatorFootPrint_1b = actuator_1b.getActuatorFootPrint()
+    actuatorFootPrint_2 = actuator_2.getActuatorFootPrint()
+    actuatorFootPrint_3 = actuator_3.getActuatorFootPrint()
+    actuatorFootPrint_4 = actuator_4.getActuatorFootPrint()
+    actuatorFootPrint_5 = actuator_5.getActuatorFootPrint()
+
+    if actuatorFootPrint_1 != actuatorFootPrint_1b or actuatorFootPrint_1 == actuatorFootPrint_2 or actuatorFootPrint_2 == actuatorFootPrint_3 or actuatorFootPrint_3 == actuatorFootPrint_4 or actuatorFootPrint_4 == actuatorFootPrint_1 or actuatorFootPrint_4 == actuatorFootPrint_5:
+        print('actuator.getActuatorFootPrint() <-------------------------------------------------------------------------------- Failed!! ', actuatorFootPrint_1, actuatorFootPrint_1b, actuatorFootPrint_2, actuatorFootPrint_3, actuatorFootPrint_4)
+        result = False
+
     # test moving()
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1, speed = 10)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor( _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )
@@ -156,7 +177,7 @@ def testClassActuator():
 
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1, speed = 10)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )
@@ -172,7 +193,7 @@ def testClassActuator():
     # test exec_command()
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 100, 100, 100 ), class_ = 'mover', typ = '2-legs', delta_t = 0.1, speed = 10)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )
@@ -192,7 +213,7 @@ def testClassActuator():
 # or len( obj._eventsQueue ) != 1
 #obj = Automa( coord = Coordinate( 5, 5, 5 ), sensors = sensors, actuators = actuators, mass = 300 )
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 10, 10, 10 ), class_ = 'object_manipulator', typ = 'hand', delta_t = 0.1)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -211,7 +232,7 @@ def testClassActuator():
 
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 10, 10, 10 ), class_ = 'object_manipulator', typ = 'hand', delta_t = 0.1)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -230,7 +251,7 @@ def testClassActuator():
 
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 10, 10, 10 ), class_ = 'object_catcher', typ = 'clamp', delta_t = 0.1)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -250,7 +271,7 @@ def testClassActuator():
 
     
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 10, 10, 10 ), class_ = 'object_assimilator', typ = 'jaw', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -269,7 +290,7 @@ def testClassActuator():
 
     
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 10, 10, 10 ), class_ = 'object_assimilator', typ = 'jaw', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -290,7 +311,7 @@ def testClassActuator():
 
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 70, 70, 70 ), class_ = 'projectile_launcher', typ = 'heavy_cannon', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -309,7 +330,7 @@ def testClassActuator():
 
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 41, 42, 43 ), class_ = 'projectile_launcher', typ = 'light_cannon', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -328,7 +349,7 @@ def testClassActuator():
 
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 70, 70, 70 ), class_ = 'projectile_launcher', typ = 'heavy_cannon', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -347,7 +368,7 @@ def testClassActuator():
 
     
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 70, 70, 70 ), class_ = 'projectile_launcher', typ = 'heavy_cannon', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -368,7 +389,7 @@ def testClassActuator():
     
     
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 44, 44, 44 ), class_ = 'projectile_launcher', typ = 'heavy_cannon', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -388,7 +409,7 @@ def testClassActuator():
     
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 70, 70, 70 ), class_ = 'plasma_launcher', typ = 'laser', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    
@@ -407,7 +428,7 @@ def testClassActuator():
 
 
     actuator = Actuator( position = ( 0, 0, 0 ), range_max = ( 70, 70, 70 ), class_ = 'object_hitter', typ = 'drill', delta_t = 0.1, power = 100)
-    sensors = [ Sensor( typ = "radio", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
+    sensors = [ Sensor(  _class = "radio", typ = "simple", position = ( 0, 0, 0 ), range_max = (100, 100, 100) ) ]
     automa = Automa( actuators = [ actuator ], sensors = sensors )
     posMng = Position_manager()
     posMng.insertObject( ( 0, 0, 0 ), automa )    

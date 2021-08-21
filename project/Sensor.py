@@ -81,7 +81,12 @@ class Sensor:
         return True
 
     def getSensorFootPrint( self ):
-        return hash( self._class + "-" + self._type + "-" + ''.join( self._dimension ) )
+        """Return an integer FootPrint for this sensor"""
+        #
+        # nota: il codice cambia ad ogni nuova sessione di python. Quindi se si prevede il salvataggio di una sessione è necessario sostituire la funzione hash() utilizzata
+        #
+        dim_str = '.'.join(str(p) for p in self._dimension )
+        return hash( self._class + "-" + self._type + "-" + dim_str )
 
 
     # Unit test: 0k

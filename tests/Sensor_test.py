@@ -81,12 +81,32 @@ def testClassSensor():
         result = False
 
     
-    sensors = [Sensor( _class = "radio", typ="simple", position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( _class = "radio", typ="simple", position = (0, 0, 0), range_max = (100, 100, 100) ), list(), Sensor( _class = "radio", typ="simple", position = (0, 0, 0), range_max = (100, 100, 100) )]
+    sensors = [Sensor( _class = "radio", typ="simple", position = (0, 0, 0), range_max = (100, 100, 100) ), Sensor( _class = "optical", typ="simple", position = (0, 0, 0), range_max = (100, 100, 100) ), list(), Sensor( _class = "nuclear", typ="simple", position = (0, 0, 0), range_max = (100, 100, 100) )]
 
     if Sensor.checkSensorList(sensor, sensors):
         print('Sensor.checkSensorList(sensors) Failed!! ', sensors[0]._id, sensors[0]._state, sensors[0]._state._health)
         result = False  
+
+
+    sensor1 = Sensor(  _class = "radio", typ="simple", position = (0, 0, 0), dimension = (0, 0, 0))
+    sensor2 = Sensor(  _class = "optical", typ="simple", position = (0, 0, 0), dimension = (0, 0, 0) )
+    sensor3 = Sensor(  _class = "nuclear", typ="simple", position = (0, 0, 0), dimension = (0, 0, 0) )
+    sensor4 = Sensor(  _class = "nuclear", typ="medium", position = (0, 0, 0), dimension = (0, 0, 0) )
+    sensor5 = Sensor(  _class = "nuclear", typ="medium", position = (0, 0, 0), dimension = (0, 1, 0) )
+
+    sensorFootPrint_1 = sensor1.getSensorFootPrint()
+    sensorFootPrint_1b = sensor1.getSensorFootPrint()
+    sensorFootPrint_2 = sensor2.getSensorFootPrint()
+    sensorFootPrint_3 = sensor3.getSensorFootPrint()
+    sensorFootPrint_4 = sensor4.getSensorFootPrint()
+    sensorFootPrint_5 = sensor5.getSensorFootPrint()
+    #print('Sensor.getSensorFootPrint() < =============================================================================================== ', sensorFootPrint_1, sensorFootPrint_1b, sensorFootPrint_2, sensorFootPrint_3, sensorFootPrint_4, sensorFootPrint_5, hash(sensorFootPrint_2 + sensorFootPrint_3 + sensorFootPrint_4), hash(sensorFootPrint_3 + sensorFootPrint_4 + sensorFootPrint_2) )
+
+    if sensorFootPrint_1 != sensorFootPrint_1b or sensorFootPrint_1 == sensorFootPrint_2 or sensorFootPrint_2 == sensorFootPrint_3 or sensorFootPrint_3 == sensorFootPrint_4 or sensorFootPrint_4 == sensorFootPrint_1 or sensorFootPrint_4 == sensorFootPrint_5:
+        print('Sensor.getSensorFootPrint() Failed!! ', sensorFootPrint_1, sensorFootPrint_1b, sensorFootPrint_2, sensorFootPrint_3, sensorFootPrint_4)
+        result = False
     
+
     # test sensor.perception()-test with object emissivity > sensor emissivity_perception: sensor should be percept object
     num_objects = 100
     num_objects_for_linear = int( (num_objects)**(1/3) )    

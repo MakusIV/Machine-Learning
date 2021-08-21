@@ -386,6 +386,12 @@ class Automa(Object):
         self._actuators.append( actuator )
         return True
 
+    def setSensor( self, sensor):
+        """Insert an Sensor in sensors list"""
+        if not sensor or not isinstance(sensor, Sensor):
+            return False
+        self._sensors.append( sensor )
+        return True
 
     def checkLoadObject( self, obj):
         """ Check if obj can load in object catched list. Return True if possible, otherwise False"""
@@ -456,18 +462,53 @@ class Automa(Object):
         # la sensibilità del sensore è già considerata durante il rilevamento dell'oggetto. 
         # perciò la visibilità dei suoi componenti: sensori e attuatori, dipende dalla distanza, 
         # e dal rapporto tra le dimensioni dell'oggetto e quelle del sensore
-        operative_sensors = [ sensor for sensor in self._sensors if sensor.isOperative() ]
-        
+        #
+        # nota: il codice cambia ad ogni nuova sessione di python. Quindi se si prevede il salvataggio di una sessione è necessario sostituire la funzione hash() utilizzata
+        #
+        operative_sensors = [ sensor for sensor in self._sensors if sensor.isOperative() ]        
         sensorsFootPrint = 0
+        detectable_ratio = 3 # ratio of minimum dimension of a detectable sensor at max distance for full object detection (dimension_sensor / dimension_autom ) 
+        # valuta se considerare le singole componenti x,y,x per il calcolo della detectable. Per il momento considero i moduli                    
+        distance_obj = General.calcVectorModule( distance_obj )
+        automa_max_distance_for_optimum_detection = General.calcVectorModule( automa_max_distance_for_optimum_detection )
+
         for sensor in operative_sensors:
             sensor_dimension_module = General.calcVectorModule( sensor._dimension )
-            automa_dimension_module = General.calcVectorModule( self._dimension )
-            detectable_ratio = 3 # ratio of minimum dimension of a detectable sensor at max distance for full object detection (dimension_sensor / dimension_autom ) 
+            automa_dimension_module = General.calcVectorModule( self._dimension )            
             detectable = ( sensor_dimension_module * automa_max_distance_for_optimum_detection * detectable_ratio ) / ( automa_dimension_module * distance_obj)
+            #att: con distance (1,1,1) e max distance (100, 100, 100 )--> detected è 0.7!!!
             detected = General.calcProbability( detectable )
-            sensorsFootPrint = None
 
-            if detected:
-                sensorsFootPrint = hash( sensorsFootPrint) + sensor.getSensorFootPrint() )# sommo i due numeri per evitare che liste con ordine contenenti gli stessi sensori ma in diverso ordine possano generare hash diversi (la somma è sempre uguale proprietà commutativa della somma)
+            if detected:                
+                sensorsFootPrint = hash( sensorsFootPrint + sensor.getSensorFootPrint() )# sommo i due numeri per evitare che liste con ordine contenenti gli stessi sensori ma in diverso ordine possano generare hash diversi (la somma è sempre uguale proprietà commutativa della somma)
  
-        return sensorsFootPrint            
+        return sensorsFootPrint 
+
+    def getDetectableActuatorsFootPrint( self, distance_obj, automa_max_distance_for_optimum_detection ):
+        """Return hash code for detectable actuators"""
+        # detectable_actuator_list_code = è codice hash che rappresenta univocamente gli attuatori visibili (opticalDet, radioDet, thermalDet, chemistDet)
+        # 
+        # la sensibilità dell'attuatore è già considerata durante il rilevamento dell'oggetto. 
+        # perciò la visibilità dei suoi componenti: actuatori e attuatori, dipende dalla distanza, 
+        # e dal rapporto tra le dimensioni dell'oggetto e quelle dell'attuatore
+        #
+        # nota: il codice cambia ad ogni nuova sessione di python. Quindi se si prevede il salvataggio di una sessione è necessario sostituire la funzione hash() utilizzata
+        #
+        operative_actuators = [ actuator for actuator in self._actuators if actuator.isOperative() ]        
+        actuatorsFootPrint = 0
+        detectable_ratio = 3 # ratio of minimum dimension of a detectable actuator at max distance for full object detection (dimension_actuator / dimension_autom ) 
+        # valuta se considerare le singole componenti x,y,x per il calcolo della detectable. Per il momento considero i moduli                    
+        distance_obj = General.calcVectorModule( distance_obj )
+        automa_max_distance_for_optimum_detection = General.calcVectorModule( automa_max_distance_for_optimum_detection )
+
+        for actuator in operative_actuators:
+            actuator_dimension_module = General.calcVectorModule( actuator._dimension )
+            automa_dimension_module = General.calcVectorModule( self._dimension )            
+            detectable = ( actuator_dimension_module * automa_max_distance_for_optimum_detection * detectable_ratio ) / ( automa_dimension_module * distance_obj)
+            #att: con distance (1,1,1) e max distance (100, 100, 100 )--> detected è 0.7!!!
+            detected = General.calcProbability( detectable )
+
+            if detected:                
+                actuatorsFootPrint = hash( actuatorsFootPrint + actuator.getActuatorFootPrint() )# sommo i due numeri per evitare che liste con ordine contenenti gli stessi actuatori ma in diverso ordine possano generare hash diversi (la somma è sempre uguale proprietà commutativa della somma)
+ 
+        return actuatorsFootPrint            
