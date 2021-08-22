@@ -454,8 +454,33 @@ class Automa(Object):
     def getAI( self ):
         """Get AI association"""         
         return self._ai
+    # deprecated
+    def calcOptimumDistanceDetection( self ):
+        """"Return the distance for optimal detection of automa"""
+        # check all sensor for evalutate optimum distance according with detection max range
+        # this value must not be random
+        operative_sensors = [ sensor for sensor in self._sensors if sensor.isOperative() ]        
+        range_media = 0
 
-    def getDetectableSensorsFootPrint( self, distance_obj, automa_max_distance_for_optimum_detection ):
+        if operative_sensors:
+            
+            for sensor in operative_sensors:
+                range_media += General.calcVectorModule( sensor._range )
+        return range_media
+
+    def getFootPrint( self ):
+        """Return hash code for Automa"""        
+        isAutoma = False
+        sensorFootPrint = self.getDetectableSensorsFootPrint()        
+        actuatorFootPrint = self.getDetectableActuatorsFootPrint()  
+        
+        if sensorFootPrint + actuatorFootPrint != 0:
+            isAutoma = True       
+        
+        automaFootPrint = hash( General.calcVectorModule( self._dimension ) + sensorFootPrint + actuatorFootPrint + self._mass )
+        return automaFootPrint, isAutoma
+
+    def getDetectableSensorsFootPrint( self ):
         """Return hash code for detectable sensors"""
         # detectable_sensor_list_code = è codice hash che rappresenta univocamente i sensori visibili (opticalDet, radioDet, thermalDet, chemistDet)
         # 
@@ -464,27 +489,27 @@ class Automa(Object):
         # e dal rapporto tra le dimensioni dell'oggetto e quelle del sensore
         #
         # nota: il codice cambia ad ogni nuova sessione di python. Quindi se si prevede il salvataggio di una sessione è necessario sostituire la funzione hash() utilizzata
-        #
+        #   
+        sensorsFootPrint = 0        
         operative_sensors = [ sensor for sensor in self._sensors if sensor.isOperative() ]        
-        sensorsFootPrint = 0
-        detectable_ratio = 3 # ratio of minimum dimension of a detectable sensor at max distance for full object detection (dimension_sensor / dimension_autom ) 
-        # valuta se considerare le singole componenti x,y,x per il calcolo della detectable. Per il momento considero i moduli                    
-        distance_obj = General.calcVectorModule( distance_obj )
-        automa_max_distance_for_optimum_detection = General.calcVectorModule( automa_max_distance_for_optimum_detection )
 
-        for sensor in operative_sensors:
-            sensor_dimension_module = General.calcVectorModule( sensor._dimension )
-            automa_dimension_module = General.calcVectorModule( self._dimension )            
-            detectable = ( sensor_dimension_module * automa_max_distance_for_optimum_detection * detectable_ratio ) / ( automa_dimension_module * distance_obj)
-            #att: con distance (1,1,1) e max distance (100, 100, 100 )--> detected è 0.7!!!
-            detected = General.calcProbability( detectable )
+        if operative_sensors:
+            automa_dimension_module = General.calcVectorModule( self._dimension )             
+            detectable_ratio = 3 # ratio of minimum dimension of a detectable sensor at max distance for full object detection (dimension_sensor / dimension_autom ) 
+            # valuta se considerare le singole componenti x,y,x per il calcolo della detectable. Per il momento considero i moduli                    
 
-            if detected:                
-                sensorsFootPrint = hash( sensorsFootPrint + sensor.getSensorFootPrint() )# sommo i due numeri per evitare che liste con ordine contenenti gli stessi sensori ma in diverso ordine possano generare hash diversi (la somma è sempre uguale proprietà commutativa della somma)
+            for sensor in operative_sensors:
+                sensor_dimension_module = General.calcVectorModule( sensor._dimension )            
+                detectable = ( sensor_dimension_module * detectable_ratio ) / ( automa_dimension_module )
+                #att: con distance (1,1,1) e max distance (100, 100, 100 )--> detected è 0.7!!!
+                #detected = General.calcProbability( detectable )  non và bene in quanto non può essere aleatorio perchè utilizzato per creare impronte di oggetto usate come chiavi
+
+                if detectable > 0.5:                
+                    sensorsFootPrint = hash( sensorsFootPrint + sensor.getSensorFootPrint() )# sommo i due numeri per evitare che liste con ordine contenenti gli stessi sensori ma in diverso ordine possano generare hash diversi (la somma è sempre uguale proprietà commutativa della somma)
  
         return sensorsFootPrint 
 
-    def getDetectableActuatorsFootPrint( self, distance_obj, automa_max_distance_for_optimum_detection ):
+    def getDetectableActuatorsFootPrint( self ):
         """Return hash code for detectable actuators"""
         # detectable_actuator_list_code = è codice hash che rappresenta univocamente gli attuatori visibili (opticalDet, radioDet, thermalDet, chemistDet)
         # 
@@ -493,22 +518,23 @@ class Automa(Object):
         # e dal rapporto tra le dimensioni dell'oggetto e quelle dell'attuatore
         #
         # nota: il codice cambia ad ogni nuova sessione di python. Quindi se si prevede il salvataggio di una sessione è necessario sostituire la funzione hash() utilizzata
-        #
-        operative_actuators = [ actuator for actuator in self._actuators if actuator.isOperative() ]        
+        #        
         actuatorsFootPrint = 0
-        detectable_ratio = 3 # ratio of minimum dimension of a detectable actuator at max distance for full object detection (dimension_actuator / dimension_autom ) 
-        # valuta se considerare le singole componenti x,y,x per il calcolo della detectable. Per il momento considero i moduli                    
-        distance_obj = General.calcVectorModule( distance_obj )
-        automa_max_distance_for_optimum_detection = General.calcVectorModule( automa_max_distance_for_optimum_detection )
+        operative_actuators = [ actuator for actuator in self._actuators if actuator.isOperative() ]        
 
-        for actuator in operative_actuators:
-            actuator_dimension_module = General.calcVectorModule( actuator._dimension )
+        if operative_actuators:    
             automa_dimension_module = General.calcVectorModule( self._dimension )            
-            detectable = ( actuator_dimension_module * automa_max_distance_for_optimum_detection * detectable_ratio ) / ( automa_dimension_module * distance_obj)
-            #att: con distance (1,1,1) e max distance (100, 100, 100 )--> detected è 0.7!!!
-            detected = General.calcProbability( detectable )
+            detectable_ratio = 3 # ratio of minimum dimension of a detectable actuator at max distance for full object detection (dimension_actuator / dimension_autom ) 
+            # valuta se considerare le singole componenti x,y,x per il calcolo della detectable. Per il momento considero i moduli                            
 
-            if detected:                
-                actuatorsFootPrint = hash( actuatorsFootPrint + actuator.getActuatorFootPrint() )# sommo i due numeri per evitare che liste con ordine contenenti gli stessi actuatori ma in diverso ordine possano generare hash diversi (la somma è sempre uguale proprietà commutativa della somma)
- 
+            for actuator in operative_actuators:
+                actuator_dimension_module = General.calcVectorModule( actuator._dimension )            
+                detectable = ( actuator_dimension_module * detectable_ratio ) / ( automa_dimension_module )
+                #att: con distance (1,1,1) e max distance (100, 100, 100 )--> detected è 0.7!!!
+                
+                #detected = #General.calcProbability( detectable ) non và bene in quanto non può essere aleatorio perchè utilizzato per creare impronte di oggetto usate come chiavi
+
+                if detectable > 0.5:                
+                    actuatorsFootPrint = hash( actuatorsFootPrint + actuator.getActuatorFootPrint() )# sommo i due numeri per evitare che liste con ordine contenenti gli stessi actuatori ma in diverso ordine possano generare hash diversi (la somma è sempre uguale proprietà commutativa della somma)
+    
         return actuatorsFootPrint            

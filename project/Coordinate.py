@@ -347,12 +347,18 @@ class Coordinate:
 
         return False
 
+    def getDirection( old_pos, new_pos ):
+        """Return a vector from self.position to position"""        
+        vect = General.calcVectorDiff( old_pos, new_pos )        
+        mod = General.calcVectorModule( vect )
+        return vect, mod 
+
     def getVector( self, position ):
         """Return a vector from self.position to position"""
         self_pos = self.getPosition()        
         vect = General.calcVectorDiff( self_pos, position )        
         mod = General.calcVectorModule( vect )
-        return (vect, mod) 
+        return vect, mod 
 
     def getVectorAspect( self, vect, position ):
         """Return vector aspect, scalar product and vectorial product of vect and vector = origin-position """
@@ -371,6 +377,6 @@ class Coordinate:
         
         else:
             aspect = "away"
-        return (aspect, prod_scal, prod_vect)
+        return aspect, prod_scal, prod_vect
 
     

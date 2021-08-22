@@ -608,3 +608,9 @@ class Object:
     def differenceWithValueVolume( self, valueVolume ):        
         """Return difference of automa volume dimensione and valueVolume:"""
         return self.getValueVolume() - valueVolume
+
+    def getFootPrint( self ):
+        """Return hash code for Object"""        
+    
+        objectFootPrint = hash( General.calcVectorModule( self._dimension ) + self._mass )
+        return objectFootPrint, False

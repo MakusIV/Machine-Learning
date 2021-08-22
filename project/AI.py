@@ -1,4 +1,5 @@
 from logging import raiseExceptions
+from random import uniform
 from typing import Dict
 from State import State
 from Threat import Threat
@@ -119,85 +120,78 @@ class AI:
         if not perception_info:
             raiseExceptions("updateEnvState( self, automa, perception_info ): perception_info not defined")
 
-        for obj in perception_info:    
+        for obj in perception_info:
+            # la differenza tra i parametri ev_ e gli altri consiste nella valutazione come stima dei primi e l'esattezza dei secondi 
+            # necessaria per calcolare in modo univoco l'impronta (l'impronta è utilizzata come obj_key nell'env_state e nella memory_obj)
+            position = obj.getPosition()
+            category = None
+            type = None
+            dimension = None
+            uei = None    
+            direction = None
+            aspect = None
+            distance = None
+            ev_speed = None
+            ev_strenght = None
+            ev_resilience = None
+            ev_perceptiveness = None
+            ev_intelligence = None
+            ev_isAutoma = None
+            ev_isObstacle = None
+            ev_isFood = None
+            objectFootPrint, isAutoma = obj.getFootPrint()
 
-            if self._env_state[obj._id]:# object presents in env_state
+            if self._env_state[objectFootPrint]:# object presents in env_state
+                # update aspect. direction and uei in env_state
 
-                self._env_state[obj._id] = { "obj" : obj, "position" : _position, "category" : _category, "type" : _type, "direction" : _direction, "aspect" : _aspect, "distance" : _distance, "uei" : uei }
-             
-            if obj.getId() in self._obj_memory: # l'oggetto è già presente nella obj_memory
+                #self._obj_memory[objectFootPrint] = { "category": category, "type": type, "dimension": dimension, "uei": uei, "speed": ev_speed, "strenght" : ev_strenght, "resilience": ev_resilience, "perceptiveness": ev_perceptiveness, "resilience": ev_resilience, "intelligence": ev_intelligence, "automa": ev_isAutoma, "obstacle" : ev_isObstacle, "food": ev_isFood }
+                #self._env_state[objectFootPrint] = { "obj_id" : obj._id, "position" : position, "category" : category, "type" : type, "direction" : direction, "aspect" : aspect, "distance" : distance, "uei" : uei }
+                direction, mod = obj._coord.getDirection( self._env_state[objectFootPrint], position )
+                aspect, prod_scal, prod_vect = obj._coord.getVectorAspect(direction, position)
+                uei = self.computeUei( obj, automa) # uei = unconditionating emotion intensity: level of fear intensity
+
+                if self._obj_memory[objectFootPrint]["threat"] and aspect == "approach":
+                    uei *= mod / General.calcVectorModule( self._obj_memory[objectFootPrint]["direction"] )
+                    escape_vect = -direction
+
+            elif self._obj_memory[objectFootPrint]: # object presents in obj_memory
+                # l'oggetto è già presente nella obj_memory (l'istanza)
+                # compute aspect. direction and uei and other parameters and store in env_state
+                #self._env_state[obj._id] = { "obj" : obj, "position" : _position, "category" : _category, "type" : _type, "direction" : _direction, "aspect" : _aspect, "distance" : _distance, "uei" : uei }                
+                pass
+
+            else:# unknow obj
+                # evalutate uei a initialize other parameter to store in env_state and memory obj
+                automa_volume = automa.getValueVolume()                    
+                factor_of_volume = 1.5# ratio volume obj/ volume automa to scare
+                factor_of_escape = 2# ratio speed/distance to scare
+                volume_ratio = obj.differenceWithValueVolume( automa_volume ) / automa_volume# obj_volume - automa_volume
+                distance = obj.getDistance( automa._coord )# distance of obj from automa                                       
+                uei = 1 # uei = unconditionating emotion intensity: level of fear intensity for unknow obj # fear: >1,  unfear: <=1                    
+                position = obj.getPosition()                    
+                dimension = obj.getDimension()
+                category = "unknow"
+                type = "unknow"
                 
-                #obj_memory = dict(key = IdObj, _class = threat/obstacle/food, _typ = shooter/catcher, eval_dangerous_range = (x.range, y.range, z.range), danger = 1..100)
-                #evalutateAndUpdateObjInEnvState( obj.IdObj ) 
-                # deve valutare/aggiornare l'eventuale danger, direction, e inserirli nell' _env_state .....
-                #
-                # o codice
-                position = obj.getPosition()
-                # obj._coord.
+                if isAutoma:                                            
+                    # nota: il codice cambia ad ogni nuova sessione di python. Quindi se si prevede il salvataggio di una sessione è necessario sostituire la funzione hash() utilizzata                                            
+                    uei = self.computeUei( obj, automa)# uei = unconditionating emotion intensity: level of fear intensity
 
-            else:
-                #search for similar or identical object, evalute: dimension (more significative of volume), visible sensor and actuators..
-                obj_found = searchSimilarObjectInMemory( obj )
-                #evalutateAndInsertNewObjInEnvState( obj ) 
-                #valuta se l'oggetto è una possibile minaccia/cibo o un ostacolo sconosciuto in base alla distanza (vicino: scappa, lontano:ok), 
-                # alle dimensioni (grande: scappa, piccolo:vedi). Poi lo inserisce nell' _env_state e nella _obj_memory
-                #o codice
-                
-                if obj_found:
-                    #read memory_obj property and update env_state
-                    f=1
+                    if uei > 1:
+                        category = "threat"                        
+                    else:
+                        category = "food"
 
                 else:
-                    automa_volume = automa.getValueVolume()                    
-                    factor_of_volume = 1.5# ratio volume obj/ volume automa to scare
-                    factor_of_escape = 2# ratio speed/distance to scare
-                    volume_ratio = obj.differenceWithValueVolume( automa_volume ) / automa_volume# obj_volume - automa_volume
-                    distance = obj.getDistance( automa._coord )# distance of obj from automa                                       
-                    uei = 1 # uei = unconditionating emotion intensity: level of fear intensity # fear: >1,  unfear: <=1                    
-                    position = obj.getPosition()                    
-                    dimension = obj.getDimension()
-                    category = "unknow"
-                    type = "unknow"
-                    direction = None
-                    aspect = None
+                    category = "no_automa"
+                    uei = 0
 
-                    if isinstance(obj, automa.__class):
-                        automa_max_speed = automa.getActuator("mover").speed                
-                        escaping_range = automa_max_speed /distance # chance of escape
-                        uei = volume_ratio * factor_of_escape / ( factor_of_volume * escaping_range )# uei = unconditionating emotion intensity: level of fear intensity
-                        detectable_sensor_list_code = obj.getListDetectableSensors( distance )#gli elementi identificativi dell'automa
-                        detectable_actuator_list_code = obj.getListDetectableActuators( distance )#gli elementi identificativi dell'automa                
-                        
-                        # detectable_sensor_list_code = è codeice hash che rappresenta univocamente i sensori visibili (opticalDet, radioDet, thermalDet, chemistDet)
-                        # 
-                        # la sensibilità del sensore è già considerata durante il rilevamento dell'oggetto. 
-                        # perciò la visibilità dei suoi componenti: sensori e attuatori, dipende dalla distanza, 
-                        # e dal rapporto tra le dimensioni dell'oggetto e quelle del sensore
+                self._obj_memory[objectFootPrint] = { "category": category, "type": type, "dimension": dimension, "uei": uei, "speed": ev_speed, "strenght" : ev_strenght, "resilience": ev_resilience, "perceptiveness": ev_perceptiveness, "resilience": ev_resilience, "intelligence": ev_intelligence, "automa": ev_isAutoma, "obstacle" : ev_isObstacle, "food": ev_isFood }
+                self._env_state[objectFootPrint] = { "obj_id" : obj._id, "position" : position, "category" : category, "type" : type, "direction" : direction, "aspect" : aspect, "distance" : distance, "uei" : uei }
 
-                        if uei > 1:
-                            category = "threat"
-                        
-                        else:
-                            category = "food"
-
-                    
-                    elif isinstance(obj, Obstacle):
-                        category = "obstacle"
-
-                # self._obj_memory = obj_memory#dict( [ ("dummyObjId", ["OBSTACLE", "SOLID", [10, 10, 10], 0] ) ] )
-                #  = dict(key = IdObj, _class = threat/obstacle/food, _typ = shooter/catcher, eval_dangerous_range = (x.range, y.range, z.range), danger = 1..100)
-                self._obj_memory[obj._id] ={ "category": category, "type": type, "dimension": dimension, "uei": uei}
-                self._env_state[obj._id] = { "obj" : obj, "position" : position, "category" : category, "type" : type, "direction" : direction, "aspect" : aspect, "distance" : distance, "uei" : uei }
-
-                
-
-        #new_threats = self._ev_threat( self._env_state, state )
-        #new_resources = self._ev_resource( self._state, self._env_state, state )
-        #new_obstacles = self._ev_obstacle( self._state, self._env_state, state )
         return True
 
         
-
     def _ev_threat( self, internal_state, env_state, state ):
         """Evalutate Threats with level of threath and position. Return an istance of Threat.
         Rise an Invalid Parameters Exception"""
@@ -222,7 +216,6 @@ class AI:
         action = Action()
         return action
 
-
     def setAutomaId( self, automaId ):
         """Set automaId"""
         if not automaId:
@@ -234,3 +227,9 @@ class AI:
     def getAutomaId():
         """get automaId"""
         return self._automaId
+
+    def computeUei( self, distance, automa):
+        automa_max_speed = automa.getActuator("mover").speed                
+        escaping_range = automa_max_speed /distance # chance of escape
+        uei = volume_ratio * factor_of_escape / ( factor_of_volume * escaping_range )
+        return uei

@@ -423,49 +423,49 @@ def testClassCoordinate():
         print("testClassCoordinate().eval_direction(): _down, Failed!", coord1.eval_direction( ( 0, 0, 0 ), ( 1, 0, 1 ) ) ) 
 
     coord1 = Coordinate(2,2,2)
-    res = coord1.getVector( (4,4,4) )
+    vect, mod = coord1.getVector( (4,4,4) )
 
-    if res[0] != (2,2,2) or res[1]!= sqrt(12):
+    if vect != (2,2,2) or mod != sqrt(12):
         result = False
         print("testClassCoordinate().getVector( (4,4,4) ), A - Failed!", res[0], res[1] ) 
     
     
-    res = coord1.getVector( (1,1,1) )
+    vect, mod = coord1.getVector( (1,1,1) )
 
-    if res[0] != (-1,-1,-1) or res[1]!= sqrt(3):
+    if vect != (-1,-1,-1) or mod != sqrt(3):
         result = False
         print("testClassCoordinate().getVector( (1,1,1) ), B - Failed!", res[0], res[1] ) 
     
 
-    res = coord1.getVectorAspect( (2,2,2), (4,4,4) )
+    aspect, prod_scal, prod_vect = coord1.getVectorAspect( (2,2,2), (4,4,4) )
 
-    if res[0] != "approach" or res[1]<=0 or res[2]!=(0, 0, 0):
+    if aspect != "approach" or prod_scal <= 0 or prod_vect != (0, 0, 0):
         result = False
-        print("testClassCoordinate().getVectorAspect( (2,2,2), (4,4,4) ), Failed!", res[0], res[1], res[2] ) 
+        print("testClassCoordinate().getVectorAspect( (2,2,2), (4,4,4) ), Failed!", aspect, prod_scal, prod_vect ) 
 
-    res = coord1.getVectorAspect( (0,0,-3), (0,0,+3) )
+    aspect, prod_scal, prod_vect = coord1.getVectorAspect( (0,0,-3), (0,0,+3) )
 
-    if res[0] != "away" or res[1]>0 or res[2]!=(0, 0, 0):
+    if aspect != "away" or prod_scal > 0 or prod_vect != (0, 0, 0):
         result = False
-        print("testClassCoordinate().getVectorAspect( (0,0,-3), (0,0,+3) ), Failed!", res[0], res[1], res[2] ) 
+        print("testClassCoordinate().getVectorAspect( (0,0,-3), (0,0,+3) ), Failed!", aspect, prod_scal, prod_vect ) 
 
-    res = coord1.getVectorAspect( (1,5,-5), (-1,-5,+5) )
+    aspect, prod_scal, prod_vect = coord1.getVectorAspect( (1,5,-5), (-1,-5,+5) )
 
-    if res[0] != "away" or res[1]>0 or res[2]!=(0, 0, 0):
+    if aspect != "away" or prod_scal > 0 or prod_vect != (0, 0, 0):
         result = False
-        print("testClassCoordinate().getVectorAspect( (1,5,-5), (-1,-5,+5) ), Failed!", res[0], res[1], res[2] ) 
+        print("testClassCoordinate().getVectorAspect( (1,5,-5), (-1,-5,+5) ), Failed!", aspect, prod_scal, prod_vect ) 
 
-    res = coord1.getVectorAspect( (1,5,5), (2,7,6) )
+    aspect, prod_scal, prod_vect = coord1.getVectorAspect( (1,5,5), (2,7,6) )
 
-    if res[0] != "approach" or res[1]<0 or res[2]==(0, 0, 0):
+    if aspect != "approach" or prod_scal < 0 or prod_vect == (0, 0, 0):
         result = False
-        print("testClassCoordinate().getVectorAspect( (1,5,5), (2,7,6) ), Failed!", res[0], res[1], res[2] ) 
+        print("testClassCoordinate().getVectorAspect( (1,5,5), (2,7,6) ), Failed!", aspect, prod_scal, prod_vect ) 
 
-    res = coord1.getVectorAspect( (0,0,1), (1,1,0) )
+    aspect, prod_scal, prod_vect = coord1.getVectorAspect( (0,0,1), (1,1,0) )
 
-    if res[0] != "tangent" or res[1]!=0 or res[2]==(0, 0, 0):
+    if aspect != "tangent" or prod_scal != 0 or prod_vect == (0, 0, 0):
         result = False
-        print("testClassCoordinate().getVectorAspect( (0,0,1), (1,1,0) ), Failed!", res[0], res[1], res[2] ) 
+        print("testClassCoordinate().getVectorAspect( (0,0,1), (1,1,0) ), Failed!", aspect, prod_scal, prod_vect ) 
 
 
     return result
