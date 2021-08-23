@@ -123,7 +123,7 @@ class AI:
         for obj in perception_info:
             # la differenza tra i parametri ev_ e gli altri consiste nella valutazione come stima dei primi e l'esattezza dei secondi 
             # necessaria per calcolare in modo univoco l'impronta (l'impronta è utilizzata come obj_key nell'env_state e nella memory_obj)
-            position = obj.getPosition()
+            position = obj.getPosition()            
             category = None
             type = None
             dimension = None
@@ -139,26 +139,68 @@ class AI:
             ev_isAutoma = None
             ev_isObstacle = None
             ev_isFood = None
+            ev_threat = None
             objectFootPrint, isAutoma = obj.getFootPrint()
+            #env_position = self.searchObjectInEnvState( objectFootPrint )
 
-            if self._env_state[objectFootPrint]:# object presents in env_state
-                # update aspect. direction and uei in env_state
+            if self._env_state[obj._id]:# object presents in env_state
+               # update aspect. direction and uei in env_state
+                #category: "threat", "food", "enviroment", "unknow".  type: "automa", "object"
+                #self._obj_memory[objectFootPrint] = { "category": category, "type": type, "dimension": dimension, "uei": uei, "speed": ev_speed, "strenght" : ev_strenght, "resilience": ev_resilience, "perceptiveness": ev_perceptiveness, "resilience": ev_resilience, "intelligence": ev_intelligence, "automa": ev_isAutoma }                
+                #self._env_state[obj._id] = { "objectFootPrint" : objectFootPrint, "position" : position, "category" : category, "type" : type, "direction" : direction, "aspect" : aspect, "distance" : distance, "uei" : uei }
+                direction, mod = obj._coord.getDirection( self._env_state[obj._id], position )
+                #aspect of obj in realtionship with automa position (da rivedere)
+                aspect, prod_scal, prod_vect = obj._coord.getVectorAspect( direction, position )
+                uei = self.computeUei( obj, automa ) # uei = unconditionating emotion intensity: level of fear intensity
+                
+                if aspect == "approach":
+                    ev_perceptiveness = True
 
-                #self._obj_memory[objectFootPrint] = { "category": category, "type": type, "dimension": dimension, "uei": uei, "speed": ev_speed, "strenght" : ev_strenght, "resilience": ev_resilience, "perceptiveness": ev_perceptiveness, "resilience": ev_resilience, "intelligence": ev_intelligence, "automa": ev_isAutoma, "obstacle" : ev_isObstacle, "food": ev_isFood }
-                #self._env_state[objectFootPrint] = { "obj_id" : obj._id, "position" : position, "category" : category, "type" : type, "direction" : direction, "aspect" : aspect, "distance" : distance, "uei" : uei }
-                direction, mod = obj._coord.getDirection( self._env_state[objectFootPrint], position )
-                aspect, prod_scal, prod_vect = obj._coord.getVectorAspect(direction, position)
-                uei = self.computeUei( obj, automa) # uei = unconditionating emotion intensity: level of fear intensity
-
-                if self._obj_memory[objectFootPrint]["threat"] and aspect == "approach":
+                ev_speed = mod # non serve mettere direction (vettore velocità) in quanto è una info più coerente con env_state. In memory_obj la speed ha il significato di valutazione della capacità dell'oggetto di correre velocemente
+                
+                if uei > 1 and ( self._obj_memory[objectFootPrint]["category"]=="threat" or self._obj_memory[objectFootPrint]["category"]=="unknow" ) and aspect == "approach":
                     uei *= mod / General.calcVectorModule( self._obj_memory[objectFootPrint]["direction"] )
-                    escape_vect = -direction
 
+                    if self._obj_memory[objectFootPrint]["category"]=="unknow":
+                        ev_threat = True
+                    automa_suggested_direction = direction #escaping
+                
+                elif uei > 1 and ( self._obj_memory[objectFootPrint]["category"]=="threat" or self._obj_memory[objectFootPrint]["category"]=="unknow" ) and ( aspect == "away" or aspect == "tangent" ):
+                    uei *= mod / General.calcVectorModule( self._obj_memory[objectFootPrint]["direction"] )
+                    automa_suggested_direction = -direction #step away
+
+                elif  self._obj_memory[objectFootPrint]["category"]=="threat" and self._obj_memory[objectFootPrint]["category"]=="enviroment":                    
+                    automa_suggested_direction = automa._coord.getDirection(automa.getPosition, -obj.getPosition ) #step away
+                                
+                elif self._obj_memory[objectFootPrint]["category"]=="food" or ( self._obj_memory[objectFootPrint]["category"]=="enviroment" and not self._obj_memory[objectFootPrint]["category"]=="threat" ) or ( uei < 1 and self._obj_memory[objectFootPrint]["category"]=="unknow" ):#probably food
+                     automa_suggested_direction = automa._coord.getDirection (automa.getPosition, obj.getPosition ) #approaching
+                
+                else:
+                    raiseExceptions("incoditionalEvalutationEnviroment( automa, perception_info ): object presents in env_state but not possible compute new direction ")
+
+                # update obj_memory
+                self._obj_memory[objectFootPrint]["uei"] = uei
+                self._obj_memory[objectFootPrint]["speed"] = ev_speed# o direction per avere il vettore
+                self._obj_memory[objectFootPrint]["perceptiveness"] = ev_perceptiveness 
+                # update env_state
+                #self._env_state[position] = { "objectFootPrint" : objectFootPrint, "obj_id" : obj._id, "position" : position, "category" : category, "type" : type, "direction" : direction, "aspect" : aspect, "distance" : distance, "uei" : uei }
+                self._env_state[obj._id]["position"] = position                
+                self._env_state[obj._id]["direction"] = direction
+                self._env_state[obj._id]["aspect"] = aspect
+                self._env_state[obj._id]["distance"] = General.calcVectorModule( position )
+                self._env_state[obj._id]["uei"] = uei
+        
             elif self._obj_memory[objectFootPrint]: # object presents in obj_memory
                 # l'oggetto è già presente nella obj_memory (l'istanza)
                 # compute aspect. direction and uei and other parameters and store in env_state
-                #self._env_state[obj._id] = { "obj" : obj, "position" : _position, "category" : _category, "type" : _type, "direction" : _direction, "aspect" : _aspect, "distance" : _distance, "uei" : uei }                
-                pass
+                #self._env_state[position] = { "objectFootPrint" : objectFootPrint, "obj_id" : obj._id, "position" : position, "category" : category, "type" : type, "direction" : direction, "aspect" : aspect, "distance" : distance, "uei" : uei }
+                #self._obj_memory[objectFootPrint] = { "category": category, "type": type, "dimension": dimension, "uei": uei, "speed": ev_speed, "strenght" : ev_strenght, "resilience": ev_resilience, "perceptiveness": ev_perceptiveness, "resilience": ev_resilience, "intelligence": ev_intelligence, "automa": ev_isAutoma }                
+                
+                self._env_state[obj._id] = self._env_state[position]                
+                self._env_state[obj._id]["direction"] = direction
+                self._env_state[obj._id]["aspect"] = aspect
+                self._env_state[obj._id]["distance"] = General.calcVectorModule( position )
+                self._env_state[obj._id]["uei"] = uei
 
             else:# unknow obj
                 # evalutate uei a initialize other parameter to store in env_state and memory obj
@@ -233,3 +275,11 @@ class AI:
         escaping_range = automa_max_speed /distance # chance of escape
         uei = volume_ratio * factor_of_escape / ( factor_of_volume * escaping_range )
         return uei
+
+
+    def searchObjectInEnvState( self, objectFootPrint ):
+        """Return key (position) of env_state element with objectFootPrint value, otherwise None"""
+        for element in self._env_state:
+            if element["objectFootPrint"] == objectFootPrint:
+                return element.key()
+        return None
